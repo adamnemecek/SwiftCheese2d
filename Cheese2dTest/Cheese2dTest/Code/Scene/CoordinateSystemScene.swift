@@ -15,9 +15,6 @@ class CoordinateSystemScene: CALayer {
         super.init()
 
         self.addSublayer(CoordinatSystemShape(position: .zero, length: 10.0, tip: 1.0, lineWidth: 0.05, strokeColor: Colors.darkGray))
-        
-        print(Vector2(x: 0, y: 0))
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

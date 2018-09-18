@@ -11,8 +11,8 @@ import Cocoa
 
 class PolygonShape: PathShape {
 
-    override init(points: [CGPoint], tip: CGFloat, lineWidth: CGFloat, strokeColor: CGColor) {
-        super.init(points: points + [points[0]], tip: tip, lineWidth: lineWidth, strokeColor: strokeColor)
+    init(points: [CGPoint], tip: CGFloat, lineWidth: CGFloat, color strokeColor: CGColor, showIndeces: Bool) {
+        super.init(points: points + [points[0]], tip: tip, lineWidth: lineWidth, color: strokeColor, showIndeces: showIndeces, showLast: false)
     }
     
     required init?(coder aDecoder: NSCoder) {

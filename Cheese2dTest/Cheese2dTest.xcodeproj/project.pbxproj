@@ -1,0 +1,450 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		545F9E7E21512511004CC34E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 545F9E7D21512511004CC34E /* Assets.xcassets */; };
+		545F9E8121512511004CC34E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545F9E7F21512511004CC34E /* Main.storyboard */; };
+		545F9E9521512569004CC34E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E8A21512569004CC34E /* ViewController.swift */; };
+		545F9E9621512569004CC34E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E8B21512569004CC34E /* CanvasView.swift */; };
+		545F9E9721512569004CC34E /* ShapeVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E8E21512569004CC34E /* ShapeVector.swift */; };
+		545F9E9821512569004CC34E /* CoordinatSystemShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E8F21512569004CC34E /* CoordinatSystemShape.swift */; };
+		545F9E9921512569004CC34E /* PolygonShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9021512569004CC34E /* PolygonShape.swift */; };
+		545F9E9A21512569004CC34E /* ShapeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9121512569004CC34E /* ShapeLine.swift */; };
+		545F9E9B21512569004CC34E /* PathShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9221512569004CC34E /* PathShape.swift */; };
+		545F9E9C21512569004CC34E /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9321512569004CC34E /* CGPoint+Extension.swift */; };
+		545F9E9D21512569004CC34E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9421512569004CC34E /* AppDelegate.swift */; };
+		545F9EA0215126FA004CC34E /* IntersectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9F215126FA004CC34E /* IntersectionTest.swift */; };
+		545F9EA221512766004CC34E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9EA121512766004CC34E /* Colors.swift */; };
+		545F9EA42151291B004CC34E /* CoordinateSystemScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9EA32151291B004CC34E /* CoordinateSystemScene.swift */; };
+		54B199BE21512E0600DB8463 /* libCheese2d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 545F9EB021512BD6004CC34E /* libCheese2d.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		545F9EAF21512BD6004CC34E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 545F9EAB21512BD6004CC34E /* Cheese2d.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 545F9E612151249F004CC34E;
+			remoteInfo = Cheese2d;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		545F9E7621512510004CC34E /* Cheese2dTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cheese2dTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		545F9E7D21512511004CC34E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		545F9E8021512511004CC34E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		545F9E8221512511004CC34E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		545F9E8321512511004CC34E /* Cheese2dTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cheese2dTest.entitlements; sourceTree = "<group>"; };
+		545F9E8A21512569004CC34E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		545F9E8B21512569004CC34E /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		545F9E8E21512569004CC34E /* ShapeVector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeVector.swift; sourceTree = "<group>"; };
+		545F9E8F21512569004CC34E /* CoordinatSystemShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatSystemShape.swift; sourceTree = "<group>"; };
+		545F9E9021512569004CC34E /* PolygonShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonShape.swift; sourceTree = "<group>"; };
+		545F9E9121512569004CC34E /* ShapeLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeLine.swift; sourceTree = "<group>"; };
+		545F9E9221512569004CC34E /* PathShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathShape.swift; sourceTree = "<group>"; };
+		545F9E9321512569004CC34E /* CGPoint+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
+		545F9E9421512569004CC34E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		545F9E9F215126FA004CC34E /* IntersectionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntersectionTest.swift; sourceTree = "<group>"; };
+		545F9EA121512766004CC34E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		545F9EA32151291B004CC34E /* CoordinateSystemScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSystemScene.swift; sourceTree = "<group>"; };
+		545F9EAB21512BD6004CC34E /* Cheese2d.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Cheese2d.xcodeproj; path = ../Cheese2d/Cheese2d.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		545F9E7321512510004CC34E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54B199BE21512E0600DB8463 /* libCheese2d.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		545F9E6D21512510004CC34E = {
+			isa = PBXGroup;
+			children = (
+				545F9E7821512510004CC34E /* Cheese2dTest */,
+				545F9E7721512510004CC34E /* Products */,
+				545F9EB121512BE9004CC34E /* Frameworks */,
+				545F9EAB21512BD6004CC34E /* Cheese2d.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		545F9E7721512510004CC34E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				545F9E7621512510004CC34E /* Cheese2dTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		545F9E7821512510004CC34E /* Cheese2dTest */ = {
+			isa = PBXGroup;
+			children = (
+				545F9E8921512569004CC34E /* Code */,
+				545F9E7D21512511004CC34E /* Assets.xcassets */,
+				545F9E7F21512511004CC34E /* Main.storyboard */,
+				545F9E8221512511004CC34E /* Info.plist */,
+				545F9E8321512511004CC34E /* Cheese2dTest.entitlements */,
+			);
+			path = Cheese2dTest;
+			sourceTree = "<group>";
+		};
+		545F9E8921512569004CC34E /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				545F9E9E215126D9004CC34E /* Scene */,
+				545F9E8C21512569004CC34E /* DebugApi */,
+				545F9E8A21512569004CC34E /* ViewController.swift */,
+				545F9E8B21512569004CC34E /* CanvasView.swift */,
+				545F9E9421512569004CC34E /* AppDelegate.swift */,
+				545F9EA121512766004CC34E /* Colors.swift */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		545F9E8C21512569004CC34E /* DebugApi */ = {
+			isa = PBXGroup;
+			children = (
+				545F9E8D21512569004CC34E /* Shape */,
+				545F9E9321512569004CC34E /* CGPoint+Extension.swift */,
+			);
+			path = DebugApi;
+			sourceTree = "<group>";
+		};
+		545F9E8D21512569004CC34E /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				545F9E8E21512569004CC34E /* ShapeVector.swift */,
+				545F9E8F21512569004CC34E /* CoordinatSystemShape.swift */,
+				545F9E9021512569004CC34E /* PolygonShape.swift */,
+				545F9E9121512569004CC34E /* ShapeLine.swift */,
+				545F9E9221512569004CC34E /* PathShape.swift */,
+			);
+			path = Shape;
+			sourceTree = "<group>";
+		};
+		545F9E9E215126D9004CC34E /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				545F9E9F215126FA004CC34E /* IntersectionTest.swift */,
+				545F9EA32151291B004CC34E /* CoordinateSystemScene.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		545F9EAC21512BD6004CC34E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				545F9EB021512BD6004CC34E /* libCheese2d.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		545F9EB121512BE9004CC34E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		545F9E7521512510004CC34E /* Cheese2dTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 545F9E8621512511004CC34E /* Build configuration list for PBXNativeTarget "Cheese2dTest" */;
+			buildPhases = (
+				545F9E7221512510004CC34E /* Sources */,
+				545F9E7321512510004CC34E /* Frameworks */,
+				545F9E7421512510004CC34E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Cheese2dTest;
+			productName = Cheese2dTest;
+			productReference = 545F9E7621512510004CC34E /* Cheese2dTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		545F9E6E21512510004CC34E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Nail Sharipov";
+				TargetAttributes = {
+					545F9E7521512510004CC34E = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 545F9E7121512510004CC34E /* Build configuration list for PBXProject "Cheese2dTest" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 545F9E6D21512510004CC34E;
+			productRefGroup = 545F9E7721512510004CC34E /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 545F9EAC21512BD6004CC34E /* Products */;
+					ProjectRef = 545F9EAB21512BD6004CC34E /* Cheese2d.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				545F9E7521512510004CC34E /* Cheese2dTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		545F9EB021512BD6004CC34E /* libCheese2d.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libCheese2d.dylib;
+			remoteRef = 545F9EAF21512BD6004CC34E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		545F9E7421512510004CC34E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				545F9E7E21512511004CC34E /* Assets.xcassets in Resources */,
+				545F9E8121512511004CC34E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		545F9E7221512510004CC34E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				545F9E9621512569004CC34E /* CanvasView.swift in Sources */,
+				545F9EA221512766004CC34E /* Colors.swift in Sources */,
+				545F9E9521512569004CC34E /* ViewController.swift in Sources */,
+				545F9EA0215126FA004CC34E /* IntersectionTest.swift in Sources */,
+				545F9E9821512569004CC34E /* CoordinatSystemShape.swift in Sources */,
+				545F9EA42151291B004CC34E /* CoordinateSystemScene.swift in Sources */,
+				545F9E9D21512569004CC34E /* AppDelegate.swift in Sources */,
+				545F9E9B21512569004CC34E /* PathShape.swift in Sources */,
+				545F9E9721512569004CC34E /* ShapeVector.swift in Sources */,
+				545F9E9921512569004CC34E /* PolygonShape.swift in Sources */,
+				545F9E9C21512569004CC34E /* CGPoint+Extension.swift in Sources */,
+				545F9E9A21512569004CC34E /* ShapeLine.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		545F9E7F21512511004CC34E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				545F9E8021512511004CC34E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		545F9E8421512511004CC34E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		545F9E8521512511004CC34E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		545F9E8721512511004CC34E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Cheese2dTest/Cheese2dTest.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = HPV9E52JPX;
+				INFOPLIST_FILE = Cheese2dTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = Weekteam.Cheese2dTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		545F9E8821512511004CC34E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Cheese2dTest/Cheese2dTest.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = HPV9E52JPX;
+				INFOPLIST_FILE = Cheese2dTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = Weekteam.Cheese2dTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		545F9E7121512510004CC34E /* Build configuration list for PBXProject "Cheese2dTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				545F9E8421512511004CC34E /* Debug */,
+				545F9E8521512511004CC34E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		545F9E8621512511004CC34E /* Build configuration list for PBXNativeTarget "Cheese2dTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				545F9E8721512511004CC34E /* Debug */,
+				545F9E8821512511004CC34E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 545F9E6E21512510004CC34E /* Project object */;
+}

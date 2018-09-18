@@ -40,7 +40,7 @@ class CanvasView: NSView {
     }
     
     private static func calculateCurrentTransform(rect: CGRect) -> CATransform3D {
-        return CATransform3DMakeTranslation(0.5 * rect.width, 0.5 * rect.height, 0)
+        return CATransform3DScale(CATransform3DMakeTranslation(0.5 * rect.width, 0.5 * rect.height, 0), 10.0, 10.0, 1.0)
     }
     
     func add(shape: CALayer) {

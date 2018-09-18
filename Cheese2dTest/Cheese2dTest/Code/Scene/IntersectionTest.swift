@@ -15,12 +15,12 @@ class IntersectionTest: CoordinateSystemScene {
 
         var points = [CGPoint]()
         
-        points.append(CGPoint(x: 50, y: 50))
-        points.append(CGPoint(x: 100, y: 50))
-        points.append(CGPoint(x: 100, y: 100))
-        points.append(CGPoint(x: 50, y: 100))
+        points.append(CGPoint(x: 5, y: 5))
+        points.append(CGPoint(x: 10, y: 5))
+        points.append(CGPoint(x: 10, y: 10))
+        points.append(CGPoint(x: 5, y: 10))
         
-        self.addSublayer(PolygonShape(points: points, tip: 10.0, lineWidth: 1, strokeColor: Colors.red))
+        self.addSublayer(PolygonShape(points: points, tip: 1.0, lineWidth: 0.1, strokeColor: Colors.red))
     }
     
     required init?(coder aDecoder: NSCoder) {

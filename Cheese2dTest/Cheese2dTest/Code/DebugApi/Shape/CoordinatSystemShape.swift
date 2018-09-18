@@ -10,11 +10,11 @@ import Cocoa
 
 class CoordinatSystemShape: CALayer {
     
-    init(position: CGPoint, length: CGFloat, lineWidth: CGFloat, strokeColor: CGColor) {
+    init(position: CGPoint, length: CGFloat, tip: CGFloat, lineWidth: CGFloat, strokeColor: CGColor) {
         super.init()
         
-        let vecOx = ShapeVector(start: position, end: position + CGPoint(radius: length, angle: 0), tip: 10, lineWidth: lineWidth, strokeColor: strokeColor)
-        let vecOy = ShapeVector(start: position, end: position + CGPoint(radius: length, angle: 0.5 * CGFloat.pi), tip: 10, lineWidth: lineWidth, strokeColor: strokeColor)
+        let vecOx = ShapeVector(start: position, end: position + CGPoint(radius: length, angle: 0), tip: tip, lineWidth: lineWidth, strokeColor: strokeColor)
+        let vecOy = ShapeVector(start: position, end: position + CGPoint(radius: length, angle: 0.5 * CGFloat.pi), tip: tip, lineWidth: lineWidth, strokeColor: strokeColor)
         
         self.addSublayer(vecOx)
         self.addSublayer(vecOy)

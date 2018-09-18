@@ -10,8 +10,21 @@ import Cocoa
 
 class Colors {
     
+    static let white = NSColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor
+    static let veryLightGray = NSColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
     static let lightGray = NSColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1.0).cgColor
     static let gray = NSColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0).cgColor
     static let darkGray = NSColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0).cgColor
+
+    static let veryLightBlue = NSColor(red: 0.9, green: 0.9, blue: 1.0, alpha: 1.0).cgColor
+    static let lightBlue = NSColor(red: 0.7, green: 0.7, blue: 1.0, alpha: 1.0).cgColor
+    static let blue = NSColor(red: 0.5, green: 0.5, blue: 1.0, alpha: 1.0).cgColor
+    static let darkBlue = NSColor(red: 0.3, green: 0.3, blue: 1.0, alpha: 1.0).cgColor
+    
+    static let darkGreen = NSColor(red: 0.3, green: 0.7, blue: 0.3, alpha: 1.0).cgColor
+    
     static let red = NSColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0).cgColor
+    static let yellow = NSColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0).cgColor
+    
+    static let orange = NSColor(red: 1.0, green: 0.5, blue: 0.0, alpha: 1.0).cgColor
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5436B716215185F00015F540 /* Intersector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5436B715215185F00015F540 /* Intersector.swift */; };
+		5436B719215187160015F540 /* BoxArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5436B718215187160015F540 /* BoxArea.swift */; };
 		545F9E652151249F004CC34E /* Cheese2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 545F9E642151249F004CC34E /* Cheese2d.h */; };
 		545F9E672151249F004CC34E /* Cheese2d.m in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E662151249F004CC34E /* Cheese2d.m */; };
 		545F9EB621512C1E004CC34E /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9EB421512C1E004CC34E /* Vector2.swift */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5436B715215185F00015F540 /* Intersector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intersector.swift; sourceTree = "<group>"; };
+		5436B718215187160015F540 /* BoxArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxArea.swift; sourceTree = "<group>"; };
 		545F9E612151249F004CC34E /* libCheese2d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libCheese2d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		545F9E642151249F004CC34E /* Cheese2d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cheese2d.h; sourceTree = "<group>"; };
 		545F9E662151249F004CC34E /* Cheese2d.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cheese2d.m; sourceTree = "<group>"; };
@@ -34,6 +38,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5436B714215185D40015F540 /* Intersection */ = {
+			isa = PBXGroup;
+			children = (
+				5436B715215185F00015F540 /* Intersector.swift */,
+			);
+			path = Intersection;
+			sourceTree = "<group>";
+		};
+		5436B717215187060015F540 /* Struct */ = {
+			isa = PBXGroup;
+			children = (
+				5436B718215187160015F540 /* BoxArea.swift */,
+			);
+			path = Struct;
+			sourceTree = "<group>";
+		};
 		545F9E582151249F004CC34E = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +73,8 @@
 		545F9E632151249F004CC34E /* Cheese2d */ = {
 			isa = PBXGroup;
 			children = (
+				5436B717215187060015F540 /* Struct */,
+				5436B714215185D40015F540 /* Intersection */,
 				545F9EB321512C1E004CC34E /* Math */,
 				545F9E642151249F004CC34E /* Cheese2d.h */,
 				545F9E662151249F004CC34E /* Cheese2d.m */,
@@ -138,8 +160,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				545F9E672151249F004CC34E /* Cheese2d.m in Sources */,
+				5436B716215185F00015F540 /* Intersector.swift in Sources */,
 				545F9EB621512C1E004CC34E /* Vector2.swift in Sources */,
 				54E9DA802151458000316840 /* CGPoint+extension.swift in Sources */,
+				5436B719215187160015F540 /* BoxArea.swift in Sources */,
 				545F9EB721512C1E004CC34E /* LineUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

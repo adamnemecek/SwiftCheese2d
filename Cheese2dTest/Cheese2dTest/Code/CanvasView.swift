@@ -17,12 +17,14 @@ class CanvasView: NSView {
         transform = CanvasView.calculateCurrentTransform(rect: frameRect)
         super.init(frame: frameRect)
         wantsLayer = true
+        self.layer?.backgroundColor = Colors.white
     }
     
     required init?(coder decoder: NSCoder) {
         transform = CATransform3DIdentity
         super.init(coder: decoder)
         wantsLayer = true
+        self.layer?.backgroundColor = Colors.white
     }
     
     override func layout() {

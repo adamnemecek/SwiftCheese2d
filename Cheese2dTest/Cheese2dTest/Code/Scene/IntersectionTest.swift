@@ -13,14 +13,22 @@ class IntersectionTest: CoordinateSystemScene {
     override init() {
         super.init()
 
-        var points = [CGPoint]()
+        var masterPolygon = [CGPoint]()
         
-        points.append(CGPoint(x: -10, y: -10))
-        points.append(CGPoint(x: 10, y: -10))
-        points.append(CGPoint(x: 10, y: 10))
-        points.append(CGPoint(x: -10, y: 10))
+        masterPolygon.append(CGPoint(x: -10, y: -10))
+        masterPolygon.append(CGPoint(x: 10, y: -10))
+        masterPolygon.append(CGPoint(x: 10, y: 10))
+        masterPolygon.append(CGPoint(x: -10, y: 10))
         
-        self.addSublayer(PolygonShape(points: points, tip: 1.0, lineWidth: 0.1, color: Colors.red, showIndeces: true))
+        self.addSublayer(ShapePolygon(points: masterPolygon, tip: 1.0, lineWidth: 0.2, color: Colors.darkGreen, showIndeces: true))
+        
+        var slavePolygon = [CGPoint]()
+        
+        slavePolygon.append(CGPoint(x: 0, y: 20))
+        slavePolygon.append(CGPoint(x: 15, y: 20))
+        slavePolygon.append(CGPoint(x: 15, y: 5))
+        
+        self.addSublayer(ShapePolygon(points: slavePolygon, tip: 1.0, lineWidth: 0.2, color: Colors.orange, showIndeces: true))
     }
     
     required init?(coder aDecoder: NSCoder) {

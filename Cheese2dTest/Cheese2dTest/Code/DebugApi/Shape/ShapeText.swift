@@ -15,19 +15,20 @@ class ShapeText: CALayer {
         
         let a = font.pointSize
         let rect = CGRect(x: position.x - 0.5 * a, y: position.y - 0.5 * a, width: a, height: a)
-        
-        
+
         let textLayer = CATextLayer()
         textLayer.font = font
-        textLayer.fontSize = font.pointSize
+        textLayer.fontSize = a
         textLayer.foregroundColor = color
         textLayer.string = text
         textLayer.frame = rect
         textLayer.alignmentMode = kCAAlignmentCenter
         textLayer.transform = CATransform3DMakeScale(0.05, 0.05, 1.0)
-
+        
         self.addSublayer(ShapeLine(start: position, end: pin, lineWidth: lineWidth, strokeColor: strokeColor))
+        self.addSublayer(ShapeDot(position: position, radius: 0.035 * a, color: Colors.white))
         self.addSublayer(textLayer)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

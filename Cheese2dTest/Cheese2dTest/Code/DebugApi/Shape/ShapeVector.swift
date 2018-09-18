@@ -17,8 +17,8 @@ class ShapeVector: CALayer {
         self.addSublayer(ShapeLine(start: start, end: end, lineWidth: lineWidth, strokeColor: strokeColor))
         
         let angle = atan2(end.y - start.y, end.x - start.x)
-        let angleLeft = angle + CGFloat.pi * 5 / 6
-        let angleRight = angle - CGFloat.pi * 5 / 6
+        let angleLeft = angle + CGFloat.pi * 9 / 10
+        let angleRight = angle - CGFloat.pi * 9 / 10
         
         let leftPoint = end + CGPoint(radius: tip, angle: angleLeft)
         let rightPoint = end + CGPoint(radius: tip, angle: angleRight)

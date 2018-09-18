@@ -1,5 +1,5 @@
 //
-//  PathShape.swift
+//  ShapePath.swift
 //  SwiftCheese2d
 //
 //  Created by Nail Sharipov on 18/09/2018.
@@ -10,7 +10,7 @@ import Cocoa
 import Cheese2d
 
 
-class PathShape: CALayer {
+class ShapePath: CALayer {
     
     init(points: [CGPoint], tip: CGFloat, lineWidth: CGFloat, color: CGColor, showIndeces: Bool, showLast: Bool) {
         super.init()
@@ -26,7 +26,7 @@ class PathShape: CALayer {
         }
         
         if showIndeces {
-            let font = NSFont.systemFont(ofSize: 15)
+            let font = NSFont.systemFont(ofSize: 32)
             if !showLast {
                 lastIndex -= 1
             }

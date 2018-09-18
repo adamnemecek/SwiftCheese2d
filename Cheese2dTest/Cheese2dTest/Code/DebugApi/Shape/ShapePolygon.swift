@@ -1,5 +1,5 @@
 //
-//  PolygonShape.swift
+//  ShapePolygon.swift
 //  SwiftCheese2d
 //
 //  Created by Nail Sharipov on 18/09/2018.
@@ -9,7 +9,7 @@
 import Cocoa
 
 
-class PolygonShape: PathShape {
+class ShapePolygon: ShapePath {
 
     init(points: [CGPoint], tip: CGFloat, lineWidth: CGFloat, color strokeColor: CGColor, showIndeces: Bool) {
         super.init(points: points + [points[0]], tip: tip, lineWidth: lineWidth, color: strokeColor, showIndeces: showIndeces, showLast: false)

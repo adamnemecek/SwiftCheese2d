@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		540486CA21516C5900654A24 /* ShapeDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540486C921516C5900654A24 /* ShapeDot.swift */; };
 		545F9E7E21512511004CC34E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 545F9E7D21512511004CC34E /* Assets.xcassets */; };
 		545F9E8121512511004CC34E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545F9E7F21512511004CC34E /* Main.storyboard */; };
 		545F9E9521512569004CC34E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E8A21512569004CC34E /* ViewController.swift */; };
 		545F9E9621512569004CC34E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E8B21512569004CC34E /* CanvasView.swift */; };
 		545F9E9721512569004CC34E /* ShapeVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E8E21512569004CC34E /* ShapeVector.swift */; };
-		545F9E9821512569004CC34E /* CoordinatSystemShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E8F21512569004CC34E /* CoordinatSystemShape.swift */; };
-		545F9E9921512569004CC34E /* PolygonShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9021512569004CC34E /* PolygonShape.swift */; };
+		545F9E9821512569004CC34E /* ShapeCoordinatSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E8F21512569004CC34E /* ShapeCoordinatSystem.swift */; };
+		545F9E9921512569004CC34E /* ShapePolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9021512569004CC34E /* ShapePolygon.swift */; };
 		545F9E9A21512569004CC34E /* ShapeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9121512569004CC34E /* ShapeLine.swift */; };
-		545F9E9B21512569004CC34E /* PathShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9221512569004CC34E /* PathShape.swift */; };
+		545F9E9B21512569004CC34E /* ShapePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9221512569004CC34E /* ShapePath.swift */; };
 		545F9E9C21512569004CC34E /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9321512569004CC34E /* CGPoint+Extension.swift */; };
 		545F9E9D21512569004CC34E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9421512569004CC34E /* AppDelegate.swift */; };
 		545F9EA0215126FA004CC34E /* IntersectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9F215126FA004CC34E /* IntersectionTest.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		540486C921516C5900654A24 /* ShapeDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeDot.swift; sourceTree = "<group>"; };
 		545F9E7621512510004CC34E /* Cheese2dTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cheese2dTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		545F9E7D21512511004CC34E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		545F9E8021512511004CC34E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -44,10 +46,10 @@
 		545F9E8A21512569004CC34E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		545F9E8B21512569004CC34E /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		545F9E8E21512569004CC34E /* ShapeVector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeVector.swift; sourceTree = "<group>"; };
-		545F9E8F21512569004CC34E /* CoordinatSystemShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatSystemShape.swift; sourceTree = "<group>"; };
-		545F9E9021512569004CC34E /* PolygonShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonShape.swift; sourceTree = "<group>"; };
+		545F9E8F21512569004CC34E /* ShapeCoordinatSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeCoordinatSystem.swift; sourceTree = "<group>"; };
+		545F9E9021512569004CC34E /* ShapePolygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapePolygon.swift; sourceTree = "<group>"; };
 		545F9E9121512569004CC34E /* ShapeLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeLine.swift; sourceTree = "<group>"; };
-		545F9E9221512569004CC34E /* PathShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathShape.swift; sourceTree = "<group>"; };
+		545F9E9221512569004CC34E /* ShapePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapePath.swift; sourceTree = "<group>"; };
 		545F9E9321512569004CC34E /* CGPoint+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 		545F9E9421512569004CC34E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		545F9E9F215126FA004CC34E /* IntersectionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntersectionTest.swift; sourceTree = "<group>"; };
@@ -125,11 +127,12 @@
 			isa = PBXGroup;
 			children = (
 				545F9E8E21512569004CC34E /* ShapeVector.swift */,
-				545F9E8F21512569004CC34E /* CoordinatSystemShape.swift */,
-				545F9E9021512569004CC34E /* PolygonShape.swift */,
+				545F9E8F21512569004CC34E /* ShapeCoordinatSystem.swift */,
+				545F9E9021512569004CC34E /* ShapePolygon.swift */,
 				545F9E9121512569004CC34E /* ShapeLine.swift */,
-				545F9E9221512569004CC34E /* PathShape.swift */,
+				545F9E9221512569004CC34E /* ShapePath.swift */,
 				54E9DA7C215139A500316840 /* ShapeText.swift */,
+				540486C921516C5900654A24 /* ShapeDot.swift */,
 			);
 			path = Shape;
 			sourceTree = "<group>";
@@ -248,13 +251,14 @@
 				545F9EA221512766004CC34E /* Colors.swift in Sources */,
 				545F9E9521512569004CC34E /* ViewController.swift in Sources */,
 				545F9EA0215126FA004CC34E /* IntersectionTest.swift in Sources */,
-				545F9E9821512569004CC34E /* CoordinatSystemShape.swift in Sources */,
+				545F9E9821512569004CC34E /* ShapeCoordinatSystem.swift in Sources */,
 				54E9DA7D215139A500316840 /* ShapeText.swift in Sources */,
 				545F9EA42151291B004CC34E /* CoordinateSystemScene.swift in Sources */,
+				540486CA21516C5900654A24 /* ShapeDot.swift in Sources */,
 				545F9E9D21512569004CC34E /* AppDelegate.swift in Sources */,
-				545F9E9B21512569004CC34E /* PathShape.swift in Sources */,
+				545F9E9B21512569004CC34E /* ShapePath.swift in Sources */,
 				545F9E9721512569004CC34E /* ShapeVector.swift in Sources */,
-				545F9E9921512569004CC34E /* PolygonShape.swift in Sources */,
+				545F9E9921512569004CC34E /* ShapePolygon.swift in Sources */,
 				545F9E9C21512569004CC34E /* CGPoint+Extension.swift in Sources */,
 				545F9E9A21512569004CC34E /* ShapeLine.swift in Sources */,
 			);

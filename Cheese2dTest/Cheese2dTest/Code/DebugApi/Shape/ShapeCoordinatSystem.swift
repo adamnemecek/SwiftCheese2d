@@ -1,5 +1,5 @@
 //
-//  CoordinatSystemShape.swift
+//  ShapeCoordinatSystem.swift
 //  SwiftCheese2d
 //
 //  Created by Nail Sharipov on 18/09/2018.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CoordinatSystemShape: CALayer {
+class ShapeCoordinatSystem: CALayer {
     
     init(position: CGPoint, length: CGFloat, tip: CGFloat, lineWidth: CGFloat, strokeColor: CGColor) {
         super.init()

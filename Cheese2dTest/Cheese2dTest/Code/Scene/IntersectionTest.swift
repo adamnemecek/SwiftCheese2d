@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Cheese2d
 
 class IntersectionTest: CoordinateSystemScene {
     
@@ -29,6 +30,10 @@ class IntersectionTest: CoordinateSystemScene {
         slavePolygon.append(CGPoint(x: 15, y: 5))
         
         self.addSublayer(ShapePolygon(points: slavePolygon, tip: 1.0, lineWidth: 0.2, color: Colors.orange, showIndeces: true))
+        
+        let points = Intersector.findPinPath(rootShape: masterPolygon.convert(), slaveShape: slavePolygon.convert(), precision: 0.001)
+        
+        print(points)
     }
     
     required init?(coder aDecoder: NSCoder) {

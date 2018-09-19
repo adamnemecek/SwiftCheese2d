@@ -10,6 +10,8 @@ import CoreGraphics
 
 public struct Vector2 {
     
+    public static let zero = Vector2(x: 0, y: 0)
+    
     public let x: CGFloat
     public let y: CGFloat
     
@@ -18,6 +20,7 @@ public struct Vector2 {
         self.x = x
         self.y = y
     }
+    
     
     public init(point: CGPoint) {
         self.x = point.x
@@ -46,6 +49,7 @@ public struct Vector2 {
     public func dot(vector: Vector2) -> CGFloat {
         return x * vector.y - y * vector.x
     }
+    
     
     public func mul(vector: Vector2) -> CGFloat {
         return x * vector.x + vector.y * y
@@ -80,6 +84,7 @@ public struct Vector2 {
     }
 
 }
+
 
 public func +(left: Vector2, right: Vector2) -> Vector2 {
     return Vector2(x: left.x + right.x, y: left.y + right.y)

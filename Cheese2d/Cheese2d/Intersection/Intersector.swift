@@ -10,8 +10,8 @@ import Foundation
 
 public class Intersector {
 
-    public static func findPinPath(rootShape: [Vector2], slaveShape: [Vector2], precision: CGFloat = 0.001) -> [Vector2] {
-        let slaveShapeLength = slaveShape.count
+    public static func findPinPath(master: [Vector2], slave: [Vector2], precision: CGFloat = 0.001) -> [Vector2] {
+        let slaveLength = slave.count
         let sqrPrecision = precision * precision
     
         var slaveBoxArea = BoxArea.empty
@@ -20,51 +20,48 @@ public class Intersector {
     
         var slaveSegmentsBoxArea: [BoxArea] = []
     
+        var b = slave[slaveLength - 1]
     
-        var b: Vector2
-        
-        b = slaveShape[slaveShapeLength - 1]
-    
-        for i in 0...slaveShapeLength - 1 {
-            let a = slaveShape[i]
+        for i in 0...slaveLength - 1 {
+            let master_0 = slave[i]
             slaveBoxArea.assimilate(p: b)
     
-            slaveSegmentsBoxArea.append(BoxArea(a: a, b: b))
-            b = a
+            slaveSegmentsBoxArea.append(BoxArea(a: master_0, b: b))
+            b = master_0
         }
     
     
         
-        let rootShapeLength = rootShape.count
-        b = rootShape[rootShapeLength - 1]
+        let masterLength = master.count
+        var master_x = master[masterLength - 1]
         
-        for i in 0...rootShapeLength - 1 {
-            let a = rootShape[i]
-            let isIntersectionImpossible = slaveBoxArea.isNotIntersecting(a: a, b: b)
+        for i in 0...masterLength - 1 {
+            let master_0 = master[i]
+            let isIntersectionImpossible = slaveBoxArea.isNotIntersecting(a: master_0, b: master_x)
 
             if isIntersectionImpossible {
-                b = a
+                master_x = master_0
                 continue
             }
 
-            let segmentBoxArea = BoxArea(a: a, b: b)
+            let segmentBoxArea = BoxArea(a: master_0, b: master_x)
 
             var j = 0
-            var prev_j = slaveShapeLength - 1
-            while j < slaveShapeLength {
+            var prev_j = slaveLength - 1
+            while j < slaveLength {
                 let isIntersectionPossible = slaveSegmentsBoxArea[j].isInterscting(box: segmentBoxArea)
                 
                 if isIntersectionPossible {
-                    let slaveStart = slaveShape[prev_j]
-                    let slaveEnd = slaveShape[j]
+                    let slave_0 = slave[prev_j]
+                    let slave_x = slave[j]
                     
-                    let sqrDistance = LineUtil.sqrDistanceToPoint(a: a, b: b, p: slaveEnd)
+                    let sqrDistance = LineUtil.sqrDistanceToPoint(a: master_0, b: master_x, p: slave_x)
                     
                     if sqrDistance > sqrPrecision {
-                        let intersectionTest = areSegmentsIntersecting(startA: b, endA: a, startB: slaveStart, endB: slaveEnd)
+                        let intersectionTest = areSegmentsIntersecting(startA: master_x, endA: master_0, startB: slave_0, endB: slave_x)
                         
                         if intersectionTest {
-                            let intersectionPoint = Intersector.getIntersectionPoint(startA: b, endA: a, startB: slaveStart, endB: slaveEnd)
+                            let intersectionPoint = Intersector.getIntersectionPoint(startA: master_x, endA: master_0, startB: slave_0, endB: slave_x)
                             pinPointList.append(intersectionPoint)
                         }
                     }
@@ -74,7 +71,7 @@ public class Intersector {
                 j += 1
             }
             
-            b = a
+            master_x = master_0
         }
 
         return pinPointList

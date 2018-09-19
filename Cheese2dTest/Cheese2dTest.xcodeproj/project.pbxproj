@@ -22,7 +22,7 @@
 		545F9EA0215126FA004CC34E /* IntersectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E9F215126FA004CC34E /* IntersectionTest.swift */; };
 		545F9EA221512766004CC34E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9EA121512766004CC34E /* Colors.swift */; };
 		545F9EA42151291B004CC34E /* CoordinateSystemScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9EA32151291B004CC34E /* CoordinateSystemScene.swift */; };
-		54B199BE21512E0600DB8463 /* libCheese2d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 545F9EB021512BD6004CC34E /* libCheese2d.dylib */; };
+		5474FE2A2152871E001F93E3 /* libCheese2d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 545F9EB021512BD6004CC34E /* libCheese2d.dylib */; };
 		54E9DA7D215139A500316840 /* ShapeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E9DA7C215139A500316840 /* ShapeText.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		540486C921516C5900654A24 /* ShapeDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeDot.swift; sourceTree = "<group>"; };
+		540486C921516C5900654A24 /* ShapeDot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeDot.swift; sourceTree = "<group>"; };
 		545F9E7621512510004CC34E /* Cheese2dTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cheese2dTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		545F9E7D21512511004CC34E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		545F9E8021512511004CC34E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,10 +53,10 @@
 		545F9E9321512569004CC34E /* CGPoint+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 		545F9E9421512569004CC34E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		545F9E9F215126FA004CC34E /* IntersectionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntersectionTest.swift; sourceTree = "<group>"; };
-		545F9EA121512766004CC34E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		545F9EA121512766004CC34E /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		545F9EA32151291B004CC34E /* CoordinateSystemScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSystemScene.swift; sourceTree = "<group>"; };
 		545F9EAB21512BD6004CC34E /* Cheese2d.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Cheese2d.xcodeproj; path = ../Cheese2d/Cheese2d.xcodeproj; sourceTree = "<group>"; };
-		54E9DA7C215139A500316840 /* ShapeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeText.swift; sourceTree = "<group>"; };
+		54E9DA7C215139A500316840 /* ShapeText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54B199BE21512E0600DB8463 /* libCheese2d.dylib in Frameworks */,
+				5474FE2A2152871E001F93E3 /* libCheese2d.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,12 +311,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -335,6 +335,7 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = "";
 			};
 			name = Debug;
 		};
@@ -371,7 +372,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -388,6 +389,7 @@
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = "";
 			};
 			name = Release;
 		};
@@ -404,7 +406,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = Weekteam.Cheese2dTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -424,7 +426,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = Weekteam.Cheese2dTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

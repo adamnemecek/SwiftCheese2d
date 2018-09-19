@@ -13,20 +13,24 @@
 		545F9E672151249F004CC34E /* Cheese2d.m in Sources */ = {isa = PBXBuildFile; fileRef = 545F9E662151249F004CC34E /* Cheese2d.m */; };
 		545F9EB621512C1E004CC34E /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9EB421512C1E004CC34E /* Vector2.swift */; };
 		545F9EB721512C1E004CC34E /* LineUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9EB521512C1E004CC34E /* LineUtil.swift */; };
+		5474FE302152915D001F93E3 /* AdjacencyIntersectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5474FE2F2152915D001F93E3 /* AdjacencyIntersectionStore.swift */; };
+		5474FE32215297C8001F93E3 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5474FE31215297C8001F93E3 /* Edge.swift */; };
 		54E9DA802151458000316840 /* CGPoint+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E9DA7F2151458000316840 /* CGPoint+extension.swift */; };
 		54F4477321527966003BA39F /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F4477221527966003BA39F /* Array.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5436B715215185F00015F540 /* Intersector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intersector.swift; sourceTree = "<group>"; };
-		5436B718215187160015F540 /* BoxArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxArea.swift; sourceTree = "<group>"; };
+		5436B715215185F00015F540 /* Intersector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intersector.swift; sourceTree = "<group>"; };
+		5436B718215187160015F540 /* BoxArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxArea.swift; sourceTree = "<group>"; };
 		545F9E612151249F004CC34E /* libCheese2d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libCheese2d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		545F9E642151249F004CC34E /* Cheese2d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cheese2d.h; sourceTree = "<group>"; };
 		545F9E662151249F004CC34E /* Cheese2d.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cheese2d.m; sourceTree = "<group>"; };
 		545F9EB421512C1E004CC34E /* Vector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
 		545F9EB521512C1E004CC34E /* LineUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineUtil.swift; sourceTree = "<group>"; };
-		54E9DA7F2151458000316840 /* CGPoint+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+extension.swift"; sourceTree = "<group>"; };
-		54F4477221527966003BA39F /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		5474FE2F2152915D001F93E3 /* AdjacencyIntersectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyIntersectionStore.swift; sourceTree = "<group>"; };
+		5474FE31215297C8001F93E3 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
+		54E9DA7F2151458000316840 /* CGPoint+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+extension.swift"; sourceTree = "<group>"; };
+		54F4477221527966003BA39F /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				5436B718215187160015F540 /* BoxArea.swift */,
+				5474FE2F2152915D001F93E3 /* AdjacencyIntersectionStore.swift */,
 			);
 			path = Struct;
 			sourceTree = "<group>";
@@ -91,6 +96,7 @@
 				545F9EB521512C1E004CC34E /* LineUtil.swift */,
 				54E9DA7F2151458000316840 /* CGPoint+extension.swift */,
 				54F4477221527966003BA39F /* Array.swift */,
+				5474FE31215297C8001F93E3 /* Edge.swift */,
 			);
 			path = Math;
 			sourceTree = "<group>";
@@ -164,11 +170,13 @@
 			files = (
 				545F9E672151249F004CC34E /* Cheese2d.m in Sources */,
 				5436B716215185F00015F540 /* Intersector.swift in Sources */,
+				5474FE302152915D001F93E3 /* AdjacencyIntersectionStore.swift in Sources */,
 				54F4477321527966003BA39F /* Array.swift in Sources */,
 				545F9EB621512C1E004CC34E /* Vector2.swift in Sources */,
 				54E9DA802151458000316840 /* CGPoint+extension.swift in Sources */,
 				5436B719215187160015F540 /* BoxArea.swift in Sources */,
 				545F9EB721512C1E004CC34E /* LineUtil.swift in Sources */,
+				5474FE32215297C8001F93E3 /* Edge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,10 +234,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -278,7 +287,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -292,7 +301,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -307,7 +316,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;

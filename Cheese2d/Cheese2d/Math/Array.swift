@@ -10,7 +10,7 @@ import Foundation
 
 public extension Array where Element == CGPoint {
     
-    public func convert() -> [Vector2] {
+    public func toVectors() -> [Vector2] {
         var vectors = [Vector2]()
         for p in self {
             vectors.append(Vector2(point: p))
@@ -22,7 +22,7 @@ public extension Array where Element == CGPoint {
 
 public extension Array where Element == Vector2 {
     
-    public func convert() -> [CGPoint] {
+    public func toPoints() -> [CGPoint] {
         var points = [CGPoint]()
         for v in self {
             points.append(CGPoint(vector: v))

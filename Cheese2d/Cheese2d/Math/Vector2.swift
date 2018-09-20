@@ -15,6 +15,16 @@ public struct Vector2 {
     public let x: CGFloat
     public let y: CGFloat
     
+    public var length: CGFloat {
+        return sqrt(x * x + y * y)
+    }
+    
+    
+    public var normalize: Vector2 {
+        let l = self.length
+        return Vector2(x: x / l, y: y / l)
+    }
+    
     
     public init(x: CGFloat, y: CGFloat) {
         self.x = x
@@ -67,22 +77,21 @@ public struct Vector2 {
         return Vector2(x: vx, y: vy)
     }
     
-    
-    public var length: CGFloat {
-        return sqrt(x * x + y * y)
-    }
-    
-    
-    public var normalize: Vector2 {
-        let l = self.length
-        return Vector2(x: x / l, y: y / l)
-    }
-    
-    
-    var description: String {
-        return "(\(x), \(y))"
+    public func isNear(vector: Vector2, sqrDistance: CGFloat) -> Bool {
+        let dx = self.x - vector.x
+        let dy = self.y - vector.y
+        
+        return sqrDistance > dx * dx + dy * dy
     }
 
+}
+
+extension Vector2: CustomStringConvertible {
+    
+    public var description: String {
+        return "(\(x), \(y))"
+    }
+    
 }
 
 

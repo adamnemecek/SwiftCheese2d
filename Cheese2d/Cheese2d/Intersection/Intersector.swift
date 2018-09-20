@@ -10,9 +10,8 @@ import Foundation
 
 public class Intersector {
 
-    public static func findPinPath(master: [Vector2], slave: [Vector2], precision: CGFloat = 0.001) -> [Vector2] {
+    public static func findPinPath(master: [Vector2], slave: [Vector2]) -> [Vector2] {
         let slaveLength = slave.count
-        let sqrPrecision = precision * precision
     
         var slaveBoxArea = BoxArea.empty
 
@@ -35,6 +34,8 @@ public class Intersector {
         let masterLength = master.count
         var master_x = master[masterLength - 1]
         
+        var isSimpleCase = true
+        
         for i in 0...masterLength - 1 {
             let master_0 = master[i]
             let isIntersectionImpossible = slaveBoxArea.isNotIntersecting(a: master_0, b: master_x)
@@ -54,17 +55,28 @@ public class Intersector {
                 if isIntersectionPossible {
                     let slave_0 = slave[prev_j]
                     let slave_x = slave[j]
+
+                    let intersectionTest = areSegmentsIntersecting(startA: master_x, endA: master_0, startB: slave_0, endB: slave_x)
                     
-                    let sqrDistance = LineUtil.sqrDistanceToPoint(a: master_0, b: master_x, p: slave_x)
-                    
-                    if sqrDistance > sqrPrecision {
-                        let intersectionTest = areSegmentsIntersecting(startA: master_x, endA: master_0, startB: slave_0, endB: slave_x)
+                    if intersectionTest {
+                        let xPoint = Intersector.getIntersectionPoint(startA: master_x, endA: master_0, startB: slave_0, endB: slave_x)
                         
-                        if intersectionTest {
-                            let intersectionPoint = Intersector.getIntersectionPoint(startA: master_x, endA: master_0, startB: slave_0, endB: slave_x)
-                            pinPointList.append(intersectionPoint)
+                        let sqrPrecision = 0.000001 * master_x.sqrDistance(vector: master_0)
+                        
+                        if isSimpleCase {
+                            let isEndm_x = master_x.isNear(vector: xPoint, sqrDistance: sqrPrecision)
+                            let isEndm_0 = master_0.isNear(vector: xPoint, sqrDistance: sqrPrecision)
+                            let isEnds_x = slave_x.isNear(vector: xPoint, sqrDistance: sqrPrecision)
+                            let isEnds_0 = slave_0.isNear(vector: xPoint, sqrDistance: sqrPrecision)
+                            
+                            isSimpleCase = !isEndm_x && !isEndm_0 && !isEnds_x && !isEnds_0
                         }
+
+                        pinPointList.append(xPoint)
                     }
+                    
+                    
+                    
                 }
                 
                 prev_j = j
@@ -73,8 +85,12 @@ public class Intersector {
             
             master_x = master_0
         }
-
-        return pinPointList
+        
+        if isSimpleCase {
+            return pinPointList
+        } else {
+            return []
+        }
     }
     
     

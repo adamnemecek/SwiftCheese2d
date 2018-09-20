@@ -14,7 +14,6 @@
 		545F9EB621512C1E004CC34E /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9EB421512C1E004CC34E /* Vector2.swift */; };
 		545F9EB721512C1E004CC34E /* LineUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F9EB521512C1E004CC34E /* LineUtil.swift */; };
 		5474FE302152915D001F93E3 /* AdjacencyIntersectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5474FE2F2152915D001F93E3 /* AdjacencyIntersectionStore.swift */; };
-		5474FE32215297C8001F93E3 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5474FE31215297C8001F93E3 /* Edge.swift */; };
 		54E9DA802151458000316840 /* CGPoint+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E9DA7F2151458000316840 /* CGPoint+extension.swift */; };
 		54F4477321527966003BA39F /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F4477221527966003BA39F /* Array.swift */; };
 /* End PBXBuildFile section */
@@ -28,7 +27,6 @@
 		545F9EB421512C1E004CC34E /* Vector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
 		545F9EB521512C1E004CC34E /* LineUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineUtil.swift; sourceTree = "<group>"; };
 		5474FE2F2152915D001F93E3 /* AdjacencyIntersectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyIntersectionStore.swift; sourceTree = "<group>"; };
-		5474FE31215297C8001F93E3 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		54E9DA7F2151458000316840 /* CGPoint+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+extension.swift"; sourceTree = "<group>"; };
 		54F4477221527966003BA39F /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,7 +94,6 @@
 				545F9EB521512C1E004CC34E /* LineUtil.swift */,
 				54E9DA7F2151458000316840 /* CGPoint+extension.swift */,
 				54F4477221527966003BA39F /* Array.swift */,
-				5474FE31215297C8001F93E3 /* Edge.swift */,
 			);
 			path = Math;
 			sourceTree = "<group>";
@@ -176,7 +173,6 @@
 				54E9DA802151458000316840 /* CGPoint+extension.swift in Sources */,
 				5436B719215187160015F540 /* BoxArea.swift in Sources */,
 				545F9EB721512C1E004CC34E /* LineUtil.swift in Sources */,
-				5474FE32215297C8001F93E3 /* Edge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

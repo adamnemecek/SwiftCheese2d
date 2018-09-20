@@ -25,15 +25,17 @@ class IntersectionTest: CoordinateSystemScene {
         
         var slavePolygon = [CGPoint]()
         
-        slavePolygon.append(CGPoint(x: 0, y: 20))
-        slavePolygon.append(CGPoint(x: 15, y: 20))
-        slavePolygon.append(CGPoint(x: 15, y: 5))
+        slavePolygon.append(CGPoint(x: 0, y: 19.95))
+        slavePolygon.append(CGPoint(x: 15, y: 19.95))
+        slavePolygon.append(CGPoint(x: 15, y: 4.95))
         
         self.addSublayer(ShapePolygon(points: slavePolygon, tip: 1.0, lineWidth: 0.2, color: Colors.orange, showIndeces: true))
         
-        let points = Intersector.findPinPath(master: masterPolygon.convert(), slave: slavePolygon.convert(), precision: 0.001)
-        
-        print(points)
+        let points = Intersector.findPinPath(master: masterPolygon.toVectors(), slave: slavePolygon.toVectors()).toPoints()
+
+        for point in points {
+            self.addSublayer(ShapeDot(position: point, radius: 0.75, color: Colors.red))
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

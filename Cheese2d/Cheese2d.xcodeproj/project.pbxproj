@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5408D65D2154C4320050CEE9 /* OrdedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5408D65C2154C4320050CEE9 /* OrdedNumbers.swift */; };
 		5436B716215185F00015F540 /* Intersector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5436B715215185F00015F540 /* Intersector.swift */; };
 		5436B719215187160015F540 /* BoxArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5436B718215187160015F540 /* BoxArea.swift */; };
 		545F9E652151249F004CC34E /* Cheese2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 545F9E642151249F004CC34E /* Cheese2d.h */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5408D65C2154C4320050CEE9 /* OrdedNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdedNumbers.swift; sourceTree = "<group>"; };
 		5436B715215185F00015F540 /* Intersector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intersector.swift; sourceTree = "<group>"; };
 		5436B718215187160015F540 /* BoxArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxArea.swift; sourceTree = "<group>"; };
 		545F9E612151249F004CC34E /* libCheese2d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libCheese2d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +55,7 @@
 		5436B717215187060015F540 /* Struct */ = {
 			isa = PBXGroup;
 			children = (
+				5408D65C2154C4320050CEE9 /* OrdedNumbers.swift */,
 				5436B718215187160015F540 /* BoxArea.swift */,
 				5474FE2F2152915D001F93E3 /* AdjacencyMatrix.swift */,
 			);
@@ -171,6 +174,7 @@
 				54F4477321527966003BA39F /* Array.swift in Sources */,
 				545F9EB621512C1E004CC34E /* Vector2.swift in Sources */,
 				54E9DA802151458000316840 /* CGPoint+extension.swift in Sources */,
+				5408D65D2154C4320050CEE9 /* OrdedNumbers.swift in Sources */,
 				5436B719215187160015F540 /* BoxArea.swift in Sources */,
 				545F9EB721512C1E004CC34E /* LineUtil.swift in Sources */,
 			);

@@ -23,6 +23,9 @@ struct OrdedNumbers {
 
     private var prevNumber = Int.min
     
+    var count: Int {
+        return data.count
+    }
 
     init(size: Int = 0) {
         data = [] // for swift pre size is useless
@@ -72,11 +75,12 @@ struct OrdedNumbers {
         
         beginIndex += 1
         
-        if endIndex < n - 1 {
-            while endIndex < n && data[endIndex] == number {
-                endIndex += 1
-            }
+        n = data.count
+        
+        while endIndex < n && data[endIndex] == number {
+            endIndex += 1
         }
+        endIndex -= 1
         
         return Range(begin: beginIndex, end: endIndex)
     }

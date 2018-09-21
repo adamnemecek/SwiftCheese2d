@@ -19,28 +19,9 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-/*
-        var matrix = AdjacencyMatrix()
+
+        DebugFile.run()
         
-        matrix.addMate(master: 0, slave: 1)
-        matrix.addMate(master: 0, slave: 4)
-        matrix.addMate(master: 0, slave: 5)
-        matrix.addMate(master: 2, slave: 0)
-        matrix.addMate(master: 2, slave: 1)
-        matrix.addMate(master: 2, slave: 2)
-        matrix.addMate(master: 2, slave: 3)
-        matrix.addMate(master: 3, slave: 1)
-        matrix.addMate(master: 3, slave: 2)
-        matrix.addMate(master: 3, slave: 4)
-        matrix.addMate(master: 3, slave: 5)
-        matrix.addMate(master: 3, slave: 6)
-        
-        matrix.printSelf()
-        
-        let range = matrix.getRange(master: 2)
-        
-        print(range)
-*/
         canvasView.add(shape: IntersectionTest())
     }
 

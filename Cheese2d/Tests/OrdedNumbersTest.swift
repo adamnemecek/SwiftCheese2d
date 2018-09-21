@@ -48,7 +48,7 @@ class OrdedNumbersTest: XCTestCase {
     }
     
     
-    func testMiddle() {
+    func testComplexA() {
         var numbers = OrdedNumbers()
         numbers.add(number: 0)
         numbers.add(number: 1)
@@ -70,4 +70,225 @@ class OrdedNumbersTest: XCTestCase {
         XCTAssertEqual(range2.end, 2)
     }
     
+    func testComplexB() {
+        var numbers = OrdedNumbers()
+        numbers.add(number: 0)
+        numbers.add(number: 0)
+        numbers.add(number: 1)
+        numbers.add(number: 1)
+        numbers.add(number: 2)
+        numbers.add(number: 2)
+        
+        let range0 = numbers.getRange(number: 0)
+        
+        XCTAssertEqual(range0.begin, 0)
+        XCTAssertEqual(range0.end, 1)
+        
+        let range1 = numbers.getRange(number: 1)
+        
+        XCTAssertEqual(range1.begin, 2)
+        XCTAssertEqual(range1.end, 3)
+        
+        let range2 = numbers.getRange(number: 2)
+        
+        XCTAssertEqual(range2.begin, 4)
+        XCTAssertEqual(range2.end, 5)
+    }
+    
+    func testComplexC() {
+        var numbers = OrdedNumbers()
+        numbers.add(number: 0)
+        numbers.add(number: 1)
+        numbers.add(number: 1)
+        numbers.add(number: 2)
+        numbers.add(number: 2)
+        numbers.add(number: 2)
+        
+        let range0 = numbers.getRange(number: 0)
+        
+        XCTAssertEqual(range0.begin, 0)
+        XCTAssertEqual(range0.end, 0)
+        
+        let range1 = numbers.getRange(number: 1)
+        
+        XCTAssertEqual(range1.begin, 1)
+        XCTAssertEqual(range1.end, 2)
+        
+        let range2 = numbers.getRange(number: 2)
+        
+        XCTAssertEqual(range2.begin, 3)
+        XCTAssertEqual(range2.end, 5)
+    }
+    
+    
+    func testComplexD() {
+        var numbers = OrdedNumbers()
+        numbers.add(number: 0)
+        numbers.add(number: 0)
+        numbers.add(number: 0)
+        numbers.add(number: 1)
+        numbers.add(number: 1)
+        numbers.add(number: 2)
+        
+        let range0 = numbers.getRange(number: 0)
+        
+        XCTAssertEqual(range0.begin, 0)
+        XCTAssertEqual(range0.end, 2)
+        
+        let range1 = numbers.getRange(number: 1)
+        
+        XCTAssertEqual(range1.begin, 3)
+        XCTAssertEqual(range1.end, 4)
+        
+        let range2 = numbers.getRange(number: 2)
+        
+        XCTAssertEqual(range2.begin, 5)
+        XCTAssertEqual(range2.end, 5)
+    }
+    
+    
+    func testComplexE() {
+        var numbers = OrdedNumbers()
+        numbers.add(number: 0)
+        numbers.add(number: 3)
+        numbers.add(number: 3)
+        numbers.add(number: 6)
+        numbers.add(number: 7)
+        numbers.add(number: 7)
+        
+        let range0 = numbers.getRange(number: 1)
+        XCTAssert(range0.isEmpty)
+        
+        let range1 = numbers.getRange(number: 1)
+        XCTAssert(range1.isEmpty)
+
+        let range3 = numbers.getRange(number: 5)
+        XCTAssert(range3.isEmpty)
+        
+        let range4 = numbers.getRange(number: 6)
+        XCTAssertEqual(range4.begin, 3)
+        XCTAssertEqual(range4.end, 3)
+    }
+    
+    
+    func testComplexF() {
+        var numbers = OrdedNumbers()
+        numbers.add(number: 0)
+        numbers.add(number: 3)
+        numbers.add(number: 3)
+        numbers.add(number: 6)
+        numbers.add(number: 7)
+        
+        let range0 = numbers.getRange(number: 0)
+        XCTAssertEqual(range0.begin, 0)
+        XCTAssertEqual(range0.end, 0)
+        
+        let range1 = numbers.getRange(number: 1)
+        XCTAssert(range1.isEmpty)
+        
+        let range2 = numbers.getRange(number: 3)
+        XCTAssertEqual(range2.begin, 1)
+        XCTAssertEqual(range2.end, 2)
+        
+        let range4 = numbers.getRange(number: 6)
+        XCTAssertEqual(range4.begin, 3)
+        XCTAssertEqual(range4.end, 3)
+        
+        let range5 = numbers.getRange(number: 7)
+        XCTAssertEqual(range5.begin, 4)
+        XCTAssertEqual(range5.end, 4)
+    }
+    
+    
+    func testComplexG() {
+        var numbers = OrdedNumbers()
+        numbers.add(number: 0)
+        numbers.add(number: 3)
+        numbers.add(number: 3)
+        numbers.add(number: 3)
+        numbers.add(number: 7)
+        
+        let range0 = numbers.getRange(number: 0)
+        XCTAssertEqual(range0.begin, 0)
+        XCTAssertEqual(range0.end, 0)
+        
+        let range1 = numbers.getRange(number: 1)
+        XCTAssert(range1.isEmpty)
+        
+        let range2 = numbers.getRange(number: 3)
+        XCTAssertEqual(range2.begin, 1)
+        XCTAssertEqual(range2.end, 3)
+        
+        let range4 = numbers.getRange(number: 6)
+        XCTAssert(range4.isEmpty)
+        
+        let range5 = numbers.getRange(number: 7)
+        XCTAssertEqual(range5.begin, 4)
+        XCTAssertEqual(range5.end, 4)
+    }
+    
+    
+    func testComplexK() {
+        var numbers = OrdedNumbers()
+        numbers.add(number: 0)
+        numbers.add(number: 0)
+        numbers.add(number: 0)
+        numbers.add(number: 0)
+        numbers.add(number: 0)
+        numbers.add(number: 0)
+        numbers.add(number: 0)
+        numbers.add(number: 3)
+        numbers.add(number: 3)
+        numbers.add(number: 3)
+        numbers.add(number: 7)
+        
+        let range0 = numbers.getRange(number: 0)
+        XCTAssertEqual(range0.begin, 0)
+        XCTAssertEqual(range0.end, 6)
+        
+        let range1 = numbers.getRange(number: 1)
+        XCTAssert(range1.isEmpty)
+        
+        let range2 = numbers.getRange(number: 3)
+        XCTAssertEqual(range2.begin, 7)
+        XCTAssertEqual(range2.end, 9)
+        
+        let range4 = numbers.getRange(number: 6)
+        XCTAssert(range4.isEmpty)
+        
+        let range5 = numbers.getRange(number: 7)
+        XCTAssertEqual(range5.begin, 10)
+        XCTAssertEqual(range5.end, 10)
+    }
+    
+    
+    func testRandom() {
+        for _ in 0...1000 {
+            let count = Int(arc4random_uniform(10))
+            
+            var map = [Int: OrdedNumbers.Range]()
+            
+            var numbers = OrdedNumbers()
+            var number = 0
+            for _ in 0...count {
+                let shouldAdd = arc4random_uniform(100) % 2 == 0
+                let step = Int(arc4random_uniform(3)) + 1
+                number += Int(arc4random_uniform(3)) + 1
+                if shouldAdd {
+                    let begin = numbers.count
+                    map[number] = OrdedNumbers.Range(begin: begin, end: begin + step)
+                    for _ in 0...step {
+                        numbers.add(number: number)
+                    }
+                }
+            }
+            
+            for key in map.keys {
+                let range = numbers.getRange(number: key)
+                let standard = map[key]!
+                XCTAssertEqual(range.begin, standard.begin)
+                XCTAssertEqual(range.end, standard.end)
+            }
+        }
+    }
 }

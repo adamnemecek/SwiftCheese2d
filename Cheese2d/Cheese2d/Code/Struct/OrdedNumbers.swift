@@ -9,22 +9,26 @@
 import Foundation
 
 
-public struct OrdedNumbers {
+struct OrdedNumbers {
     
     public struct Range {
         let begin: Int
         let end: Int
+        var isEmpty: Bool {
+            return begin == -1
+        }
     }
     
     private var data: [Int]
 
     private var prevNumber = Int.min
     
-    public init(size: Int) {
+
+    init(size: Int = 0) {
         data = [] // for swift pre size is useless
     }
     
-    public mutating func add(number: Int) {
+    mutating func add(number: Int) {
         if prevNumber > number {
             assertionFailure("the list must be ordered")
         }
@@ -32,7 +36,7 @@ public struct OrdedNumbers {
     }
     
     
-    public func getRange(number: Int) -> Range {
+    func getRange(number: Int) -> Range {
         var n = data.count
         
         guard n > 0 else {

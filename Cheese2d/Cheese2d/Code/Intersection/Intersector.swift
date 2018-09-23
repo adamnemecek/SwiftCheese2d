@@ -11,6 +11,7 @@ import Foundation
 public class Intersector {
 
     public static func findPinPath(master: [Vector2], slave: [Vector2], precision: CGFloat = 0.001) -> [Vector2] {
+        /*
         let sqrPrecision = precision * precision
         
         let slaveLength = slave.count
@@ -24,17 +25,17 @@ public class Intersector {
         var b = slave[slaveLength - 1]
     
         for i in 0...slaveLength - 1 {
-            let master_0 = slave[i]
+            let slave_0 = slave[i]
             slaveBoxArea.assimilate(p: b)
     
-            slaveSegmentsBoxArea.append(BoxArea(a: master_0, b: b))
-            b = master_0
+            slaveSegmentsBoxArea.append(BoxArea(a: slave_0, b: b))
+            b = slave_0
         }
 
         let masterLength = master.count
         var master_x = master[masterLength - 1]
         
-        var possibleIadjacency = AdjacencyMatrix(size: 0)
+        var possibleIntersectionAdjacency = AdjacencyMatrix(size: 0)
         
         var isSimpleCase = true
         
@@ -53,8 +54,11 @@ public class Intersector {
             var prev_j = slaveLength - 1
             while j < slaveLength {
                 let isIntersectionPossible = slaveSegmentsBoxArea[j].isInterscting(box: segmentBoxArea)
-                
+
                 if isIntersectionPossible {
+                    possibleIntersectionAdjacency.addMate(master: i, slave: prev_j)
+                    
+                    
                     let slave_0 = slave[prev_j]
                     let slave_x = slave[j]
 
@@ -75,10 +79,9 @@ public class Intersector {
                         }
 
                         pinPointList.append(xPoint)
+ 
                     }
-
                 }
-                
                 prev_j = j
                 j += 1
             }
@@ -91,8 +94,56 @@ public class Intersector {
         } else {
             return []
         }
+         */
+        return []
     }
     
+    
+    private func getPossibleIntersectingAdjenciesMatrix(master: [Vector2], slave: [Vector2]) -> AdjacencyMatrix {
+
+        var slaveBoxArea = BoxArea.empty
+
+        var slaveSegmentsBoxArea: [BoxArea] = []
+        
+        let lastSlaveIndex = master.count - 1
+        
+        for i in 0...lastSlaveIndex {
+            let a = slave[i]
+            let b = slave[i != lastSlaveIndex ? i + 1 : 0]
+            
+            slaveBoxArea.assimilate(p: a)
+            slaveSegmentsBoxArea.append(BoxArea(a: a, b: b))
+        }
+        
+        var possibleIntersectionAdjacency = AdjacencyMatrix(size: 0)
+
+        let lastMasterIndex = master.count - 1
+        
+        for i in 0...lastMasterIndex {
+            let master_0 = master[i]
+            let master_1 = master[i != lastMasterIndex ? i + 1 : 0]
+            
+            let isIntersectionImpossible = slaveBoxArea.isNotIntersecting(a: master_0, b: master_1)
+            
+            if isIntersectionImpossible {
+                continue
+            }
+            
+            let segmentBoxArea = BoxArea(a: master_0, b: master_1)
+        
+            
+            for j in 0...lastSlaveIndex {
+                let isIntersectionPossible = slaveSegmentsBoxArea[j].isInterscting(box: segmentBoxArea)
+                
+                if isIntersectionPossible {
+                    possibleIntersectionAdjacency.addMate(master: i, slave: j)
+                }
+            }
+        }
+        
+        return possibleIntersectionAdjacency
+    }
+
     
     private static func areSegmentsIntersecting(startA: Vector2, endA: Vector2, startB: Vector2, endB: Vector2) -> Bool {
         let t0 = Intersector.arePointsCCW(a: startA, b: startB, c: endB)

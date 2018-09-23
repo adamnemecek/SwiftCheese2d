@@ -9,101 +9,137 @@
 import Foundation
 
 
-public struct AdjacencyMatrix {
+struct AdjacencyMatrix {
 
-    private struct Adjacency: CustomDebugStringConvertible {
-        
-        let master: Int
-        
-        let slave: Int
-        
-        public var debugDescription: String {
-            return "(\(master), \(slave))"
-        }
-    }
-
-    public init() {
-
+    private(set) var masterIndices: SortedNumbers
+    private(set) var adjacencies: [Int]
+    
+    init(size: Int = 0) {
+        self.masterIndices = SortedNumbers(size: size)
+        self.adjacencies = Array<Int>(repeating: 0, count: size)
     }
     
-    private var data = [Adjacency]()
-
-    public func isMate(master: Int, slave: Int) -> Bool {
+    
+    init(masterIndices: SortedNumbers, adjacencies: [Int]) {
+        self.masterIndices = masterIndices
+        self.adjacencies = adjacencies
+    }
+    
+    
+    func isPresent(master: Int, slave: Int) -> Bool {
+        let range = masterIndices.getRange(number: master)
+        if range.isEmpty {
+            return false
+        }
+        
+        for i in range.begin...range.end {
+            if adjacencies[i] == slave {
+                return true
+            }
+        }
 
         return false
     }
     
     
-    public func getRange(master: Int) -> (start: Int, end: Int)? {
-        let start = getRangeBeginning(master: master)
-        
-        guard start >= 0 else {
-            return nil
-        }
-        
-        let n = data.count
-        var end = start + 1
-        
-        while end < n && data[end].master == master {
-            end += 1
-        }
-        
-        return (start: start, end: end - 1)
-    }
-
-    
-    public mutating func addMate(master: Int, slave: Int) {
-        data.append(Adjacency(master: master, slave: slave))
-    }
-    
-
-    private func getRangeBeginning(master: Int) -> Int {
-        var n = data.count
-
-        guard n > 0 else {
+    func getIndex(master: Int, slave: Int) -> Int {
+        let range = masterIndices.getRange(number: master)
+        if range.isEmpty {
             return -1
         }
         
-        var startIndex = 0
-        var endIndex = n - 1
-        var index: Int = -1
-        while n >= 0 {
-            let i = startIndex + n / 2
-            let value = data[i].master
-            if value > master {
-                endIndex = i - 1
-            } else if value < master {
-                startIndex = i + 1
-            } else {
-                index = i
-                break
+        for i in range.begin...range.end {
+            if adjacencies[i] == slave {
+                return i
             }
-            n = endIndex - startIndex
         }
-
-        guard index > 0 else {
-            return index
-        }
-
-        while index >= 0 && data[index].master == master {
-            index -= 1
-        }
-
-        return index + 1
+        
+        return -1
     }
     
     
-}
-
-
-extension AdjacencyMatrix {
-
-    public func printSelf() {
-        var i = 0
-        for d in data {
-            let s = "\(i) : [\(d.master), \(d.slave)] "
-            print(s)
-            i += 1
+    func isPresent(master: Int, slaveA: Int, slaveB: Int) -> Bool {
+        let range = masterIndices.getRange(number: master)
+        if range.isEmpty {
+            return false
         }
+        
+        var isA: Bool = false
+        var isB: Bool = false
+        
+        for i in range.begin...range.end {
+            if adjacencies[i] == slaveA {
+                isA = true
+                if isB {
+                    return true
+                }
+            }
+            if adjacencies[i] == slaveB {
+                isB = true
+                if isA {
+                    return true
+                }
+            }
+        }
+        
+        return false
     }
+    
+    
+    mutating func addMate(master: Int, slave: Int) {
+        if masterIndices.count < masterIndices.numbers.count {
+            adjacencies[masterIndices.count] = slave
+        } else {
+            adjacencies.append(slave)
+        }
+        masterIndices.add(number: master)
+    }
+    
+    
+    func reverse() -> AdjacencyMatrix {
+        let size = adjacencies.count
+        
+        guard size > 0 else {
+            return AdjacencyMatrix(size: 0)
+        }
+        
+        var maxSlaveIndex = 0
+        for i in adjacencies {
+            if maxSlaveIndex < i {
+                maxSlaveIndex = i
+            }
+        }
+        let slaveSize = maxSlaveIndex + 1
+        
+        var indexMap = Array<Int>(repeating: 0, count: slaveSize)
+        for i in adjacencies {
+            indexMap[i] += 1
+        }
+        let count = Array<Int>(indexMap)
+        
+        var indexOffset = Array<Int>(repeating: 0, count: slaveSize)
+        var aggregateOffset = 0
+        
+        for i in 0...maxSlaveIndex {
+            indexOffset[i] = aggregateOffset
+            aggregateOffset += indexMap[i]
+        }
+
+        var xAdjacencies = Array<Int>(repeating: 0, count: size)
+        var xNumbers = Array<Int>(repeating: 0, count: size)
+        
+        for i in 0...size - 1 {
+            let masterIndex = masterIndices.numbers[i]
+            let slaveIndex = adjacencies[i]
+            let capacity = indexMap[slaveIndex]
+            let offset = indexOffset[slaveIndex] + count[slaveIndex] - capacity
+            indexMap[slaveIndex] = capacity - 1
+            
+            xNumbers[offset] = slaveIndex
+            xAdjacencies[offset] = masterIndex
+        }
+        
+        return AdjacencyMatrix(masterIndices: SortedNumbers(numbers: xNumbers), adjacencies: xAdjacencies)
+    }
+    
 }

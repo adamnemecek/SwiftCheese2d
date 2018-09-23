@@ -34,8 +34,7 @@ public class Intersector {
         let masterLength = master.count
         var master_x = master[masterLength - 1]
         
-       // var possibleIntersections = AdjacencyMatrix(masterSize: masterLength, slaveSize: slaveLength)
-        
+        var possibleIadjacency = AdjacencyMatrix(size: 0)
         
         var isSimpleCase = true
         

@@ -1,5 +1,5 @@
 //
-//  OrdedNumbersTest.swift
+//  SortedNumbersTest.swift
 //  Tests
 //
 //  Created by Nail Sharipov on 21/09/2018.
@@ -9,20 +9,10 @@
 import XCTest
 @testable import Cheese2d
 
-class OrdedNumbersTest: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+class SortedNumbersTest: XCTestCase {
     
     func testEmpty() {
-        let numbers = OrdedNumbers()
+        let numbers = SortedNumbers()
 
         let range = numbers.getRange(number: 0)
 
@@ -30,7 +20,7 @@ class OrdedNumbersTest: XCTestCase {
     }
     
     func testSingle() {
-        var numbers = OrdedNumbers()
+        var numbers = SortedNumbers()
         numbers.add(number: 0)
         
         let range0 = numbers.getRange(number: 0)
@@ -49,7 +39,7 @@ class OrdedNumbersTest: XCTestCase {
     
     
     func testComplexA() {
-        var numbers = OrdedNumbers()
+        var numbers = SortedNumbers()
         numbers.add(number: 0)
         numbers.add(number: 1)
         numbers.add(number: 2)
@@ -71,7 +61,7 @@ class OrdedNumbersTest: XCTestCase {
     }
     
     func testComplexB() {
-        var numbers = OrdedNumbers()
+        var numbers = SortedNumbers()
         numbers.add(number: 0)
         numbers.add(number: 0)
         numbers.add(number: 1)
@@ -96,7 +86,7 @@ class OrdedNumbersTest: XCTestCase {
     }
     
     func testComplexC() {
-        var numbers = OrdedNumbers()
+        var numbers = SortedNumbers()
         numbers.add(number: 0)
         numbers.add(number: 1)
         numbers.add(number: 1)
@@ -122,7 +112,7 @@ class OrdedNumbersTest: XCTestCase {
     
     
     func testComplexD() {
-        var numbers = OrdedNumbers()
+        var numbers = SortedNumbers()
         numbers.add(number: 0)
         numbers.add(number: 0)
         numbers.add(number: 0)
@@ -148,7 +138,7 @@ class OrdedNumbersTest: XCTestCase {
     
     
     func testComplexE() {
-        var numbers = OrdedNumbers()
+        var numbers = SortedNumbers()
         numbers.add(number: 0)
         numbers.add(number: 3)
         numbers.add(number: 3)
@@ -172,7 +162,7 @@ class OrdedNumbersTest: XCTestCase {
     
     
     func testComplexF() {
-        var numbers = OrdedNumbers()
+        var numbers = SortedNumbers()
         numbers.add(number: 0)
         numbers.add(number: 3)
         numbers.add(number: 3)
@@ -201,7 +191,7 @@ class OrdedNumbersTest: XCTestCase {
     
     
     func testComplexG() {
-        var numbers = OrdedNumbers()
+        var numbers = SortedNumbers()
         numbers.add(number: 0)
         numbers.add(number: 3)
         numbers.add(number: 3)
@@ -229,7 +219,7 @@ class OrdedNumbersTest: XCTestCase {
     
     
     func testComplexK() {
-        var numbers = OrdedNumbers()
+        var numbers = SortedNumbers()
         numbers.add(number: 0)
         numbers.add(number: 0)
         numbers.add(number: 0)
@@ -266,9 +256,9 @@ class OrdedNumbersTest: XCTestCase {
         for _ in 0...1000 {
             let count = Int(arc4random_uniform(10))
             
-            var map = [Int: OrdedNumbers.Range]()
+            var map = [Int: SortedNumbers.Range]()
             
-            var numbers = OrdedNumbers()
+            var numbers = SortedNumbers()
             var number = 0
             for _ in 0...count {
                 let shouldAdd = arc4random_uniform(100) % 2 == 0
@@ -276,7 +266,7 @@ class OrdedNumbersTest: XCTestCase {
                 number += Int(arc4random_uniform(3)) + 1
                 if shouldAdd {
                     let begin = numbers.count
-                    map[number] = OrdedNumbers.Range(begin: begin, end: begin + step)
+                    map[number] = SortedNumbers.Range(begin: begin, end: begin + step)
                     for _ in 0...step {
                         numbers.add(number: number)
                     }

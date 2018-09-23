@@ -13,19 +13,17 @@ public class DebugFile {
     
     
     public static func run() {
-        var numbers = OrdedNumbers()
-        numbers.add(number: 0)
-        numbers.add(number: 0)
-        numbers.add(number: 1)
-        numbers.add(number: 1)
-        numbers.add(number: 2)
-        numbers.add(number: 2)
-
+        let num = [0, 0, 0, 0, 1, 1, 1, 2, 2, 2]
+        let adj = [0, 1, 2, 3, 1, 2, 3, 3, 5, 7]
         
-        let range2 = numbers.getRange(number: 2)
+        let matrix = AdjacencyMatrix(masterIndices: SortedNumbers(numbers: num), adjacencies: adj)
         
-        assert(range2.begin == 4)
-        assert(range2.end == 5)
+        let revMatrix = matrix.reverse()
+        
+        let a = revMatrix.adjacencies == [0, 0, 1, 0, 1, 0, 1, 2, 2, 2, 1]
+        print(a)
+        print(revMatrix)
+        
     }
     
     

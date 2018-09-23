@@ -1,5 +1,5 @@
 //
-//  OrdedNumbers.swift
+//  SortedNumbers.swift
 //  Cheese2d
 //
 //  Created by Nail Sharipov on 20/09/2018.
@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct OrdedNumbers {
+struct SortedNumbers {
     
     public struct Range {
         let begin: Int
@@ -19,28 +19,38 @@ struct OrdedNumbers {
         }
     }
     
-    private var data: [Int]
+    private(set) var numbers: [Int]
 
-    private var prevNumber = Int.min
+    private(set) var count: Int
     
-    var count: Int {
-        return data.count
-    }
-
+    
     init(size: Int = 0) {
-        data = [] // for swift pre size is useless
+        self.numbers = Array<Int>.init(repeating: 0, count: size)
+        self.count = 0
+    }
+    
+    
+    init(numbers: [Int]) {
+        self.numbers = numbers
+        self.count = numbers.count
     }
     
     mutating func add(number: Int) {
-        if prevNumber > number {
+        if count > 0 && numbers[count - 1] > number {
             assertionFailure("the list must be ordered")
         }
-        data.append(number)
+        if count < numbers.count {
+            numbers[count] = number
+        } else {
+            numbers.append(number)
+        }
+        
+        count += 1
     }
     
     
     func getRange(number: Int) -> Range {
-        var n = data.count
+        var n = numbers.count
         
         guard n > 0 else {
             return Range(begin: -1, end: -1)
@@ -51,7 +61,7 @@ struct OrdedNumbers {
         var beginIndex: Int = -1
         while n >= 0 {
             let i = start + n / 2
-            let value = data[i]
+            let value = numbers[i]
             if value > number {
                 end = i - 1
             } else if value < number {
@@ -69,15 +79,15 @@ struct OrdedNumbers {
 
         var endIndex = beginIndex
         
-        while beginIndex >= 0 && data[beginIndex] == number {
+        while beginIndex >= 0 && numbers[beginIndex] == number {
             beginIndex -= 1
         }
         
         beginIndex += 1
         
-        n = data.count
+        n = numbers.count
         
-        while endIndex < n && data[endIndex] == number {
+        while endIndex < n && numbers[endIndex] == number {
             endIndex += 1
         }
         endIndex -= 1

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */; };
+		54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FED2157E2C100E99295 /* SortedNumbers.swift */; };
 		545A2D2421550E8700047C8D /* Cheese2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 545A2D2321550E8700047C8D /* Cheese2d.h */; };
 		545A2D2621550E8700047C8D /* Cheese2d.m in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D2521550E8700047C8D /* Cheese2d.m */; };
 		545A2D3821550F8200047C8D /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D2E21550F8200047C8D /* Array.swift */; };
@@ -14,12 +16,12 @@
 		545A2D3A21550F8200047C8D /* LineUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D3021550F8200047C8D /* LineUtil.swift */; };
 		545A2D3B21550F8200047C8D /* CGPoint+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D3121550F8200047C8D /* CGPoint+extension.swift */; };
 		545A2D3C21550F8200047C8D /* Intersector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D3321550F8200047C8D /* Intersector.swift */; };
-		545A2D3D21550F8200047C8D /* OrdedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D3521550F8200047C8D /* OrdedNumbers.swift */; };
 		545A2D3E21550F8200047C8D /* AdjacencyMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D3621550F8200047C8D /* AdjacencyMatrix.swift */; };
 		545A2D3F21550F8200047C8D /* BoxArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D3721550F8200047C8D /* BoxArea.swift */; };
 		545A2D4921550F9000047C8D /* libCheese2d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 545A2D2021550E8700047C8D /* libCheese2d.dylib */; };
-		545A2D502155142600047C8D /* OrdedNumbersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D4F2155142600047C8D /* OrdedNumbersTest.swift */; };
+		545A2D502155142600047C8D /* SortedNumbersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D4F2155142600047C8D /* SortedNumbersTest.swift */; };
 		545A2D542155233300047C8D /* DebugFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D532155233300047C8D /* DebugFile.swift */; };
+		54E327A82156AD00005BBFC3 /* AdjacencyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E327A72156AD00005BBFC3 /* AdjacencyMap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixTest.swift; sourceTree = "<group>"; };
+		54191FED2157E2C100E99295 /* SortedNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedNumbers.swift; sourceTree = "<group>"; };
 		545A2D2021550E8700047C8D /* libCheese2d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libCheese2d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		545A2D2321550E8700047C8D /* Cheese2d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cheese2d.h; sourceTree = "<group>"; };
 		545A2D2521550E8700047C8D /* Cheese2d.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cheese2d.m; sourceTree = "<group>"; };
@@ -41,13 +45,13 @@
 		545A2D3021550F8200047C8D /* LineUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineUtil.swift; sourceTree = "<group>"; };
 		545A2D3121550F8200047C8D /* CGPoint+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+extension.swift"; sourceTree = "<group>"; };
 		545A2D3321550F8200047C8D /* Intersector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intersector.swift; sourceTree = "<group>"; };
-		545A2D3521550F8200047C8D /* OrdedNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdedNumbers.swift; sourceTree = "<group>"; };
 		545A2D3621550F8200047C8D /* AdjacencyMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrix.swift; sourceTree = "<group>"; };
 		545A2D3721550F8200047C8D /* BoxArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxArea.swift; sourceTree = "<group>"; };
 		545A2D4421550F8F00047C8D /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		545A2D4821550F9000047C8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		545A2D4F2155142600047C8D /* OrdedNumbersTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdedNumbersTest.swift; sourceTree = "<group>"; };
+		545A2D4F2155142600047C8D /* SortedNumbersTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedNumbersTest.swift; sourceTree = "<group>"; };
 		545A2D532155233300047C8D /* DebugFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugFile.swift; sourceTree = "<group>"; };
+		54E327A72156AD00005BBFC3 /* AdjacencyMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,9 +134,10 @@
 		545A2D3421550F8200047C8D /* Struct */ = {
 			isa = PBXGroup;
 			children = (
-				545A2D3521550F8200047C8D /* OrdedNumbers.swift */,
+				54191FED2157E2C100E99295 /* SortedNumbers.swift */,
 				545A2D3621550F8200047C8D /* AdjacencyMatrix.swift */,
 				545A2D3721550F8200047C8D /* BoxArea.swift */,
+				54E327A72156AD00005BBFC3 /* AdjacencyMap.swift */,
 			);
 			path = Struct;
 			sourceTree = "<group>";
@@ -140,7 +145,8 @@
 		545A2D4521550F9000047C8D /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				545A2D4F2155142600047C8D /* OrdedNumbersTest.swift */,
+				54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */,
+				545A2D4F2155142600047C8D /* SortedNumbersTest.swift */,
 				545A2D4821550F9000047C8D /* Info.plist */,
 			);
 			path = Tests;
@@ -246,6 +252,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */,
+				54E327A82156AD00005BBFC3 /* AdjacencyMap.swift in Sources */,
 				545A2D2621550E8700047C8D /* Cheese2d.m in Sources */,
 				545A2D3F21550F8200047C8D /* BoxArea.swift in Sources */,
 				545A2D3B21550F8200047C8D /* CGPoint+extension.swift in Sources */,
@@ -253,7 +261,6 @@
 				545A2D3921550F8200047C8D /* Vector2.swift in Sources */,
 				545A2D3821550F8200047C8D /* Array.swift in Sources */,
 				545A2D3A21550F8200047C8D /* LineUtil.swift in Sources */,
-				545A2D3D21550F8200047C8D /* OrdedNumbers.swift in Sources */,
 				545A2D3E21550F8200047C8D /* AdjacencyMatrix.swift in Sources */,
 				545A2D542155233300047C8D /* DebugFile.swift in Sources */,
 			);
@@ -263,7 +270,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				545A2D502155142600047C8D /* OrdedNumbersTest.swift in Sources */,
+				545A2D502155142600047C8D /* SortedNumbersTest.swift in Sources */,
+				54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

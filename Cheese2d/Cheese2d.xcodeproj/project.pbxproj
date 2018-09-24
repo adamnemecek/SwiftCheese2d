@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54098B1C215932650025EB9B /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54098B1B215932650025EB9B /* Polygon.swift */; };
 		54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */; };
 		54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FED2157E2C100E99295 /* SortedNumbers.swift */; };
 		545A2D2421550E8700047C8D /* Cheese2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 545A2D2321550E8700047C8D /* Cheese2d.h */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		54098B1B215932650025EB9B /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
 		54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixTest.swift; sourceTree = "<group>"; };
 		54191FED2157E2C100E99295 /* SortedNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedNumbers.swift; sourceTree = "<group>"; };
 		545A2D2021550E8700047C8D /* libCheese2d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libCheese2d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +119,7 @@
 			children = (
 				545A2D2E21550F8200047C8D /* Array.swift */,
 				545A2D2F21550F8200047C8D /* Vector2.swift */,
+				54098B1B215932650025EB9B /* Polygon.swift */,
 				545A2D3021550F8200047C8D /* LineUtil.swift */,
 				545A2D3121550F8200047C8D /* CGPoint+extension.swift */,
 			);
@@ -260,6 +263,7 @@
 				545A2D3C21550F8200047C8D /* Intersector.swift in Sources */,
 				545A2D3921550F8200047C8D /* Vector2.swift in Sources */,
 				545A2D3821550F8200047C8D /* Array.swift in Sources */,
+				54098B1C215932650025EB9B /* Polygon.swift in Sources */,
 				545A2D3A21550F8200047C8D /* LineUtil.swift in Sources */,
 				545A2D3E21550F8200047C8D /* AdjacencyMatrix.swift in Sources */,
 				545A2D542155233300047C8D /* DebugFile.swift in Sources */,

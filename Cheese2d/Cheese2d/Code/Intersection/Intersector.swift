@@ -10,8 +10,9 @@ import Foundation
 
 public class Intersector {
 
+    /*
     public static func findPinPath(master: [Vector2], slave: [Vector2], precision: CGFloat = 0.001) -> [Vector2] {
-        /*
+        
         let sqrPrecision = precision * precision
         
         let slaveLength = slave.count
@@ -94,18 +95,26 @@ public class Intersector {
         } else {
             return []
         }
-         */
+ 
+        return []
+    }
+ */
+ 
+    public static func findPinPath(master: [Vector2], slave: [Vector2]) -> [Vector2] {
+        let possibleIntersections = self.getPossibleIntersectingAdjenciesMatrix(master: master, slave: slave)
+
+        
         return []
     }
     
     
-    private func getPossibleIntersectingAdjenciesMatrix(master: [Vector2], slave: [Vector2]) -> AdjacencyMatrix {
+    private static func getPossibleIntersectingAdjenciesMatrix(master: [Vector2], slave: [Vector2]) -> AdjacencyMatrix {
 
         var slaveBoxArea = BoxArea.empty
 
         var slaveSegmentsBoxArea: [BoxArea] = []
         
-        let lastSlaveIndex = master.count - 1
+        let lastSlaveIndex = slave.count - 1
         
         for i in 0...lastSlaveIndex {
             let a = slave[i]

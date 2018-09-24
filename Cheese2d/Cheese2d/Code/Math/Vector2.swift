@@ -11,6 +11,7 @@ import CoreGraphics
 public struct Vector2 {
     
     public static let zero = Vector2(x: 0, y: 0)
+    static let precision: CGFloat = 0.00_000_01
     
     public let x: CGFloat
     public let y: CGFloat
@@ -82,6 +83,15 @@ public struct Vector2 {
         let dy = self.y - vector.y
         
         return sqrDistance > dx * dx + dy * dy
+    }
+    
+    public func isEqual(vector: Vector2) -> Bool {
+        let ax = x > 0 ? x * Vector2.precision : -x * Vector2.precision
+        let ay = y > 0 ? y * Vector2.precision : -y * Vector2.precision
+        let dx = self.x - vector.x
+        let dy = self.y - vector.y
+        
+        return -ax <= dx && dx <= ax && -ay <= dy && dy <= ay
     }
 
 }

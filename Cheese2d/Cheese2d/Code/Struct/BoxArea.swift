@@ -11,21 +11,21 @@ import Foundation
 
 struct BoxArea {
 
-    static let empty = BoxArea(minX: CGFloat.greatestFiniteMagnitude, minY: CGFloat.greatestFiniteMagnitude, maxX: -CGFloat.greatestFiniteMagnitude, maxY: -CGFloat.greatestFiniteMagnitude)
+    static let empty = BoxArea(minX: Int.max, minY: Int.max, maxX: Int.min, maxY: Int.min)
     
-    private (set) var minX: CGFloat
-    private (set) var minY: CGFloat
-    private (set) var maxX: CGFloat
-    private (set) var maxY: CGFloat
+    private (set) var minX: Int
+    private (set) var minY: Int
+    private (set) var maxX: Int
+    private (set) var maxY: Int
 
-    init(minX: CGFloat, minY: CGFloat, maxX: CGFloat, maxY: CGFloat) {
+    init(minX: Int, minY: Int, maxX: Int, maxY: Int) {
         self.minX = minX
         self.minY = minY
         self.maxX = maxX
         self.maxY = maxY
     }
     
-    init(a: Vector2, b: Vector2) {
+    init(a: Point, b: Point) {
         if b.x > a.x {
             minX = a.x
             maxX = b.x
@@ -43,7 +43,7 @@ struct BoxArea {
     }
     
     
-    mutating func assimilate(p: Vector2) {
+    mutating func assimilate(p: Point) {
         if minX > p.x {
             minX = p.x
         }
@@ -62,7 +62,7 @@ struct BoxArea {
     }
     
     
-    func isNotIntersecting(a: Vector2, b: Vector2) -> Bool {
+    func isNotIntersecting(a: Point, b: Point) -> Bool {
         return a.x < minX && b.x < minX || a.x > maxX && b.x > maxX ||
             a.y < minY && b.y < minY || a.y > maxY && b.y > maxY
     }

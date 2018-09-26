@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5404A259215C0BDB00DC10BB /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404A258215C0BDB00DC10BB /* Point.swift */; };
+		5404A25B215C0D1200DC10BB /* DataNormalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404A25A215C0D1200DC10BB /* DataNormalizer.swift */; };
 		54098B1C215932650025EB9B /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54098B1B215932650025EB9B /* Polygon.swift */; };
 		54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */; };
 		54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FED2157E2C100E99295 /* SortedNumbers.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5404A258215C0BDB00DC10BB /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		5404A25A215C0D1200DC10BB /* DataNormalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataNormalizer.swift; sourceTree = "<group>"; };
 		54098B1B215932650025EB9B /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
 		54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixTest.swift; sourceTree = "<group>"; };
 		54191FED2157E2C100E99295 /* SortedNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedNumbers.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 				545A2D3021550F8200047C8D /* LineUtil.swift */,
 				545A2D3121550F8200047C8D /* CGPoint+extension.swift */,
 				5428CA70215977360007AF80 /* EdgeLine.swift */,
+				5404A258215C0BDB00DC10BB /* Point.swift */,
 			);
 			path = Math;
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				545A2D3321550F8200047C8D /* Intersector.swift */,
+				5404A25A215C0D1200DC10BB /* DataNormalizer.swift */,
 			);
 			path = Intersection;
 			sourceTree = "<group>";
@@ -258,10 +264,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5404A25B215C0D1200DC10BB /* DataNormalizer.swift in Sources */,
 				54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */,
 				54E327A82156AD00005BBFC3 /* AdjacencyMap.swift in Sources */,
 				545A2D2621550E8700047C8D /* Cheese2d.m in Sources */,
 				545A2D3F21550F8200047C8D /* BoxArea.swift in Sources */,
+				5404A259215C0BDB00DC10BB /* Point.swift in Sources */,
 				545A2D3B21550F8200047C8D /* CGPoint+extension.swift in Sources */,
 				5428CA71215977360007AF80 /* EdgeLine.swift in Sources */,
 				545A2D3C21550F8200047C8D /* Intersector.swift in Sources */,

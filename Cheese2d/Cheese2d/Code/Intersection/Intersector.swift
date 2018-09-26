@@ -100,15 +100,18 @@ public class Intersector {
     }
  */
  
-    public static func findPinPath(master: [Vector2], slave: [Vector2]) -> [Vector2] {
-        let possibleIntersections = self.getPossibleIntersectingAdjenciesMatrix(master: master, slave: slave)
+    public static func findPinPath(master: [CGPoint], slave: [CGPoint]) -> [CGPoint] {
+        let iMaster = DataNormalizer.convert(points: master)
+        let iSlave = DataNormalizer.convert(points: slave)
+        
+        let possibleIntersections = self.getPossibleIntersectingAdjenciesMatrix(master: iMaster, slave: iSlave)
 
         
         return []
     }
     
     
-    private static func getPossibleIntersectingAdjenciesMatrix(master: [Vector2], slave: [Vector2]) -> AdjacencyMatrix {
+    private static func getPossibleIntersectingAdjenciesMatrix(master: [Point], slave: [Point]) -> AdjacencyMatrix {
 
         var slaveBoxArea = BoxArea.empty
 
@@ -154,21 +157,43 @@ public class Intersector {
     }
 
     
-    private static func areSegmentsIntersecting(startA: Vector2, endA: Vector2, startB: Vector2, endB: Vector2) -> Bool {
-        let t0 = Intersector.arePointsCCW(a: startA, b: startB, c: endB)
-        let t1 = Intersector.arePointsCCW(a: endA, b: startB, c: endB)
-        let t2 = Intersector.arePointsCCW(a: startA, b: endA, c: startB)
-        let t3 = Intersector.arePointsCCW(a: startA, b: endA, c: endB)
     
-        return (t0 != t1) && (t2 != t3);
+    
+    // 1 - intersecting, -1 not intersecting, 0 same line
+    private static func areSegmentsIntersecting(startA: Point, endA: Point, startB: Point, endB: Point) -> Int {
+        let d0 = Intersector.arePointsCCW(a: startA, b: startB, c: endB)
+        let d1 = Intersector.arePointsCCW(a: endA, b: startB, c: endB)
+        let d2 = Intersector.arePointsCCW(a: startA, b: endA, c: startB)
+        let d3 = Intersector.arePointsCCW(a: startA, b: endA, c: endB)
+    
+        if d0 != 0 && d1 != 0 && d2 != 0 && d3 != 0 {
+            let t0 = d0 < 0
+            let t1 = d1 < 0
+            let t2 = d2 < 0
+            let t3 = d3 < 0
+            
+            if (t0 != t1) && (t2 != t3) {
+                return 1
+            } else {
+                return -1
+            }
+        } else {
+            return 0
+        }
     }
     
     
-    private static func arePointsCCW(a: Vector2, b: Vector2, c: Vector2) -> Bool {
-        let d0 = (c.y - a.y) * (b.x - a.x)
-        let d1 = (b.y - a.y) * (c.x - a.x)
+    private static func arePointsCCW(a: Point, b: Point, c: Point) -> Int {
+        let m0 = Int64(c.y - a.y) * Int64(b.x - a.x)
+        let m1 = Int64(b.y - a.y) * Int64(c.x - a.x)
     
-        return d0 < d1;
+        if m0 < m1 {
+            return -1
+        } else if m0 > m1 {
+            return 1
+        } else {
+            return 0
+        }
     }
     
     

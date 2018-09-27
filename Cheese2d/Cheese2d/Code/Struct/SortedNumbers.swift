@@ -20,32 +20,24 @@ struct SortedNumbers {
     }
     
     private(set) var numbers: [Int]
-
-    private(set) var count: Int
-    
     
     init(size: Int = 0) {
-        self.numbers = Array<Int>.init(repeating: 0, count: size)
-        self.count = 0
+        self.numbers = [Int]()
+        if size > 0 {
+            self.numbers.reserveCapacity(size)
+        }
     }
     
     
     init(numbers: [Int]) {
         self.numbers = numbers
-        self.count = numbers.count
     }
     
     mutating func add(number: Int) {
-        if count > 0 && numbers[count - 1] > number {
+        if numbers.first ?? Int.min > number {
             assertionFailure("the list must be ordered")
         }
-        if count < numbers.count {
-            numbers[count] = number
-        } else {
-            numbers.append(number)
-        }
-        
-        count += 1
+        numbers.append(number)
     }
     
     

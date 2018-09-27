@@ -104,14 +104,19 @@ public class Intersector {
         let iMaster = DataNormalizer.convert(points: master)
         let iSlave = DataNormalizer.convert(points: slave)
         
-        let possibleIntersections = self.getPossibleIntersectingAdjenciesMatrix(master: iMaster, slave: iSlave)
+        let posMatrix = self.buildPossibilityMatrix(master: iMaster, slave: iSlave)
 
+        let masterIndices = posMatrix.masterIndices
+        let slaveIndices = posMatrix.adjacencies
+
+        
+        
         
         return []
     }
     
     
-    private static func getPossibleIntersectingAdjenciesMatrix(master: [Point], slave: [Point]) -> AdjacencyMatrix {
+    private static func buildPossibilityMatrix(master: [Point], slave: [Point]) -> AdjacencyMatrix {
 
         var slaveBoxArea = BoxArea.empty
 
@@ -127,7 +132,7 @@ public class Intersector {
             slaveSegmentsBoxArea.append(BoxArea(a: a, b: b))
         }
         
-        var possibleIntersectionAdjacency = AdjacencyMatrix(size: 0)
+        var posMatrix = AdjacencyMatrix(size: 0)
 
         let lastMasterIndex = master.count - 1
         
@@ -148,23 +153,23 @@ public class Intersector {
                 let isIntersectionPossible = slaveSegmentsBoxArea[j].isInterscting(box: segmentBoxArea)
                 
                 if isIntersectionPossible {
-                    possibleIntersectionAdjacency.addMate(master: i, slave: j)
+                    posMatrix.addMate(master: i, slave: j)
                 }
             }
         }
         
-        return possibleIntersectionAdjacency
+        return posMatrix
     }
 
     
     
     
     // 1 - intersecting, -1 not intersecting, 0 same line
-    private static func areSegmentsIntersecting(startA: Point, endA: Point, startB: Point, endB: Point) -> Int {
-        let d0 = Intersector.arePointsCCW(a: startA, b: startB, c: endB)
-        let d1 = Intersector.arePointsCCW(a: endA, b: startB, c: endB)
-        let d2 = Intersector.arePointsCCW(a: startA, b: endA, c: startB)
-        let d3 = Intersector.arePointsCCW(a: startA, b: endA, c: endB)
+    private static func disposition(startA: Point, endA: Point, startB: Point, endB: Point) -> Int {
+        let d0 = Intersector.isCCW(a: startA, b: startB, c: endB)
+        let d1 = Intersector.isCCW(a: endA, b: startB, c: endB)
+        let d2 = Intersector.isCCW(a: startA, b: endA, c: startB)
+        let d3 = Intersector.isCCW(a: startA, b: endA, c: endB)
     
         if d0 != 0 && d1 != 0 && d2 != 0 && d3 != 0 {
             let t0 = d0 < 0
@@ -183,7 +188,7 @@ public class Intersector {
     }
     
     
-    private static func arePointsCCW(a: Point, b: Point, c: Point) -> Int {
+    private static func isCCW(a: Point, b: Point, c: Point) -> Int {
         let m0 = Int64(c.y - a.y) * Int64(b.x - a.x)
         let m1 = Int64(b.y - a.y) * Int64(c.x - a.x)
     
@@ -197,23 +202,25 @@ public class Intersector {
     }
     
     
-    private static func getIntersectionPoint(startA: Vector2, endA: Vector2, startB: Vector2, endB: Vector2) -> Vector2 {
+    private static func cross(startA: Point, endA: Point, startB: Point, endB: Point) -> Point {
+        let dxA = Int64(startA.x - endA.x)
+        let dyB = Int64(startB.y - endB.y)
+        let dyA = Int64(startA.y - endA.y)
+        let dxB = Int64(startB.x - endB.x)
+
+        let divider = dxA * dyB - dyA * dxB
     
-        let divider = (startA.x - endA.x) * (startB.y - endB.y) - (startA.y - endA.y) * (startB.x - endB.x);
-    
-        if divider != 0.0 {
-            let xyA = startA.x * endA.y - startA.y * endA.x
-            let xyB = startB.x * endB.y - startB.y * endB.x
-    
-            let  invert_divider = 1.0 / divider
-    
-            let x = xyA * (startB.x - endB.x) - (startA.x - endA.x) * xyB
-            let y = xyA * (startB.y - endB.y) - (startA.y - endA.y) * xyB
-    
-            return Vector2(x: x * invert_divider, y: y * invert_divider)
-        }
-    
-        return 0.5 * (startA + endA)
+        assert(divider == 0)
+        
+        let xyA = CGFloat(startA.x * endA.y - startA.y * endA.x)
+        let xyB = CGFloat(startB.x * endB.y - startB.y * endB.x)
+        
+        let  invert_divider: CGFloat = 1.0 / CGFloat(divider)
+        
+        let x = xyA * CGFloat(startB.x - endB.x) - CGFloat(startA.x - endA.x) * xyB
+        let y = xyA * CGFloat(startB.y - endB.y) - CGFloat(startA.y - endA.y) * xyB
+        
+        return Point(x: Int(x * invert_divider), y: Int(y * invert_divider))
     }
     
 }

@@ -10,7 +10,7 @@ import Foundation
 
 
 struct Polygon {
-    
+    /*
     static func normalize(points: [Vector2], minLength: CGFloat) -> [Vector2] {
         let n = points.count
         guard let else {
@@ -42,5 +42,5 @@ struct Polygon {
         return points
     }
     
-    
+*/
 }

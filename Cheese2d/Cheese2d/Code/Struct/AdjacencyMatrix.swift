@@ -16,7 +16,10 @@ struct AdjacencyMatrix {
     
     init(size: Int = 0) {
         self.masterIndices = SortedNumbers(size: size)
-        self.adjacencies = Array<Int>(repeating: 0, count: size)
+        self.adjacencies = [Int]()
+        if size > 0 {
+            self.adjacencies.reserveCapacity(size)
+        }
     }
     
     
@@ -87,11 +90,7 @@ struct AdjacencyMatrix {
     
     
     mutating func addMate(master: Int, slave: Int) {
-        if masterIndices.count < masterIndices.numbers.count {
-            adjacencies[masterIndices.count] = slave
-        } else {
-            adjacencies.append(slave)
-        }
+        adjacencies.append(slave)
         masterIndices.add(number: master)
     }
     

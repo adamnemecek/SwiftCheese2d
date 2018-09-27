@@ -265,7 +265,7 @@ class SortedNumbersTest: XCTestCase {
                 let step = Int(arc4random_uniform(3)) + 1
                 number += Int(arc4random_uniform(3)) + 1
                 if shouldAdd {
-                    let begin = numbers.count
+                    let begin = numbers.numbers.count
                     map[number] = SortedNumbers.Range(begin: begin, end: begin + step)
                     for _ in 0...step {
                         numbers.add(number: number)

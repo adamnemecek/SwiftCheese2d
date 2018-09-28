@@ -26,7 +26,7 @@ class DataNormalizer {
             let p = points[i]
             i += 1
             let iPoint = Point(x: Int(p.x * revert_convertation_precision), y: Int(p.y * revert_convertation_precision))
-            if iPoint.x != prev.x && iPoint.y != prev.y {
+            if iPoint.x != prev.x || iPoint.y != prev.y {
                 iPoints.append(iPoint)
                 prev = iPoint
             }

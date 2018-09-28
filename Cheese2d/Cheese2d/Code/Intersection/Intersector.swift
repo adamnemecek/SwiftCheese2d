@@ -104,15 +104,63 @@ public class Intersector {
         let iMaster = DataNormalizer.convert(points: master)
         let iSlave = DataNormalizer.convert(points: slave)
         
+        print(iMaster)
+        print(iSlave)
+        
         let posMatrix = self.buildPossibilityMatrix(master: iMaster, slave: iSlave)
 
-        let masterIndices = posMatrix.masterIndices
+        let masterIndices = posMatrix.masterIndices.numbers
         let slaveIndices = posMatrix.adjacencies
-
+        
+        print(masterIndices)
+        print(slaveIndices)
+        
+        var crossMap = AdjacencyMap<Point>()
+        var vertexMap = AdjacencyMap<Point>()
+        
+        let n = masterIndices.count
+        var i = 0
+        let msLastIx = iMaster.count - 1
+        let slLastIx = iSlave.count - 1
+        
+        while i < n {
+            let msIx0 = masterIndices[i]
+            let msIx1 = msIx0 < msLastIx ? msIx0 + 1 : 0
+            
+            let ms0 = iMaster[msIx0]
+            let ms1 = iMaster[msIx1]
+            
+            var j = i
+            
+            repeat {
+                
+                let slIx0 = slaveIndices[j]
+                let slIx1 = slIx0 < slLastIx ? slIx0 + 1 : 0
+                
+                let sl0 = iSlave[slIx0]
+                let sl1 = iSlave[slIx1]
+                
+                let intersectionTest = Intersector.disposition(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
+                
+                j += 1
+                if intersectionTest == -1 {
+                    continue
+                } else if intersectionTest > 0 {
+                    let point = Intersector.cross(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
+                    if intersectionTest == 1 {
+                        crossMap.addMate(master: msIx0, slave: slIx0, value: point)
+                    }
+                } else {
+                    print("path")
+                }
+            } while j < n && msIx0 == masterIndices[j]
+            
+            i += j
+        }
         
         
         
-        return []
+        return DataNormalizer.convert(iPoints: crossMap.values)
     }
     
     
@@ -164,21 +212,27 @@ public class Intersector {
     
     
     
-    // 1 - intersecting, -1 not intersecting, 0 same line
-    private static func disposition(startA: Point, endA: Point, startB: Point, endB: Point) -> Int {
-        let d0 = Intersector.isCCW(a: startA, b: startB, c: endB)
-        let d1 = Intersector.isCCW(a: endA, b: startB, c: endB)
-        let d2 = Intersector.isCCW(a: startA, b: endA, c: startB)
-        let d3 = Intersector.isCCW(a: startA, b: endA, c: endB)
+    // -1 not intersecting, 0 same line, 1 - intersecting, 2 - possible end
+    private static func disposition(a0: Point, a1: Point, b0: Point, b1: Point) -> Int {
+        print("a0: \(a0), a1: \(a1), b0: \(b0), b1: \(b1)")
+        let d0 = Intersector.isCCW(a: a0, b: b0, c: b1)
+        let d1 = Intersector.isCCW(a: a1, b: b0, c: b1)
+        let d2 = Intersector.isCCW(a: a0, b: a1, c: b0)
+        let d3 = Intersector.isCCW(a: a0, b: a1, c: b1)
     
-        if d0 != 0 && d1 != 0 && d2 != 0 && d3 != 0 {
+        if d0 != 0 || d1 != 0 || d2 != 0 || d3 != 0 {
             let t0 = d0 < 0
             let t1 = d1 < 0
             let t2 = d2 < 0
             let t3 = d3 < 0
             
             if (t0 != t1) && (t2 != t3) {
-                return 1
+                if d0 != 0 && d1 != 0 && d2 != 0 && d3 != 0 {
+                    return 1
+                } else {
+                    return 2
+                }
+                
             } else {
                 return -1
             }
@@ -202,23 +256,23 @@ public class Intersector {
     }
     
     
-    private static func cross(startA: Point, endA: Point, startB: Point, endB: Point) -> Point {
-        let dxA = Int64(startA.x - endA.x)
-        let dyB = Int64(startB.y - endB.y)
-        let dyA = Int64(startA.y - endA.y)
-        let dxB = Int64(startB.x - endB.x)
+    private static func cross(a0: Point, a1: Point, b0: Point, b1: Point) -> Point {
+        let dxA = Int64(a0.x - a1.x)
+        let dyB = Int64(b0.y - b1.y)
+        let dyA = Int64(a0.y - a1.y)
+        let dxB = Int64(b0.x - b1.x)
 
         let divider = dxA * dyB - dyA * dxB
     
-        assert(divider == 0)
+        assert(divider != 0)
         
-        let xyA = CGFloat(startA.x * endA.y - startA.y * endA.x)
-        let xyB = CGFloat(startB.x * endB.y - startB.y * endB.x)
+        let xyA = CGFloat(a0.x * a1.y - a0.y * a1.x)
+        let xyB = CGFloat(b0.x * b1.y - b0.y * b1.x)
         
         let  invert_divider: CGFloat = 1.0 / CGFloat(divider)
         
-        let x = xyA * CGFloat(startB.x - endB.x) - CGFloat(startA.x - endA.x) * xyB
-        let y = xyA * CGFloat(startB.y - endB.y) - CGFloat(startA.y - endA.y) * xyB
+        let x = xyA * CGFloat(b0.x - b1.x) - CGFloat(a0.x - a1.x) * xyB
+        let y = xyA * CGFloat(b0.y - b1.y) - CGFloat(a0.y - a1.y) * xyB
         
         return Point(x: Int(x * invert_divider), y: Int(y * invert_divider))
     }

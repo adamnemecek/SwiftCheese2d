@@ -89,3 +89,12 @@ struct SortedNumbers {
     
     
 }
+
+
+extension SortedNumbers: CustomStringConvertible {
+    
+    public var description: String {
+        return "\(numbers)"
+    }
+    
+}

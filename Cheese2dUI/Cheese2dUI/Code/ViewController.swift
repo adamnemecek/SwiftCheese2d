@@ -20,7 +20,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        DebugFile.run()
+        //DebugFile.run()
         
         canvasView.add(shape: IntersectionTest())
     }

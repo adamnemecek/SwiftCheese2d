@@ -11,8 +11,8 @@ import Foundation
 
 struct AdjacencyMap<T> {
     
-    private var adjacencyMatrix = AdjacencyMatrix()
-    private var values = [T]()
+    private (set) var adjacencyMatrix = AdjacencyMatrix()
+    private (set) var values = [T]()
     
     func get(master: Int, slave: Int) -> T {
         let index = adjacencyMatrix.getIndex(master: master, slave: slave)
@@ -27,6 +27,26 @@ struct AdjacencyMap<T> {
     mutating func addMate(master: Int, slave: Int, value: T) {
         adjacencyMatrix.addMate(master: master, slave: slave)
         values.append(value)
+    }
+    
+    
+    mutating func replace(master: Int, slave: Int, value: T) {
+        let index = adjacencyMatrix.getIndex(master: master, slave: slave)
+        if index < 0 {
+            adjacencyMatrix.addMate(master: master, slave: slave)
+            values.append(value)
+        } else {
+            values[index] = value
+        }
+    }
+    
+    
+    mutating func addIfNotExist(master: Int, slave: Int, value: T) {
+        let index = adjacencyMatrix.getIndex(master: master, slave: slave)
+        if index < 0 {
+            adjacencyMatrix.addMate(master: master, slave: slave)
+            values.append(value)
+        }
     }
     
 }

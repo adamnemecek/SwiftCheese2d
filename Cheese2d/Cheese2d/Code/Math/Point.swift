@@ -9,13 +9,16 @@
 import Foundation
 
 
-struct Point {
+struct Point: Equatable {
     
     static let zero = Point(x: 0, y: 0)
     
     var x: Int
     var y: Int
 
+    static func == (lhs: Point, rhs: Point) -> Bool {
+        return lhs.x == rhs.x && lhs.y == rhs.y
+    }
 }
 
 extension Point: CustomStringConvertible {

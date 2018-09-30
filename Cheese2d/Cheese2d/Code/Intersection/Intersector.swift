@@ -116,7 +116,8 @@ public class Intersector {
         print(slaveIndices)
         
         var crossMap = AdjacencyMap<Point>()
-        var vertexMap = AdjacencyMap<Point>()
+        var extremes = AdjacencyMap<Int>()
+        var borders = [Border]()
         
         let n = masterIndices.count
         var i = 0
@@ -149,9 +150,32 @@ public class Intersector {
                     let point = Intersector.cross(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
                     if intersectionTest == 1 {
                         crossMap.addMate(master: msIx0, slave: slIx0, value: point)
+                    } else {
+                        var extremeMsIx = -1
+                        var extremeSlIx = -1
+                        if ms0 == point {
+                            extremeMsIx = msIx0
+                        } else if ms1 == point {
+                            extremeMsIx = msIx1
+                        }
+                        
+                        if sl0 == point {
+                            extremeSlIx = slIx0
+                        } else if sl1 == point {
+                            extremeSlIx = slIx1
+                        }
+
+                        if extremeMsIx >= 0 && extremeSlIx >= 0 {
+                            extremes.addMate(master: extremeMsIx, slave: extremeSlIx, value: 0)
+                        } else if extremeMsIx >= 0 {
+                            extremes.addMate(master: extremeMsIx, slave: extremeSlIx, value: 1)
+                        } else if extremeSlIx >= 0 {
+                            extremes.addMate(master: extremeMsIx, slave: extremeSlIx, value: 2)
+                        }
                     }
                 } else {
-                    print("path")
+                    
+                    borders.append()
                 }
             } while j < n && msIx0 == masterIndices[j]
             

@@ -13,6 +13,8 @@
 		54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */; };
 		54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FED2157E2C100E99295 /* SortedNumbers.swift */; };
 		5428CA71215977360007AF80 /* EdgeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5428CA70215977360007AF80 /* EdgeLine.swift */; };
+		5457CF1A216141B10056728C /* Extreme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457CF19216141B10056728C /* Extreme.swift */; };
+		5457CF1C216142AC0056728C /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457CF1B216142AC0056728C /* Border.swift */; };
 		545A2D2421550E8700047C8D /* Cheese2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 545A2D2321550E8700047C8D /* Cheese2d.h */; };
 		545A2D2621550E8700047C8D /* Cheese2d.m in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D2521550E8700047C8D /* Cheese2d.m */; };
 		545A2D3821550F8200047C8D /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D2E21550F8200047C8D /* Array.swift */; };
@@ -45,6 +47,8 @@
 		54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixTest.swift; sourceTree = "<group>"; };
 		54191FED2157E2C100E99295 /* SortedNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedNumbers.swift; sourceTree = "<group>"; };
 		5428CA70215977360007AF80 /* EdgeLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeLine.swift; sourceTree = "<group>"; };
+		5457CF19216141B10056728C /* Extreme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extreme.swift; sourceTree = "<group>"; };
+		5457CF1B216142AC0056728C /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
 		545A2D2021550E8700047C8D /* libCheese2d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libCheese2d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		545A2D2321550E8700047C8D /* Cheese2d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cheese2d.h; sourceTree = "<group>"; };
 		545A2D2521550E8700047C8D /* Cheese2d.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cheese2d.m; sourceTree = "<group>"; };
@@ -81,6 +85,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5457CF18216141490056728C /* Struct */ = {
+			isa = PBXGroup;
+			children = (
+				5457CF19216141B10056728C /* Extreme.swift */,
+				5457CF1B216142AC0056728C /* Border.swift */,
+			);
+			path = Struct;
+			sourceTree = "<group>";
+		};
 		545A2D1721550E8700047C8D = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +150,7 @@
 		545A2D3221550F8200047C8D /* Intersection */ = {
 			isa = PBXGroup;
 			children = (
+				5457CF18216141490056728C /* Struct */,
 				545A2D3321550F8200047C8D /* Intersector.swift */,
 				5404A25A215C0D1200DC10BB /* DataNormalizer.swift */,
 			);
@@ -266,12 +280,14 @@
 			files = (
 				5404A25B215C0D1200DC10BB /* DataNormalizer.swift in Sources */,
 				54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */,
+				5457CF1A216141B10056728C /* Extreme.swift in Sources */,
 				54E327A82156AD00005BBFC3 /* AdjacencyMap.swift in Sources */,
 				545A2D2621550E8700047C8D /* Cheese2d.m in Sources */,
 				545A2D3F21550F8200047C8D /* BoxArea.swift in Sources */,
 				5404A259215C0BDB00DC10BB /* Point.swift in Sources */,
 				545A2D3B21550F8200047C8D /* CGPoint+extension.swift in Sources */,
 				5428CA71215977360007AF80 /* EdgeLine.swift in Sources */,
+				5457CF1C216142AC0056728C /* Border.swift in Sources */,
 				545A2D3C21550F8200047C8D /* Intersector.swift in Sources */,
 				545A2D3921550F8200047C8D /* Vector2.swift in Sources */,
 				545A2D3821550F8200047C8D /* Array.swift in Sources */,

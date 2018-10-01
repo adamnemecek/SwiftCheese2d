@@ -99,7 +99,7 @@ public class Intersector {
     
     
     
-    private static func merge(borders: [Border]) -> [BorderPath] {
+    private static func merge(borders: [Border], masterCount: Int) -> [BorderPath] {
         let n = borders.count
         guard n > 0 else {
             return []
@@ -119,8 +119,16 @@ public class Intersector {
             var j = i + 1
             
             while j < n {
-
-                j += 1
+                let next = borders[j]
+                
+                if border.ms1 + 1 == next.ms0 - 1 {
+                    j += 1
+                    pt1 = next.pt1
+                    ms1 = next.ms1
+                    sl1 = next.sl1
+                } else {
+                    break
+                }
             }
             
             let p0 = DataNormalizer.convert(point: border.pt0)

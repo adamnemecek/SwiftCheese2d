@@ -31,20 +31,33 @@ class IntersectionTest: CoordinateSystemScene {
         slavePolygon.append(CGPoint(x: 15, y: 0))
          */
         
+        
         slavePolygon.append(CGPoint(x: 0, y: 15))
-        slavePolygon.append(CGPoint(x: 10, y: 15))
-        slavePolygon.append(CGPoint(x: 10, y: 5))
+        slavePolygon.append(CGPoint(x: 13, y: 15))
+        slavePolygon.append(CGPoint(x: 13, y: -15))
+ 
+        
+        /*
+        slavePolygon.append(CGPoint(x: 0, y: 15))
+        slavePolygon.append(CGPoint(x: 10, y: 7))
+        slavePolygon.append(CGPoint(x: 10, y: -7))
+        */
         
         self.addSublayer(ShapePolygon(points: slavePolygon, tip: 1.0, lineWidth: 0.2, color: Colors.orange, showIndeces: true))
         
-        DispatchQueue.global().async {
-            let points = Intersector.findPinPath(master: masterPolygon, slave: slavePolygon)
-            DispatchQueue.main.async {
-                for point in points {
-                    self.addSublayer(ShapeDot(position: point, radius: 0.75, color: Colors.red))
-                }
-            }
+        
+        let result = Intersector.findPinPath(master: masterPolygon, slave: slavePolygon)
+        let points = result.points
+        
+        for point in points {
+            self.addSublayer(ShapeDot(position: point, radius: 0.75, color: Colors.red))
         }
+        
+        let paths = result.path
+        for path in paths {
+            self.addSublayer(ShapeLine(start: path.pt0, end: path.pt1, lineWidth: 0.3, strokeColor: Colors.darkBlue))
+        }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

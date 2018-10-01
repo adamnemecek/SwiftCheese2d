@@ -13,6 +13,9 @@
 		54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */; };
 		54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FED2157E2C100E99295 /* SortedNumbers.swift */; };
 		5428CA71215977360007AF80 /* EdgeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5428CA70215977360007AF80 /* EdgeLine.swift */; };
+		5430C8E021621F4100DE1441 /* BPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5430C8DF21621F4100DE1441 /* BPoint.swift */; };
+		5430C8E22162533500DE1441 /* BorderPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5430C8E12162533500DE1441 /* BorderPath.swift */; };
+		5430C8E42162551900DE1441 /* IntersectorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5430C8E32162551900DE1441 /* IntersectorResult.swift */; };
 		5457CF1A216141B10056728C /* Extreme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457CF19216141B10056728C /* Extreme.swift */; };
 		5457CF1C216142AC0056728C /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457CF1B216142AC0056728C /* Border.swift */; };
 		545A2D2421550E8700047C8D /* Cheese2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 545A2D2321550E8700047C8D /* Cheese2d.h */; };
@@ -47,6 +50,9 @@
 		54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixTest.swift; sourceTree = "<group>"; };
 		54191FED2157E2C100E99295 /* SortedNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedNumbers.swift; sourceTree = "<group>"; };
 		5428CA70215977360007AF80 /* EdgeLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeLine.swift; sourceTree = "<group>"; };
+		5430C8DF21621F4100DE1441 /* BPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPoint.swift; sourceTree = "<group>"; };
+		5430C8E12162533500DE1441 /* BorderPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderPath.swift; sourceTree = "<group>"; };
+		5430C8E32162551900DE1441 /* IntersectorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntersectorResult.swift; sourceTree = "<group>"; };
 		5457CF19216141B10056728C /* Extreme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extreme.swift; sourceTree = "<group>"; };
 		5457CF1B216142AC0056728C /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
 		545A2D2021550E8700047C8D /* libCheese2d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libCheese2d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +96,8 @@
 			children = (
 				5457CF19216141B10056728C /* Extreme.swift */,
 				5457CF1B216142AC0056728C /* Border.swift */,
+				5430C8DF21621F4100DE1441 /* BPoint.swift */,
+				5430C8E12162533500DE1441 /* BorderPath.swift */,
 			);
 			path = Struct;
 			sourceTree = "<group>";
@@ -153,6 +161,7 @@
 				5457CF18216141490056728C /* Struct */,
 				545A2D3321550F8200047C8D /* Intersector.swift */,
 				5404A25A215C0D1200DC10BB /* DataNormalizer.swift */,
+				5430C8E32162551900DE1441 /* IntersectorResult.swift */,
 			);
 			path = Intersection;
 			sourceTree = "<group>";
@@ -279,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5404A25B215C0D1200DC10BB /* DataNormalizer.swift in Sources */,
+				5430C8E021621F4100DE1441 /* BPoint.swift in Sources */,
 				54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */,
 				5457CF1A216141B10056728C /* Extreme.swift in Sources */,
 				54E327A82156AD00005BBFC3 /* AdjacencyMap.swift in Sources */,
@@ -286,7 +296,9 @@
 				545A2D3F21550F8200047C8D /* BoxArea.swift in Sources */,
 				5404A259215C0BDB00DC10BB /* Point.swift in Sources */,
 				545A2D3B21550F8200047C8D /* CGPoint+extension.swift in Sources */,
+				5430C8E22162533500DE1441 /* BorderPath.swift in Sources */,
 				5428CA71215977360007AF80 /* EdgeLine.swift in Sources */,
+				5430C8E42162551900DE1441 /* IntersectorResult.swift in Sources */,
 				5457CF1C216142AC0056728C /* Border.swift in Sources */,
 				545A2D3C21550F8200047C8D /* Intersector.swift in Sources */,
 				545A2D3921550F8200047C8D /* Vector2.swift in Sources */,

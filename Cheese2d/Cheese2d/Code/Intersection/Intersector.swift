@@ -9,98 +9,8 @@
 import Foundation
 
 public class Intersector {
-
-    /*
-    public static func findPinPath(master: [Vector2], slave: [Vector2], precision: CGFloat = 0.001) -> [Vector2] {
-        
-        let sqrPrecision = precision * precision
-        
-        let slaveLength = slave.count
-    
-        var slaveBoxArea = BoxArea.empty
-
-        var pinPointList = [Vector2]()
-    
-        var slaveSegmentsBoxArea: [BoxArea] = []
-    
-        var b = slave[slaveLength - 1]
-    
-        for i in 0...slaveLength - 1 {
-            let slave_0 = slave[i]
-            slaveBoxArea.assimilate(p: b)
-    
-            slaveSegmentsBoxArea.append(BoxArea(a: slave_0, b: b))
-            b = slave_0
-        }
-
-        let masterLength = master.count
-        var master_x = master[masterLength - 1]
-        
-        var possibleIntersectionAdjacency = AdjacencyMatrix(size: 0)
-        
-        var isSimpleCase = true
-        
-        for i in 0...masterLength - 1 {
-            let master_0 = master[i]
-            let isIntersectionImpossible = slaveBoxArea.isNotIntersecting(a: master_0, b: master_x)
-
-            if isIntersectionImpossible {
-                master_x = master_0
-                continue
-            }
-
-            let segmentBoxArea = BoxArea(a: master_0, b: master_x)
-
-            var j = 0
-            var prev_j = slaveLength - 1
-            while j < slaveLength {
-                let isIntersectionPossible = slaveSegmentsBoxArea[j].isInterscting(box: segmentBoxArea)
-
-                if isIntersectionPossible {
-                    possibleIntersectionAdjacency.addMate(master: i, slave: prev_j)
-                    
-                    
-                    let slave_0 = slave[prev_j]
-                    let slave_x = slave[j]
-
-                    let intersectionTest = areSegmentsIntersecting(startA: master_x, endA: master_0, startB: slave_0, endB: slave_x)
-
-                    if intersectionTest {
-                        let xPoint = Intersector.getIntersectionPoint(startA: master_x, endA: master_0, startB: slave_0, endB: slave_x)
-
-                        let sqrMasterEdgePrecision = sqrPrecision * master_x.sqrDistance(vector: master_0)
-                        
-                        if isSimpleCase {
-                            let isEndm_x = master_x.isNear(vector: xPoint, sqrDistance: sqrMasterEdgePrecision)
-                            let isEndm_0 = master_0.isNear(vector: xPoint, sqrDistance: sqrMasterEdgePrecision)
-                            let isEnds_x = slave_x.isNear(vector: xPoint, sqrDistance: sqrMasterEdgePrecision)
-                            let isEnds_0 = slave_0.isNear(vector: xPoint, sqrDistance: sqrMasterEdgePrecision)
-                            
-                            isSimpleCase = !isEndm_x && !isEndm_0 && !isEnds_x && !isEnds_0
-                        }
-
-                        pinPointList.append(xPoint)
  
-                    }
-                }
-                prev_j = j
-                j += 1
-            }
-            
-            master_x = master_0
-        }
-        
-        if isSimpleCase {
-            return pinPointList
-        } else {
-            return []
-        }
- 
-        return []
-    }
- */
- 
-    public static func findPinPath(master: [CGPoint], slave: [CGPoint]) -> [CGPoint] {
+    public static func findPinPath(master: [CGPoint], slave: [CGPoint]) -> IntersectorResult {
         let iMaster = DataNormalizer.convert(points: master)
         let iSlave = DataNormalizer.convert(points: slave)
         
@@ -117,7 +27,7 @@ public class Intersector {
         
         var crossMap = AdjacencyMap<Point>()
         var extremes = AdjacencyMap<Int>()
-        var borders = [Border]()
+        var borders = [BorderPath]()
         
         let n = masterIndices.count
         var i = 0
@@ -174,19 +84,124 @@ public class Intersector {
                         }
                     }
                 } else {
-                    
-                    borders.append()
+                    let border = Intersector.buildBorder(ms0Pt: BPoint(index: msIx0, point: ms0), ms1Pt: BPoint(index: msIx1, point: ms1), sl0Pt: BPoint(index: slIx0, point: sl0), sl1Pt: BPoint(index: slIx1, point: sl1), msCount: iMaster.count, slCount: iSlave.count)
+                    borders.append(border.convert())
                 }
             } while j < n && msIx0 == masterIndices[j]
             
-            i += j
+            i = j
         }
-        
-        
-        
-        return DataNormalizer.convert(iPoints: crossMap.values)
+
+        let result = IntersectorResult(points: DataNormalizer.convert(iPoints: crossMap.values), path: borders)
+
+        return result
     }
     
+    
+    
+    private static func buildBorder(ms0Pt: BPoint, ms1Pt: BPoint, sl0Pt: BPoint, sl1Pt: BPoint, msCount: Int, slCount: Int) -> Border {
+        let minSlPt: BPoint
+        let maxSlPt: BPoint
+
+        if sl0Pt.isBigger(a: sl1Pt) {
+            minSlPt = sl1Pt
+            maxSlPt = sl0Pt
+        } else {
+            minSlPt = sl0Pt
+            maxSlPt = sl1Pt
+        }
+        
+        let ms0Point: Point
+        let ms1Point: Point
+        let ms0Ix: Int
+        let ms1Ix: Int
+        let sl0Ix: Int
+        let sl1Ix: Int
+        
+        if ms0Pt.isBigger(a: ms1Pt) {
+            // right-top point ms = 0
+            if ms0Pt.point != maxSlPt.point {
+                if ms0Pt.isBigger(a: maxSlPt) {
+                    ms0Point = maxSlPt.point
+                    ms0Ix = ms0Pt.index
+                    sl0Ix = Intersector.nextSlave(sl0: maxSlPt.index, sl1: minSlPt.index, slCount: slCount)
+                } else {
+                    ms0Point = ms0Pt.point
+                    ms0Ix = ms0Pt.index != 0 ? ms0Pt.index - 1 : msCount - 1
+                    sl0Ix = maxSlPt.index
+                }
+            } else {
+                ms0Point = ms0Pt.point
+                ms0Ix = ms0Pt.index != 0 ? ms0Pt.index - 1 : msCount - 1
+                sl0Ix = Intersector.nextSlave(sl0: maxSlPt.index, sl1: minSlPt.index, slCount: slCount)
+            }
+            
+            // left-bottom point ms = 1
+            if ms1Pt.point != minSlPt.point {
+                if ms1Pt.isBigger(a: minSlPt) {
+                    ms1Point = ms1Pt.point
+                    ms1Ix = ms1Pt.index + 1 < msCount ? ms1Pt.index + 1 : 0
+                    sl1Ix = minSlPt.index
+                } else {
+                    ms1Point = minSlPt.point
+                    ms1Ix = ms1Pt.index
+                    sl1Ix = Intersector.nextSlave(sl0: minSlPt.index, sl1: maxSlPt.index, slCount: slCount)
+                }
+            } else {
+                ms1Point = ms1Pt.point
+                ms1Ix = ms1Pt.index + 1 < msCount ? ms1Pt.index + 1 : 0
+                sl1Ix = Intersector.nextSlave(sl0: minSlPt.index, sl1: maxSlPt.index, slCount: slCount)
+            }
+        } else {
+            // right-top point ms = 1
+            if ms1Pt.point != maxSlPt.point {
+                if ms1Pt.isBigger(a: maxSlPt) {
+                    ms1Point = maxSlPt.point
+                    ms1Ix = ms1Pt.index
+                    sl1Ix = Intersector.nextSlave(sl0: maxSlPt.index, sl1: minSlPt.index, slCount: slCount)
+                } else {
+                    ms1Point = ms1Pt.point
+                    ms1Ix = ms1Pt.index + 1 < msCount ? ms1Pt.index + 1 : 0
+                    sl1Ix = maxSlPt.index
+                }
+            } else {
+                ms1Point = ms1Pt.point
+                ms1Ix = ms1Pt.index + 1 < msCount ? ms1Pt.index + 1 : 0
+                sl1Ix = Intersector.nextSlave(sl0: maxSlPt.index, sl1: minSlPt.index, slCount: slCount)
+            }
+            
+            // left-bottom point ms = 0
+            if ms0Pt.point != minSlPt.point {
+                if ms0Pt.isBigger(a: minSlPt) {
+                    ms0Point = ms1Pt.point
+                    ms0Ix = ms0Pt.index != 0 ? ms0Pt.index - 1 : msCount - 1
+                    sl0Ix = minSlPt.index
+                } else {
+                    ms0Point = minSlPt.point
+                    ms0Ix = ms1Pt.index
+                    sl0Ix = Intersector.nextSlave(sl0: minSlPt.index, sl1: maxSlPt.index, slCount: slCount)
+                }
+            } else {
+                ms0Point = ms1Pt.point
+                ms0Ix = ms0Pt.index != 0 ? ms0Pt.index - 1 : msCount - 1
+                sl0Ix = Intersector.nextSlave(sl0: minSlPt.index, sl1: maxSlPt.index, slCount: slCount)
+            }
+        }
+        
+        return Border(ms0: ms0Ix, ms1: ms1Ix, sl0: sl0Ix, sl1: sl1Ix, pt0: ms0Point, pt1: ms1Point)
+    }
+    
+    
+    private static func nextSlave(sl0: Int, sl1: Int, slCount: Int) -> Int {
+        if sl0 > sl1 {
+            let i = sl0 + 1
+            return i != slCount ? i : 0
+        } else {
+            let i = sl0 - 1
+            return i >= 0 ? i : slCount - 1
+        }
+    }
+
     
     private static func buildPossibilityMatrix(master: [Point], slave: [Point]) -> AdjacencyMatrix {
 

@@ -45,5 +45,10 @@ class DataNormalizer {
         
         return points
     }
+    
+    
+    static func convert(point: Point) -> CGPoint {
+        return CGPoint(x: CGFloat(point.x) * convertation_precision, y: CGFloat(point.y) * convertation_precision)
+    }
 
 }

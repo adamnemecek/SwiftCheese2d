@@ -17,9 +17,9 @@ struct BPoint {
     
     func isBigger(a: BPoint) -> Bool {
         if a.point.x != point.x {
-            return a.point.x > point.x
+            return a.point.x < point.x
         } else {
-            return a.point.y > point.y
+            return a.point.y < point.y
         }
     }
 

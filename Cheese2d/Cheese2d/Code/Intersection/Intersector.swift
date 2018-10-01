@@ -80,7 +80,7 @@ public class Intersector {
                         } else if extremeMsIx >= 0 {
                             extremes.addMate(master: extremeMsIx, slave: extremeSlIx, value: 1)
                         } else if extremeSlIx >= 0 {
-                            extremes.addMate(master: extremeMsIx, slave: extremeSlIx, value: 2)
+                        //    extremes.addMate(master: extremeMsIx, slave: extremeSlIx, value: 2)
                         }
                     }
                 } else {
@@ -95,6 +95,44 @@ public class Intersector {
         let result = IntersectorResult(points: DataNormalizer.convert(iPoints: crossMap.values), path: borders)
 
         return result
+    }
+    
+    
+    
+    private static func merge(borders: [Border]) -> [BorderPath] {
+        let n = borders.count
+        guard n > 0 else {
+            return []
+        }
+        
+        var paths = [BorderPath]()
+        paths.reserveCapacity(n)
+
+        var i = 0
+        while i < n {
+            let border = borders[i]
+            
+            var pt1 = border.pt1
+            var ms1 = border.ms1
+            var sl1 = border.sl1
+            
+            var j = i + 1
+            
+            while j < n {
+
+                j += 1
+            }
+            
+            let p0 = DataNormalizer.convert(point: border.pt0)
+            let p1 = DataNormalizer.convert(point: pt1)
+        
+            let path = BorderPath(pt0: p0, ms0: border.ms0, sl0: border.sl0, pt1: p1, ms1: ms1, sl1: sl1)
+            paths.append(path)
+        
+            i = j
+        }
+    
+        return paths
     }
     
     
@@ -173,16 +211,16 @@ public class Intersector {
             // left-bottom point ms = 0
             if ms0Pt.point != minSlPt.point {
                 if ms0Pt.isBigger(a: minSlPt) {
-                    ms0Point = ms1Pt.point
+                    ms0Point = ms0Pt.point
                     ms0Ix = ms0Pt.index != 0 ? ms0Pt.index - 1 : msCount - 1
                     sl0Ix = minSlPt.index
                 } else {
                     ms0Point = minSlPt.point
-                    ms0Ix = ms1Pt.index
+                    ms0Ix = ms0Pt.index
                     sl0Ix = Intersector.nextSlave(sl0: minSlPt.index, sl1: maxSlPt.index, slCount: slCount)
                 }
             } else {
-                ms0Point = ms1Pt.point
+                ms0Point = ms0Pt.point
                 ms0Ix = ms0Pt.index != 0 ? ms0Pt.index - 1 : msCount - 1
                 sl0Ix = Intersector.nextSlave(sl0: minSlPt.index, sl1: maxSlPt.index, slCount: slCount)
             }

@@ -24,24 +24,25 @@ class IntersectionTest: CoordinateSystemScene {
         self.addSublayer(ShapePolygon(points: masterPolygon, tip: 1.0, lineWidth: 0.2, color: Colors.darkGreen, showIndeces: true))
         
         var slavePolygon = [CGPoint]()
+
         
-        /*
-        slavePolygon.append(CGPoint(x: 0, y: 15))
-        slavePolygon.append(CGPoint(x: 15, y: 15))
-        slavePolygon.append(CGPoint(x: 15, y: 0))
-         */
-        
-        
-        slavePolygon.append(CGPoint(x: 0, y: 15))
-        slavePolygon.append(CGPoint(x: 13, y: 15))
-        slavePolygon.append(CGPoint(x: 13, y: -15))
  
-        
-        /*
         slavePolygon.append(CGPoint(x: 0, y: 15))
-        slavePolygon.append(CGPoint(x: 10, y: 7))
-        slavePolygon.append(CGPoint(x: 10, y: -7))
+        slavePolygon.append(CGPoint(x: 10, y: -15))
+        slavePolygon.append(CGPoint(x: 10, y: 15))
+        /*
+        slavePolygon.append(CGPoint(x: 7, y: -10))
+        slavePolygon.append(CGPoint(x: -7, y: -10))
+        slavePolygon.append(CGPoint(x: -10, y: -7))
+        slavePolygon.append(CGPoint(x: -10, y: 7))
+        slavePolygon.append(CGPoint(x: -7, y: 10))
+        slavePolygon.append(CGPoint(x: 7, y: 10))
         */
+  /*
+        slavePolygon.append(CGPoint(x: 0, y: 10))
+        slavePolygon.append(CGPoint(x: 12, y: 10))
+        slavePolygon.append(CGPoint(x: 12, y: -7))
+*/
         
         self.addSublayer(ShapePolygon(points: slavePolygon, tip: 1.0, lineWidth: 0.2, color: Colors.orange, showIndeces: true))
         

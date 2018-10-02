@@ -30,6 +30,7 @@
 		545A2D4921550F9000047C8D /* libCheese2d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 545A2D2021550E8700047C8D /* libCheese2d.dylib */; };
 		545A2D502155142600047C8D /* SortedNumbersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D4F2155142600047C8D /* SortedNumbersTest.swift */; };
 		545A2D542155233300047C8D /* DebugFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D532155233300047C8D /* DebugFile.swift */; };
+		5470E5B82163FB0600AC2577 /* BorderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470E5B72163FB0600AC2577 /* BorderTest.swift */; };
 		54E327A82156AD00005BBFC3 /* AdjacencyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E327A72156AD00005BBFC3 /* AdjacencyMap.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		545A2D4821550F9000047C8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		545A2D4F2155142600047C8D /* SortedNumbersTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedNumbersTest.swift; sourceTree = "<group>"; };
 		545A2D532155233300047C8D /* DebugFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugFile.swift; sourceTree = "<group>"; };
+		5470E5B72163FB0600AC2577 /* BorderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderTest.swift; sourceTree = "<group>"; };
 		54E327A72156AD00005BBFC3 /* AdjacencyMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,6 +185,7 @@
 				54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */,
 				545A2D4F2155142600047C8D /* SortedNumbersTest.swift */,
 				545A2D4821550F9000047C8D /* Info.plist */,
+				5470E5B72163FB0600AC2577 /* BorderTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			files = (
 				545A2D502155142600047C8D /* SortedNumbersTest.swift in Sources */,
 				54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */,
+				5470E5B82163FB0600AC2577 /* BorderTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

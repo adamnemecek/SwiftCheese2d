@@ -151,7 +151,7 @@ public class Intersector {
                 }
             }
         
-            let path = Border(pt0: border.pt0, ms0: border.ms0, sl0: border.sl0, pt1: pt1, ms1: ms1, sl1: sl1)
+            let path = Border(pt0: border.pt0, ms0: border.ms0, sl0: border.sl0, pt1: pt1, ms1: ms1, sl1: sl1, isZeroCorner: 0)
             paths.append(path)
         
             i = j
@@ -162,7 +162,7 @@ public class Intersector {
             let last = paths[paths.count - 1]
             
             if first.ms0 == masterCount - 1 && last.ms1 == 1 {
-                paths[0] = Border(pt0: last.pt0, ms0: last.ms0, sl0: last.sl0, pt1: first.pt1, ms1: first.ms1, sl1: first.sl1)
+                paths[0] = Border(pt0: last.pt0, ms0: last.ms0, sl0: last.sl0, pt1: first.pt1, ms1: first.ms1, sl1: first.sl1, isZeroCorner: 1)
                 paths.remove(at: paths.count - 1)
             }
         }
@@ -263,7 +263,7 @@ public class Intersector {
             }
         }
         
-        return Border(pt0: ms0Point, ms0: ms0Ix, sl0: sl0Ix, pt1: ms1Point, ms1: ms1Ix, sl1: sl1Ix)
+        return Border(pt0: ms0Point, ms0: ms0Ix, sl0: sl0Ix, pt1: ms1Point, ms1: ms1Ix, sl1: sl1Ix, isZeroCorner: 0)
     }
     
     

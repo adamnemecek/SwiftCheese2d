@@ -18,6 +18,7 @@ struct Border {
     let ms1: Int
     let sl1: Int
 
+    let isZeroCorner: Int
     
     func convert() -> BorderPath {
         return BorderPath(pt0: DataNormalizer.convert(point: pt0), ms0: ms0, sl0: sl0, pt1: DataNormalizer.convert(point: pt1), ms1: ms1, sl1: sl1)
@@ -34,7 +35,7 @@ struct Border {
         let a = ms0 + 1
         let b = ms1 - 1
         
-        if a >= b {
+        if isZeroCorner == 1 {
             let lastIndex = n - 1
             if a < lastIndex {
                 if a != lastIndex {
@@ -54,8 +55,13 @@ struct Border {
                 }
             }
         } else {
-            let part = Array(points[a...b])
-            path.append(contentsOf: DataNormalizer.convert(iPoints: part))
+            if a < b {
+                let part = Array(points[a...b])
+                path.append(contentsOf: DataNormalizer.convert(iPoints: part))
+            } else if a == b {
+                path.append(DataNormalizer.convert(point: points[a]))
+            }
+
         }
         
         if pt1 != points[(ms1 - 1 + n) % n] {

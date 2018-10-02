@@ -12,7 +12,7 @@ import Cheese2d
 
 class ShapePath: CALayer {
     
-    init(points: [CGPoint], tip: CGFloat, lineWidth: CGFloat, color: CGColor, showIndeces: Bool, showLast: Bool) {
+    init(points: [CGPoint], tip: CGFloat, lineWidth: CGFloat, color: CGColor, showIndeces: Bool, showLast: Bool, scaleIndeces: CGFloat) {
         super.init()
         var lastIndex = points.count - 1
         guard lastIndex > 0 else {
@@ -31,7 +31,7 @@ class ShapePath: CALayer {
                 lastIndex -= 1
             }
             
-            let r: CGFloat = 1
+            let r: CGFloat = 1 * scaleIndeces
             
             for i in 0...lastIndex {
                 let a = points[i == 0 ? lastIndex : i - 1]
@@ -42,7 +42,7 @@ class ShapePath: CALayer {
                 let dir = Vector2(point: b - m).normalize
                 let p = b + CGPoint(vector: r * dir)
                 
-                let shapeText = ShapeText(text: String(i), font: font, position: p, pin: b, lineWidth: 0.1, color: Colors.darkGray, strokeColor: Colors.lightGray)
+                let shapeText = ShapeText(text: String(i), font: font, position: p, pin: b, lineWidth: 0.1, color: color, strokeColor: Colors.lightGray)
                 
                 self.addSublayer(shapeText)
             }

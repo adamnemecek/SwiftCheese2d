@@ -10,12 +10,27 @@ import Foundation
 
 public class Intersector {
  
+
     public static func findPinPath(master: [CGPoint], slave: [CGPoint]) -> IntersectorResult {
         let iMaster = DataNormalizer.convert(points: master)
         let iSlave = DataNormalizer.convert(points: slave)
         
-        print(iMaster)
-        print(iSlave)
+        let result = Intersector.findPinPath(iMaster: iMaster, iSlave: iSlave)
+    
+        var borders = [[CGPoint]]()
+        let n = result.path.count
+        borders.reserveCapacity(n)
+        
+        for path in result.path {
+            borders.append(path.extract(points: iMaster))
+        }
+        
+        return IntersectorResult(points: result.points, path: borders)
+    }
+    
+    
+    
+    static func findPinPath(iMaster: [Point], iSlave: [Point]) -> (points: [CGPoint], path: [Border]) {
         
         let posMatrix = self.buildPossibilityMatrix(master: iMaster, slave: iSlave)
 
@@ -27,7 +42,7 @@ public class Intersector {
         
         var crossMap = AdjacencyMap<Point>()
         var extremes = AdjacencyMap<Int>()
-        var borders = [BorderPath]()
+        var borders = [Border]()
         
         let n = masterIndices.count
         var i = 0
@@ -85,27 +100,29 @@ public class Intersector {
                     }
                 } else {
                     let border = Intersector.buildBorder(ms0Pt: BPoint(index: msIx0, point: ms0), ms1Pt: BPoint(index: msIx1, point: ms1), sl0Pt: BPoint(index: slIx0, point: sl0), sl1Pt: BPoint(index: slIx1, point: sl1), msCount: iMaster.count, slCount: iSlave.count)
-                    borders.append(border.convert())
+                    borders.append(border)
                 }
             } while j < n && msIx0 == masterIndices[j]
             
             i = j
         }
 
-        let result = IntersectorResult(points: DataNormalizer.convert(iPoints: crossMap.values), path: borders)
+        borders = Intersector.merge(borders: borders, masterCount: iMaster.count)
+        
+        let result = (points: DataNormalizer.convert(iPoints: crossMap.values), path: borders)
 
         return result
     }
     
     
     
-    private static func merge(borders: [Border], masterCount: Int) -> [BorderPath] {
+    private static func merge(borders: [Border], masterCount: Int) -> [Border] {
         let n = borders.count
         guard n > 0 else {
             return []
         }
         
-        var paths = [BorderPath]()
+        var paths = [Border]()
         paths.reserveCapacity(n)
 
         var i = 0
@@ -121,7 +138,10 @@ public class Intersector {
             while j < n {
                 let next = borders[j]
                 
-                if border.ms1 + 1 == next.ms0 - 1 {
+                let a = (ms1 - 1 + masterCount) % masterCount
+                let b = (next.ms0 + 1) % masterCount
+                
+                if a == b {
                     j += 1
                     pt1 = next.pt1
                     ms1 = next.ms1
@@ -130,24 +150,33 @@ public class Intersector {
                     break
                 }
             }
-            
-            let p0 = DataNormalizer.convert(point: border.pt0)
-            let p1 = DataNormalizer.convert(point: pt1)
         
-            let path = BorderPath(pt0: p0, ms0: border.ms0, sl0: border.sl0, pt1: p1, ms1: ms1, sl1: sl1)
+            let path = Border(pt0: border.pt0, ms0: border.ms0, sl0: border.sl0, pt1: pt1, ms1: ms1, sl1: sl1)
             paths.append(path)
         
             i = j
         }
-    
+        
+        if paths.count > 1 {
+            let first = paths[0]
+            let last = paths[paths.count - 1]
+            
+            if first.ms0 == masterCount - 1 && last.ms1 == 1 {
+                paths[0] = Border(pt0: last.pt0, ms0: last.ms0, sl0: last.sl0, pt1: first.pt1, ms1: first.ms1, sl1: first.sl1)
+                paths.remove(at: paths.count - 1)
+            }
+        }
+
         return paths
     }
-    
     
     
     private static func buildBorder(ms0Pt: BPoint, ms1Pt: BPoint, sl0Pt: BPoint, sl1Pt: BPoint, msCount: Int, slCount: Int) -> Border {
         let minSlPt: BPoint
         let maxSlPt: BPoint
+        
+        print("ms0Pt: \(ms0Pt) ms1Pt: \(ms1Pt)")
+        print("sl0Pt: \(sl0Pt) sl1Pt: \(sl1Pt)")
 
         if sl0Pt.isBigger(a: sl1Pt) {
             minSlPt = sl1Pt
@@ -234,7 +263,7 @@ public class Intersector {
             }
         }
         
-        return Border(ms0: ms0Ix, ms1: ms1Ix, sl0: sl0Ix, sl1: sl1Ix, pt0: ms0Point, pt1: ms1Point)
+        return Border(pt0: ms0Point, ms0: ms0Ix, sl0: sl0Ix, pt1: ms1Point, ms1: ms1Ix, sl1: sl1Ix)
     }
     
     

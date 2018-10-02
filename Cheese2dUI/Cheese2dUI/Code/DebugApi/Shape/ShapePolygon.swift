@@ -11,8 +11,8 @@ import Cocoa
 
 class ShapePolygon: ShapePath {
 
-    init(points: [CGPoint], tip: CGFloat, lineWidth: CGFloat, color strokeColor: CGColor, showIndeces: Bool) {
-        super.init(points: points + [points[0]], tip: tip, lineWidth: lineWidth, color: strokeColor, showIndeces: showIndeces, showLast: false)
+    init(points: [CGPoint], tip: CGFloat, lineWidth: CGFloat, color strokeColor: CGColor, showIndeces: Bool, scaleIndeces: CGFloat) {
+        super.init(points: points + [points[0]], tip: tip, lineWidth: lineWidth, color: strokeColor, showIndeces: showIndeces, showLast: false, scaleIndeces: scaleIndeces)
     }
     
     required init?(coder aDecoder: NSCoder) {

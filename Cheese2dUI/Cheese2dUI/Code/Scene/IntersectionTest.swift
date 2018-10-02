@@ -21,15 +21,16 @@ class IntersectionTest: CoordinateSystemScene {
         masterPolygon.append(CGPoint(x: 10, y: 10))
         masterPolygon.append(CGPoint(x: -10, y: 10))
         
-        self.addSublayer(ShapePolygon(points: masterPolygon, tip: 1.0, lineWidth: 0.2, color: Colors.darkGreen, showIndeces: true))
+        self.addSublayer(ShapePolygon(points: masterPolygon, tip: 1.0, lineWidth: 0.2, color: Colors.darkGreen, showIndeces: true, scaleIndeces: 1))
         
         var slavePolygon = [CGPoint]()
 
         
  
-        slavePolygon.append(CGPoint(x: 0, y: 15))
+        slavePolygon.append(CGPoint(x: 10, y: 10))
+        slavePolygon.append(CGPoint(x: 0, y: 10))
         slavePolygon.append(CGPoint(x: 10, y: -15))
-        slavePolygon.append(CGPoint(x: 10, y: 15))
+        
         /*
         slavePolygon.append(CGPoint(x: 7, y: -10))
         slavePolygon.append(CGPoint(x: -7, y: -10))
@@ -44,7 +45,7 @@ class IntersectionTest: CoordinateSystemScene {
         slavePolygon.append(CGPoint(x: 12, y: -7))
 */
         
-        self.addSublayer(ShapePolygon(points: slavePolygon, tip: 1.0, lineWidth: 0.2, color: Colors.orange, showIndeces: true))
+        self.addSublayer(ShapePolygon(points: slavePolygon, tip: 1.0, lineWidth: 0.2, color: Colors.orange, showIndeces: true, scaleIndeces: 1))
         
         
         let result = Intersector.findPinPath(master: masterPolygon, slave: slavePolygon)
@@ -56,7 +57,8 @@ class IntersectionTest: CoordinateSystemScene {
         
         let paths = result.path
         for path in paths {
-            self.addSublayer(ShapeLine(start: path.pt0, end: path.pt1, lineWidth: 0.3, strokeColor: Colors.darkBlue))
+            let shape = ShapePath(points: path, tip: 0.7, lineWidth: 0.3, color: Colors.darkBlue, showIndeces: false, showLast: false, scaleIndeces: 1)
+            self.addSublayer(shape)
         }
         
     }

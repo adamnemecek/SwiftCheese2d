@@ -22,7 +22,7 @@ class ViewController: NSViewController {
 
         //DebugFile.run()
         
-        canvasView.add(shape: IntersectionTest())
+        canvasView.add(shape: BorderTest())
     }
 
 }

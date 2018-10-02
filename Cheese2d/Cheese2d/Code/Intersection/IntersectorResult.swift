@@ -11,6 +11,6 @@ import Foundation
 public struct IntersectorResult {
     
     public let points:  [CGPoint]
-    public let path: [BorderPath]
+    public let path: [[CGPoint]]
 
 }

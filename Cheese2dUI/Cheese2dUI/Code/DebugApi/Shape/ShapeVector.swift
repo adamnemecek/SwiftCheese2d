@@ -11,10 +11,10 @@ import Cocoa
 
 class ShapeVector: CALayer {
 
-    init(start: CGPoint, end: CGPoint, tip: CGFloat, lineWidth: CGFloat, strokeColor: CGColor) {
+    init(start: CGPoint, end: CGPoint, tip: CGFloat, lineWidth: CGFloat, strokeColor: CGColor, dash: [NSNumber]?) {
         super.init()
         
-        self.addSublayer(ShapeLine(start: start, end: end, lineWidth: lineWidth, strokeColor: strokeColor))
+        self.addSublayer(ShapeLine(start: start, end: end, lineWidth: lineWidth, strokeColor: strokeColor, dash: dash))
         
         let angle = atan2(end.y - start.y, end.x - start.x)
         let angleLeft = angle + CGFloat.pi * 9 / 10
@@ -23,8 +23,8 @@ class ShapeVector: CALayer {
         let leftPoint = end + CGPoint(radius: tip, angle: angleLeft)
         let rightPoint = end + CGPoint(radius: tip, angle: angleRight)
         
-        self.addSublayer(ShapeLine(start: leftPoint, end: end, lineWidth: lineWidth, strokeColor: strokeColor))
-        self.addSublayer(ShapeLine(start: rightPoint, end: end, lineWidth: lineWidth, strokeColor: strokeColor))
+        self.addSublayer(ShapeLine(start: leftPoint, end: end, lineWidth: lineWidth, strokeColor: strokeColor, dash: nil))
+        self.addSublayer(ShapeLine(start: rightPoint, end: end, lineWidth: lineWidth, strokeColor: strokeColor, dash: nil))
     }
     
     required init?(coder aDecoder: NSCoder) {

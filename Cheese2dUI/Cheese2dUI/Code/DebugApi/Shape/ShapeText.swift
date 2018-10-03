@@ -25,7 +25,7 @@ class ShapeText: CALayer {
         textLayer.alignmentMode = kCAAlignmentCenter
         textLayer.transform = CATransform3DMakeScale(0.05, 0.05, 1.0)
         
-        self.addSublayer(ShapeLine(start: position, end: pin, lineWidth: lineWidth, strokeColor: strokeColor))
+        self.addSublayer(ShapeLine(start: position, end: pin, lineWidth: lineWidth, strokeColor: strokeColor, dash: nil))
         self.addSublayer(ShapeDot(position: position, radius: 0.035 * a, color: Colors.white))
         self.addSublayer(textLayer)
         

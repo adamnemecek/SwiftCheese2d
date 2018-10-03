@@ -27,8 +27,8 @@ class CoordinateSystemScene: CALayer {
             } else {
                 color = Colors.veryLightBlue
             }
-            self.addSublayer(ShapeLine(start: CGPoint(x: -a, y: c), end: CGPoint(x: a, y: c), lineWidth: 0.025, strokeColor: color))
-            self.addSublayer(ShapeLine(start: CGPoint(x: c, y: -a), end: CGPoint(x: c, y: a), lineWidth: 0.025, strokeColor: color))
+            self.addSublayer(ShapeLine(start: CGPoint(x: -a, y: c), end: CGPoint(x: a, y: c), lineWidth: 0.025, strokeColor: color, dash: nil))
+            self.addSublayer(ShapeLine(start: CGPoint(x: c, y: -a), end: CGPoint(x: c, y: a), lineWidth: 0.025, strokeColor: color, dash: nil))
         }
     }
     

@@ -10,7 +10,7 @@ import Cocoa
 
 class ShapeLine: CAShapeLayer {
     
-    init(start: CGPoint, end: CGPoint, lineWidth: CGFloat, strokeColor: CGColor) {
+    init(start: CGPoint, end: CGPoint, lineWidth: CGFloat, strokeColor: CGColor, dash: [NSNumber]?) {
         super.init()
         
         let linePath = CGMutablePath()
@@ -22,6 +22,8 @@ class ShapeLine: CAShapeLayer {
         self.opacity = 1.0
         self.strokeColor = strokeColor
         self.lineWidth = lineWidth
+        self.lineDashPattern = dash
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

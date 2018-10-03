@@ -28,12 +28,13 @@ struct Border {
     func extract(points: [Point]) -> [CGPoint] {
         let n = points.count
         var path = [CGPoint]()
-        if pt0 != points[(ms0 + 1) % n] {
+        
+        let a = (ms0 + 1) % n
+        let b = (ms1 - 1 + n) % n
+        
+        if pt0 != points[a] {
             path.append(DataNormalizer.convert(point: pt0))
         }
-        
-        let a = ms0 + 1
-        let b = ms1 - 1
         
         if isZeroCorner == 1 {
             let lastIndex = n - 1
@@ -64,7 +65,7 @@ struct Border {
 
         }
         
-        if pt1 != points[(ms1 - 1 + n) % n] {
+        if pt1 != points[b] {
             path.append(DataNormalizer.convert(point: pt1))
         }
         

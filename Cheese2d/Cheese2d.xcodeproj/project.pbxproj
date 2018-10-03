@@ -184,8 +184,8 @@
 			children = (
 				54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */,
 				545A2D4F2155142600047C8D /* SortedNumbersTest.swift */,
-				545A2D4821550F9000047C8D /* Info.plist */,
 				5470E5B72163FB0600AC2577 /* BorderTest.swift */,
+				545A2D4821550F9000047C8D /* Info.plist */,
 			);
 			path = Tests;
 			sourceTree = "<group>";

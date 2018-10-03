@@ -37,9 +37,6 @@ public class Intersector {
         let masterIndices = posMatrix.masterIndices.numbers
         let slaveIndices = posMatrix.adjacencies
         
-        print(masterIndices)
-        print(slaveIndices)
-        
         var crossMap = AdjacencyMap<Point>()
         var extremes = AdjacencyMap<Int>()
         var borders = [Border]()
@@ -132,6 +129,7 @@ public class Intersector {
             var pt1 = border.pt1
             var ms1 = border.ms1
             var sl1 = border.sl1
+            var length = 1
             
             var j = i + 1
             
@@ -146,12 +144,13 @@ public class Intersector {
                     pt1 = next.pt1
                     ms1 = next.ms1
                     sl1 = next.sl1
+                    length += 1
                 } else {
                     break
                 }
             }
         
-            let path = Border(pt0: border.pt0, ms0: border.ms0, sl0: border.sl0, pt1: pt1, ms1: ms1, sl1: sl1, isZeroCorner: 0)
+            let path = Border(pt0: border.pt0, ms0: border.ms0, sl0: border.sl0, pt1: pt1, ms1: ms1, sl1: sl1, isZeroCorner: 0, length: length)
             paths.append(path)
         
             i = j
@@ -162,7 +161,7 @@ public class Intersector {
             let last = paths[paths.count - 1]
             
             if first.ms0 == masterCount - 1 && last.ms1 == 1 {
-                paths[0] = Border(pt0: last.pt0, ms0: last.ms0, sl0: last.sl0, pt1: first.pt1, ms1: first.ms1, sl1: first.sl1, isZeroCorner: 1)
+                paths[0] = Border(pt0: last.pt0, ms0: last.ms0, sl0: last.sl0, pt1: first.pt1, ms1: first.ms1, sl1: first.sl1, isZeroCorner: 1, length: first.length + last.length)
                 paths.remove(at: paths.count - 1)
             }
         }
@@ -174,9 +173,6 @@ public class Intersector {
     private static func buildBorder(ms0Pt: BPoint, ms1Pt: BPoint, sl0Pt: BPoint, sl1Pt: BPoint, msCount: Int, slCount: Int) -> Border {
         let minSlPt: BPoint
         let maxSlPt: BPoint
-        
-        print("ms0Pt: \(ms0Pt) ms1Pt: \(ms1Pt)")
-        print("sl0Pt: \(sl0Pt) sl1Pt: \(sl1Pt)")
 
         if sl0Pt.isBigger(a: sl1Pt) {
             minSlPt = sl1Pt
@@ -263,7 +259,7 @@ public class Intersector {
             }
         }
         
-        return Border(pt0: ms0Point, ms0: ms0Ix, sl0: sl0Ix, pt1: ms1Point, ms1: ms1Ix, sl1: sl1Ix, isZeroCorner: 0)
+        return Border(pt0: ms0Point, ms0: ms0Ix, sl0: sl0Ix, pt1: ms1Point, ms1: ms1Ix, sl1: sl1Ix, isZeroCorner: 0, length: 1)
     }
     
     
@@ -328,7 +324,6 @@ public class Intersector {
     
     // -1 not intersecting, 0 same line, 1 - intersecting, 2 - possible end
     private static func disposition(a0: Point, a1: Point, b0: Point, b1: Point) -> Int {
-        print("a0: \(a0), a1: \(a1), b0: \(b0), b1: \(b1)")
         let d0 = Intersector.isCCW(a: a0, b: b0, c: b1)
         let d1 = Intersector.isCCW(a: a1, b: b0, c: b1)
         let d2 = Intersector.isCCW(a: a0, b: a1, c: b0)

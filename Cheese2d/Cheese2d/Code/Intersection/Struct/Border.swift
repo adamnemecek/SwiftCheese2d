@@ -19,6 +19,7 @@ struct Border {
     let sl1: Int
 
     let isZeroCorner: Int
+    let length: Int
     
     func convert() -> BorderPath {
         return BorderPath(pt0: DataNormalizer.convert(point: pt0), ms0: ms0, sl0: sl0, pt1: DataNormalizer.convert(point: pt1), ms1: ms1, sl1: sl1)
@@ -29,16 +30,19 @@ struct Border {
         let n = points.count
         var path = [CGPoint]()
         
-        let a = (ms0 + 1) % n
-        let b = (ms1 - 1 + n) % n
-        
-        if pt0 != points[a] {
-            path.append(DataNormalizer.convert(point: pt0))
+        guard length > 1 else {
+            return [DataNormalizer.convert(point: pt0), DataNormalizer.convert(point: pt1)]
         }
         
+        path.reserveCapacity(length + 1)
+        path.append(DataNormalizer.convert(point: pt0))
+        
+        let a = (ms0 + 1) % n
+        let b = (ms1 - 1 + n) % n
+
         if isZeroCorner == 1 {
             let lastIndex = n - 1
-            if a < lastIndex {
+            if a <= lastIndex {
                 if a != lastIndex {
                     let firstPart = Array(points[a...lastIndex])
                     path.append(contentsOf: DataNormalizer.convert(iPoints: firstPart))
@@ -55,19 +59,16 @@ struct Border {
                     path.append(DataNormalizer.convert(point: points[0]))
                 }
             }
-        } else {
+        } else if a != ms1 {
             if a < b {
                 let part = Array(points[a...b])
                 path.append(contentsOf: DataNormalizer.convert(iPoints: part))
             } else if a == b {
                 path.append(DataNormalizer.convert(point: points[a]))
             }
-
         }
         
-        if pt1 != points[b] {
-            path.append(DataNormalizer.convert(point: pt1))
-        }
+        path.append(DataNormalizer.convert(point: pt1))
         
         return path
     }

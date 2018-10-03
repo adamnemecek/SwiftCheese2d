@@ -42,11 +42,15 @@ class BorderTest: XCTestCase {
         
         XCTAssertEqual(border.ms0, 2)
         XCTAssertEqual(border.ms1, 3)
-        XCTAssertEqual(border.pt0 , DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1 , DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(border.sl0, 0)
         XCTAssertEqual(border.sl1, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points.count, 2)
     }
     
 
@@ -79,11 +83,14 @@ class BorderTest: XCTestCase {
         
         XCTAssertEqual(border.ms0, 3)
         XCTAssertEqual(border.ms1, 0)
-        XCTAssertEqual(border.pt0 , DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1 , DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(border.sl0, 0)
         XCTAssertEqual(border.sl1, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points.count, 2)
     }
     
     
@@ -115,11 +122,14 @@ class BorderTest: XCTestCase {
         
         XCTAssertEqual(border.ms0, 0)
         XCTAssertEqual(border.ms1, 1)
-        XCTAssertEqual(border.pt0 , DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1 , DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(border.sl0, 0)
         XCTAssertEqual(border.sl1, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points.count, 2)
     }
     
     
@@ -151,11 +161,14 @@ class BorderTest: XCTestCase {
         
         XCTAssertEqual(border.ms0, 1)
         XCTAssertEqual(border.ms1, 2)
-        XCTAssertEqual(border.pt0 , DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1 , DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(border.sl0, 0)
         XCTAssertEqual(border.sl1, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points.count, 2)
     }
     
     
@@ -187,11 +200,14 @@ class BorderTest: XCTestCase {
         
         XCTAssertEqual(border.ms0, 1)
         XCTAssertEqual(border.ms1, 0)
-        XCTAssertEqual(border.pt0 , DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1 , DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(border.sl0, 0)
         XCTAssertEqual(border.sl1, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points.count, 2)
     }
     
     
@@ -224,11 +240,14 @@ class BorderTest: XCTestCase {
         
         XCTAssertEqual(border.ms0, 2)
         XCTAssertEqual(border.ms1, 1)
-        XCTAssertEqual(border.pt0 , DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1 , DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(border.sl0, 0)
         XCTAssertEqual(border.sl1, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points.count, 2)
     }
     
     
@@ -260,11 +279,14 @@ class BorderTest: XCTestCase {
         
         XCTAssertEqual(border.ms0, 3)
         XCTAssertEqual(border.ms1, 2)
-        XCTAssertEqual(border.pt0 , DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1 , DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(border.sl0, 0)
         XCTAssertEqual(border.sl1, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points.count, 2)
     }
     
     
@@ -296,16 +318,20 @@ class BorderTest: XCTestCase {
         
         XCTAssertEqual(border.ms0, 0)
         XCTAssertEqual(border.ms1, 3)
-        XCTAssertEqual(border.pt0 , DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1 , DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(border.sl0, 0)
         XCTAssertEqual(border.sl1, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points.count, 2)
     }
     
     func testSingle_2_0() {
         
         var master = [CGPoint]()
+        
         master.append(CGPoint(x: -10, y: -10))
         master.append(CGPoint(x: 10, y: -10))
         master.append(CGPoint(x: 10, y: 10))
@@ -332,11 +358,14 @@ class BorderTest: XCTestCase {
         
         XCTAssertEqual(border.ms0, 1)
         XCTAssertEqual(border.ms1, 0)
-        XCTAssertEqual(border.pt0 , DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1 , DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(border.sl0, 3)
         XCTAssertEqual(border.sl1, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points, [pt0, CGPoint(x: 10, y: 10), CGPoint(x: -10, y: 10), pt1])
     }
     
 
@@ -369,11 +398,14 @@ class BorderTest: XCTestCase {
         
         XCTAssertEqual(border.ms0, 2)
         XCTAssertEqual(border.ms1, 1)
-        XCTAssertEqual(border.pt0 , DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1 , DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(border.sl0, 3)
         XCTAssertEqual(border.sl1, 0)
         XCTAssertEqual(border.isZeroCorner, 1)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points, [pt0, CGPoint(x: -10, y: 10), CGPoint(x: -10, y: -10), pt1])
     }
     
     
@@ -406,11 +438,14 @@ class BorderTest: XCTestCase {
         
         XCTAssertEqual(border.ms0, 3)
         XCTAssertEqual(border.ms1, 2)
-        XCTAssertEqual(border.pt0 , DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1 , DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(border.sl0, 3)
         XCTAssertEqual(border.sl1, 0)
         XCTAssertEqual(border.isZeroCorner, 1)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points, [pt0, CGPoint(x: -10, y: -10), CGPoint(x: 10, y: -10), pt1])
     }
     
     
@@ -443,11 +478,14 @@ class BorderTest: XCTestCase {
         
         XCTAssertEqual(border.ms0, 0)
         XCTAssertEqual(border.ms1, 3)
-        XCTAssertEqual(border.pt0 , DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1 , DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(border.sl0, 3)
         XCTAssertEqual(border.sl1, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points, [pt0, CGPoint(x: 10, y: -10), CGPoint(x: 10, y: 10), pt1])
     }
     
 }

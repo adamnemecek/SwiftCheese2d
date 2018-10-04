@@ -109,6 +109,7 @@ public class Intersector {
             i = j
         }
 
+        Border.sort(borders: &borders)
         borders = Intersector.merge(borders: borders, masterCount: iMaster.count)
         
         let result = (points: DataNormalizer.convert(iPoints: crossMap.values), path: borders)
@@ -139,11 +140,9 @@ public class Intersector {
 
             while j < n {
                 let next = borders[j]
-                
-                let nextEdge = (v1.ed + 1) % masterCount
-                
+
                 // must be same or next edge
-                if (v1.ed == next.v0.ed || nextEdge == next.v0.ed) && v1.pt == next.v0.pt {
+                if v1.pt == next.v0.pt {
                     j += 1
                     v1 = next.v1
                     length += 1

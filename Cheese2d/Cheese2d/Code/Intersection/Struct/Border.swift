@@ -69,6 +69,46 @@ struct Border {
         
         return path
     }
+    
+    
+    private static func compare(v0: BorderVertex, v1: BorderVertex) -> Bool {
+        if v0.ed != v1.ed {
+            return v0.ed > v1.ed
+        } else {
+            return v0.ms > v1.ms
+        }
+    }
+    
+    
+    static func sort(borders: inout [Border]) {
+        // this array is already sorted by edge index
+        
+        let n = borders.count
+        
+        var isNotSorted: Bool
+        
+        var m = n
+        
+        repeat {
+            isNotSorted = false
+            var a = borders[0]
+            var i = 1
+            while i < m {
+                let b = borders[i]
+                if Border.compare(v0: a.v0, v1: b.v0) {
+                    borders[i - 1] = b
+                    isNotSorted = true
+                } else {
+                    borders[i - 1] = a
+                    a = b
+                }
+                i += 1
+            }
+            m -= 1
+            borders[m] = a
+        } while isNotSorted
+    }
+    
 }
 
 

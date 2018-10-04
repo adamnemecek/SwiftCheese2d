@@ -16,6 +16,7 @@ class BorderTest: CoordinateSystemScene {
     
     override init() {
         super.init()
+    
         
         var master = [CGPoint]()
         

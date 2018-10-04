@@ -13,16 +13,18 @@ public class DebugFile {
     
     
     public static func run() {
-        let num = [0, 0, 0, 0, 1, 1, 1, 2, 2, 2]
-        let adj = [0, 1, 2, 3, 1, 2, 3, 3, 5, 7]
+        let emptyVertex = BorderVertex(pt: Point.zero, ms: 0, ed: 0, sl: 0)
         
-        let matrix = AdjacencyMatrix(masterIndices: SortedNumbers(numbers: num), adjacencies: adj)
+        var borders = [Border]()
         
-        let revMatrix = matrix.reverse()
+        borders.append(Border(v0: BorderVertex(pt: Point.zero, ms: 5, ed: 2, sl: 0), v1: emptyVertex, isZeroCorner: 0, length: 0))
+        borders.append(Border(v0: BorderVertex(pt: Point.zero, ms: 4, ed: 1, sl: 0), v1: emptyVertex, isZeroCorner: 0, length: 0))
+        borders.append(Border(v0: BorderVertex(pt: Point.zero, ms: 3, ed: 0, sl: 0), v1: emptyVertex, isZeroCorner: 0, length: 0))
+        borders.append(Border(v0: BorderVertex(pt: Point.zero, ms: 2, ed: 0, sl: 0), v1: emptyVertex, isZeroCorner: 0, length: 0))
+        borders.append(Border(v0: BorderVertex(pt: Point.zero, ms: 1, ed: 1, sl: 0), v1: emptyVertex, isZeroCorner: 0, length: 0))
+        borders.append(Border(v0: BorderVertex(pt: Point.zero, ms: 0, ed: 2, sl: 0), v1: emptyVertex, isZeroCorner: 0, length: 0))
         
-        let a = revMatrix.adjacencies == [0, 0, 1, 0, 1, 0, 1, 2, 2, 2, 1]
-        print(a)
-        print(revMatrix)
+        Border.sort(borders: &borders)
         
     }
     

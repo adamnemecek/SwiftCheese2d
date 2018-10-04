@@ -25,13 +25,10 @@ class BorderTest: CoordinateSystemScene {
         master.append(CGPoint(x: -10, y: 10))
         
         var slave = [CGPoint]()
-        
-        slave.append(CGPoint(x: -10, y: -5))
+        slave.append(CGPoint(x: -10, y: 0))
+        slave.append(CGPoint(x: 0, y: -10))
         slave.append(CGPoint(x: -10, y: -10))
-        slave.append(CGPoint(x: 10, y: -10))
-        slave.append(CGPoint(x: 10, y: -5))
 
-        
         
         let result = Intersector.findPinPath(master: master, slave: slave)
         let points = result.points

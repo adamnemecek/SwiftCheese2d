@@ -8,39 +8,36 @@
 
 import Foundation
 
+struct BorderVertex {
+    let pt: Point
+    let ms: Int
+    let ed: Int
+    let sl: Int
+}
+
 struct Border {
     
-    let pt0: Point
-    let ms0: Int
-    let sl0: Int
-    
-    let pt1: Point
-    let ms1: Int
-    let sl1: Int
+    let v0: BorderVertex
+    let v1: BorderVertex
 
     let isZeroCorner: Int
     let length: Int
-    
-    func convert() -> BorderPath {
-        return BorderPath(pt0: DataNormalizer.convert(point: pt0), ms0: ms0, sl0: sl0, pt1: DataNormalizer.convert(point: pt1), ms1: ms1, sl1: sl1)
-    }
-    
     
     func extract(points: [Point]) -> [CGPoint] {
         let n = points.count
         var path = [CGPoint]()
         
         guard length > 1 else {
-            return [DataNormalizer.convert(point: pt0), DataNormalizer.convert(point: pt1)]
+            return [DataNormalizer.convert(point: v0.pt), DataNormalizer.convert(point: v1.pt)]
         }
         
         path.reserveCapacity(length + 1)
-        path.append(DataNormalizer.convert(point: pt0))
+        path.append(DataNormalizer.convert(point: v0.pt))
         
-        let a = (ms0 + 1) % n
-        let b = (ms1 - 1 + n) % n
+        let a = (v0.ms + 1) % n
+        let b = (v1.ms - 1 + n) % n
 
-        if isZeroCorner == 1 {
+        if isZeroCorner == 1 && a != 0 {
             let lastIndex = n - 1
             if a <= lastIndex {
                 if a != lastIndex {
@@ -59,7 +56,7 @@ struct Border {
                     path.append(DataNormalizer.convert(point: points[0]))
                 }
             }
-        } else if a != ms1 {
+        } else if a != v1.ms {
             if a < b {
                 let part = Array(points[a...b])
                 path.append(contentsOf: DataNormalizer.convert(iPoints: part))
@@ -68,7 +65,7 @@ struct Border {
             }
         }
         
-        path.append(DataNormalizer.convert(point: pt1))
+        path.append(DataNormalizer.convert(point: v1.pt))
         
         return path
     }

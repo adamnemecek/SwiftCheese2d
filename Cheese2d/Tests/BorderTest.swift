@@ -40,13 +40,16 @@ class BorderTest: XCTestCase {
         
         let border = path[0]
         
-        XCTAssertEqual(border.ms0, 2)
-        XCTAssertEqual(border.ms1, 3)
-        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.sl0, 0)
-        XCTAssertEqual(border.sl1, 0)
+        XCTAssertEqual(border.v0.ms, 2)
+        XCTAssertEqual(border.v1.ms, 3)
+        XCTAssertEqual(border.v0.ed, 2)
+        XCTAssertEqual(border.v1.ed, 2)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 0)
+        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        XCTAssertEqual(border.length, 1)
         
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -81,13 +84,16 @@ class BorderTest: XCTestCase {
         let border = path[0]
         
         
-        XCTAssertEqual(border.ms0, 3)
-        XCTAssertEqual(border.ms1, 0)
-        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.sl0, 0)
-        XCTAssertEqual(border.sl1, 0)
+        XCTAssertEqual(border.v0.ms, 3)
+        XCTAssertEqual(border.v1.ms, 0)
+        XCTAssertEqual(border.v0.ed, 3)
+        XCTAssertEqual(border.v1.ed, 3)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 0)
+        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        XCTAssertEqual(border.length, 1)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
         XCTAssertEqual(points.count, 2)
@@ -120,13 +126,16 @@ class BorderTest: XCTestCase {
         let border = path[0]
         
         
-        XCTAssertEqual(border.ms0, 0)
-        XCTAssertEqual(border.ms1, 1)
-        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.sl0, 0)
-        XCTAssertEqual(border.sl1, 0)
+        XCTAssertEqual(border.v0.ms, 0)
+        XCTAssertEqual(border.v1.ms, 1)
+        XCTAssertEqual(border.v0.ed, 0)
+        XCTAssertEqual(border.v1.ed, 0)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 0)
+        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        XCTAssertEqual(border.length, 1)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
         XCTAssertEqual(points.count, 2)
@@ -159,13 +168,16 @@ class BorderTest: XCTestCase {
         let border = path[0]
         
         
-        XCTAssertEqual(border.ms0, 1)
-        XCTAssertEqual(border.ms1, 2)
-        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.sl0, 0)
-        XCTAssertEqual(border.sl1, 0)
+        XCTAssertEqual(border.v0.ms, 1)
+        XCTAssertEqual(border.v1.ms, 2)
+        XCTAssertEqual(border.v0.ed, 1)
+        XCTAssertEqual(border.v1.ed, 1)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 0)
+        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        XCTAssertEqual(border.length, 1)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
         XCTAssertEqual(points.count, 2)
@@ -198,12 +210,14 @@ class BorderTest: XCTestCase {
         
         let border = path[0]
         
-        XCTAssertEqual(border.ms0, 1)
-        XCTAssertEqual(border.ms1, 0)
-        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.sl0, 0)
-        XCTAssertEqual(border.sl1, 0)
+        XCTAssertEqual(border.v0.ms, 1)
+        XCTAssertEqual(border.v1.ms, 0)
+        XCTAssertEqual(border.v0.ed, 2)
+        XCTAssertEqual(border.v1.ed, 2)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 0)
+        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -238,13 +252,16 @@ class BorderTest: XCTestCase {
         let border = path[0]
         
         
-        XCTAssertEqual(border.ms0, 2)
-        XCTAssertEqual(border.ms1, 1)
-        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.sl0, 0)
-        XCTAssertEqual(border.sl1, 0)
+        XCTAssertEqual(border.v0.ms, 2)
+        XCTAssertEqual(border.v1.ms, 1)
+        XCTAssertEqual(border.v0.ed, 3)
+        XCTAssertEqual(border.v1.ed, 3)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 0)
+        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        XCTAssertEqual(border.length, 1)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
         XCTAssertEqual(points.count, 2)
@@ -277,13 +294,16 @@ class BorderTest: XCTestCase {
         let border = path[0]
         
         
-        XCTAssertEqual(border.ms0, 3)
-        XCTAssertEqual(border.ms1, 2)
-        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.sl0, 0)
-        XCTAssertEqual(border.sl1, 0)
+        XCTAssertEqual(border.v0.ms, 3)
+        XCTAssertEqual(border.v1.ms, 2)
+        XCTAssertEqual(border.v0.ed, 0)
+        XCTAssertEqual(border.v1.ed, 0)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 0)
+        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        XCTAssertEqual(border.length, 1)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
         XCTAssertEqual(points.count, 2)
@@ -316,13 +336,16 @@ class BorderTest: XCTestCase {
         let border = path[0]
         
         
-        XCTAssertEqual(border.ms0, 0)
-        XCTAssertEqual(border.ms1, 3)
-        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.sl0, 0)
-        XCTAssertEqual(border.sl1, 0)
+        XCTAssertEqual(border.v0.ms, 0)
+        XCTAssertEqual(border.v1.ms, 3)
+        XCTAssertEqual(border.v0.ed, 1)
+        XCTAssertEqual(border.v1.ed, 1)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 0)
+        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        XCTAssertEqual(border.length, 1)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
         XCTAssertEqual(points.count, 2)
@@ -356,13 +379,16 @@ class BorderTest: XCTestCase {
         
         let border = path[0]
         
-        XCTAssertEqual(border.ms0, 1)
-        XCTAssertEqual(border.ms1, 0)
-        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.sl0, 3)
-        XCTAssertEqual(border.sl1, 0)
+        XCTAssertEqual(border.v0.ms, 1)
+        XCTAssertEqual(border.v1.ms, 0)
+        XCTAssertEqual(border.v0.ed, 1)
+        XCTAssertEqual(border.v1.ed, 3)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 3)
+        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        XCTAssertEqual(border.length, 3)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
         XCTAssertEqual(points, [pt0, CGPoint(x: 10, y: 10), CGPoint(x: -10, y: 10), pt1])
@@ -396,13 +422,16 @@ class BorderTest: XCTestCase {
         
         let border = path[0]
         
-        XCTAssertEqual(border.ms0, 2)
-        XCTAssertEqual(border.ms1, 1)
-        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.sl0, 3)
-        XCTAssertEqual(border.sl1, 0)
+        XCTAssertEqual(border.v0.ms, 2)
+        XCTAssertEqual(border.v1.ms, 1)
+        XCTAssertEqual(border.v0.ed, 2)
+        XCTAssertEqual(border.v1.ed, 0)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 3)
+        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.isZeroCorner, 1)
+        XCTAssertEqual(border.length, 3)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
         XCTAssertEqual(points, [pt0, CGPoint(x: -10, y: 10), CGPoint(x: -10, y: -10), pt1])
@@ -436,13 +465,16 @@ class BorderTest: XCTestCase {
         
         let border = path[0]
         
-        XCTAssertEqual(border.ms0, 3)
-        XCTAssertEqual(border.ms1, 2)
-        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.sl0, 3)
-        XCTAssertEqual(border.sl1, 0)
+        XCTAssertEqual(border.v0.ms, 3)
+        XCTAssertEqual(border.v1.ms, 2)
+        XCTAssertEqual(border.v0.ed, 3)
+        XCTAssertEqual(border.v1.ed, 1)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 3)
+        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.isZeroCorner, 1)
+        XCTAssertEqual(border.length, 3)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
         XCTAssertEqual(points, [pt0, CGPoint(x: -10, y: -10), CGPoint(x: 10, y: -10), pt1])
@@ -476,16 +508,188 @@ class BorderTest: XCTestCase {
         
         let border = path[0]
         
-        XCTAssertEqual(border.ms0, 0)
-        XCTAssertEqual(border.ms1, 3)
-        XCTAssertEqual(border.pt0, DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.pt1, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.sl0, 3)
-        XCTAssertEqual(border.sl1, 0)
+        XCTAssertEqual(border.v0.ms, 0)
+        XCTAssertEqual(border.v1.ms, 3)
+        XCTAssertEqual(border.v0.ed, 0)
+        XCTAssertEqual(border.v1.ed, 2)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 3)
+        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.isZeroCorner, 0)
+        XCTAssertEqual(border.length, 3)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
         XCTAssertEqual(points, [pt0, CGPoint(x: 10, y: -10), CGPoint(x: 10, y: 10), pt1])
+    }
+    
+    
+    func testSingle_3_0() {
+        
+        var master = [CGPoint]()
+        
+        master.append(CGPoint(x: -10, y: -10))
+        master.append(CGPoint(x: 10, y: -10))
+        master.append(CGPoint(x: 10, y: 10))
+        master.append(CGPoint(x: -10, y: 10))
+        
+        let iMaster = DataNormalizer.convert(points: master)
+        
+        let pt0 = CGPoint(x: 10, y: 0)
+        let pt1 = CGPoint(x: 0, y: 10)
+        
+        var slave = [CGPoint]()
+        slave.append(pt0)
+        slave.append(CGPoint(x: 10, y: 10))
+        slave.append(pt1)
+        let iSlave = DataNormalizer.convert(points: slave)
+        
+        let result = Intersector.findPinPath(iMaster: iMaster, iSlave: iSlave)
+        let path = result.path
+        
+        XCTAssertEqual(path.count, 1)
+        
+        let border = path[0]
+        
+        XCTAssertEqual(border.v0.ms, 1)
+        XCTAssertEqual(border.v1.ms, 3)
+        XCTAssertEqual(border.v0.ed, 1)
+        XCTAssertEqual(border.v1.ed, 2)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 2)
+        XCTAssertEqual(border.v1.sl, 0)
+        XCTAssertEqual(border.isZeroCorner, 0)
+        XCTAssertEqual(border.length, 2)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points, [pt0, CGPoint(x: 10, y: 10), pt1])
+    }
+    
+    
+    func testSingle_3_1() {
+        
+        var master = [CGPoint]()
+        master.append(CGPoint(x: -10, y: -10))
+        master.append(CGPoint(x: 10, y: -10))
+        master.append(CGPoint(x: 10, y: 10))
+        master.append(CGPoint(x: -10, y: 10))
+        
+        let iMaster = DataNormalizer.convert(points: master)
+        
+        let pt0 = CGPoint(x: 0, y: 10)
+        let pt1 = CGPoint(x: -10, y: 0)
+        
+        var slave = [CGPoint]()
+        slave.append(pt0)
+        slave.append(CGPoint(x: -10, y: 10))
+        slave.append(pt1)
+        let iSlave = DataNormalizer.convert(points: slave)
+        
+        let result = Intersector.findPinPath(iMaster: iMaster, iSlave: iSlave)
+        let path = result.path
+        
+        XCTAssertEqual(path.count, 1)
+        
+        let border = path[0]
+        
+        XCTAssertEqual(border.v0.ms, 2)
+        XCTAssertEqual(border.v1.ms, 0)
+        XCTAssertEqual(border.v0.ed, 2)
+        XCTAssertEqual(border.v1.ed, 3)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 2)
+        XCTAssertEqual(border.v1.sl, 0)
+        XCTAssertEqual(border.isZeroCorner, 0)
+        XCTAssertEqual(border.length, 2)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points, [pt0, CGPoint(x: -10, y: 10), pt1])
+    }
+    
+    
+    func testSingle_3_2() {
+        
+        var master = [CGPoint]()
+        master.append(CGPoint(x: -10, y: -10))
+        master.append(CGPoint(x: 10, y: -10))
+        master.append(CGPoint(x: 10, y: 10))
+        master.append(CGPoint(x: -10, y: 10))
+        
+        let iMaster = DataNormalizer.convert(points: master)
+        
+        let pt0 = CGPoint(x: -10, y: 0)
+        let pt1 = CGPoint(x: 0, y: -10)
+        
+        var slave = [CGPoint]()
+        slave.append(pt0)
+        slave.append(CGPoint(x: -10, y: -10))
+        slave.append(pt1)
+        let iSlave = DataNormalizer.convert(points: slave)
+        
+        let result = Intersector.findPinPath(iMaster: iMaster, iSlave: iSlave)
+        let path = result.path
+        
+        XCTAssertEqual(path.count, 1)
+        
+        let border = path[0]
+        
+        XCTAssertEqual(border.v0.ms, 3)
+        XCTAssertEqual(border.v1.ms, 1)
+        XCTAssertEqual(border.v0.ed, 3)
+        XCTAssertEqual(border.v1.ed, 0)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 2)
+        XCTAssertEqual(border.v1.sl, 0)
+        XCTAssertEqual(border.isZeroCorner, 1)
+        XCTAssertEqual(border.length, 2)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points, [pt0, CGPoint(x: -10, y: -10), pt1])
+    }
+    
+    
+    func testSingle_3_3() {
+        
+        var master = [CGPoint]()
+        master.append(CGPoint(x: -10, y: -10))
+        master.append(CGPoint(x: 10, y: -10))
+        master.append(CGPoint(x: 10, y: 10))
+        master.append(CGPoint(x: -10, y: 10))
+        
+        let iMaster = DataNormalizer.convert(points: master)
+        
+        let pt0 = CGPoint(x: 0, y: -10)
+        let pt1 = CGPoint(x: 10, y: 0)
+        
+        var slave = [CGPoint]()
+        slave.append(pt0)
+        slave.append(CGPoint(x: 10, y: -10))
+        slave.append(pt1)
+        let iSlave = DataNormalizer.convert(points: slave)
+        
+        let result = Intersector.findPinPath(iMaster: iMaster, iSlave: iSlave)
+        let path = result.path
+        
+        XCTAssertEqual(path.count, 1)
+        
+        let border = path[0]
+        
+        XCTAssertEqual(border.v0.ms, 0)
+        XCTAssertEqual(border.v1.ms, 2)
+        XCTAssertEqual(border.v0.ed, 0)
+        XCTAssertEqual(border.v1.ed, 1)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 2)
+        XCTAssertEqual(border.v1.sl, 0)
+        XCTAssertEqual(border.isZeroCorner, 0)
+        XCTAssertEqual(border.length, 2)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points, [pt0, CGPoint(x: 10, y: -10), pt1])
     }
     
 }

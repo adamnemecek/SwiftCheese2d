@@ -96,7 +96,12 @@ public class Intersector {
                         }
                     }
                 } else {
-                    let border = Intersector.buildBorder(ms0Pt: BPoint(index: msIx0, point: ms0), ms1Pt: BPoint(index: msIx1, point: ms1), sl0Pt: BPoint(index: slIx0, point: sl0), sl1Pt: BPoint(index: slIx1, point: sl1), msCount: iMaster.count, slCount: iSlave.count)
+                    let ms0Pt = BPoint(index: msIx0, point: ms0)
+                    let ms1Pt = BPoint(index: msIx1, point: ms1)
+                    let sl0Pt = BPoint(index: slIx0, point: sl0)
+                    let sl1Pt = BPoint(index: slIx1, point: sl1)
+                    
+                    let border = Intersector.buildBorder(ms0Pt: ms0Pt, ms1Pt: ms1Pt, sl0Pt: sl0Pt, sl1Pt: sl1Pt, msCount: iMaster.count, slCount: iSlave.count)
                     borders.append(border)
                 }
             } while j < n && msIx0 == masterIndices[j]
@@ -126,31 +131,47 @@ public class Intersector {
         while i < n {
             let border = borders[i]
             
-            var pt1 = border.pt1
-            var ms1 = border.ms1
-            var sl1 = border.sl1
+            var v1 = border.v1
+
             var length = 1
             
             var j = i + 1
-            
+
             while j < n {
                 let next = borders[j]
                 
-                let a = (ms1 - 1 + masterCount) % masterCount
-                let b = (next.ms0 + 1) % masterCount
+                /*
+                let a = (v1.ms - 1 + masterCount) % masterCount
+                let b = (next.v0.ms + 1) % masterCount
                 
                 if a == b {
                     j += 1
-                    pt1 = next.pt1
-                    ms1 = next.ms1
-                    sl1 = next.sl1
+                    v1 = next.v1
+                    length += 1
+                } else {
+                    break
+                }
+                */
+                
+                let nextEdge = (v1.ed + 1) % masterCount
+                
+                // must be same or next edge
+                if (v1.ed == next.v0.ed || nextEdge == next.v0.ed) && v1.pt == next.v0.pt {
+                    j += 1
+                    v1 = next.v1
                     length += 1
                 } else {
                     break
                 }
             }
+            
+            var isZeroCorner = 0
+            if border.v0.ms + length > masterCount {
+                isZeroCorner = 1
+            }
         
-            let path = Border(pt0: border.pt0, ms0: border.ms0, sl0: border.sl0, pt1: pt1, ms1: ms1, sl1: sl1, isZeroCorner: 0, length: length)
+            let path = Border(v0: border.v0, v1: v1, isZeroCorner: isZeroCorner, length: length)
+            
             paths.append(path)
         
             i = j
@@ -160,8 +181,9 @@ public class Intersector {
             let first = paths[0]
             let last = paths[paths.count - 1]
             
-            if first.ms0 == masterCount - 1 && last.ms1 == 1 {
-                paths[0] = Border(pt0: last.pt0, ms0: last.ms0, sl0: last.sl0, pt1: first.pt1, ms1: first.ms1, sl1: first.sl1, isZeroCorner: 1, length: first.length + last.length)
+            if first.v0.ms == masterCount - 1 && last.v1.ms == 1 {
+                //paths[0] = Border(pt0: last.pt0, ms0: last.ms0, sl0: last.sl0, pt1: first.pt1, ms1: first.ms1, sl1: first.sl1, isZeroCorner: 1, length: first.length + last.length)
+                paths[0] = Border(v0: last.v0, v1: first.v1, isZeroCorner: 1, length: first.length + last.length)
                 paths.remove(at: paths.count - 1)
             }
         }
@@ -181,6 +203,7 @@ public class Intersector {
             minSlPt = sl0Pt
             maxSlPt = sl1Pt
         }
+        
         
         let ms0Point: Point
         let ms1Point: Point
@@ -259,7 +282,12 @@ public class Intersector {
             }
         }
         
-        return Border(pt0: ms0Point, ms0: ms0Ix, sl0: sl0Ix, pt1: ms1Point, ms1: ms1Ix, sl1: sl1Ix, isZeroCorner: 0, length: 1)
+        let edIx = ms0Pt.index
+        
+        let v0 = BorderVertex(pt: ms0Point, ms: ms0Ix, ed: edIx, sl: sl0Ix)
+        let v1 = BorderVertex(pt: ms1Point, ms: ms1Ix, ed: edIx, sl: sl1Ix)
+        
+        return Border(v0: v0, v1: v1, isZeroCorner: 0, length: 1)
     }
     
     

@@ -140,19 +140,6 @@ public class Intersector {
             while j < n {
                 let next = borders[j]
                 
-                /*
-                let a = (v1.ms - 1 + masterCount) % masterCount
-                let b = (next.v0.ms + 1) % masterCount
-                
-                if a == b {
-                    j += 1
-                    v1 = next.v1
-                    length += 1
-                } else {
-                    break
-                }
-                */
-                
                 let nextEdge = (v1.ed + 1) % masterCount
                 
                 // must be same or next edge
@@ -182,7 +169,6 @@ public class Intersector {
             let last = paths[paths.count - 1]
             
             if first.v0.ms == masterCount - 1 && last.v1.ms == 1 {
-                //paths[0] = Border(pt0: last.pt0, ms0: last.ms0, sl0: last.sl0, pt1: first.pt1, ms1: first.ms1, sl1: first.sl1, isZeroCorner: 1, length: first.length + last.length)
                 paths[0] = Border(v0: last.v0, v1: first.v1, isZeroCorner: 1, length: first.length + last.length)
                 paths.remove(at: paths.count - 1)
             }

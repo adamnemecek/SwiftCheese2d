@@ -692,4 +692,276 @@ class BorderTest: XCTestCase {
         XCTAssertEqual(points, [pt0, CGPoint(x: 10, y: -10), pt1])
     }
     
+    
+    func testSingle_4_0() {
+        
+        var master = [CGPoint]()
+        
+        master.append(CGPoint(x: -10, y: -10))
+        master.append(CGPoint(x: 10, y: -10))
+        master.append(CGPoint(x: 10, y: 10))
+        master.append(CGPoint(x: -10, y: 10))
+        
+        let iMaster = DataNormalizer.convert(points: master)
+        
+        let pt0 = CGPoint(x: 0, y: 10)
+        let pt1 = CGPoint(x: 10, y: 0)
+        
+        var slave = [CGPoint]()
+        slave.append(pt0)
+        slave.append(CGPoint(x: -10, y: 10))
+        slave.append(CGPoint(x: -10, y: -10))
+        slave.append(CGPoint(x: 10, y: -10))
+        slave.append(pt1)
+        let iSlave = DataNormalizer.convert(points: slave)
+        
+        let result = Intersector.findPinPath(iMaster: iMaster, iSlave: iSlave)
+        let path = result.path
+        
+        XCTAssertEqual(path.count, 1)
+        
+        let border = path[0]
+        
+        XCTAssertEqual(border.v0.ms, 2)
+        XCTAssertEqual(border.v1.ms, 2)
+        XCTAssertEqual(border.v0.ed, 2)
+        XCTAssertEqual(border.v1.ed, 1)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 4)
+        XCTAssertEqual(border.v1.sl, 0)
+        XCTAssertEqual(border.isZeroCorner, 1)
+        XCTAssertEqual(border.length, 4)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points, slave)
+    }
+    
+    
+    func testSingle_4_1() {
+        
+        var master = [CGPoint]()
+        
+        master.append(CGPoint(x: -10, y: -10))
+        master.append(CGPoint(x: 10, y: -10))
+        master.append(CGPoint(x: 10, y: 10))
+        master.append(CGPoint(x: -10, y: 10))
+        
+        let iMaster = DataNormalizer.convert(points: master)
+        
+        let pt0 = CGPoint(x: -10, y: 0)
+        let pt1 = CGPoint(x: 0, y: 10)
+        
+        var slave = [CGPoint]()
+        slave.append(pt0)
+        slave.append(CGPoint(x: -10, y: -10))
+        slave.append(CGPoint(x: 10, y: -10))
+        slave.append(CGPoint(x: 10, y: 10))
+        slave.append(pt1)
+        let iSlave = DataNormalizer.convert(points: slave)
+        
+        let result = Intersector.findPinPath(iMaster: iMaster, iSlave: iSlave)
+        let path = result.path
+        
+        XCTAssertEqual(path.count, 1)
+        
+        let border = path[0]
+        
+        XCTAssertEqual(border.v0.ms, 3)
+        XCTAssertEqual(border.v1.ms, 3)
+        XCTAssertEqual(border.v0.ed, 3)
+        XCTAssertEqual(border.v1.ed, 2)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 4)
+        XCTAssertEqual(border.v1.sl, 0)
+        XCTAssertEqual(border.isZeroCorner, 1)
+        XCTAssertEqual(border.length, 4)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points, slave)
+    }
+    
+    
+    func testSingle_4_2() {
+        
+        var master = [CGPoint]()
+        
+        master.append(CGPoint(x: -10, y: -10))
+        master.append(CGPoint(x: 10, y: -10))
+        master.append(CGPoint(x: 10, y: 10))
+        master.append(CGPoint(x: -10, y: 10))
+        
+        let iMaster = DataNormalizer.convert(points: master)
+        
+        let pt0 = CGPoint(x: 0, y: -10)
+        let pt1 = CGPoint(x: -10, y: 0)
+        
+        var slave = [CGPoint]()
+        slave.append(pt0)
+        slave.append(CGPoint(x: 10, y: -10))
+        slave.append(CGPoint(x: 10, y: 10))
+        slave.append(CGPoint(x: -10, y: 10))
+        slave.append(pt1)
+        let iSlave = DataNormalizer.convert(points: slave)
+        
+        let result = Intersector.findPinPath(iMaster: iMaster, iSlave: iSlave)
+        let path = result.path
+        
+        XCTAssertEqual(path.count, 1)
+        
+        let border = path[0]
+        
+        XCTAssertEqual(border.v0.ms, 0)
+        XCTAssertEqual(border.v1.ms, 0)
+        XCTAssertEqual(border.v0.ed, 0)
+        XCTAssertEqual(border.v1.ed, 3)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 4)
+        XCTAssertEqual(border.v1.sl, 0)
+        XCTAssertEqual(border.isZeroCorner, 0)
+        XCTAssertEqual(border.length, 4)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points, slave)
+    }
+    
+    
+    func testSingle_4_3() {
+        
+        var master = [CGPoint]()
+        
+        master.append(CGPoint(x: -10, y: -10))
+        master.append(CGPoint(x: 10, y: -10))
+        master.append(CGPoint(x: 10, y: 10))
+        master.append(CGPoint(x: -10, y: 10))
+        
+        let iMaster = DataNormalizer.convert(points: master)
+        
+        let pt0 = CGPoint(x: 10, y: 0)
+        let pt1 = CGPoint(x: 0, y: -10)
+        
+        var slave = [CGPoint]()
+        slave.append(pt0)
+        slave.append(CGPoint(x: 10, y: 10))
+        slave.append(CGPoint(x: -10, y: 10))
+        slave.append(CGPoint(x: -10, y: -10))
+        slave.append(pt1)
+        let iSlave = DataNormalizer.convert(points: slave)
+        
+        let result = Intersector.findPinPath(iMaster: iMaster, iSlave: iSlave)
+        let path = result.path
+        
+        XCTAssertEqual(path.count, 1)
+        
+        let border = path[0]
+        
+        XCTAssertEqual(border.v0.ms, 1)
+        XCTAssertEqual(border.v1.ms, 1)
+        XCTAssertEqual(border.v0.ed, 1)
+        XCTAssertEqual(border.v1.ed, 0)
+        XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
+        XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
+        XCTAssertEqual(border.v0.sl, 4)
+        XCTAssertEqual(border.v1.sl, 0)
+        XCTAssertEqual(border.isZeroCorner, 1)
+        XCTAssertEqual(border.length, 4)
+        
+        let points = border.extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points, slave)
+    }
+    
+    
+    func testOctagon() {
+        
+        var master = [CGPoint]()
+        
+        master.append(CGPoint(x: -10, y: -10))
+        master.append(CGPoint(x: 10, y: -10))
+        master.append(CGPoint(x: 10, y: 10))
+        master.append(CGPoint(x: -10, y: 10))
+        
+        let iMaster = DataNormalizer.convert(points: master)
+        
+        var slave = [CGPoint]()
+        slave.append(CGPoint(x: 10, y: 5))
+        slave.append(CGPoint(x: 5, y: 10))
+        slave.append(CGPoint(x: -5, y: 10))
+        slave.append(CGPoint(x: -10, y: 5))
+        slave.append(CGPoint(x: -10, y: -5))
+        slave.append(CGPoint(x: -5, y: -10))
+        slave.append(CGPoint(x: 5, y: -10))
+        slave.append(CGPoint(x: 10, y: -5))
+        
+        let iSlave = DataNormalizer.convert(points: slave)
+        
+        let result = Intersector.findPinPath(iMaster: iMaster, iSlave: iSlave)
+        let path = result.path
+        
+        XCTAssertEqual(path.count, 4)
+        
+        let points_0 = path[0].extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points_0, [CGPoint(x: -5, y: -10), CGPoint(x: 5, y: -10)])
+        
+        let points_1 = path[1].extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points_1, [CGPoint(x: 10, y: -5), CGPoint(x: 10, y: 5)])
+        
+        let points_2 = path[2].extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points_2, [CGPoint(x: 5, y: 10), CGPoint(x: -5, y: 10)])
+        
+        let points_3 = path[3].extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points_3, [CGPoint(x: -10, y: 5), CGPoint(x: -10, y: -5)])
+    }
+    
+    
+    func testX() {
+        
+        var master = [CGPoint]()
+        
+        master.append(CGPoint(x: -10, y: -10))
+        master.append(CGPoint(x: 10, y: -10))
+        master.append(CGPoint(x: 10, y: 10))
+        master.append(CGPoint(x: -10, y: 10))
+        
+        let iMaster = DataNormalizer.convert(points: master)
+        
+        var slave = [CGPoint]()
+        slave.append(CGPoint(x: 10, y: 5))
+        slave.append(CGPoint(x: 10, y: 10))
+        slave.append(CGPoint(x: 5, y: 10))
+        slave.append(CGPoint(x: 0, y: 5))
+        slave.append(CGPoint(x: -5, y: 10))
+        slave.append(CGPoint(x: -10, y: 10))
+        slave.append(CGPoint(x: -10, y: 5))
+        slave.append(CGPoint(x: -5, y: 0))
+        slave.append(CGPoint(x: -10, y: -5))
+        slave.append(CGPoint(x: -10, y: -10))
+        slave.append(CGPoint(x: -5, y: -10))
+        slave.append(CGPoint(x: 0, y: -5))
+        slave.append(CGPoint(x: 5, y: -10))
+        slave.append(CGPoint(x: 10, y: -10))
+        slave.append(CGPoint(x: 10, y: -5))
+        slave.append(CGPoint(x: 5, y: 0))
+        
+        let iSlave = DataNormalizer.convert(points: slave)
+        
+        let result = Intersector.findPinPath(iMaster: iMaster, iSlave: iSlave)
+        let path = result.path
+        
+        XCTAssertEqual(path.count, 4)
+        
+        let points_0 = path[0].extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points_0, [CGPoint(x: 10, y: 5), CGPoint(x: 10, y: 10), CGPoint(x: 5, y: 10)])
+        
+        let points_1 = path[1].extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points_1, [CGPoint(x: -5, y: 10), CGPoint(x: -10, y: 10), CGPoint(x: -10, y: 5)])
+        
+        let points_2 = path[2].extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points_2, [CGPoint(x: -10, y: -5), CGPoint(x: -10, y: -10), CGPoint(x: -5, y: -10)])
+        
+        let points_3 = path[3].extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points_3, [CGPoint(x: 5, y: -10), CGPoint(x: 10, y: -10), CGPoint(x: 10, y: -5)])
+    }
+
 }

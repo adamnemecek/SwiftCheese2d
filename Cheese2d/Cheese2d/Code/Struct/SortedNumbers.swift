@@ -11,14 +11,6 @@ import Foundation
 
 struct SortedNumbers {
     
-    public struct Range {
-        let begin: Int
-        let end: Int
-        var isEmpty: Bool {
-            return begin == -1
-        }
-    }
-    
     private(set) var numbers: [Int]
     
     init(size: Int = 0) {

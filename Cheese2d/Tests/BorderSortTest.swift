@@ -26,7 +26,7 @@ class BorderSortTest: XCTestCase {
         borders.append(Border(v0: BorderVertex(pt: Point.zero, ms: 4, ed: 0, sl: 0), v1: emptyVertex, isZeroCorner: 0, length: 0))
         borders.append(Border(v0: BorderVertex(pt: Point.zero, ms: 5, ed: 0, sl: 0), v1: emptyVertex, isZeroCorner: 0, length: 0))
 
-        Border.sort(borders: &borders)
+        Border.sort(borders: &borders, masterCount: 6)
 
         XCTAssertEqual(borders[0].v0.ms, 0)
         XCTAssertEqual(borders[1].v0.ms, 1)
@@ -50,7 +50,7 @@ class BorderSortTest: XCTestCase {
         borders.append(Border(v0: BorderVertex(pt: Point.zero, ms: 1, ed: 0, sl: 0), v1: emptyVertex, isZeroCorner: 0, length: 0))
         borders.append(Border(v0: BorderVertex(pt: Point.zero, ms: 0, ed: 0, sl: 0), v1: emptyVertex, isZeroCorner: 0, length: 0))
         
-        Border.sort(borders: &borders)
+        Border.sort(borders: &borders, masterCount: 6)
         
         XCTAssertEqual(borders[0].v0.ms, 0)
         XCTAssertEqual(borders[1].v0.ms, 1)
@@ -73,7 +73,7 @@ class BorderSortTest: XCTestCase {
         borders.append(Border(v0: BorderVertex(pt: Point.zero, ms: 1, ed: 2, sl: 0), v1: emptyVertex, isZeroCorner: 0, length: 0))
         borders.append(Border(v0: BorderVertex(pt: Point.zero, ms: 0, ed: 2, sl: 0), v1: emptyVertex, isZeroCorner: 0, length: 0))
         
-        Border.sort(borders: &borders)
+        Border.sort(borders: &borders, masterCount: 6)
         
         XCTAssertEqual(borders[0].v0.ms, 4)
         XCTAssertEqual(borders[1].v0.ms, 5)
@@ -98,7 +98,7 @@ class BorderSortTest: XCTestCase {
         borders.append(Border(v0: BorderVertex(pt: Point.zero, ms: 1, ed: 1, sl: 0), v1: emptyVertex, isZeroCorner: 0, length: 0))
         borders.append(Border(v0: BorderVertex(pt: Point.zero, ms: 0, ed: 2, sl: 0), v1: emptyVertex, isZeroCorner: 0, length: 0))
         
-        Border.sort(borders: &borders)
+        Border.sort(borders: &borders, masterCount: 6)
         
         XCTAssertEqual(borders[0].v0.ms, 2)
         XCTAssertEqual(borders[1].v0.ms, 3)

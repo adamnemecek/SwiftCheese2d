@@ -21,7 +21,12 @@ struct Point: Equatable {
     }
 }
 
-extension Point: CustomStringConvertible {
+extension Point: CustomStringConvertible, CustomDebugStringConvertible {
+    
+    var debugDescription: String {
+        return self.description
+    }
+    
     
     var description: String {
         return "(\(CGFloat(x) * DataNormalizer.convertation_precision), \(CGFloat(y) * DataNormalizer.convertation_precision))"

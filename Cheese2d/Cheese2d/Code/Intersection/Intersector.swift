@@ -109,7 +109,7 @@ public class Intersector {
             i = j
         }
 
-        Border.sort(borders: &borders)
+        Border.sort(borders: &borders, masterCount: iMaster.count)
         borders = Intersector.merge(borders: borders, masterCount: iMaster.count)
         
         let result = (points: DataNormalizer.convert(iPoints: crossMap.values), path: borders)
@@ -156,7 +156,7 @@ public class Intersector {
                 isZeroCorner = 1
             }
         
-            let path = Border(v0: border.v0, v1: v1, isZeroCorner: isZeroCorner, length: length)
+            let path = Border(v0: border.v0, v1: v1, mpOffset: border.mpOffset, isZeroCorner: isZeroCorner, length: length)
             
             paths.append(path)
         
@@ -168,14 +168,13 @@ public class Intersector {
             let last = paths[paths.count - 1]
             
             if first.v0.ms == masterCount - 1 && last.v1.ms == 1 {
-                paths[0] = Border(v0: last.v0, v1: first.v1, isZeroCorner: 1, length: first.length + last.length)
+                paths[0] = Border(v0: last.v0, v1: first.v1, mpOffset: last.mpOffset, isZeroCorner: 1, length: first.length + last.length)
                 paths.remove(at: paths.count - 1)
             }
         }
 
         return paths
     }
-    
     
     private static func buildBorder(ms0Pt: BPoint, ms1Pt: BPoint, sl0Pt: BPoint, sl1Pt: BPoint, msCount: Int, slCount: Int) -> Border {
         let minSlPt: BPoint
@@ -272,7 +271,7 @@ public class Intersector {
         let v0 = BorderVertex(pt: ms0Point, ms: ms0Ix, ed: edIx, sl: sl0Ix)
         let v1 = BorderVertex(pt: ms1Point, ms: ms1Ix, ed: edIx, sl: sl1Ix)
         
-        return Border(v0: v0, v1: v1, isZeroCorner: 0, length: 1)
+        return Border(v0: v0, v1: v1, mp0: ms0Pt.point, isZeroCorner: 0, length: 1)
     }
     
     

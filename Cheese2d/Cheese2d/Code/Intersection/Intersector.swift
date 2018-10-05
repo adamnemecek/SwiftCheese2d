@@ -108,74 +108,17 @@ public class Intersector {
             
             i = j
         }
+        
+        var merger = BordMerger(borders: borders, masterCount: iMaster.count)
 
-        Border.sort(borders: &borders, masterCount: iMaster.count)
-        borders = Intersector.merge(borders: borders, masterCount: iMaster.count)
+        borders = merger.merge()
         
         let result = (points: DataNormalizer.convert(iPoints: crossMap.values), path: borders)
 
         return result
     }
     
-    
-    
-    private static func merge(borders: [Border], masterCount: Int) -> [Border] {
-        let n = borders.count
-        guard n > 0 else {
-            return []
-        }
-        
-        var paths = [Border]()
-        paths.reserveCapacity(n)
 
-        var i = 0
-        while i < n {
-            let border = borders[i]
-            
-            var v1 = border.v1
-
-            var length = 1
-            
-            var j = i + 1
-
-            while j < n {
-                let next = borders[j]
-
-                // must be same or next edge
-                if v1.pt == next.v0.pt {
-                    j += 1
-                    v1 = next.v1
-                    length += 1
-                } else {
-                    break
-                }
-            }
-            
-            var isZeroCorner = 0
-            if border.v0.ms + length > masterCount {
-                isZeroCorner = 1
-            }
-        
-            let path = Border(v0: border.v0, v1: v1, mpOffset: border.mpOffset, isZeroCorner: isZeroCorner, length: length)
-            
-            paths.append(path)
-        
-            i = j
-        }
-        
-        if paths.count > 1 {
-            let first = paths[0]
-            let last = paths[paths.count - 1]
-            
-            if first.v0.ms == masterCount - 1 && last.v1.ms == 1 {
-                paths[0] = Border(v0: last.v0, v1: first.v1, mpOffset: last.mpOffset, isZeroCorner: 1, length: first.length + last.length)
-                paths.remove(at: paths.count - 1)
-            }
-        }
-
-        return paths
-    }
-    
     private static func buildBorder(ms0Pt: BPoint, ms1Pt: BPoint, sl0Pt: BPoint, sl1Pt: BPoint, msCount: Int, slCount: Int) -> Border {
         let minSlPt: BPoint
         let maxSlPt: BPoint

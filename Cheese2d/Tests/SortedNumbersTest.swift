@@ -256,7 +256,7 @@ class SortedNumbersTest: XCTestCase {
         for _ in 0...1000 {
             let count = Int(arc4random_uniform(10))
             
-            var map = [Int: SortedNumbers.Range]()
+            var map = [Int: Cheese2d.Range]()
             
             var numbers = SortedNumbers()
             var number = 0
@@ -266,7 +266,7 @@ class SortedNumbersTest: XCTestCase {
                 number += Int(arc4random_uniform(3)) + 1
                 if shouldAdd {
                     let begin = numbers.numbers.count
-                    map[number] = SortedNumbers.Range(begin: begin, end: begin + step)
+                    map[number] = Cheese2d.Range(begin: begin, end: begin + step)
                     for _ in 0...step {
                         numbers.add(number: number)
                     }

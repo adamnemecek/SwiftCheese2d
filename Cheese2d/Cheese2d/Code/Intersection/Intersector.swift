@@ -29,7 +29,7 @@ public struct Intersector {
     }
     
     
-    static func findPinPath(iMaster: [Point], iSlave: [Point]) -> (points: [CGPoint], path: [Border]) {
+    static func findPinPath(iMaster: [Point], iSlave: [Point]) -> (points: [PinPoint], path: [Border]) {
         
         let posMatrix = self.buildPossibilityMatrix(master: iMaster, slave: iSlave)
 

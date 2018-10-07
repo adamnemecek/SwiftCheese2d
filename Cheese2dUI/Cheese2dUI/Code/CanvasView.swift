@@ -12,6 +12,7 @@ import Cocoa
 class CanvasView: NSView {
     
     private var transform: CATransform3D
+    private static let canvasSize: CGFloat = 10
     
     override init(frame frameRect: NSRect) {
         transform = CanvasView.calculateCurrentTransform(rect: frameRect)
@@ -42,7 +43,17 @@ class CanvasView: NSView {
     }
     
     private static func calculateCurrentTransform(rect: CGRect) -> CATransform3D {
-        return CATransform3DScale(CATransform3DMakeTranslation(0.5 * rect.width, 0.5 * rect.height, 0), 10.0, 10.0, 1.0)
+        return CATransform3DScale(CATransform3DMakeTranslation(0.5 * rect.width, 0.5 * rect.height, 0), canvasSize, canvasSize, 1.0)
+    }
+    
+    
+    func convert(point: NSPoint) -> CGPoint {
+        let point = self.convert(point, to: nil)
+        let rect = self.frame
+        let x = (point.x / rect.width - 0.5) * rect.width * CanvasView.canvasSize * 0.01
+        let y = (point.y / rect.height - 0.5) * rect.height * CanvasView.canvasSize * 0.01
+        
+        return CGPoint(x: x, y: y)
     }
     
     func add(shape: CALayer) {

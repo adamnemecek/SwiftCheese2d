@@ -9,13 +9,13 @@
 import Foundation
 
 
-struct BPoint {
+struct IndexPoint {
     
     let index: Int
     let point: Point
     
     
-    func isBigger(a: BPoint) -> Bool {
+    func isBigger(a: IndexPoint) -> Bool {
         if a.point.x != point.x {
             return a.point.x < point.x
         } else {

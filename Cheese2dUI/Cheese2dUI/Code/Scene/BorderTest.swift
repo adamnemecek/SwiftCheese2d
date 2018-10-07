@@ -13,11 +13,8 @@ import Cocoa
 import Cheese2d
 
 class BorderTest: CoordinateSystemScene {
-    
-    override init() {
-        super.init()
-    
-        
+
+    private var master: [CGPoint] = {
         var master = [CGPoint]()
         
         master.append(CGPoint(x: -10, y: -10))
@@ -25,6 +22,10 @@ class BorderTest: CoordinateSystemScene {
         master.append(CGPoint(x: 10, y: 10))
         master.append(CGPoint(x: -10, y: 10))
         
+        return master
+    }()
+    
+    private var slave: [CGPoint] = {
         var slave = [CGPoint]()
         slave.append(CGPoint(x: 10, y: 5))
         slave.append(CGPoint(x: 10, y: 10))
@@ -43,6 +44,41 @@ class BorderTest: CoordinateSystemScene {
         slave.append(CGPoint(x: 10, y: -5))
         slave.append(CGPoint(x: 5, y: 0))
         
+        return slave
+    }()
+    
+    private var activeIndex: Int?
+    private var isSlave: Bool = false
+    
+    
+    override init() {
+        super.init()
+        self.addShapes()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(layer: Any) {
+        super.init(layer: layer)
+    }
+    
+    private func update() {
+        self.removeAll()
+        self.addShapes()
+    }
+    
+    private func removeAll() {
+        guard let layers = self.sublayers else {
+            return
+        }
+        for layer in layers {
+            layer.removeFromSuperlayer()
+        }
+    }
+    
+    private func addShapes() {
         let result = Intersector.findPinPath(master: master, slave: slave)
         let points = result.points
         
@@ -59,14 +95,67 @@ class BorderTest: CoordinateSystemScene {
         self.addSublayer(ShapePolygon(points: master, tip: 1.0, lineWidth: 0.2, color: Colors.slave, showIndeces: true, scaleIndeces: 4, dash: nil))
         self.addSublayer(ShapePolygon(points: slave, tip: 1.0, lineWidth: 0.3, color: Colors.master, showIndeces: true, scaleIndeces: -2.5, dash: [2,3]))
     }
+
+}
+
+
+extension BorderTest: MouseCompatible {
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    private func findNearest(point: CGPoint, points: [CGPoint]) -> Int? {
+        var i = 0
+        while i < points.count {
+            let p = points[i]
+            let dx = p.x - point.x
+            let dy = p.y - point.y
+            let r = dx * dx + dy * dy
+            if r < 0.2 {
+                return i
+            }
+            
+            i += 1
+        }
+        return nil
     }
     
-    override init(layer: Any) {
-        super.init(layer: layer)
+    
+    func mouseDown(point: CGPoint) {
+        if let index = findNearest(point: point, points: slave) {
+            self.activeIndex = index
+            self.isSlave = true
+            return
+        }
+        
+        if let index = findNearest(point: point, points: master) {
+            self.activeIndex = index
+            self.isSlave = false
+            return
+        }
+        
+        self.activeIndex = nil
+    }
+
+    
+    func mouseUp(point: CGPoint) {
+        self.activeIndex = nil
     }
     
     
+    func mouseDragged(point: CGPoint) {
+        guard let index = self.activeIndex else {
+            return
+        }
+        
+        
+        
+        let x = CGFloat(Int(point.x * 2)) / 2
+        let y = CGFloat(Int(point.y * 2)) / 2
+        
+        if isSlave {
+            self.slave[index] = CGPoint(x: x, y: y)
+        } else {
+            self.master[index] = CGPoint(x: x, y: y)
+        }
+        
+        self.update()
+    }
 }

@@ -16,14 +16,33 @@ class ViewController: NSViewController {
             return self.view as! CanvasView
         }
     }
+    
+    private let scene = BorderTest()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //DebugFile.run()
-        
-        canvasView.add(shape: BorderTest())
+        canvasView.add(shape: scene)
     }
 
+    override func mouseDown(with event: NSEvent) {
+        let point = self.canvasView.convert(point: event.locationInWindow)
+        print("down x: \(point.x), y: \(point.y)")
+        self.scene.mouseDown(point: point)
+    }
+    
+    
+    override func mouseUp(with event: NSEvent) {
+        let point = self.canvasView.convert(point: event.locationInWindow)
+        //print("down x: \(point.x), y: \(point.y)")
+        self.scene.mouseUp(point: point)
+    }
+    
+    override func mouseDragged(with event: NSEvent) {
+        let point = self.canvasView.convert(point: event.locationInWindow)
+        //print("down x: \(point.x), y: \(point.y)")
+        self.scene.mouseDragged(point: point)
+    }
+    
 }
 

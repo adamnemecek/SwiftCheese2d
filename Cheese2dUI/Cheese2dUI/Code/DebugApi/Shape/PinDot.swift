@@ -38,7 +38,7 @@ class PinDot: CAShapeLayer {
         
         
         let topArc = self.buildArc(point: pin.point, radius: radius, color: topColor, clockwise: false)
-        let bottomArc = self.buildArc(point: pin.point, radius: radius, color: bottomColor, clockwise: false)
+        let bottomArc = self.buildArc(point: pin.point, radius: radius, color: bottomColor, clockwise: true)
         
         self.addSublayer(topArc)
         self.addSublayer(bottomArc)
@@ -50,7 +50,7 @@ class PinDot: CAShapeLayer {
         
         let linePath = CGMutablePath()
         
-        linePath.addArc(center: point, radius: radius, startAngle: 0, endAngle: 180, clockwise: clockwise)
+        linePath.addArc(center: point, radius: radius, startAngle: 0, endAngle: 3.14, clockwise: clockwise)
         
         arc.path = linePath
         arc.fillColor = color

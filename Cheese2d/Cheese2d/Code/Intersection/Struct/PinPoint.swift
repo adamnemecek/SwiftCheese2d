@@ -26,16 +26,18 @@ public struct PinPoint {
     
     
     static func buildOnMaster(pt: Point, ms: Point, sl0: Point, sl1: Point) -> PinPoint {
-        let isCCW0 = !self.isCCW(a: ms, b: pt, c: sl0)
-        let isCCW1 = self.isCCW(a: ms, b: pt, c: sl1)
+        let isCCW0 = self.isCCW(a: pt, b: ms, c: sl0)
+        let isCCW1 = self.isCCW(a: pt, b: ms, c: sl1)
         
         let type: Int
         if isCCW0 == isCCW1 {
             type = isCCW1 ? -1 : 1
         } else {
-            type = isCCW0 == true && isCCW1 == false ? -2 : 2
+            type = isCCW0 ? 2 : -2
         }
 
+        print(type)
+        
         let point = DataNormalizer.convert(point: pt)
         
         return PinPoint(point: point, type: type)

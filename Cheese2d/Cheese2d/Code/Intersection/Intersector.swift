@@ -40,6 +40,9 @@ public struct Intersector {
         var pinPoints = [PinPoint]()
         var borders = [Border]()
         
+        let masterCount = iMaster.count
+        let slaveCount = iSlave.count
+        
         let n = masterIndices.count
         var i = 0
         let msLastIx = iMaster.count - 1
@@ -71,36 +74,45 @@ public struct Intersector {
                     let point = Intersector.cross(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
                     if intersectionTest == 1 {
                         //crossMap.addMate(master: msIx0, slave: slIx0, value: point)
-                        let pinPoint = PinPoint.buildSimple(pt: point, ms: ms0, sl: sl0)
+                        let pinPoint = PinPoint.buildSimple(pt: point, ms: ms1, sl: sl1)
                         pinPoints.append(pinPoint)
                     } else {
-                        var extremeMsIx = -1
-                        var extremeSlIx = -1
-                        if ms0 == point {
-                            extremeMsIx = msIx0
-                        } else if ms1 == point {
-                            extremeMsIx = msIx1
+                        let isMsEnd = ms0 == point || ms1 == point
+                        let isSlEnd = sl0 == point || sl1 == point
+                        
+                        var prevMs = msIx0
+                        var nextMs = msIx1
+                        
+                        var prevSl = slIx0
+                        var nextSl = slIx1
+                        
+                        if isMsEnd {
+                            if ms0 == point {
+                                prevMs = (msIx0 - 1 + masterCount) % masterCount
+                            } else {
+                                nextMs = (msIx1 + 1) % masterCount
+                            }
                         }
                         
-                        if sl0 == point {
-                            extremeSlIx = slIx0
-                        } else if sl1 == point {
-                            extremeSlIx = slIx1
+                        if isSlEnd {
+                            if sl0 == point {
+                                prevSl = (slIx0 - 1 + slaveCount) % slaveCount
+                            } else {
+                                nextSl = (slIx1 + 1) % slaveCount
+                            }
                         }
-
-                        if extremeMsIx >= 0 && extremeSlIx >= 0 {
+                        
+                        if isMsEnd && isSlEnd {
                             // pin point is on the vertex
-                            extremes.addMate(master: extremeMsIx, slave: extremeSlIx, value: 0)
-                        } else if extremeMsIx >= 0 {
+                            
+                        } else if isMsEnd {
                             // pin point is on slave
-                            print("on slave")
-                            extremes.addMate(master: extremeMsIx, slave: extremeSlIx, value: 1)
-                        } else if extremeSlIx >= 0 {
+                            print("onSlave")
+                        } else if isSlEnd {
                             // pin point is on master
-                            print("on master")
-                            
-                            
-                        //    extremes.addMate(master: extremeMsIx, slave: extremeSlIx, value: 2)
+                            let pinPoint = PinPoint.buildOnMaster(pt: point, ms: iMaster[nextMs], sl0: iSlave[prevSl], sl1: iSlave[nextSl])
+                            pinPoints.append(pinPoint)
+                            print("OnMaster")
                         }
                     }
                 } else {
@@ -109,7 +121,7 @@ public struct Intersector {
                     let sl0Pt = IndexPoint(index: slIx0, point: sl0)
                     let sl1Pt = IndexPoint(index: slIx1, point: sl1)
                     
-                    let border = Intersector.buildBorder(ms0Pt: ms0Pt, ms1Pt: ms1Pt, sl0Pt: sl0Pt, sl1Pt: sl1Pt, msCount: iMaster.count, slCount: iSlave.count)
+                    let border = Intersector.buildBorder(ms0Pt: ms0Pt, ms1Pt: ms1Pt, sl0Pt: sl0Pt, sl1Pt: sl1Pt, msCount: masterCount, slCount: slaveCount)
                     borders.append(border)
                 }
             } while j < n && msIx0 == masterIndices[j]

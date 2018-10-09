@@ -35,8 +35,8 @@ class IntersectionTest: CoordinateSystemScene {
         let result = Intersector.findPinPath(master: masterPolygon, slave: slavePolygon)
         let points = result.points
         
-        for point in points {
-            self.addSublayer(ShapeDot(position: point, radius: 0.75, color: Colors.red))
+        for pin in points {
+            self.addSublayer(ShapeDot(position: pin.point, radius: 0.75, color: Colors.red))
         }
         
         let paths = result.path

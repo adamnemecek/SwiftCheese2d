@@ -11,8 +11,8 @@ import Foundation
 
 public struct PinPoint {
     
-    let point: CGPoint
-    let type: Int           // 1 - in, -1 - out, 2 in-out, -2 out-in
+    public let point: CGPoint
+    public let type: Int           // 1 - in, -1 - out, 2 in-out, -2 out-in
     
     
     static func buildSimple(pt: Point, ms: Point, sl: Point) -> PinPoint {
@@ -21,6 +21,23 @@ public struct PinPoint {
         
         let point = DataNormalizer.convert(point: pt)
 
+        return PinPoint(point: point, type: type)
+    }
+    
+    
+    static func buildOnMaster(pt: Point, ms: Point, sl0: Point, sl1: Point) -> PinPoint {
+        let isCCW0 = !self.isCCW(a: ms, b: pt, c: sl0)
+        let isCCW1 = self.isCCW(a: ms, b: pt, c: sl1)
+        
+        let type: Int
+        if isCCW0 == isCCW1 {
+            type = isCCW1 ? -1 : 1
+        } else {
+            type = isCCW0 == true && isCCW1 == false ? -2 : 2
+        }
+
+        let point = DataNormalizer.convert(point: pt)
+        
         return PinPoint(point: point, type: type)
     }
     

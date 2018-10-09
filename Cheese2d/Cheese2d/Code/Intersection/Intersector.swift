@@ -35,9 +35,9 @@ public struct Intersector {
 
         let masterIndices = posMatrix.masterIndices.numbers
         let slaveIndices = posMatrix.adjacencies
-        
-        var crossMap = AdjacencyMap<Point>()
+
         var extremes = AdjacencyMap<Int>()
+        var pinPoints = [PinPoint]()
         var borders = [Border]()
         
         let n = masterIndices.count
@@ -70,7 +70,9 @@ public struct Intersector {
                 } else if intersectionTest > 0 {
                     let point = Intersector.cross(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
                     if intersectionTest == 1 {
-                        crossMap.addMate(master: msIx0, slave: slIx0, value: point)
+                        //crossMap.addMate(master: msIx0, slave: slIx0, value: point)
+                        let pinPoint = PinPoint.buildSimple(pt: point, ms: ms0, sl: sl0)
+                        pinPoints.append(pinPoint)
                     } else {
                         var extremeMsIx = -1
                         var extremeSlIx = -1
@@ -87,10 +89,17 @@ public struct Intersector {
                         }
 
                         if extremeMsIx >= 0 && extremeSlIx >= 0 {
+                            // pin point is on the vertex
                             extremes.addMate(master: extremeMsIx, slave: extremeSlIx, value: 0)
                         } else if extremeMsIx >= 0 {
+                            // pin point is on slave
+                            print("on slave")
                             extremes.addMate(master: extremeMsIx, slave: extremeSlIx, value: 1)
                         } else if extremeSlIx >= 0 {
+                            // pin point is on master
+                            print("on master")
+                            
+                            
                         //    extremes.addMate(master: extremeMsIx, slave: extremeSlIx, value: 2)
                         }
                     }
@@ -112,7 +121,7 @@ public struct Intersector {
 
         borders = merger.merge()
         
-        let result = (points: DataNormalizer.convert(iPoints: crossMap.values), path: borders)
+        let result = (points: pinPoints, path: borders)
 
         return result
     }

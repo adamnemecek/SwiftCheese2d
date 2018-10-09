@@ -28,8 +28,8 @@ class BorderTest: CoordinateSystemScene {
     private var slave: [CGPoint] = {
         var slave = [CGPoint]()
         slave.append(CGPoint(x: 15, y: 10))
-        slave.append(CGPoint(x: 15, y: -10))
         slave.append(CGPoint(x: 5, y: 0))
+        slave.append(CGPoint(x: 15, y: -10))
 
         return slave
     }()
@@ -69,8 +69,8 @@ class BorderTest: CoordinateSystemScene {
         let result = Intersector.findPinPath(master: master, slave: slave)
         let points = result.points
         
-        for point in points {
-            self.addSublayer(ShapeDot(position: point, radius: 0.75, color: Colors.red))
+        for pin in points {
+            self.addSublayer(PinDot(pin: pin, radius: 1.0))
         }
         
         let paths = result.path
@@ -136,13 +136,22 @@ extension BorderTest: MouseCompatible {
         
         let x = CGFloat(Int(point.x * 2)) / 2
         let y = CGFloat(Int(point.y * 2)) / 2
-        
+
+        let point = CGPoint(x: x, y: y)
         if isSlave {
-            self.slave[index] = CGPoint(x: x, y: y)
+            let prevPoint = self.slave[index]
+            if point != prevPoint {
+                print("poibt: \(point)")
+                self.slave[index] = point
+                self.update()
+            }
         } else {
-            self.master[index] = CGPoint(x: x, y: y)
+            let prevPoint = self.master[index]
+            if point != prevPoint {
+                print("poibt: \(point)")
+                self.master[index] = point
+                self.update()
+            }
         }
-        
-        self.update()
     }
 }

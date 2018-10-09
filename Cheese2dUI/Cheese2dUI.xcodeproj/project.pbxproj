@@ -26,6 +26,7 @@
 		542D79042154CD7F000B1D1A /* CoordinateSystemScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D78F62154CD7F000B1D1A /* CoordinateSystemScene.swift */; };
 		542D790F2154CDB0000B1D1A /* libCheese2d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 542D790B2154CDA7000B1D1A /* libCheese2d.dylib */; };
 		54B8756C2169356900D823AE /* MouseCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B8756B2169356900D823AE /* MouseCompatible.swift */; };
+		54E25D7E216CD8CE00B6FE58 /* PinDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E25D7D216CD8CE00B6FE58 /* PinDot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		542D78F62154CD7F000B1D1A /* CoordinateSystemScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateSystemScene.swift; sourceTree = "<group>"; };
 		542D79052154CDA6000B1D1A /* Cheese2d.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Cheese2d.xcodeproj; path = ../Cheese2d/Cheese2d.xcodeproj; sourceTree = "<group>"; };
 		54B8756B2169356900D823AE /* MouseCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseCompatible.swift; sourceTree = "<group>"; };
+		54E25D7D216CD8CE00B6FE58 /* PinDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				542D78EE2154CD7F000B1D1A /* ShapePath.swift */,
 				542D78EF2154CD7F000B1D1A /* ShapePolygon.swift */,
 				542D78F02154CD7F000B1D1A /* ShapeText.swift */,
+				54E25D7D216CD8CE00B6FE58 /* PinDot.swift */,
 			);
 			path = Shape;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				542D78FC2154CD7F000B1D1A /* ShapeLine.swift in Sources */,
 				542D79042154CD7F000B1D1A /* CoordinateSystemScene.swift in Sources */,
 				542D79002154CD7F000B1D1A /* CGPoint+Extension.swift in Sources */,
+				54E25D7E216CD8CE00B6FE58 /* PinDot.swift in Sources */,
 				542D78FF2154CD7F000B1D1A /* ShapeText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,7 +425,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cheese2dUI/Cheese2dUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = HPV9E52JPX;
+				DEVELOPMENT_TEAM = 5M2XN6UJVC;
 				INFOPLIST_FILE = Cheese2dUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -440,7 +444,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cheese2dUI/Cheese2dUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = HPV9E52JPX;
+				DEVELOPMENT_TEAM = 5M2XN6UJVC;
 				INFOPLIST_FILE = Cheese2dUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

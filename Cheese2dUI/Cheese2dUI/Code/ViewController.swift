@@ -27,20 +27,17 @@ class ViewController: NSViewController {
 
     override func mouseDown(with event: NSEvent) {
         let point = self.canvasView.convert(point: event.locationInWindow)
-        print("down x: \(point.x), y: \(point.y)")
         self.scene.mouseDown(point: point)
     }
     
     
     override func mouseUp(with event: NSEvent) {
         let point = self.canvasView.convert(point: event.locationInWindow)
-        //print("down x: \(point.x), y: \(point.y)")
         self.scene.mouseUp(point: point)
     }
     
     override func mouseDragged(with event: NSEvent) {
         let point = self.canvasView.convert(point: event.locationInWindow)
-        //print("down x: \(point.x), y: \(point.y)")
         self.scene.mouseDragged(point: point)
     }
     

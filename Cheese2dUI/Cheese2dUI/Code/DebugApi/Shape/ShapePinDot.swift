@@ -1,5 +1,5 @@
 //
-//  PinDot.swift
+//  ShapePinDot.swift
 //  Cheese2dUI
 //
 //  Created by Nail Sharipov on 09/10/2018.
@@ -10,7 +10,7 @@
 import Cocoa
 import Cheese2d
 
-class PinDot: CAShapeLayer {
+class ShapePinDot: CAShapeLayer {
     
     init(pin: PinPoint, radius: CGFloat) {
         super.init()
@@ -50,7 +50,7 @@ class PinDot: CAShapeLayer {
         
         let linePath = CGMutablePath()
         
-        linePath.addArc(center: point, radius: radius, startAngle: 0, endAngle: 3.14, clockwise: clockwise)
+        linePath.addArc(center: point, radius: radius, startAngle: 0, endAngle: CGFloat.pi, clockwise: clockwise)
         
         arc.path = linePath
         arc.fillColor = color
@@ -60,10 +60,10 @@ class PinDot: CAShapeLayer {
     }
     
     
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
     
     override init(layer: Any) {
         super.init(layer: layer)

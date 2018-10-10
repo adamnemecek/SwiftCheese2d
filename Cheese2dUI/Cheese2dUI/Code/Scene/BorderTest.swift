@@ -61,7 +61,9 @@ class BorderTest: CoordinateSystemScene {
             return
         }
         for layer in layers {
-            layer.removeFromSuperlayer()
+            if !(layer is ShapeCoordinatSystem || layer is ShapeLine) {
+                layer.removeFromSuperlayer()
+            }
         }
     }
     
@@ -70,7 +72,7 @@ class BorderTest: CoordinateSystemScene {
         let points = result.points
         
         for pin in points {
-            self.addSublayer(PinDot(pin: pin, radius: 1.0))
+            self.addSublayer(ShapePinDot(pin: pin, radius: 1.0))
         }
         
         let paths = result.path
@@ -141,14 +143,14 @@ extension BorderTest: MouseCompatible {
         if isSlave {
             let prevPoint = self.slave[index]
             if point != prevPoint {
-                print("poibt: \(point)")
+                print("point: \(point)")
                 self.slave[index] = point
                 self.update()
             }
         } else {
             let prevPoint = self.master[index]
             if point != prevPoint {
-                print("poibt: \(point)")
+                print("dragg: \(point)")
                 self.master[index] = point
                 self.update()
             }

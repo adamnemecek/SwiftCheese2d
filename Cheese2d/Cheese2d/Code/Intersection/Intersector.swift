@@ -77,6 +77,7 @@ public struct Intersector {
                         let pinPoint = PinPoint.buildSimple(pt: point, ms: ms1, sl: sl1)
                         pinPoints.append(pinPoint)
                     } else {
+                        print("PinPoint")
                         let isMsEnd = ms0 == point || ms1 == point
                         let isSlEnd = sl0 == point || sl1 == point
                         
@@ -104,9 +105,13 @@ public struct Intersector {
                         
                         if isMsEnd && isSlEnd {
                             // pin point is on the vertex
-                            
+                            let pinPoint = PinPoint.buildOnCross(pt: point, ms0: iMaster[prevMs], ms1: iMaster[nextMs], sl0: iSlave[prevSl], sl1: iSlave[nextSl])
+                            pinPoints.append(pinPoint)
+                            print("onCommon")
                         } else if isMsEnd {
                             // pin point is on slave
+                            let pinPoint = PinPoint.buildOnSlave(pt: point, ms0: iMaster[prevMs], ms1: iMaster[nextMs], sl: iSlave[nextSl])
+                            pinPoints.append(pinPoint)
                             print("onSlave")
                         } else if isSlEnd {
                             // pin point is on master

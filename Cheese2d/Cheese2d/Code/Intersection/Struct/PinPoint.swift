@@ -31,9 +31,9 @@ public struct PinPoint {
         
         let type: Int
         if isCCW0 == isCCW1 {
-            type = isCCW1 ? -1 : 1
+            type = isCCW0 ? -2 : 2
         } else {
-            type = isCCW0 ? 2 : -2
+            type = isCCW0 ? -1 : 1
         }
 
         print(type)
@@ -41,6 +41,33 @@ public struct PinPoint {
         let point = DataNormalizer.convert(point: pt)
         
         return PinPoint(point: point, type: type)
+    }
+    
+    
+    static func buildOnSlave(pt: Point, ms0: Point, ms1: Point, sl: Point) -> PinPoint {
+        let isCCW0 = self.isCCW(a: pt, b: ms0, c: sl)
+        let isCCW1 = self.isCCW(a: pt, b: ms1, c: sl)
+        
+        let type: Int
+        if isCCW0 == isCCW1 {
+            type = isCCW0 ? -2 : 2
+        } else {
+            type = isCCW0 ? -1 : 1
+        }
+        
+        print(type)
+        
+        let point = DataNormalizer.convert(point: pt)
+        
+        return PinPoint(point: point, type: type)
+    }
+    
+    
+    static func buildOnCross(pt: Point, ms0: Point, ms1: Point, sl0: Point, sl1: Point) -> PinPoint {
+        let dx = ms1.x - ms0.x
+        let dy = ms1.y - ms0.y
+        let ms = Point(x: pt.x + dx, y: pt.y + dy)
+        return buildOnMaster(pt: pt, ms: ms, sl0: sl0, sl1: sl1)
     }
     
     

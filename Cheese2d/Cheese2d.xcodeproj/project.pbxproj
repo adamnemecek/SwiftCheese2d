@@ -14,7 +14,7 @@
 		540F9472216F883200CF8A9D /* PinHandlerSortTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F9471216F883200CF8A9D /* PinHandlerSortTest.swift */; };
 		540F9474216F888900CF8A9D /* CornerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F9473216F888900CF8A9D /* CornerTest.swift */; };
 		5411749F216764C000399820 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411749E216764C000399820 /* Range.swift */; };
-		541174A121676E9C00399820 /* PinPathMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541174A021676E9C00399820 /* PinPathMerger.swift */; };
+		541174A121676E9C00399820 /* PinPathAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541174A021676E9C00399820 /* PinPathAggregator.swift */; };
 		54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */; };
 		54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FED2157E2C100E99295 /* SortedNumbers.swift */; };
 		5430C8E021621F4100DE1441 /* IndexPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5430C8DF21621F4100DE1441 /* IndexPoint.swift */; };
@@ -30,6 +30,7 @@
 		545A2D542155233300047C8D /* DebugFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D532155233300047C8D /* DebugFile.swift */; };
 		5470E5B82163FB0600AC2577 /* PinPathTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470E5B72163FB0600AC2577 /* PinPathTest.swift */; };
 		547BC90F216A878700A64EB0 /* PinPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547BC90E216A878700A64EB0 /* PinPoint.swift */; };
+		54BD6B5F216F972E0017D29C /* PinCombiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD6B5E216F972E0017D29C /* PinCombiner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +51,7 @@
 		540F9471216F883200CF8A9D /* PinHandlerSortTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinHandlerSortTest.swift; sourceTree = "<group>"; };
 		540F9473216F888900CF8A9D /* CornerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerTest.swift; sourceTree = "<group>"; };
 		5411749E216764C000399820 /* Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
-		541174A021676E9C00399820 /* PinPathMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPathMerger.swift; sourceTree = "<group>"; };
+		541174A021676E9C00399820 /* PinPathAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPathAggregator.swift; sourceTree = "<group>"; };
 		54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixTest.swift; sourceTree = "<group>"; };
 		54191FED2157E2C100E99295 /* SortedNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedNumbers.swift; sourceTree = "<group>"; };
 		5430C8DF21621F4100DE1441 /* IndexPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexPoint.swift; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 		545A2D532155233300047C8D /* DebugFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugFile.swift; sourceTree = "<group>"; };
 		5470E5B72163FB0600AC2577 /* PinPathTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPathTest.swift; sourceTree = "<group>"; };
 		547BC90E216A878700A64EB0 /* PinPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPoint.swift; sourceTree = "<group>"; };
+		54BD6B5E216F972E0017D29C /* PinCombiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCombiner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,8 +148,9 @@
 				545A2D3321550F8200047C8D /* Intersector.swift */,
 				5404A25A215C0D1200DC10BB /* DataNormalizer.swift */,
 				5430C8E32162551900DE1441 /* IntersectorResult.swift */,
-				541174A021676E9C00399820 /* PinPathMerger.swift */,
 				540F9469216F271500CF8A9D /* Corner.swift */,
+				54BD6B5E216F972E0017D29C /* PinCombiner.swift */,
+				541174A021676E9C00399820 /* PinPathAggregator.swift */,
 			);
 			path = Intersection;
 			sourceTree = "<group>";
@@ -282,9 +285,10 @@
 				540F946A216F271500CF8A9D /* Corner.swift in Sources */,
 				54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */,
 				545A2D2621550E8700047C8D /* Cheese2d.m in Sources */,
-				541174A121676E9C00399820 /* PinPathMerger.swift in Sources */,
+				541174A121676E9C00399820 /* PinPathAggregator.swift in Sources */,
 				5411749F216764C000399820 /* Range.swift in Sources */,
 				545A2D3F21550F8200047C8D /* BoxArea.swift in Sources */,
+				54BD6B5F216F972E0017D29C /* PinCombiner.swift in Sources */,
 				5404A259215C0BDB00DC10BB /* Point.swift in Sources */,
 				540F9470216F6A1B00CF8A9D /* PinHandler.swift in Sources */,
 				5430C8E42162551900DE1441 /* IntersectorResult.swift in Sources */,

@@ -29,6 +29,22 @@ struct PinHandler: Equatable {
     }
     
     
+    init(pinPath: PinPath, index: Int) {
+        self.index = index
+        self.isPinPath = 1
+        self.masterIndex = pinPath.v0.ed
+        self.offsetFactor = pinPath.offsetFactor
+    }
+    
+    
+    init(pinPoint: PinPoint, index: Int) {
+        self.index = index
+        self.isPinPath = 0
+        self.masterIndex = pinPoint.masterIndex
+        self.offsetFactor = pinPoint.offsetFactor
+    }
+    
+    
     static func == (lhs: PinHandler, rhs: PinHandler) -> Bool {
         return lhs.masterIndex == rhs.masterIndex &&
             lhs.offsetFactor == rhs.offsetFactor

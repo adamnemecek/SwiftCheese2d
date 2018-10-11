@@ -73,7 +73,7 @@ public struct Intersector {
                 } else if intersectionTest > 0 {
                     let point = Intersector.cross(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
                     if intersectionTest == 1 {
-                        let pinPoint = PinPoint.buildSimple(pt: point, ms: ms1, sl: sl1)
+                        let pinPoint = PinPoint.buildSimple(pt: point, ms0: ms0, ms1: ms1, sl: sl1, masterIndex: msIx0)
                         pinPoints.append(pinPoint)
                     } else {
                         print("PinPoint")
@@ -104,17 +104,17 @@ public struct Intersector {
                         
                         if isMsEnd && isSlEnd {
                             // pin point is on the vertex
-                            let pinPoint = PinPoint.buildOnCross(pt: point, ms0: iMaster[prevMs], ms1: iMaster[nextMs], sl0: iSlave[prevSl], sl1: iSlave[nextSl])
+                            let pinPoint = PinPoint.buildOnCross(pt: point, ms0: iMaster[prevMs], ms1: iMaster[nextMs], sl0: iSlave[prevSl], sl1: iSlave[nextSl], masterIndex: msIx0)
                             pinPoints.append(pinPoint)
                             print("onCommon")
                         } else if isMsEnd {
                             // pin point is on slave
-                            let pinPoint = PinPoint.buildOnSlave(pt: point, ms0: iMaster[prevMs], ms1: iMaster[nextMs], sl: iSlave[nextSl])
+                            let pinPoint = PinPoint.buildOnSlave(pt: point, ms0: iMaster[prevMs], ms1: iMaster[nextMs], sl: iSlave[nextSl], masterIndex: msIx0)
                             pinPoints.append(pinPoint)
                             print("onSlave")
                         } else if isSlEnd {
                             // pin point is on master
-                            let pinPoint = PinPoint.buildOnMaster(pt: point, ms: iMaster[nextMs], sl0: iSlave[prevSl], sl1: iSlave[nextSl])
+                            let pinPoint = PinPoint.buildOnMaster(pt: point, ms0: iMaster[prevMs], ms1: iMaster[nextMs], sl0: iSlave[prevSl], sl1: iSlave[nextSl], masterIndex: msIx0)
                             pinPoints.append(pinPoint)
                             print("OnMaster")
                         }
@@ -135,7 +135,7 @@ public struct Intersector {
             i = j
         }
         
-        var merger = PinPathMerger(array: pinPaths, masterCount: iMaster.count)
+        var merger = PinPathAggregator(array: pinPaths, masterCount: iMaster.count)
 
         pinPaths = merger.merge()
         

@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 public struct Range {
     let begin: Int
     let end: Int

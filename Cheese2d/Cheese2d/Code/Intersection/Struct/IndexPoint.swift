@@ -1,5 +1,5 @@
 //
-//  BPoint.swift
+//  IndexPoint.swift
 //  Cheese2d
 //
 //  Created by Nail Sharipov on 01/10/2018.

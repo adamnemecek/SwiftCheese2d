@@ -1,5 +1,5 @@
 //
-//  PinPathMerger.swift
+//  PinPathAggregator.swift
 //  Cheese2d
 //
 //  Created by Nail Sharipov on 05/10/2018.
@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct PinPathMerger {
+struct PinPathAggregator {
     
     private var pinPathArray: [PinPath]
     private let masterCount: Int
@@ -59,7 +59,7 @@ struct PinPathMerger {
                 isZeroCorner = 1
             }
             
-            let path = PinPath(v0: border.v0, v1: v1, mpOffset: border.mpOffset, isZeroCorner: isZeroCorner, length: length)
+            let path = PinPath(v0: border.v0, v1: v1, mpOffset: border.offsetFactor, isZeroCorner: isZeroCorner, length: length)
             
             paths.append(path)
             
@@ -71,7 +71,7 @@ struct PinPathMerger {
             let last = paths[paths.count - 1]
             
             if first.v0.ms == masterCount - 1 && last.v1.ms == 1 {
-                paths[0] = PinPath(v0: last.v0, v1: first.v1, mpOffset: last.mpOffset, isZeroCorner: 1, length: first.length + last.length)
+                paths[0] = PinPath(v0: last.v0, v1: first.v1, mpOffset: last.offsetFactor, isZeroCorner: 1, length: first.length + last.length)
                 paths.remove(at: paths.count - 1)
             }
         }
@@ -84,7 +84,7 @@ struct PinPathMerger {
         if b0.v0.ed != b1.v1.ed {
             return b0.v0.ed > b1.v1.ed
         } else {
-            return b0.mpOffset > b1.mpOffset
+            return b0.offsetFactor > b1.offsetFactor
         }
     }
     
@@ -104,7 +104,7 @@ struct PinPathMerger {
             var i = 1
             while i < m {
                 let b = pinPathArray[i]
-                if PinPathMerger.compare(b0: a, b1: b) {
+                if PinPathAggregator.compare(b0: a, b1: b) {
                     pinPathArray[i - 1] = b
                     isNotSorted = true
                 } else {

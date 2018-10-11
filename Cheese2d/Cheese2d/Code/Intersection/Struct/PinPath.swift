@@ -22,7 +22,7 @@ struct PinPath {
 
     let isZeroCorner: Int
     let length: Int
-    let mpOffset: Int64
+    let offsetFactor: Int64
     
     var isZeroLength: Bool {
         return v0.pt == v1.pt
@@ -34,7 +34,7 @@ struct PinPath {
         self.v1 = v1
         self.isZeroCorner = isZeroCorner
         self.length = length
-        self.mpOffset = mpOffset
+        self.offsetFactor = mpOffset
     }
     
     
@@ -45,7 +45,7 @@ struct PinPath {
         self.length = length
         let dx = mp0.x - v0.pt.x
         let dy = mp0.y - v0.pt.y
-        self.mpOffset = dx * dx + dy * dy
+        self.offsetFactor = dx * dx + dy * dy
     }
 
     

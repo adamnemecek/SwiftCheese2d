@@ -220,8 +220,8 @@ public struct Intersector {
     
     
     private static func isCCW(a: Point, b: Point, c: Point) -> Int {
-        let m0 = Int64(c.y - a.y) * Int64(b.x - a.x)
-        let m1 = Int64(b.y - a.y) * Int64(c.x - a.x)
+        let m0 = (c.y - a.y) * (b.x - a.x)
+        let m1 = (b.y - a.y) * (c.x - a.x)
     
         if m0 < m1 {
             return -1
@@ -234,10 +234,10 @@ public struct Intersector {
     
     
     private static func cross(a0: Point, a1: Point, b0: Point, b1: Point) -> Point {
-        let dxA = Int64(a0.x - a1.x)
-        let dyB = Int64(b0.y - b1.y)
-        let dyA = Int64(a0.y - a1.y)
-        let dxB = Int64(b0.x - b1.x)
+        let dxA = a0.x - a1.x
+        let dyB = b0.y - b1.y
+        let dyA = a0.y - a1.y
+        let dxB = b0.x - b1.x
 
         let divider = dxA * dyB - dyA * dxB
     
@@ -246,12 +246,12 @@ public struct Intersector {
         let xyA = CGFloat(a0.x * a1.y - a0.y * a1.x)
         let xyB = CGFloat(b0.x * b1.y - b0.y * b1.x)
         
-        let  invert_divider: CGFloat = 1.0 / CGFloat(divider)
+        let invert_divider: CGFloat = 1.0 / CGFloat(divider)
         
         let x = xyA * CGFloat(b0.x - b1.x) - CGFloat(a0.x - a1.x) * xyB
         let y = xyA * CGFloat(b0.y - b1.y) - CGFloat(a0.y - a1.y) * xyB
         
-        return Point(x: Int(x * invert_divider), y: Int(y * invert_divider))
+        return Point(x: Int64(x * invert_divider), y: Int64(y * invert_divider))
     }
     
 }

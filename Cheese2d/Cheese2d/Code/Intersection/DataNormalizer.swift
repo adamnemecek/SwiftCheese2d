@@ -21,11 +21,11 @@ class DataNormalizer {
         iPoints.reserveCapacity(n)
         
         var i = 0
-        var prev = Point(x: Int.max, y: Int.max)
+        var prev = Point(x: Int64.max, y: Int64.max)
         while i < n {
             let p = points[i]
             i += 1
-            let iPoint = Point(x: Int(p.x * revert_convertation_precision), y: Int(p.y * revert_convertation_precision))
+            let iPoint = Point(x: Int64(p.x * revert_convertation_precision), y: Int64(p.y * revert_convertation_precision))
             if iPoint.x != prev.x || iPoint.y != prev.y {
                 iPoints.append(iPoint)
                 prev = iPoint
@@ -52,7 +52,7 @@ class DataNormalizer {
     }
     
     static func convert(point: CGPoint) -> Point {
-        return Point(x: Int(point.x * revert_convertation_precision), y: Int(point.y * revert_convertation_precision))
+        return Point(x: Int64(point.x * revert_convertation_precision), y: Int64(point.y * revert_convertation_precision))
     }
 
 }

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5404A259215C0BDB00DC10BB /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404A258215C0BDB00DC10BB /* Point.swift */; };
 		5404A25B215C0D1200DC10BB /* DataNormalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404A25A215C0D1200DC10BB /* DataNormalizer.swift */; };
+		540F946A216F271500CF8A9D /* VectorCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F9469216F271500CF8A9D /* VectorCorner.swift */; };
+		540F946C216F27F400CF8A9D /* Point+VectorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F946B216F27F400CF8A9D /* Point+VectorExtension.swift */; };
+		540F946E216F43AE00CF8A9D /* VectorCornerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F946D216F43AE00CF8A9D /* VectorCornerTest.swift */; };
 		5411749F216764C000399820 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411749E216764C000399820 /* Range.swift */; };
 		541174A121676E9C00399820 /* BordMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541174A021676E9C00399820 /* BordMerger.swift */; };
 		54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */; };
@@ -48,6 +51,9 @@
 /* Begin PBXFileReference section */
 		5404A258215C0BDB00DC10BB /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		5404A25A215C0D1200DC10BB /* DataNormalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataNormalizer.swift; sourceTree = "<group>"; };
+		540F9469216F271500CF8A9D /* VectorCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorCorner.swift; sourceTree = "<group>"; };
+		540F946B216F27F400CF8A9D /* Point+VectorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Point+VectorExtension.swift"; sourceTree = "<group>"; };
+		540F946D216F43AE00CF8A9D /* VectorCornerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorCornerTest.swift; sourceTree = "<group>"; };
 		5411749E216764C000399820 /* Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		541174A021676E9C00399820 /* BordMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BordMerger.swift; sourceTree = "<group>"; };
 		54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixTest.swift; sourceTree = "<group>"; };
@@ -153,6 +159,7 @@
 				545A2D3121550F8200047C8D /* CGPoint+extension.swift */,
 				5428CA70215977360007AF80 /* EdgeLine.swift */,
 				5404A258215C0BDB00DC10BB /* Point.swift */,
+				540F946B216F27F400CF8A9D /* Point+VectorExtension.swift */,
 			);
 			path = Math;
 			sourceTree = "<group>";
@@ -166,6 +173,7 @@
 				5404A25A215C0D1200DC10BB /* DataNormalizer.swift */,
 				5430C8E32162551900DE1441 /* IntersectorResult.swift */,
 				541174A021676E9C00399820 /* BordMerger.swift */,
+				540F9469216F271500CF8A9D /* VectorCorner.swift */,
 			);
 			path = Intersection;
 			sourceTree = "<group>";
@@ -188,6 +196,7 @@
 				54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */,
 				545A2D4F2155142600047C8D /* SortedNumbersTest.swift */,
 				5470E5B72163FB0600AC2577 /* BorderTest.swift */,
+				540F946D216F43AE00CF8A9D /* VectorCornerTest.swift */,
 				545A2D4821550F9000047C8D /* Info.plist */,
 			);
 			path = Tests;
@@ -296,6 +305,7 @@
 				5404A25B215C0D1200DC10BB /* DataNormalizer.swift in Sources */,
 				5430C8E021621F4100DE1441 /* IndexPoint.swift in Sources */,
 				547BC90F216A878700A64EB0 /* PinPoint.swift in Sources */,
+				540F946A216F271500CF8A9D /* VectorCorner.swift in Sources */,
 				547BC90D216A86F500A64EB0 /* Intersector+Border.swift in Sources */,
 				54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */,
 				54E327A82156AD00005BBFC3 /* AdjacencyMap.swift in Sources */,
@@ -303,6 +313,7 @@
 				541174A121676E9C00399820 /* BordMerger.swift in Sources */,
 				5411749F216764C000399820 /* Range.swift in Sources */,
 				545A2D3F21550F8200047C8D /* BoxArea.swift in Sources */,
+				540F946C216F27F400CF8A9D /* Point+VectorExtension.swift in Sources */,
 				5404A259215C0BDB00DC10BB /* Point.swift in Sources */,
 				545A2D3B21550F8200047C8D /* CGPoint+extension.swift in Sources */,
 				5428CA71215977360007AF80 /* EdgeLine.swift in Sources */,
@@ -322,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				545A2D502155142600047C8D /* SortedNumbersTest.swift in Sources */,
+				540F946E216F43AE00CF8A9D /* VectorCornerTest.swift in Sources */,
 				54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */,
 				5470E5B82163FB0600AC2577 /* BorderTest.swift in Sources */,
 			);

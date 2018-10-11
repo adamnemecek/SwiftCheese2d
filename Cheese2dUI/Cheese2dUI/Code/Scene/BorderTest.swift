@@ -6,8 +6,6 @@
 //  Copyright © 2018 Nail Sharipov. All rights reserved.
 //
 
-import Foundation
-
 
 import Cocoa
 import Cheese2d

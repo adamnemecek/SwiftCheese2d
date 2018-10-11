@@ -11,14 +11,14 @@ import Foundation
 
 struct BoxArea {
 
-    static let empty = BoxArea(minX: Int.max, minY: Int.max, maxX: Int.min, maxY: Int.min)
+    static let empty = BoxArea(minX: Int64.max, minY: Int64.max, maxX: Int64.min, maxY: Int64.min)
     
-    private (set) var minX: Int
-    private (set) var minY: Int
-    private (set) var maxX: Int
-    private (set) var maxY: Int
+    private (set) var minX: Int64
+    private (set) var minY: Int64
+    private (set) var maxX: Int64
+    private (set) var maxY: Int64
 
-    init(minX: Int, minY: Int, maxX: Int, maxY: Int) {
+    init(minX: Int64, minY: Int64, maxX: Int64, maxY: Int64) {
         self.minX = minX
         self.minY = minY
         self.maxX = maxX

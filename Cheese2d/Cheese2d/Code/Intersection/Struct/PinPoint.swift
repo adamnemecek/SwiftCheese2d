@@ -36,8 +36,6 @@ public struct PinPoint {
             type = isCCW0 ? -1 : 1
         }
 
-        print(type)
-        
         let point = DataNormalizer.convert(point: pt)
         
         return PinPoint(point: point, type: type)
@@ -55,8 +53,6 @@ public struct PinPoint {
             type = isCCW0 ? -1 : 1
         }
         
-        print(type)
-        
         let point = DataNormalizer.convert(point: pt)
         
         return PinPoint(point: point, type: type)
@@ -64,10 +60,25 @@ public struct PinPoint {
     
     
     static func buildOnCross(pt: Point, ms0: Point, ms1: Point, sl0: Point, sl1: Point) -> PinPoint {
-        let dx = ms1.x - ms0.x
-        let dy = ms1.y - ms0.y
-        let ms = Point(x: pt.x + dx, y: pt.y + dy)
-        return buildOnMaster(pt: pt, ms: ms, sl0: sl0, sl1: sl1)
+        let corner = VectorCorner(o: pt, a: ms0, b: ms1)
+        
+        let isSl0 = corner.isBetween(p: sl0)
+        let isSl1 = corner.isBetween(p: sl1)
+        
+        print("sl0: \(isSl0), sl1: \(isSl1)")
+
+        let type: Int
+        if isSl0 && isSl1 {
+            type = -2
+        } else if !isSl0 && !isSl1 {
+            type = 2
+        } else {
+            type = isSl0 ? 1 : -1
+        }
+        
+        let point = DataNormalizer.convert(point: pt)
+        
+        return PinPoint(point: point, type: type)
     }
     
     

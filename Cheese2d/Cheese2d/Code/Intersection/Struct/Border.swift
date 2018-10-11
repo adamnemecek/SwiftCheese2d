@@ -22,7 +22,7 @@ struct Border {
 
     let isZeroCorner: Int
     let length: Int
-    let mpOffset: Int
+    let mpOffset: Int64
     
     init(v0: BorderVertex, v1: BorderVertex, mp0: Point, isZeroCorner: Int, length: Int) {
         self.v0 = v0
@@ -35,7 +35,7 @@ struct Border {
     }
     
     
-    init(v0: BorderVertex, v1: BorderVertex, mpOffset: Int, isZeroCorner: Int, length: Int) {
+    init(v0: BorderVertex, v1: BorderVertex, mpOffset: Int64, isZeroCorner: Int, length: Int) {
         self.v0 = v0
         self.v1 = v1
         self.isZeroCorner = isZeroCorner

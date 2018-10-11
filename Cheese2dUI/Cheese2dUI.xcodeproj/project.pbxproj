@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		540F9466216F248800CF8A9D /* AngleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F9465216F248800CF8A9D /* AngleTest.swift */; };
 		5412FFAA216399D70038D458 /* BorderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5412FFA9216399D70038D458 /* BorderTest.swift */; };
 		542D78DA2154CD1E000B1D1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542D78D92154CD1E000B1D1A /* Assets.xcassets */; };
 		542D78DD2154CD1E000B1D1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 542D78DB2154CD1E000B1D1A /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		540F9465216F248800CF8A9D /* AngleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleTest.swift; sourceTree = "<group>"; };
 		5412FFA9216399D70038D458 /* BorderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderTest.swift; sourceTree = "<group>"; };
 		542D78D22154CD1D000B1D1A /* Cheese2dUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cheese2dUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		542D78D92154CD1E000B1D1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				542D78F62154CD7F000B1D1A /* CoordinateSystemScene.swift */,
 				5412FFA9216399D70038D458 /* BorderTest.swift */,
 				54B8756B2169356900D823AE /* MouseCompatible.swift */,
+				540F9465216F248800CF8A9D /* AngleTest.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				5412FFAA216399D70038D458 /* BorderTest.swift in Sources */,
 				542D79032154CD7F000B1D1A /* IntersectionTest.swift in Sources */,
 				542D78F82154CD7F000B1D1A /* CanvasView.swift in Sources */,
+				540F9466216F248800CF8A9D /* AngleTest.swift in Sources */,
 				542D78FB2154CD7F000B1D1A /* ShapeDot.swift in Sources */,
 				542D78F72154CD7F000B1D1A /* ViewController.swift in Sources */,
 				542D78FA2154CD7F000B1D1A /* ShapeCoordinatSystem.swift in Sources */,

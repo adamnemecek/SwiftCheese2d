@@ -13,8 +13,8 @@ public struct Point: Equatable {
     
     static let zero = Point(x: 0, y: 0)
     
-    var x: Int
-    var y: Int
+    var x: Int64
+    var y: Int64
 
     public static func == (lhs: Point, rhs: Point) -> Bool {
         return lhs.x == rhs.x && lhs.y == rhs.y

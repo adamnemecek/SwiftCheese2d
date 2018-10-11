@@ -60,12 +60,10 @@ public struct PinPoint {
     
     
     static func buildOnCross(pt: Point, ms0: Point, ms1: Point, sl0: Point, sl1: Point) -> PinPoint {
-        let corner = VectorCorner(o: pt, a: ms0, b: ms1)
+        let corner = Corner(o: pt, a: ms0, b: ms1)
         
         let isSl0 = corner.isBetween(p: sl0)
         let isSl1 = corner.isBetween(p: sl1)
-        
-        print("sl0: \(isSl0), sl1: \(isSl1)")
 
         let type: Int
         if isSl0 && isSl1 {

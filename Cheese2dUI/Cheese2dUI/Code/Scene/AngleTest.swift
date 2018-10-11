@@ -61,7 +61,7 @@ class AngleTest: CoordinateSystemScene {
         let vecOB = ShapeVector(start: points[0], end: points[2], tip: 1.5, lineWidth: 0.3, strokeColor: Colors.darkGray, dash: nil)
         
         
-        let corner = VectorCorner(o: points[0], a: points[1], b: points[2])
+        let corner = Corner(o: points[0], a: points[1], b: points[2])
         
         let result = corner.isBetween(p: points[3])
         

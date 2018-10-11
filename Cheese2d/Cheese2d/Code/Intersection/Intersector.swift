@@ -30,7 +30,7 @@ public struct Intersector {
     }
     
     
-    static func findPinPath(iMaster: [Point], iSlave: [Point]) -> (points: [PinPoint], path: [Border]) {
+    static func findPinPath(iMaster: [Point], iSlave: [Point]) -> (points: [PinPoint], path: [PinPath]) {
         
         let posMatrix = self.buildPossibilityMatrix(master: iMaster, slave: iSlave)
 
@@ -38,7 +38,7 @@ public struct Intersector {
         let slaveIndices = posMatrix.adjacencies
 
         var pinPoints = [PinPoint]()
-        var borders = [Border]()
+        var pinPaths = [PinPath]()
         
         let masterCount = iMaster.count
         let slaveCount = iSlave.count
@@ -125,9 +125,9 @@ public struct Intersector {
                     let sl0Pt = IndexPoint(index: slIx0, point: sl0)
                     let sl1Pt = IndexPoint(index: slIx1, point: sl1)
                     
-                    let border = Intersector.buildBorder(ms0Pt: ms0Pt, ms1Pt: ms1Pt, sl0Pt: sl0Pt, sl1Pt: sl1Pt, msCount: masterCount, slCount: slaveCount)
-                    if !border.isZeroLength {
-                        borders.append(border)
+                    let pinPath = PinPath.buildPinPath(ms0Pt: ms0Pt, ms1Pt: ms1Pt, sl0Pt: sl0Pt, sl1Pt: sl1Pt, msCount: masterCount, slCount: slaveCount)
+                    if !pinPath.isZeroLength {
+                        pinPaths.append(pinPath)
                     }
                 }
             } while j < n && msIx0 == masterIndices[j]
@@ -135,11 +135,11 @@ public struct Intersector {
             i = j
         }
         
-        var merger = BordMerger(borders: borders, masterCount: iMaster.count)
+        var merger = PinPathMerger(array: pinPaths, masterCount: iMaster.count)
 
-        borders = merger.merge()
+        pinPaths = merger.merge()
         
-        let result = (points: pinPoints, path: borders)
+        let result = (points: pinPoints, path: pinPaths)
 
         return result
     }

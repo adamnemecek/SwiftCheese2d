@@ -79,7 +79,6 @@ struct SortedNumbers {
         return Range(begin: beginIndex, end: endIndex)
     }
     
-    
 }
 
 

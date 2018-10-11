@@ -9,23 +9,29 @@
 import Foundation
 
 
-struct PinHandler {
+struct PinHandler: Equatable {
     
     private let masterIndex: Int
     private let offsetFactor: Int64
     
-    let isBorder: Int           // 0 - false, 1 - true
+    let isPinPath: Int           // 0 - false, 1 - true
     let index: Int              // index in outside array
 
-    private init(point: Point, masterPoint: Point, masterIndex: Int, index: Int, isBorder: Int) {
+    init(point: Point, masterPoint: Point, masterIndex: Int, index: Int, isPinPath: Int) {
         self.index = index
-        self.isBorder = isBorder
+        self.isPinPath = isPinPath
         self.masterIndex = masterIndex
         
         let dx = point.x - masterPoint.x
         let dy = point.x - masterPoint.x
         
         self.offsetFactor = dx * dx + dy * dy
+    }
+    
+    
+    static func == (lhs: PinHandler, rhs: PinHandler) -> Bool {
+        return lhs.masterIndex == rhs.masterIndex &&
+            lhs.offsetFactor == rhs.offsetFactor
     }
     
 }
@@ -69,4 +75,5 @@ extension PinHandler {
             array[m] = a
         } while isNotSorted
     }
+    
 }

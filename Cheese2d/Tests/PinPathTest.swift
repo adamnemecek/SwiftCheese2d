@@ -1,5 +1,5 @@
 //
-//  BorderTest.swift
+//  PinPathTest.swift
 //  Tests
 //
 //  Created by Nail Sharipov on 02/10/2018.
@@ -11,7 +11,7 @@ import XCTest
 @testable import Cheese2d
 
 
-class BorderTest: XCTestCase {
+class PinPathTest: XCTestCase {
     
     
     func testSingle_0_0() {

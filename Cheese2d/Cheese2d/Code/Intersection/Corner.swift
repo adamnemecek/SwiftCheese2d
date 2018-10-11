@@ -1,5 +1,5 @@
 //
-//  VectorCorner.swift
+//  Corner.swift
 //  Cheese2d
 //
 //  Created by Nail Sharipov on 11/10/2018.
@@ -9,7 +9,7 @@
 import Foundation
 
 
-public struct VectorCorner {
+public struct Corner {
     
     let basis: Point
     let dir: Point
@@ -31,12 +31,12 @@ public struct VectorCorner {
         spin = o
         
         dir = a
-        basis = VectorCorner.normal(vec: Point(x: spin.x - dir.x, y: spin.y - dir.y))
+        basis = Corner.normal(vec: Point(x: spin.x - dir.x, y: spin.y - dir.y))
         
-        let satellite = VectorCorner.normal(vec: Point(x: spin.x - b.x, y: spin.y - b.y))
+        let satellite = Corner.normal(vec: Point(x: spin.x - b.x, y: spin.y - b.y))
         
         self.projection = basis.mul(vector: satellite)
-        self.isCWS = VectorCorner.isCCWDirection(a: dir, b: spin, c: b)
+        self.isCWS = Corner.isCCWDirection(a: dir, b: spin, c: b)
     }
     
     
@@ -46,26 +46,19 @@ public struct VectorCorner {
     
     
     func isBetween(p: Point) -> Bool {
-        print("----- isBetween")
-        let target = VectorCorner.normal(vec: Point(x: spin.x - p.x, y: spin.y - p.y))
+        let target = Corner.normal(vec: Point(x: spin.x - p.x, y: spin.y - p.y))
         let targetProjection = basis.mul(vector: target)
-        let isTragetCWS = VectorCorner.isCCWDirection(a: dir, b: spin, c: p)
+        let isTragetCWS = Corner.isCCWDirection(a: dir, b: spin, c: p)
 
         let result: Bool
         
         if self.isCWS && isTragetCWS {
             result = targetProjection > self.projection
-            print("case 1")
         } else if (!self.isCWS && !isTragetCWS) {
             result = targetProjection < self.projection
-            print("case 2")
         } else {
             result = !self.isCWS
-            print("case 3")
         }
-        
-        print("isCWS \(isCWS)")
-        print("result \(result)")
         
         return result
     }

@@ -9,16 +9,17 @@
 /* Begin PBXBuildFile section */
 		5404A259215C0BDB00DC10BB /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404A258215C0BDB00DC10BB /* Point.swift */; };
 		5404A25B215C0D1200DC10BB /* DataNormalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404A25A215C0D1200DC10BB /* DataNormalizer.swift */; };
-		540F946A216F271500CF8A9D /* VectorCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F9469216F271500CF8A9D /* VectorCorner.swift */; };
-		540F946E216F43AE00CF8A9D /* VectorCornerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F946D216F43AE00CF8A9D /* VectorCornerTest.swift */; };
+		540F946A216F271500CF8A9D /* Corner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F9469216F271500CF8A9D /* Corner.swift */; };
 		540F9470216F6A1B00CF8A9D /* PinHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F946F216F6A1B00CF8A9D /* PinHandler.swift */; };
+		540F9472216F883200CF8A9D /* PinHandlerSortTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F9471216F883200CF8A9D /* PinHandlerSortTest.swift */; };
+		540F9474216F888900CF8A9D /* CornerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F9473216F888900CF8A9D /* CornerTest.swift */; };
 		5411749F216764C000399820 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411749E216764C000399820 /* Range.swift */; };
-		541174A121676E9C00399820 /* BordMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541174A021676E9C00399820 /* BordMerger.swift */; };
+		541174A121676E9C00399820 /* PinPathMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541174A021676E9C00399820 /* PinPathMerger.swift */; };
 		54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */; };
 		54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FED2157E2C100E99295 /* SortedNumbers.swift */; };
 		5430C8E021621F4100DE1441 /* IndexPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5430C8DF21621F4100DE1441 /* IndexPoint.swift */; };
 		5430C8E42162551900DE1441 /* IntersectorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5430C8E32162551900DE1441 /* IntersectorResult.swift */; };
-		5457CF1C216142AC0056728C /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457CF1B216142AC0056728C /* Border.swift */; };
+		5457CF1C216142AC0056728C /* PinPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457CF1B216142AC0056728C /* PinPath.swift */; };
 		545A2D2421550E8700047C8D /* Cheese2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 545A2D2321550E8700047C8D /* Cheese2d.h */; };
 		545A2D2621550E8700047C8D /* Cheese2d.m in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D2521550E8700047C8D /* Cheese2d.m */; };
 		545A2D3C21550F8200047C8D /* Intersector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D3321550F8200047C8D /* Intersector.swift */; };
@@ -27,10 +28,8 @@
 		545A2D4921550F9000047C8D /* libCheese2d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 545A2D2021550E8700047C8D /* libCheese2d.dylib */; };
 		545A2D502155142600047C8D /* SortedNumbersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D4F2155142600047C8D /* SortedNumbersTest.swift */; };
 		545A2D542155233300047C8D /* DebugFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D532155233300047C8D /* DebugFile.swift */; };
-		5470E5B82163FB0600AC2577 /* BorderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470E5B72163FB0600AC2577 /* BorderTest.swift */; };
-		547BC90D216A86F500A64EB0 /* Intersector+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547BC90C216A86F500A64EB0 /* Intersector+Border.swift */; };
+		5470E5B82163FB0600AC2577 /* PinPathTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470E5B72163FB0600AC2577 /* PinPathTest.swift */; };
 		547BC90F216A878700A64EB0 /* PinPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547BC90E216A878700A64EB0 /* PinPoint.swift */; };
-		54E327A82156AD00005BBFC3 /* AdjacencyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E327A72156AD00005BBFC3 /* AdjacencyMap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,16 +45,17 @@
 /* Begin PBXFileReference section */
 		5404A258215C0BDB00DC10BB /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		5404A25A215C0D1200DC10BB /* DataNormalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataNormalizer.swift; sourceTree = "<group>"; };
-		540F9469216F271500CF8A9D /* VectorCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorCorner.swift; sourceTree = "<group>"; };
-		540F946D216F43AE00CF8A9D /* VectorCornerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorCornerTest.swift; sourceTree = "<group>"; };
+		540F9469216F271500CF8A9D /* Corner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corner.swift; sourceTree = "<group>"; };
 		540F946F216F6A1B00CF8A9D /* PinHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinHandler.swift; sourceTree = "<group>"; };
+		540F9471216F883200CF8A9D /* PinHandlerSortTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinHandlerSortTest.swift; sourceTree = "<group>"; };
+		540F9473216F888900CF8A9D /* CornerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerTest.swift; sourceTree = "<group>"; };
 		5411749E216764C000399820 /* Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
-		541174A021676E9C00399820 /* BordMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BordMerger.swift; sourceTree = "<group>"; };
+		541174A021676E9C00399820 /* PinPathMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPathMerger.swift; sourceTree = "<group>"; };
 		54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixTest.swift; sourceTree = "<group>"; };
 		54191FED2157E2C100E99295 /* SortedNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedNumbers.swift; sourceTree = "<group>"; };
 		5430C8DF21621F4100DE1441 /* IndexPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexPoint.swift; sourceTree = "<group>"; };
 		5430C8E32162551900DE1441 /* IntersectorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntersectorResult.swift; sourceTree = "<group>"; };
-		5457CF1B216142AC0056728C /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
+		5457CF1B216142AC0056728C /* PinPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPath.swift; sourceTree = "<group>"; };
 		545A2D2021550E8700047C8D /* libCheese2d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libCheese2d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		545A2D2321550E8700047C8D /* Cheese2d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cheese2d.h; sourceTree = "<group>"; };
 		545A2D2521550E8700047C8D /* Cheese2d.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cheese2d.m; sourceTree = "<group>"; };
@@ -66,10 +66,8 @@
 		545A2D4821550F9000047C8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		545A2D4F2155142600047C8D /* SortedNumbersTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedNumbersTest.swift; sourceTree = "<group>"; };
 		545A2D532155233300047C8D /* DebugFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugFile.swift; sourceTree = "<group>"; };
-		5470E5B72163FB0600AC2577 /* BorderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderTest.swift; sourceTree = "<group>"; };
-		547BC90C216A86F500A64EB0 /* Intersector+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Intersector+Border.swift"; sourceTree = "<group>"; };
+		5470E5B72163FB0600AC2577 /* PinPathTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPathTest.swift; sourceTree = "<group>"; };
 		547BC90E216A878700A64EB0 /* PinPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPoint.swift; sourceTree = "<group>"; };
-		54E327A72156AD00005BBFC3 /* AdjacencyMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				5404A258215C0BDB00DC10BB /* Point.swift */,
-				5457CF1B216142AC0056728C /* Border.swift */,
+				5457CF1B216142AC0056728C /* PinPath.swift */,
 				5430C8DF21621F4100DE1441 /* IndexPoint.swift */,
 				547BC90E216A878700A64EB0 /* PinPoint.swift */,
 				540F946F216F6A1B00CF8A9D /* PinHandler.swift */,
@@ -146,11 +144,10 @@
 			children = (
 				5457CF18216141490056728C /* Struct */,
 				545A2D3321550F8200047C8D /* Intersector.swift */,
-				547BC90C216A86F500A64EB0 /* Intersector+Border.swift */,
 				5404A25A215C0D1200DC10BB /* DataNormalizer.swift */,
 				5430C8E32162551900DE1441 /* IntersectorResult.swift */,
-				541174A021676E9C00399820 /* BordMerger.swift */,
-				540F9469216F271500CF8A9D /* VectorCorner.swift */,
+				541174A021676E9C00399820 /* PinPathMerger.swift */,
+				540F9469216F271500CF8A9D /* Corner.swift */,
 			);
 			path = Intersection;
 			sourceTree = "<group>";
@@ -161,7 +158,6 @@
 				54191FED2157E2C100E99295 /* SortedNumbers.swift */,
 				545A2D3621550F8200047C8D /* AdjacencyMatrix.swift */,
 				545A2D3721550F8200047C8D /* BoxArea.swift */,
-				54E327A72156AD00005BBFC3 /* AdjacencyMap.swift */,
 				5411749E216764C000399820 /* Range.swift */,
 			);
 			path = Struct;
@@ -170,10 +166,11 @@
 		545A2D4521550F9000047C8D /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				5470E5B72163FB0600AC2577 /* PinPathTest.swift */,
+				540F9471216F883200CF8A9D /* PinHandlerSortTest.swift */,
+				540F9473216F888900CF8A9D /* CornerTest.swift */,
 				54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */,
 				545A2D4F2155142600047C8D /* SortedNumbersTest.swift */,
-				5470E5B72163FB0600AC2577 /* BorderTest.swift */,
-				540F946D216F43AE00CF8A9D /* VectorCornerTest.swift */,
 				545A2D4821550F9000047C8D /* Info.plist */,
 			);
 			path = Tests;
@@ -282,18 +279,16 @@
 				5404A25B215C0D1200DC10BB /* DataNormalizer.swift in Sources */,
 				5430C8E021621F4100DE1441 /* IndexPoint.swift in Sources */,
 				547BC90F216A878700A64EB0 /* PinPoint.swift in Sources */,
-				540F946A216F271500CF8A9D /* VectorCorner.swift in Sources */,
-				547BC90D216A86F500A64EB0 /* Intersector+Border.swift in Sources */,
+				540F946A216F271500CF8A9D /* Corner.swift in Sources */,
 				54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */,
-				54E327A82156AD00005BBFC3 /* AdjacencyMap.swift in Sources */,
 				545A2D2621550E8700047C8D /* Cheese2d.m in Sources */,
-				541174A121676E9C00399820 /* BordMerger.swift in Sources */,
+				541174A121676E9C00399820 /* PinPathMerger.swift in Sources */,
 				5411749F216764C000399820 /* Range.swift in Sources */,
 				545A2D3F21550F8200047C8D /* BoxArea.swift in Sources */,
 				5404A259215C0BDB00DC10BB /* Point.swift in Sources */,
 				540F9470216F6A1B00CF8A9D /* PinHandler.swift in Sources */,
 				5430C8E42162551900DE1441 /* IntersectorResult.swift in Sources */,
-				5457CF1C216142AC0056728C /* Border.swift in Sources */,
+				5457CF1C216142AC0056728C /* PinPath.swift in Sources */,
 				545A2D3C21550F8200047C8D /* Intersector.swift in Sources */,
 				545A2D3E21550F8200047C8D /* AdjacencyMatrix.swift in Sources */,
 				545A2D542155233300047C8D /* DebugFile.swift in Sources */,
@@ -305,9 +300,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				545A2D502155142600047C8D /* SortedNumbersTest.swift in Sources */,
-				540F946E216F43AE00CF8A9D /* VectorCornerTest.swift in Sources */,
+				540F9472216F883200CF8A9D /* PinHandlerSortTest.swift in Sources */,
 				54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */,
-				5470E5B82163FB0600AC2577 /* BorderTest.swift in Sources */,
+				5470E5B82163FB0600AC2577 /* PinPathTest.swift in Sources */,
+				540F9474216F888900CF8A9D /* CornerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

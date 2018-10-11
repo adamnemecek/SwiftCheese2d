@@ -73,7 +73,12 @@ public struct Intersector {
                 } else if intersectionTest > 0 {
                     let point = Intersector.cross(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
                     if intersectionTest == 1 {
-                        let pinPoint = PinPoint.buildSimple(pt: point, ms0: ms0, ms1: ms1, sl: sl1, masterIndex: msIx0)
+                        let pinPoint = PinPoint.buildSimple(pt: point,
+                                                            ms0: IndexPoint(index: msIx0, point: ms0),
+                                                            ms1: IndexPoint(index: msIx1, point: ms1),
+                                                            sl0: IndexPoint(index: slIx0, point: sl0),
+                                                            sl1: IndexPoint(index: slIx1, point: sl1),
+                                                            edge: IndexPoint(index: msIx0, point: ms0))
                         pinPoints.append(pinPoint)
                     } else {
                         print("PinPoint")
@@ -85,6 +90,8 @@ public struct Intersector {
                         
                         var prevSl = slIx0
                         var nextSl = slIx1
+                        
+                        let edge = IndexPoint(index: msIx0, point: point)
                         
                         if isMsEnd {
                             if ms0 == point {
@@ -102,19 +109,39 @@ public struct Intersector {
                             }
                         }
                         
+                        let ms0Ver = IndexPoint(index: prevMs, point: iMaster[prevMs])
+                        let ms1Ver = IndexPoint(index: nextMs, point: iMaster[nextMs])
+                        let sl0Ver = IndexPoint(index: prevSl, point: iSlave[prevSl])
+                        let sl1Ver = IndexPoint(index: nextSl, point: iSlave[nextSl])
+                        
                         if isMsEnd && isSlEnd {
-                            // pin point is on the vertex
-                            let pinPoint = PinPoint.buildOnCross(pt: point, ms0: iMaster[prevMs], ms1: iMaster[nextMs], sl0: iSlave[prevSl], sl1: iSlave[nextSl], masterIndex: msIx0)
+                            // pin point is on the cross
+                            let pinPoint = PinPoint.buildOnCross(pt: point,
+                                                                ms0: ms0Ver,
+                                                                ms1: ms1Ver,
+                                                                sl0: sl0Ver,
+                                                                sl1: sl1Ver,
+                                                                edge: edge)
                             pinPoints.append(pinPoint)
                             print("onCommon")
                         } else if isMsEnd {
                             // pin point is on slave
-                            let pinPoint = PinPoint.buildOnSlave(pt: point, ms0: iMaster[prevMs], ms1: iMaster[nextMs], sl: iSlave[nextSl], masterIndex: msIx0)
+                            let pinPoint = PinPoint.buildOnSlave(pt: point,
+                                                                 ms0: ms0Ver,
+                                                                 ms1: ms1Ver,
+                                                                 sl0: sl0Ver,
+                                                                 sl1: sl1Ver,
+                                                                 edge: edge)
                             pinPoints.append(pinPoint)
                             print("onSlave")
                         } else if isSlEnd {
                             // pin point is on master
-                            let pinPoint = PinPoint.buildOnMaster(pt: point, ms0: iMaster[prevMs], ms1: iMaster[nextMs], sl0: iSlave[prevSl], sl1: iSlave[nextSl], masterIndex: msIx0)
+                            let pinPoint = PinPoint.buildOnMaster(pt: point,
+                                                                  ms0: ms0Ver,
+                                                                  ms1: ms1Ver,
+                                                                  sl0: sl0Ver,
+                                                                  sl1: sl1Ver,
+                                                                  edge: edge)
                             pinPoints.append(pinPoint)
                             print("OnMaster")
                         }

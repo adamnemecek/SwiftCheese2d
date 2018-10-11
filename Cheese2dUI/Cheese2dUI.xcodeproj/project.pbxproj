@@ -429,7 +429,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cheese2dUI/Cheese2dUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 5M2XN6UJVC;
+				DEVELOPMENT_TEAM = HPV9E52JPX;
 				INFOPLIST_FILE = Cheese2dUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -448,7 +448,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cheese2dUI/Cheese2dUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 5M2XN6UJVC;
+				DEVELOPMENT_TEAM = HPV9E52JPX;
 				INFOPLIST_FILE = Cheese2dUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

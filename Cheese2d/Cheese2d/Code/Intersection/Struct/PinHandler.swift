@@ -11,7 +11,7 @@ import Foundation
 
 struct PinHandler: Equatable {
     
-    private let masterIndex: Int
+    private let edge: Int
     private let offsetFactor: Int64
     
     let isPinPath: Int           // 0 - false, 1 - true
@@ -20,7 +20,7 @@ struct PinHandler: Equatable {
     init(point: Point, masterPoint: Point, masterIndex: Int, index: Int, isPinPath: Int) {
         self.index = index
         self.isPinPath = isPinPath
-        self.masterIndex = masterIndex
+        self.edge = masterIndex
         
         let dx = point.x - masterPoint.x
         let dy = point.x - masterPoint.x
@@ -32,7 +32,7 @@ struct PinHandler: Equatable {
     init(pinPath: PinPath, index: Int) {
         self.index = index
         self.isPinPath = 1
-        self.masterIndex = pinPath.v0.ed
+        self.edge = pinPath.v0.edge
         self.offsetFactor = pinPath.offsetFactor
     }
     
@@ -40,13 +40,13 @@ struct PinHandler: Equatable {
     init(pinPoint: PinPoint, index: Int) {
         self.index = index
         self.isPinPath = 0
-        self.masterIndex = pinPoint.masterIndex
+        self.edge = pinPoint.edge
         self.offsetFactor = pinPoint.offsetFactor
     }
     
     
     static func == (lhs: PinHandler, rhs: PinHandler) -> Bool {
-        return lhs.masterIndex == rhs.masterIndex &&
+        return lhs.edge == rhs.edge &&
             lhs.offsetFactor == rhs.offsetFactor
     }
     
@@ -55,8 +55,8 @@ struct PinHandler: Equatable {
 extension PinHandler {
     
     private static func compare(a: PinHandler, b: PinHandler) -> Bool {
-        if a.masterIndex != b.masterIndex {
-            return a.masterIndex > b.masterIndex
+        if a.edge != b.edge {
+            return a.edge > b.edge
         } else {
             return a.offsetFactor > b.offsetFactor
         }

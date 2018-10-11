@@ -11,7 +11,7 @@ import Foundation
 struct PinPathVertex {
     let pt: Point
     let ms: Int
-    let ed: Int
+    let edge: Int
     let sl: Int
 }
 
@@ -141,8 +141,8 @@ struct PinPath {
         
         let edIx = ms0Pt.index
         
-        let v0 = PinPathVertex(pt: ms0Point, ms: ms0Ix, ed: edIx, sl: sl0Ix)
-        let v1 = PinPathVertex(pt: ms1Point, ms: ms1Ix, ed: edIx, sl: sl1Ix)
+        let v0 = PinPathVertex(pt: ms0Point, ms: ms0Ix, edge: edIx, sl: sl0Ix)
+        let v1 = PinPathVertex(pt: ms1Point, ms: ms1Ix, edge: edIx, sl: sl1Ix)
         
         return PinPath(v0: v0, v1: v1, mp0: ms0Pt.point, isZeroCorner: 0, length: 1)
     }

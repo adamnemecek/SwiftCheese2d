@@ -81,8 +81,8 @@ struct PinPathAggregator {
     
     
     private static func compare(b0: PinPath, b1: PinPath) -> Bool {
-        if b0.v0.ed != b1.v1.ed {
-            return b0.v0.ed > b1.v1.ed
+        if b0.v0.edge != b1.v1.edge {
+            return b0.v0.edge > b1.v1.edge
         } else {
             return b0.offsetFactor > b1.offsetFactor
         }

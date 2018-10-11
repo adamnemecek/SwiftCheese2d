@@ -76,7 +76,7 @@ public struct VectorCorner {
         let m0 = (c.y - a.y) * (b.x - a.x)
         let m1 = (b.y - a.y) * (c.x - a.x)
         
-        return m0 > m1
+        return m0 < m1
     }
     
     
@@ -89,5 +89,13 @@ public struct VectorCorner {
         
         return DataNormalizer.convert(point: p)
     }
+}
+
+extension Point {
+    
+    fileprivate func mul(vector: Point) -> Int64 {
+        return x * vector.x + vector.y * y
+    }
+
 }
 

@@ -6,10 +6,11 @@
 //  Copyright © 2018 Nail Sharipov. All rights reserved.
 //
 
+
 import Foundation
 
+
 public struct Intersector {
- 
 
     public static func findPinPath(master: [CGPoint], slave: [CGPoint]) -> IntersectorResult {
         let iMaster = DataNormalizer.convert(points: master)
@@ -36,7 +37,6 @@ public struct Intersector {
         let masterIndices = posMatrix.masterIndices.numbers
         let slaveIndices = posMatrix.adjacencies
 
-        var extremes = AdjacencyMap<Int>()
         var pinPoints = [PinPoint]()
         var borders = [Border]()
         
@@ -73,7 +73,6 @@ public struct Intersector {
                 } else if intersectionTest > 0 {
                     let point = Intersector.cross(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
                     if intersectionTest == 1 {
-                        //crossMap.addMate(master: msIx0, slave: slIx0, value: point)
                         let pinPoint = PinPoint.buildSimple(pt: point, ms: ms1, sl: sl1)
                         pinPoints.append(pinPoint)
                     } else {
@@ -127,7 +126,9 @@ public struct Intersector {
                     let sl1Pt = IndexPoint(index: slIx1, point: sl1)
                     
                     let border = Intersector.buildBorder(ms0Pt: ms0Pt, ms1Pt: ms1Pt, sl0Pt: sl0Pt, sl1Pt: sl1Pt, msCount: masterCount, slCount: slaveCount)
-                    borders.append(border)
+                    if !border.isZeroLength {
+                        borders.append(border)
+                    }
                 }
             } while j < n && msIx0 == masterIndices[j]
             

@@ -39,8 +39,8 @@ class ShapePath: CALayer {
                 let c = points[i == lastIndex ? 0 : i + 1]
                 
                 let m =  (a + b + c) / 3
-                let dir = Vector2(point: b - m).normalize
-                let p = b + CGPoint(vector: r * dir)
+                let dir = (b - m).normalize
+                let p = b + r * dir
                 
                 let shapeText = ShapeText(text: String(i), font: font, position: p, pin: b, lineWidth: 0.1, color: color, strokeColor: Colors.lightGray)
                 

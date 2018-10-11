@@ -15,6 +15,15 @@ extension CGPoint {
         let y = radius * sin(angle)
         self.init(x: x, y: y)
     }
+    
+    var length: CGFloat {
+        return sqrt(x * x + y * y)
+    }
+    
+    var normalize: CGPoint {
+        let l = self.length
+        return CGPoint(x: x / l, y: y / l)
+    }
 
 }
 

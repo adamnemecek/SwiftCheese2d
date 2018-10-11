@@ -24,6 +24,10 @@ struct Border {
     let length: Int
     let mpOffset: Int64
     
+    var isZeroLength: Bool {
+        return v0.pt == v1.pt
+    }
+    
     init(v0: BorderVertex, v1: BorderVertex, mp0: Point, isZeroCorner: Int, length: Int) {
         self.v0 = v0
         self.v1 = v1

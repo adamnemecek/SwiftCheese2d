@@ -11,8 +11,8 @@ import Foundation
 struct PinPathVertex {
     let pt: Point
     let ms: Int
-    let edge: Int
     let sl: Int
+    let sortFactor: SortUnit
 }
 
 struct PinPath {
@@ -22,38 +22,25 @@ struct PinPath {
 
     let isZeroCorner: Int
     let length: Int
-    let offsetFactor: Int64
     
     var isZeroLength: Bool {
         return v0.pt == v1.pt
     }
     
     
-    init(v0: PinPathVertex, v1: PinPathVertex, mpOffset: Int64, isZeroCorner: Int, length: Int) {
+    init(v0: PinPathVertex, v1: PinPathVertex, isZeroCorner: Int, length: Int) {
         self.v0 = v0
         self.v1 = v1
         self.isZeroCorner = isZeroCorner
         self.length = length
-        self.offsetFactor = mpOffset
     }
     
-    
-    private init(v0: PinPathVertex, v1: PinPathVertex, mp0: Point, isZeroCorner: Int, length: Int) {
-        self.v0 = v0
-        self.v1 = v1
-        self.isZeroCorner = isZeroCorner
-        self.length = length
-        let dx = mp0.x - v0.pt.x
-        let dy = mp0.y - v0.pt.y
-        self.offsetFactor = dx * dx + dy * dy
-    }
-
     
     static func buildPinPath(ms0Pt: IndexPoint, ms1Pt: IndexPoint, sl0Pt: IndexPoint, sl1Pt: IndexPoint, msCount: Int, slCount: Int) -> PinPath {
         let minSlPt: IndexPoint
         let maxSlPt: IndexPoint
         
-        if sl0Pt.isBigger(a: sl1Pt) {
+        if sl0Pt > sl1Pt {
             minSlPt = sl1Pt
             maxSlPt = sl0Pt
         } else {
@@ -69,82 +56,95 @@ struct PinPath {
         let sl0Ix: Int
         let sl1Ix: Int
         
-        if ms0Pt.isBigger(a: ms1Pt) {
+        let sortFactor0: SortUnit
+        let sortFactor1: SortUnit
+
+        if ms0Pt > ms1Pt {
             // right-top point ms = 0
             if ms0Pt.point != maxSlPt.point {
-                if ms0Pt.isBigger(a: maxSlPt) {
+                if ms0Pt > maxSlPt {
                     ms0Point = maxSlPt.point
                     ms0Ix = ms0Pt.index
                     sl0Ix = PinPath.nextSlave(sl0: maxSlPt.index, sl1: minSlPt.index, slCount: slCount)
+                    sortFactor0 = SortUnit(index: ms0Pt.index, offset: ms0Pt.point.sqrDistance(point: ms0Point))
                 } else {
                     ms0Point = ms0Pt.point
                     ms0Ix = ms0Pt.index != 0 ? ms0Pt.index - 1 : msCount - 1
                     sl0Ix = maxSlPt.index
+                    sortFactor0 = SortUnit(index: ms0Pt.index, offset: 0)
                 }
             } else {
                 ms0Point = ms0Pt.point
                 ms0Ix = ms0Pt.index != 0 ? ms0Pt.index - 1 : msCount - 1
                 sl0Ix = PinPath.nextSlave(sl0: maxSlPt.index, sl1: minSlPt.index, slCount: slCount)
+                sortFactor0 = SortUnit(index: ms0Pt.index, offset: 0)
             }
             
             // left-bottom point ms = 1
             if ms1Pt.point != minSlPt.point {
-                if ms1Pt.isBigger(a: minSlPt) {
+                if ms1Pt > minSlPt {
                     ms1Point = ms1Pt.point
                     ms1Ix = ms1Pt.index + 1 < msCount ? ms1Pt.index + 1 : 0
                     sl1Ix = minSlPt.index
+                    sortFactor1 = SortUnit(index: ms1Pt.index, offset: 0)
                 } else {
                     ms1Point = minSlPt.point
                     ms1Ix = ms1Pt.index
                     sl1Ix = PinPath.nextSlave(sl0: minSlPt.index, sl1: maxSlPt.index, slCount: slCount)
+                    sortFactor1 = SortUnit(index: ms0Pt.index, offset: ms0Pt.point.sqrDistance(point: ms1Point))
                 }
             } else {
                 ms1Point = ms1Pt.point
                 ms1Ix = ms1Pt.index + 1 < msCount ? ms1Pt.index + 1 : 0
                 sl1Ix = PinPath.nextSlave(sl0: minSlPt.index, sl1: maxSlPt.index, slCount: slCount)
+                sortFactor1 = SortUnit(index: ms1Pt.index, offset: 0)
             }
         } else {
             // right-top point ms = 1
             if ms1Pt.point != maxSlPt.point {
-                if ms1Pt.isBigger(a: maxSlPt) {
+                if ms1Pt > maxSlPt {
                     ms1Point = maxSlPt.point
                     ms1Ix = ms1Pt.index
                     sl1Ix = PinPath.nextSlave(sl0: maxSlPt.index, sl1: minSlPt.index, slCount: slCount)
+                    sortFactor1 = SortUnit(index: ms0Pt.index, offset: ms0Pt.point.sqrDistance(point: ms1Point))
                 } else {
                     ms1Point = ms1Pt.point
                     ms1Ix = ms1Pt.index + 1 < msCount ? ms1Pt.index + 1 : 0
                     sl1Ix = maxSlPt.index
+                    sortFactor1 = SortUnit(index: ms1Pt.index, offset: 0)
                 }
             } else {
                 ms1Point = ms1Pt.point
                 ms1Ix = ms1Pt.index + 1 < msCount ? ms1Pt.index + 1 : 0
                 sl1Ix = PinPath.nextSlave(sl0: maxSlPt.index, sl1: minSlPt.index, slCount: slCount)
+                sortFactor1 = SortUnit(index: ms1Pt.index, offset: 0)
             }
             
             // left-bottom point ms = 0
             if ms0Pt.point != minSlPt.point {
-                if ms0Pt.isBigger(a: minSlPt) {
+                if ms0Pt > minSlPt {
                     ms0Point = ms0Pt.point
                     ms0Ix = ms0Pt.index != 0 ? ms0Pt.index - 1 : msCount - 1
                     sl0Ix = minSlPt.index
+                    sortFactor0 = SortUnit(index: ms0Pt.index, offset: 0)
                 } else {
                     ms0Point = minSlPt.point
                     ms0Ix = ms0Pt.index
                     sl0Ix = PinPath.nextSlave(sl0: minSlPt.index, sl1: maxSlPt.index, slCount: slCount)
+                    sortFactor0 = SortUnit(index: ms0Pt.index, offset: ms0Pt.point.sqrDistance(point: ms0Point))
                 }
             } else {
                 ms0Point = ms0Pt.point
                 ms0Ix = ms0Pt.index != 0 ? ms0Pt.index - 1 : msCount - 1
                 sl0Ix = PinPath.nextSlave(sl0: minSlPt.index, sl1: maxSlPt.index, slCount: slCount)
+                sortFactor0 = SortUnit(index: ms0Pt.index, offset: 0)
             }
         }
         
-        let edIx = ms0Pt.index
-        
-        let v0 = PinPathVertex(pt: ms0Point, ms: ms0Ix, edge: edIx, sl: sl0Ix)
-        let v1 = PinPathVertex(pt: ms1Point, ms: ms1Ix, edge: edIx, sl: sl1Ix)
-        
-        return PinPath(v0: v0, v1: v1, mp0: ms0Pt.point, isZeroCorner: 0, length: 1)
+        let v0 = PinPathVertex(pt: ms0Point, ms: ms0Ix, sl: sl0Ix, sortFactor: sortFactor0)
+        let v1 = PinPathVertex(pt: ms1Point, ms: ms1Ix, sl: sl1Ix, sortFactor: sortFactor1)
+
+        return PinPath(v0: v0, v1: v1, isZeroCorner: 0, length: 1)
     }
     
     

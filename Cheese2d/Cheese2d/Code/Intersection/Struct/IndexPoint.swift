@@ -9,18 +9,22 @@
 import Foundation
 
 
-struct IndexPoint {
-    
+struct IndexPoint: Comparable {
+
     let index: Int
     let point: Point
     
     
-    func isBigger(a: IndexPoint) -> Bool {
-        if a.point.x != point.x {
-            return a.point.x < point.x
+    static func == (lhs: IndexPoint, rhs: IndexPoint) -> Bool {
+        return lhs.point == rhs.point
+    }
+    
+    
+    static func < (lhs: IndexPoint, rhs: IndexPoint) -> Bool {
+        if lhs.point.x != rhs.point.x {
+            return lhs.point.x < rhs.point.x
         } else {
-            return a.point.y < point.y
+            return lhs.point.y < rhs.point.y
         }
     }
-
 }

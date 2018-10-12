@@ -66,7 +66,7 @@ class BorderTest: CoordinateSystemScene {
     }
     
     private func addShapes() {
-        let result = Intersector.findPinPath(master: master, slave: slave)
+        let result = Intersector.findPins(master: master, slave: slave)
         let points = result.points
         
         for pin in points {

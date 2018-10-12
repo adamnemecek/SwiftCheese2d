@@ -59,7 +59,7 @@ struct PinPathAggregator {
                 isZeroCorner = 1
             }
             
-            let path = PinPath(v0: border.v0, v1: v1, mpOffset: border.offsetFactor, isZeroCorner: isZeroCorner, length: length)
+            let path = PinPath(v0: border.v0, v1: v1, isZeroCorner: isZeroCorner, length: length)
             
             paths.append(path)
             
@@ -71,23 +71,13 @@ struct PinPathAggregator {
             let last = paths[paths.count - 1]
             
             if first.v0.ms == masterCount - 1 && last.v1.ms == 1 {
-                paths[0] = PinPath(v0: last.v0, v1: first.v1, mpOffset: last.offsetFactor, isZeroCorner: 1, length: first.length + last.length)
+                paths[0] = PinPath(v0: last.v0, v1: first.v1, isZeroCorner: 1, length: first.length + last.length)
                 paths.remove(at: paths.count - 1)
             }
         }
 
         return paths
     }
-    
-    
-    private static func compare(b0: PinPath, b1: PinPath) -> Bool {
-        if b0.v0.edge != b1.v1.edge {
-            return b0.v0.edge > b1.v1.edge
-        } else {
-            return b0.offsetFactor > b1.offsetFactor
-        }
-    }
-    
     
     mutating func sort() {
         // this array is already sorted by edge index
@@ -104,7 +94,7 @@ struct PinPathAggregator {
             var i = 1
             while i < m {
                 let b = pinPathArray[i]
-                if PinPathAggregator.compare(b0: a, b1: b) {
+                if SortUnit.compare(a: a.v0.sortFactor, b: b.v0.sortFactor) {
                     pinPathArray[i - 1] = b
                     isNotSorted = true
                 } else {

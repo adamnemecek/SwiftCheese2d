@@ -12,11 +12,11 @@ import Foundation
 
 public struct Intersector {
 
-    public static func findPinPath(master: [CGPoint], slave: [CGPoint]) -> IntersectorResult {
+    public static func findPins(master: [CGPoint], slave: [CGPoint]) -> IntersectorResult {
         let iMaster = DataNormalizer.convert(points: master)
         let iSlave = DataNormalizer.convert(points: slave)
         
-        let result = Intersector.findPinPath(iMaster: iMaster, iSlave: iSlave)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
     
         var borders = [[CGPoint]]()
         let n = result.path.count
@@ -30,7 +30,7 @@ public struct Intersector {
     }
     
     
-    static func findPinPath(iMaster: [Point], iSlave: [Point]) -> (points: [PinPoint], path: [PinPath]) {
+    static func findPins(iMaster: [Point], iSlave: [Point]) -> (points: [PinPoint], path: [PinPath]) {
         
         let posMatrix = self.buildPossibilityMatrix(master: iMaster, slave: iSlave)
 
@@ -73,12 +73,16 @@ public struct Intersector {
                 } else if intersectionTest > 0 {
                     let point = Intersector.cross(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
                     if intersectionTest == 1 {
-                        let pinPoint = PinPoint.buildSimple(pt: point,
-                                                            ms0: IndexPoint(index: msIx0, point: ms0),
-                                                            ms1: IndexPoint(index: msIx1, point: ms1),
-                                                            sl0: IndexPoint(index: slIx0, point: sl0),
-                                                            sl1: IndexPoint(index: slIx1, point: sl1),
-                                                            edge: IndexPoint(index: msIx0, point: ms0))
+                        
+                        let pinPointDef = PinPointDef(
+                            pt: point,
+                            ms0: IndexPoint(index: msIx0, point: ms0),
+                            ms1: IndexPoint(index: msIx1, point: ms1),
+                            sl0: IndexPoint(index: slIx0, point: sl0),
+                            sl1: IndexPoint(index: slIx1, point: sl1),
+                            sortFactor: SortUnit(index: msIx0, offset: ms0.sqrDistance(point: point)))
+                        
+                        let pinPoint = PinPoint.buildSimple(def: pinPointDef)
                         pinPoints.append(pinPoint)
                     } else {
                         print("PinPoint")
@@ -91,57 +95,55 @@ public struct Intersector {
                         var prevSl = slIx0
                         var nextSl = slIx1
                         
-                        let edge = IndexPoint(index: msIx0, point: point)
-                        
+                        var edge = msIx0
+                        var offsetFactor: Int64 = 0
+
                         if isMsEnd {
                             if ms0 == point {
+                                print("case A")
                                 prevMs = (msIx0 - 1 + masterCount) % masterCount
                             } else {
+                                print("case B")
                                 nextMs = (msIx1 + 1) % masterCount
+                                edge = msIx1
                             }
                         }
                         
                         if isSlEnd {
                             if sl0 == point {
+                                print("case C")
                                 prevSl = (slIx0 - 1 + slaveCount) % slaveCount
                             } else {
                                 nextSl = (slIx1 + 1) % slaveCount
                             }
+                            
+                            if !isMsEnd {
+                                print("case D")
+                                offsetFactor = ms0.sqrDistance(point: point)
+                            }
                         }
-                        
-                        let ms0Ver = IndexPoint(index: prevMs, point: iMaster[prevMs])
-                        let ms1Ver = IndexPoint(index: nextMs, point: iMaster[nextMs])
-                        let sl0Ver = IndexPoint(index: prevSl, point: iSlave[prevSl])
-                        let sl1Ver = IndexPoint(index: nextSl, point: iSlave[nextSl])
+
+                        let pinPointDef = PinPointDef(
+                            pt: point,
+                            ms0: IndexPoint(index: prevMs, point: iMaster[prevMs]),
+                            ms1: IndexPoint(index: nextMs, point: iMaster[nextMs]),
+                            sl0: IndexPoint(index: prevSl, point: iSlave[prevSl]),
+                            sl1: IndexPoint(index: nextSl, point: iSlave[nextSl]),
+                            sortFactor: SortUnit(index: edge, offset: offsetFactor))
                         
                         if isMsEnd && isSlEnd {
                             // pin point is on the cross
-                            let pinPoint = PinPoint.buildOnCross(pt: point,
-                                                                ms0: ms0Ver,
-                                                                ms1: ms1Ver,
-                                                                sl0: sl0Ver,
-                                                                sl1: sl1Ver,
-                                                                edge: edge)
+                            let pinPoint = PinPoint.buildOnCross(def: pinPointDef)
                             pinPoints.append(pinPoint)
                             print("onCommon")
                         } else if isMsEnd {
                             // pin point is on slave
-                            let pinPoint = PinPoint.buildOnSlave(pt: point,
-                                                                 ms0: ms0Ver,
-                                                                 ms1: ms1Ver,
-                                                                 sl0: sl0Ver,
-                                                                 sl1: sl1Ver,
-                                                                 edge: edge)
+                            let pinPoint = PinPoint.buildOnSlave(def: pinPointDef)
                             pinPoints.append(pinPoint)
                             print("onSlave")
                         } else if isSlEnd {
                             // pin point is on master
-                            let pinPoint = PinPoint.buildOnMaster(pt: point,
-                                                                  ms0: ms0Ver,
-                                                                  ms1: ms1Ver,
-                                                                  sl0: sl0Ver,
-                                                                  sl1: sl1Ver,
-                                                                  edge: edge)
+                            let pinPoint = PinPoint.buildOnMaster(def: pinPointDef)
                             pinPoints.append(pinPoint)
                             print("OnMaster")
                         }

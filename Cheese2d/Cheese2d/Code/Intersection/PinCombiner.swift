@@ -24,20 +24,54 @@ struct PinCombiner {
     }
     
     mutating func combine() {
-        let n = pinPathArray.count
-        let m = pinPointArray.count
-
         var i = 0
-        while i < n {
+        while i < pinPathArray.count {
             pinHandlerArray.append(PinHandler(pinPath: pinPathArray[i], index: i))
             i += 1
         }
         
         i = 0
-        while i < m {
-            pinHandlerArray.append(PinHandler(pinPath: pinPathArray[i], index: i))
+        while i < pinPointArray.count {
+            pinHandlerArray.append(PinHandler(pinPoint: pinPointArray[i], index: i))
             i += 1
         }
-    
+
+        PinHandler.sort(array: &pinHandlerArray)
     }
+    
+    
+    private func cleanDoubles() {
+        var delete = [Int]()
+        
+        var i = 1
+        var prev = pinHandlerArray[0]
+        while i < pinHandlerArray.count {
+            let handler = pinHandlerArray[i]
+            if handler != prev {
+                prev = handler
+            } else {
+                if handler.isPinPath == 0 {
+                    delete.append(i)
+                } else {
+                    prev = handler
+                    delete.append(i - 1)
+                }
+            }
+            i += 1
+        }
+        
+        
+        if delete.count > 0 {
+            while i < pinHandlerArray.count {
+                let handler = pinHandlerArray[i]
+                if handler != prev {
+                    prev = handler
+                } else {
+                    delete.append(i)
+                }
+                i += 1
+            }
+        }
+    }
+    
 }

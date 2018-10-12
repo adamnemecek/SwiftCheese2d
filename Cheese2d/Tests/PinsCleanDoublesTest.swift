@@ -1,0 +1,41 @@
+//
+//  PinsCleanDoublesTest.swift
+//  Tests
+//
+//  Created by Nail Sharipov on 12/10/2018.
+//  Copyright © 2018 Nail Sharipov. All rights reserved.
+//
+
+import Foundation
+
+
+
+import XCTest
+@testable import Cheese2d
+
+
+class PinsCleanDoublesTest: XCTestCase {
+    
+    
+    func test_0() {
+        
+        var master = [CGPoint]()
+        master.append(CGPoint(x: -10, y: 10))
+        master.append(CGPoint(x: 10, y: 10))
+        master.append(CGPoint(x: -10, y: 10))
+        master.append(CGPoint(x: -10, y: -10))
+        
+        let iMaster = DataNormalizer.convert(points: master)
+        
+        var slave = [CGPoint]()
+        slave.append(CGPoint(x: -10, y: 10))
+        slave.append(CGPoint(x: 0, y: 5))
+        slave.append(CGPoint(x: 5, y: 5))
+        let iSlave = DataNormalizer.convert(points: slave)
+        
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
+        
+        XCTAssertEqual(result.points.count, 1)
+    }
+    
+}

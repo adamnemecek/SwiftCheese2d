@@ -32,7 +32,7 @@ class IntersectionTest: CoordinateSystemScene {
         self.addSublayer(ShapePolygon(points: slavePolygon, tip: 1.0, lineWidth: 0.2, color: Colors.orange, showIndeces: true, scaleIndeces: 1, dash: nil))
         
         
-        let result = Intersector.findPinPath(master: masterPolygon, slave: slavePolygon)
+        let result = Intersector.findPins(master: masterPolygon, slave: slavePolygon)
         let points = result.points
         
         for pin in points {

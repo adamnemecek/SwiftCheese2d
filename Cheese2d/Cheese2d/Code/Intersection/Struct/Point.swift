@@ -19,6 +19,13 @@ public struct Point: Equatable {
     public static func == (lhs: Point, rhs: Point) -> Bool {
         return lhs.x == rhs.x && lhs.y == rhs.y
     }
+    
+    func sqrDistance(point: Point) -> Int64 {
+        let dx = point.x - self.x
+        let dy = point.y - self.y
+        
+        return dx * dx + dy * dy
+    }
 }
 
 extension Point: CustomStringConvertible, CustomDebugStringConvertible {

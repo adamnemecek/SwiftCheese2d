@@ -19,13 +19,14 @@ class PinHandlerSortTest: XCTestCase {
     
     func test_0() {
         
+        //init(sortFactor: SortUnit, index: Int, isPinPath: Int) {
         let array: [PinHandler] = [
-            PinHandler(point: .zero, masterPoint: .zero, masterIndex: 0, index: 0, isPinPath: 0),
-            PinHandler(point: .zero, masterPoint: .zero, masterIndex: 1, index: 0, isPinPath: 0),
-            PinHandler(point: .zero, masterPoint: .zero, masterIndex: 5, index: 0, isPinPath: 0),
-            PinHandler(point: .zero, masterPoint: .zero, masterIndex: 4, index: 0, isPinPath: 0),
-            PinHandler(point: .zero, masterPoint: .zero, masterIndex: 3, index: 0, isPinPath: 0),
-            PinHandler(point: .zero, masterPoint: .zero, masterIndex: 2, index: 0, isPinPath: 0)
+            PinHandler(sortFactor: SortUnit(index: 0, offset: 0), index: 0, isPinPath: 0),
+            PinHandler(sortFactor: SortUnit(index: 1, offset: 0), index: 0, isPinPath: 0),
+            PinHandler(sortFactor: SortUnit(index: 5, offset: 0), index: 0, isPinPath: 0),
+            PinHandler(sortFactor: SortUnit(index: 4, offset: 0), index: 0, isPinPath: 0),
+            PinHandler(sortFactor: SortUnit(index: 3, offset: 0), index: 0, isPinPath: 0),
+            PinHandler(sortFactor: SortUnit(index: 2, offset: 0), index: 0, isPinPath: 0)
         ]
         
         var sortedArray: [PinHandler] = array
@@ -42,12 +43,12 @@ class PinHandlerSortTest: XCTestCase {
     func test_1() {
         
         var array: [PinHandler] = [
-            PinHandler(point: .zero, masterPoint: .zero, masterIndex: 0, index: 0, isPinPath: 0),
-            PinHandler(point: Point(x: 1, y: 0), masterPoint: .zero, masterIndex: 1, index: 0, isPinPath: 0),
-            PinHandler(point: Point(x: 3, y: 0), masterPoint: .zero, masterIndex: 1, index: 0, isPinPath: 0),
-            PinHandler(point: Point(x: 2, y: 0), masterPoint: .zero, masterIndex: 1, index: 0, isPinPath: 0),
-            PinHandler(point: .zero, masterPoint: .zero, masterIndex: 3, index: 0, isPinPath: 0),
-            PinHandler(point: Point(x: 0, y: 0), masterPoint: .zero, masterIndex: 2, index: 0, isPinPath: 0)
+            PinHandler(sortFactor: SortUnit(index: 0, offset: 0), index: 0, isPinPath: 0),
+            PinHandler(sortFactor: SortUnit(index: 1, offset: 1), index: 0, isPinPath: 0),
+            PinHandler(sortFactor: SortUnit(index: 1, offset: 3), index: 0, isPinPath: 0),
+            PinHandler(sortFactor: SortUnit(index: 1, offset: 2), index: 0, isPinPath: 0),
+            PinHandler(sortFactor: SortUnit(index: 3, offset: 0), index: 0, isPinPath: 0),
+            PinHandler(sortFactor: SortUnit(index: 2, offset: 0), index: 0, isPinPath: 0)
         ]
         
         var sortedArray: [PinHandler] = array
@@ -55,30 +56,6 @@ class PinHandlerSortTest: XCTestCase {
         PinHandler.sort(array: &sortedArray)
         
         let template: [PinHandler] = [array[0], array[1], array[3], array[2], array[5], array[4]]
-        
-        let isEqual = sortedArray == template
-        
-        XCTAssertEqual(isEqual, true)
-    }
-    
-    
-    
-    func test_2() {
-        
-        var array: [PinHandler] = [
-            PinHandler(point: .zero, masterPoint: .zero, masterIndex: 5, index: 0, isPinPath: 0),
-            PinHandler(point: Point(x: 1, y: 0), masterPoint: .zero, masterIndex: 1, index: 0, isPinPath: 0),
-            PinHandler(point: Point(x: 3, y: 0), masterPoint: .zero, masterIndex: 1, index: 0, isPinPath: 0),
-            PinHandler(point: Point(x: 2, y: 0), masterPoint: .zero, masterIndex: 1, index: 0, isPinPath: 0),
-            PinHandler(point: .zero, masterPoint: .zero, masterIndex: 3, index: 0, isPinPath: 0),
-            PinHandler(point: Point(x: 0, y: 0), masterPoint: .zero, masterIndex: 2, index: 0, isPinPath: 0)
-        ]
-        
-        var sortedArray: [PinHandler] = array
-        
-        PinHandler.sort(array: &sortedArray)
-        
-        let template: [PinHandler] = [array[1], array[3], array[2], array[5], array[4], array[0]]
         
         let isEqual = sortedArray == template
         

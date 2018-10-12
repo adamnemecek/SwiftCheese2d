@@ -11,57 +11,39 @@ import Foundation
 
 struct PinHandler: Equatable {
     
-    private let edge: Int
-    private let offsetFactor: Int64
+    private let sortFactor: SortUnit
     
-    let isPinPath: Int           // 0 - false, 1 - true
-    let index: Int              // index in outside array
+    let isPinPath: Int              // 0 - false, 1 - true
+    let index: Int                  // index in outside array
 
-    init(point: Point, masterPoint: Point, masterIndex: Int, index: Int, isPinPath: Int) {
+    init(sortFactor: SortUnit, index: Int, isPinPath: Int) {
         self.index = index
         self.isPinPath = isPinPath
-        self.edge = masterIndex
-        
-        let dx = point.x - masterPoint.x
-        let dy = point.x - masterPoint.x
-        
-        self.offsetFactor = dx * dx + dy * dy
+        self.sortFactor = sortFactor
     }
     
     
     init(pinPath: PinPath, index: Int) {
         self.index = index
         self.isPinPath = 1
-        self.edge = pinPath.v0.edge
-        self.offsetFactor = pinPath.offsetFactor
+        self.sortFactor = pinPath.v0.sortFactor
     }
     
     
     init(pinPoint: PinPoint, index: Int) {
         self.index = index
         self.isPinPath = 0
-        self.edge = pinPoint.edge
-        self.offsetFactor = pinPoint.offsetFactor
+        self.sortFactor = pinPoint.sortFactor
     }
     
     
     static func == (lhs: PinHandler, rhs: PinHandler) -> Bool {
-        return lhs.edge == rhs.edge &&
-            lhs.offsetFactor == rhs.offsetFactor
+        return lhs.sortFactor.index == rhs.sortFactor.index && lhs.sortFactor.offset == rhs.sortFactor.offset
     }
     
 }
 
 extension PinHandler {
-    
-    private static func compare(a: PinHandler, b: PinHandler) -> Bool {
-        if a.edge != b.edge {
-            return a.edge > b.edge
-        } else {
-            return a.offsetFactor > b.offsetFactor
-        }
-    }
-
 
     static func sort(array: inout [PinHandler]) {
         // this array is mostly sorted
@@ -78,7 +60,7 @@ extension PinHandler {
             var i = 1
             while i < m {
                 let b = array[i]
-                if PinHandler.compare(a: a, b: b) {
+                if SortUnit.compare(a: a.sortFactor, b: b.sortFactor) {
                     array[i - 1] = b
                     isNotSorted = true
                 } else {

@@ -16,21 +16,30 @@ public struct Intersector {
         let iMaster = DataNormalizer.convert(points: master)
         let iSlave = DataNormalizer.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
+        let sequence = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
     
         var borders = [[CGPoint]]()
-        let n = result.path.count
-        borders.reserveCapacity(n)
-        
-        for path in result.path {
-            borders.append(path.extract(points: iMaster))
+        var points = [PinPoint]()
+
+        for pinHandler in sequence.pinHandlerArray {
+            if pinHandler.marker == 0 {
+                let index = pinHandler.index
+                if pinHandler.isPinPath == 1 {
+                    let path = sequence.pinPathArray[index]
+                    borders.append(path.extract(points: iMaster))
+                } else {
+                    let pin = sequence.pinPointArray[index]
+                    points.append(pin)
+                }
+            }
+            
         }
         
-        return IntersectorResult(points: result.points, path: borders)
+        return IntersectorResult(points: points, path: borders)
     }
     
     
-    static func findPins(iMaster: [Point], iSlave: [Point]) -> (points: [PinPoint], path: [PinPath]) {
+    static func findPins(iMaster: [Point], iSlave: [Point]) -> PinSequence {
         
         let posMatrix = self.buildPossibilityMatrix(master: iMaster, slave: iSlave)
 
@@ -80,7 +89,7 @@ public struct Intersector {
                             ms1: IndexPoint(index: msIx1, point: ms1),
                             sl0: IndexPoint(index: slIx0, point: sl0),
                             sl1: IndexPoint(index: slIx1, point: sl1),
-                            sortFactor: SortUnit(index: msIx0, offset: ms0.sqrDistance(point: point)))
+                            sortFactor: PathMileStone(index: msIx0, offset: ms0.sqrDistance(point: point)))
                         
                         let pinPoint = PinPoint.buildSimple(def: pinPointDef)
                         pinPoints.append(pinPoint)
@@ -129,7 +138,7 @@ public struct Intersector {
                             ms1: IndexPoint(index: nextMs, point: iMaster[nextMs]),
                             sl0: IndexPoint(index: prevSl, point: iSlave[prevSl]),
                             sl1: IndexPoint(index: nextSl, point: iSlave[nextSl]),
-                            sortFactor: SortUnit(index: edge, offset: offsetFactor))
+                            sortFactor: PathMileStone(index: edge, offset: offsetFactor))
                         
                         if isMsEnd && isSlEnd {
                             // pin point is on the cross
@@ -168,9 +177,13 @@ public struct Intersector {
 
         pinPaths = merger.merge()
         
-        let result = (points: pinPoints, path: pinPaths)
+        var sequence = PinSequence(pinPointArray: pinPoints, pinPathArray: pinPaths, masterCount: iMaster.count)
+        
+        //print(sequence.pinPointArray)
+        
+        sequence.prepareData()
 
-        return result
+        return sequence
     }
 
     

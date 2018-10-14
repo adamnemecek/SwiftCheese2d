@@ -94,7 +94,7 @@ struct PinPathAggregator {
             var i = 1
             while i < m {
                 let b = pinPathArray[i]
-                if SortUnit.compare(a: a.v0.sortFactor, b: b.v0.sortFactor) {
+                if PathMileStone.compare(a: a.v0.sortFactor, b: b.v0.sortFactor) {
                     pinPathArray[i - 1] = b
                     isNotSorted = true
                 } else {

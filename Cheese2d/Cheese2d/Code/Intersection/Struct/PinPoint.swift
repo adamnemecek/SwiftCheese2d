@@ -15,7 +15,7 @@ struct PinPointDef {
     let ms1: IndexPoint
     let sl0: IndexPoint
     let sl1: IndexPoint
-    let sortFactor: SortUnit
+    let sortFactor: PathMileStone
 }
 
 
@@ -23,7 +23,7 @@ public struct PinPoint {
     
     public let point: CGPoint
     public let type: Int            // 1 - in, -1 - out, 2 in-out, -2 out-in
-    let sortFactor: SortUnit
+    let sortFactor: PathMileStone
     
     let slavePrev: Int
     let slaveNext: Int

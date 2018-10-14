@@ -12,7 +12,7 @@ struct PinPathVertex {
     let pt: Point
     let ms: Int
     let sl: Int
-    let sortFactor: SortUnit
+    let sortFactor: PathMileStone
 }
 
 struct PinPath {
@@ -56,8 +56,8 @@ struct PinPath {
         let sl0Ix: Int
         let sl1Ix: Int
         
-        let sortFactor0: SortUnit
-        let sortFactor1: SortUnit
+        let sortFactor0: PathMileStone
+        let sortFactor1: PathMileStone
 
         if ms0Pt > ms1Pt {
             // right-top point ms = 0
@@ -66,18 +66,18 @@ struct PinPath {
                     ms0Point = maxSlPt.point
                     ms0Ix = ms0Pt.index
                     sl0Ix = PinPath.nextSlave(sl0: maxSlPt.index, sl1: minSlPt.index, slCount: slCount)
-                    sortFactor0 = SortUnit(index: ms0Pt.index, offset: ms0Pt.point.sqrDistance(point: ms0Point))
+                    sortFactor0 = PathMileStone(index: ms0Pt.index, offset: ms0Pt.point.sqrDistance(point: ms0Point))
                 } else {
                     ms0Point = ms0Pt.point
                     ms0Ix = ms0Pt.index != 0 ? ms0Pt.index - 1 : msCount - 1
                     sl0Ix = maxSlPt.index
-                    sortFactor0 = SortUnit(index: ms0Pt.index, offset: 0)
+                    sortFactor0 = PathMileStone(index: ms0Pt.index, offset: 0)
                 }
             } else {
                 ms0Point = ms0Pt.point
                 ms0Ix = ms0Pt.index != 0 ? ms0Pt.index - 1 : msCount - 1
                 sl0Ix = PinPath.nextSlave(sl0: maxSlPt.index, sl1: minSlPt.index, slCount: slCount)
-                sortFactor0 = SortUnit(index: ms0Pt.index, offset: 0)
+                sortFactor0 = PathMileStone(index: ms0Pt.index, offset: 0)
             }
             
             // left-bottom point ms = 1
@@ -86,18 +86,18 @@ struct PinPath {
                     ms1Point = ms1Pt.point
                     ms1Ix = ms1Pt.index + 1 < msCount ? ms1Pt.index + 1 : 0
                     sl1Ix = minSlPt.index
-                    sortFactor1 = SortUnit(index: ms1Pt.index, offset: 0)
+                    sortFactor1 = PathMileStone(index: ms1Pt.index, offset: 0)
                 } else {
                     ms1Point = minSlPt.point
                     ms1Ix = ms1Pt.index
                     sl1Ix = PinPath.nextSlave(sl0: minSlPt.index, sl1: maxSlPt.index, slCount: slCount)
-                    sortFactor1 = SortUnit(index: ms0Pt.index, offset: ms0Pt.point.sqrDistance(point: ms1Point))
+                    sortFactor1 = PathMileStone(index: ms0Pt.index, offset: ms0Pt.point.sqrDistance(point: ms1Point))
                 }
             } else {
                 ms1Point = ms1Pt.point
                 ms1Ix = ms1Pt.index + 1 < msCount ? ms1Pt.index + 1 : 0
                 sl1Ix = PinPath.nextSlave(sl0: minSlPt.index, sl1: maxSlPt.index, slCount: slCount)
-                sortFactor1 = SortUnit(index: ms1Pt.index, offset: 0)
+                sortFactor1 = PathMileStone(index: ms1Pt.index, offset: 0)
             }
         } else {
             // right-top point ms = 1
@@ -106,18 +106,18 @@ struct PinPath {
                     ms1Point = maxSlPt.point
                     ms1Ix = ms1Pt.index
                     sl1Ix = PinPath.nextSlave(sl0: maxSlPt.index, sl1: minSlPt.index, slCount: slCount)
-                    sortFactor1 = SortUnit(index: ms0Pt.index, offset: ms0Pt.point.sqrDistance(point: ms1Point))
+                    sortFactor1 = PathMileStone(index: ms0Pt.index, offset: ms0Pt.point.sqrDistance(point: ms1Point))
                 } else {
                     ms1Point = ms1Pt.point
                     ms1Ix = ms1Pt.index + 1 < msCount ? ms1Pt.index + 1 : 0
                     sl1Ix = maxSlPt.index
-                    sortFactor1 = SortUnit(index: ms1Pt.index, offset: 0)
+                    sortFactor1 = PathMileStone(index: ms1Pt.index, offset: 0)
                 }
             } else {
                 ms1Point = ms1Pt.point
                 ms1Ix = ms1Pt.index + 1 < msCount ? ms1Pt.index + 1 : 0
                 sl1Ix = PinPath.nextSlave(sl0: maxSlPt.index, sl1: minSlPt.index, slCount: slCount)
-                sortFactor1 = SortUnit(index: ms1Pt.index, offset: 0)
+                sortFactor1 = PathMileStone(index: ms1Pt.index, offset: 0)
             }
             
             // left-bottom point ms = 0
@@ -126,18 +126,18 @@ struct PinPath {
                     ms0Point = ms0Pt.point
                     ms0Ix = ms0Pt.index != 0 ? ms0Pt.index - 1 : msCount - 1
                     sl0Ix = minSlPt.index
-                    sortFactor0 = SortUnit(index: ms0Pt.index, offset: 0)
+                    sortFactor0 = PathMileStone(index: ms0Pt.index, offset: 0)
                 } else {
                     ms0Point = minSlPt.point
                     ms0Ix = ms0Pt.index
                     sl0Ix = PinPath.nextSlave(sl0: minSlPt.index, sl1: maxSlPt.index, slCount: slCount)
-                    sortFactor0 = SortUnit(index: ms0Pt.index, offset: ms0Pt.point.sqrDistance(point: ms0Point))
+                    sortFactor0 = PathMileStone(index: ms0Pt.index, offset: ms0Pt.point.sqrDistance(point: ms0Point))
                 }
             } else {
                 ms0Point = ms0Pt.point
                 ms0Ix = ms0Pt.index != 0 ? ms0Pt.index - 1 : msCount - 1
                 sl0Ix = PinPath.nextSlave(sl0: minSlPt.index, sl1: maxSlPt.index, slCount: slCount)
-                sortFactor0 = SortUnit(index: ms0Pt.index, offset: 0)
+                sortFactor0 = PathMileStone(index: ms0Pt.index, offset: 0)
             }
         }
         
@@ -170,6 +170,17 @@ struct PinPath {
         path.reserveCapacity(length + 1)
         path.append(DataNormalizer.convert(point: v0.pt))
         
+        var a = (v0.sortFactor.index + 1) % n
+        let b = (v1.sortFactor.index - 1 + n) % n
+        
+        path.append(DataNormalizer.convert(point: points[a]))
+        
+        while a != b {
+            a = (a + 1) % n
+            path.append(DataNormalizer.convert(point: points[a]))
+        }
+        
+        /*
         let a = (v0.ms + 1) % n
         let b = (v1.ms - 1 + n) % n
 
@@ -200,9 +211,9 @@ struct PinPath {
                 path.append(DataNormalizer.convert(point: points[a]))
             }
         }
-        
+        */
         path.append(DataNormalizer.convert(point: v1.pt))
-        
+ 
         return path
     }
 }

@@ -34,7 +34,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -77,7 +77,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -119,7 +119,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -161,7 +161,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -204,7 +204,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -245,7 +245,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -287,7 +287,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -329,7 +329,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -373,7 +373,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -416,7 +416,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -459,7 +459,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -502,7 +502,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -545,7 +545,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -587,7 +587,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -629,7 +629,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -671,7 +671,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -716,7 +716,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -761,7 +761,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -806,7 +806,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -851,7 +851,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)
         
@@ -897,7 +897,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 4)
         
@@ -947,7 +947,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 4)
         
@@ -993,7 +993,7 @@ class PinPathTest: XCTestCase {
         let iSlave = DataNormalizer.convert(points: slave)
         
         let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        let path = result.path
+        let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 4)
         
@@ -1010,6 +1010,34 @@ class PinPathTest: XCTestCase {
         XCTAssertEqual(points_3, [CGPoint(x: -10, y: 5), CGPoint(x: -10, y: 0)])
     }
     
+    
+    func testOneMore() {
+        
+        var master = [CGPoint]()
+        
+        master.append(CGPoint(x: -10, y: 10))
+        master.append(CGPoint(x: 10, y: 10))
+        master.append(CGPoint(x: 10, y: -10))
+        master.append(CGPoint(x: -10, y: -10))
+        
+        let iMaster = DataNormalizer.convert(points: master)
+        
+        var slave = [CGPoint]()
+        slave.append(CGPoint(x: 10, y: 0))
+        slave.append(CGPoint(x: 0, y: -10))
+        slave.append(CGPoint(x: -10, y: -10))
+        slave.append(CGPoint(x: -10, y: 10))
+        
+        let iSlave = DataNormalizer.convert(points: slave)
+        
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
+        let path = result.pinPathArray
+        
+        XCTAssertEqual(path.count, 4)
+        
+        let points_0 = path[0].extract(points: DataNormalizer.convert(points: master))
+        XCTAssertEqual(points_0, [CGPoint(x: 0, y: -10), CGPoint(x: -10, y: -10), CGPoint(x: -10, y: 10)])
+    }
     
 
 }

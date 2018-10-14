@@ -11,22 +11,25 @@ import Foundation
 
 struct PinHandler: Equatable {
     
-    private let sortFactor: SortUnit
+    let sortFactor: PathMileStone
     
     let isPinPath: Int              // 0 - false, 1 - true
     let index: Int                  // index in outside array
+    
+    var marker: Int = 0             // 0 - present, 1 - removed
 
-    init(sortFactor: SortUnit, index: Int, isPinPath: Int) {
+    init(sortFactor: PathMileStone, index: Int, isPinPath: Int) {
         self.index = index
         self.isPinPath = isPinPath
         self.sortFactor = sortFactor
     }
     
     
-    init(pinPath: PinPath, index: Int) {
+    init(sortFactor: PathMileStone, index: Int, isPinPath: Int, marker: Int) {
         self.index = index
-        self.isPinPath = 1
-        self.sortFactor = pinPath.v0.sortFactor
+        self.isPinPath = isPinPath
+        self.sortFactor = sortFactor
+        self.marker = marker
     }
     
     
@@ -39,39 +42,6 @@ struct PinHandler: Equatable {
     
     static func == (lhs: PinHandler, rhs: PinHandler) -> Bool {
         return lhs.sortFactor.index == rhs.sortFactor.index && lhs.sortFactor.offset == rhs.sortFactor.offset
-    }
-    
-}
-
-extension PinHandler {
-
-    static func sort(array: inout [PinHandler]) {
-        // this array is mostly sorted
-        
-        let n = array.count
-        
-        var isNotSorted: Bool
-        
-        var m = n
-        
-        repeat {
-            isNotSorted = false
-            var a = array[0]
-            var i = 1
-            while i < m {
-                let b = array[i]
-                if SortUnit.compare(a: a.sortFactor, b: b.sortFactor) {
-                    array[i - 1] = b
-                    isNotSorted = true
-                } else {
-                    array[i - 1] = a
-                    a = b
-                }
-                i += 1
-            }
-            m -= 1
-            array[m] = a
-        } while isNotSorted
     }
     
 }

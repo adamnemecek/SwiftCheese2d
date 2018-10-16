@@ -26,9 +26,18 @@ class BorderTest2: CoordinateSystemScene {
     private var slave: [CGPoint] = {
 
         var slave = [CGPoint]()
+        
+        slave.append(CGPoint(x: 10, y: 0))
+        slave.append(CGPoint(x: 0, y: -10))
+        slave.append(CGPoint(x: -10, y: -10))
+        slave.append(CGPoint(x: -10, y: 10))
+        /*
+        var slave = [CGPoint]()
         slave.append(CGPoint(x: -10, y: 0))
         slave.append(CGPoint(x: -10, y: -10))
         slave.append(CGPoint(x: 0, y: -10))
+        
+        */
         
         /*
         slave.append(CGPoint(x: 0, y: -10))

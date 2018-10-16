@@ -28,11 +28,9 @@ struct PinSequence {
         while i < pinPathArray.count {
             let path = pinPathArray[i]
             
-            let start = PinHandler(sortFactor: path.v0.sortFactor, index: i, isPinPath: 1)
-            pinHandlerArray.append(start)
+            let pathHandlers = path.extract(index: i, pathCount: masterCount)
             
-            let end = PinHandler(sortFactor: path.v1.sortFactor, index: i, isPinPath: 1, marker: 1)
-            pinHandlerArray.append(end)
+            pinHandlerArray.append(contentsOf: pathHandlers)
             
             i += 1
         }
@@ -147,7 +145,5 @@ struct PinSequence {
         
         return (points: points, paths: paths)
     }
-    
-    
-    
+
 }

@@ -26,6 +26,7 @@
 		542D79032154CD7F000B1D1A /* IntersectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D78F52154CD7F000B1D1A /* IntersectionTest.swift */; };
 		542D79042154CD7F000B1D1A /* CoordinateSystemScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D78F62154CD7F000B1D1A /* CoordinateSystemScene.swift */; };
 		542D790F2154CDB0000B1D1A /* libCheese2d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 542D790B2154CDA7000B1D1A /* libCheese2d.dylib */; };
+		549607F32174DC7D00E562ED /* BorderTest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549607F22174DC7D00E562ED /* BorderTest2.swift */; };
 		54B8756C2169356900D823AE /* MouseCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B8756B2169356900D823AE /* MouseCompatible.swift */; };
 		54E25D7E216CD8CE00B6FE58 /* ShapePinDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E25D7D216CD8CE00B6FE58 /* ShapePinDot.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		542D78F52154CD7F000B1D1A /* IntersectionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntersectionTest.swift; sourceTree = "<group>"; };
 		542D78F62154CD7F000B1D1A /* CoordinateSystemScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateSystemScene.swift; sourceTree = "<group>"; };
 		542D79052154CDA6000B1D1A /* Cheese2d.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Cheese2d.xcodeproj; path = ../Cheese2d/Cheese2d.xcodeproj; sourceTree = "<group>"; };
+		549607F22174DC7D00E562ED /* BorderTest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderTest2.swift; sourceTree = "<group>"; };
 		54B8756B2169356900D823AE /* MouseCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseCompatible.swift; sourceTree = "<group>"; };
 		54E25D7D216CD8CE00B6FE58 /* ShapePinDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapePinDot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +163,7 @@
 				5412FFA9216399D70038D458 /* BorderTest.swift */,
 				54B8756B2169356900D823AE /* MouseCompatible.swift */,
 				540F9465216F248800CF8A9D /* AngleTest.swift */,
+				549607F22174DC7D00E562ED /* BorderTest2.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				542D79032154CD7F000B1D1A /* IntersectionTest.swift in Sources */,
 				542D78F82154CD7F000B1D1A /* CanvasView.swift in Sources */,
 				540F9466216F248800CF8A9D /* AngleTest.swift in Sources */,
+				549607F32174DC7D00E562ED /* BorderTest2.swift in Sources */,
 				542D78FB2154CD7F000B1D1A /* ShapeDot.swift in Sources */,
 				542D78F72154CD7F000B1D1A /* ViewController.swift in Sources */,
 				542D78FA2154CD7F000B1D1A /* ShapeCoordinatSystem.swift in Sources */,
@@ -429,7 +433,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cheese2dUI/Cheese2dUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = HPV9E52JPX;
+				DEVELOPMENT_TEAM = 5M2XN6UJVC;
 				INFOPLIST_FILE = Cheese2dUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -448,7 +452,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cheese2dUI/Cheese2dUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = HPV9E52JPX;
+				DEVELOPMENT_TEAM = 5M2XN6UJVC;
 				INFOPLIST_FILE = Cheese2dUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

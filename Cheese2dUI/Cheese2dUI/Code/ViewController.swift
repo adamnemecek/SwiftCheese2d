@@ -17,7 +17,7 @@ class ViewController: NSViewController {
         }
     }
     
-    private let scene = BorderTest()
+    private let scene = BorderTest2()
     //private let scene = AngleTest()
 
     override func viewDidLoad() {

@@ -20,7 +20,6 @@ struct PinPath {
     let v0: PinPathVertex
     let v1: PinPathVertex
 
-    let isZeroCorner: Int
     let length: Int
     
     var isZeroLength: Bool {
@@ -28,10 +27,9 @@ struct PinPath {
     }
     
     
-    init(v0: PinPathVertex, v1: PinPathVertex, isZeroCorner: Int, length: Int) {
+    init(v0: PinPathVertex, v1: PinPathVertex, length: Int) {
         self.v0 = v0
         self.v1 = v1
-        self.isZeroCorner = isZeroCorner
         self.length = length
     }
     
@@ -144,7 +142,7 @@ struct PinPath {
         let v0 = PinPathVertex(pt: ms0Point, ms: ms0Ix, sl: sl0Ix, sortFactor: sortFactor0)
         let v1 = PinPathVertex(pt: ms1Point, ms: ms1Ix, sl: sl1Ix, sortFactor: sortFactor1)
 
-        return PinPath(v0: v0, v1: v1, isZeroCorner: 0, length: 1)
+        return PinPath(v0: v0, v1: v1, length: 1)
     }
     
     
@@ -167,17 +165,26 @@ struct PinPath {
             return [DataNormalizer.convert(point: v0.pt), DataNormalizer.convert(point: v1.pt)]
         }
         
+        guard length != 2 else {
+            let middle = DataNormalizer.convert(point: points[(v0.sortFactor.index + 1 ) % n])
+            return [DataNormalizer.convert(point: v0.pt), middle, DataNormalizer.convert(point: v1.pt)]
+        }
+        
         path.reserveCapacity(length + 1)
         path.append(DataNormalizer.convert(point: v0.pt))
         
+        //var a = (v0.sortFactor.index + 1) % n
+        //let b = (v1.sortFactor.index - 1 + n) % n
+        
         var a = (v0.sortFactor.index + 1) % n
         let b = (v1.sortFactor.index - 1 + n) % n
+
+        path.append(DataNormalizer.convert(point: points[a % n]))
         
-        path.append(DataNormalizer.convert(point: points[a]))
-        
-        while a != b {
-            a = (a + 1) % n
-            path.append(DataNormalizer.convert(point: points[a]))
+        while a <= b {
+            a += 1
+            let index = a % n
+            path.append(DataNormalizer.convert(point: points[index]))
         }
         
         /*

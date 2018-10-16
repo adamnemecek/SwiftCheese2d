@@ -54,12 +54,7 @@ struct PinPathAggregator {
                 }
             }
             
-            var isZeroCorner = 0
-            if border.v0.ms + length > masterCount {
-                isZeroCorner = 1
-            }
-            
-            let path = PinPath(v0: border.v0, v1: v1, isZeroCorner: isZeroCorner, length: length)
+            let path = PinPath(v0: border.v0, v1: v1, length: length)
             
             paths.append(path)
             
@@ -70,8 +65,9 @@ struct PinPathAggregator {
             let first = paths[0]
             let last = paths[paths.count - 1]
             
-            if first.v0.ms == masterCount - 1 && last.v1.ms == 1 {
-                paths[0] = PinPath(v0: last.v0, v1: first.v1, isZeroCorner: 1, length: first.length + last.length)
+            if first.v0.pt == last.v1.pt {
+                // TODO master path != slave path
+                paths[0] = PinPath(v0: last.v0, v1: first.v1, length: first.length + last.length)
                 paths.remove(at: paths.count - 1)
             }
         }

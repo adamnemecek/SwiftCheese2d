@@ -32,6 +32,9 @@
 		5470E5B82163FB0600AC2577 /* PinPathTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470E5B72163FB0600AC2577 /* PinPathTest.swift */; };
 		547BC90F216A878700A64EB0 /* PinPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547BC90E216A878700A64EB0 /* PinPoint.swift */; };
 		54BB545D2171D13500B61F3C /* PinSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB545C2171D13500B61F3C /* PinSequence.swift */; };
+		54F2C546217777FC001F4857 /* PinNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2C545217777FC001F4857 /* PinNavigator.swift */; };
+		54F2C5482177790A001F4857 /* PinNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2C5472177790A001F4857 /* PinNode.swift */; };
+		54F2C54B21777C35001F4857 /* IndexMileStone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2C54A21777C35001F4857 /* IndexMileStone.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,9 @@
 		5470E5B72163FB0600AC2577 /* PinPathTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPathTest.swift; sourceTree = "<group>"; };
 		547BC90E216A878700A64EB0 /* PinPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPoint.swift; sourceTree = "<group>"; };
 		54BB545C2171D13500B61F3C /* PinSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSequence.swift; sourceTree = "<group>"; };
+		54F2C545217777FC001F4857 /* PinNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNavigator.swift; sourceTree = "<group>"; };
+		54F2C5472177790A001F4857 /* PinNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNode.swift; sourceTree = "<group>"; };
+		54F2C54A21777C35001F4857 /* IndexMileStone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexMileStone.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +106,6 @@
 				5457CF1B216142AC0056728C /* PinPath.swift */,
 				5430C8DF21621F4100DE1441 /* IndexPoint.swift */,
 				547BC90E216A878700A64EB0 /* PinPoint.swift */,
-				540F946F216F6A1B00CF8A9D /* PinHandler.swift */,
 				5412993E2170C1F0001F0F0A /* PathMileStone.swift */,
 			);
 			path = Struct;
@@ -147,8 +152,9 @@
 		545A2D3221550F8200047C8D /* Intersection */ = {
 			isa = PBXGroup;
 			children = (
+				54F2C54921777B63001F4857 /* Sequence */,
+				54F2C544217777DD001F4857 /* Navigation */,
 				5457CF18216141490056728C /* Struct */,
-				54BB545C2171D13500B61F3C /* PinSequence.swift */,
 				545A2D3321550F8200047C8D /* Intersector.swift */,
 				5404A25A215C0D1200DC10BB /* DataNormalizer.swift */,
 				5430C8E32162551900DE1441 /* IntersectorResult.swift */,
@@ -180,6 +186,25 @@
 				545A2D4821550F9000047C8D /* Info.plist */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		54F2C544217777DD001F4857 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				54F2C545217777FC001F4857 /* PinNavigator.swift */,
+				54F2C5472177790A001F4857 /* PinNode.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		54F2C54921777B63001F4857 /* Sequence */ = {
+			isa = PBXGroup;
+			children = (
+				54BB545C2171D13500B61F3C /* PinSequence.swift */,
+				540F946F216F6A1B00CF8A9D /* PinHandler.swift */,
+				54F2C54A21777C35001F4857 /* IndexMileStone.swift */,
+			);
+			path = Sequence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +308,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5404A25B215C0D1200DC10BB /* DataNormalizer.swift in Sources */,
+				54F2C54B21777C35001F4857 /* IndexMileStone.swift in Sources */,
+				54F2C5482177790A001F4857 /* PinNode.swift in Sources */,
 				5430C8E021621F4100DE1441 /* IndexPoint.swift in Sources */,
 				547BC90F216A878700A64EB0 /* PinPoint.swift in Sources */,
 				540F946A216F271500CF8A9D /* Corner.swift in Sources */,
@@ -293,6 +320,7 @@
 				545A2D3F21550F8200047C8D /* BoxArea.swift in Sources */,
 				5404A259215C0BDB00DC10BB /* Point.swift in Sources */,
 				540F9470216F6A1B00CF8A9D /* PinHandler.swift in Sources */,
+				54F2C546217777FC001F4857 /* PinNavigator.swift in Sources */,
 				5430C8E42162551900DE1441 /* IntersectorResult.swift in Sources */,
 				5457CF1C216142AC0056728C /* PinPath.swift in Sources */,
 				545A2D3C21550F8200047C8D /* Intersector.swift in Sources */,

@@ -16,19 +16,19 @@ public struct Intersector {
         let iMaster = DataNormalizer.convert(points: master)
         let iSlave = DataNormalizer.convert(points: slave)
         
-        let sequence = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
+        let navigator = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
     
         var borders = [[CGPoint]]()
         var points = [PinPoint]()
 
-        for pinHandler in sequence.handlerArray {
-            if pinHandler.marker == 0 {
-                let index = pinHandler.index
-                if pinHandler.isPinPath == 1 {
-                    let path = sequence.pinPathArray[index]
+        for node in navigator.nodeArray {
+            if node.marker == 0 {
+                let index = node.masterIndex
+                if node.isPinPath == 1 {
+                    let path = navigator.pinPathArray[index]
                     borders.append(path.extract(points: iMaster))
                 } else {
-                    let pin = sequence.pinPointArray[index]
+                    let pin = navigator.pinPointArray[index]
                     points.append(pin)
                 }
             }
@@ -39,7 +39,7 @@ public struct Intersector {
     }
     
     
-    static func findPins(iMaster: [Point], iSlave: [Point]) -> PinSequence {
+    static func findPins(iMaster: [Point], iSlave: [Point]) -> PinNavigator {
         
         let posMatrix = self.buildPossibilityMatrix(master: iMaster, slave: iSlave)
 
@@ -175,15 +175,15 @@ public struct Intersector {
             i = j
         }
         
-        var merger = PinPathAggregator(array: pinPaths, masterCount: iMaster.count)
+        var aggregator = PinPathAggregator(array: pinPaths, masterCount: iMaster.count)
 
-        pinPaths = merger.merge()
+        pinPaths = aggregator.merge()
         
         var sequence = PinSequence(pinPointArray: pinPoints, pinPathArray: pinPaths, masterCount: iMaster.count)
         
-        sequence.prepareData()
+        let navigator = sequence.buildNavigator()
 
-        return sequence
+        return navigator
     }
 
     

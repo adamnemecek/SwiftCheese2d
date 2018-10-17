@@ -24,7 +24,8 @@ struct PinSequence {
         self.handlerArray.reserveCapacity(pinPathArray.count + pinPointArray.count)
     }
     
-    mutating func prepareData() {
+    
+    mutating func buildNavigator() -> PinNavigator {
         var i = 0
         while i < pinPathArray.count {
             let path = pinPathArray[i]
@@ -45,6 +46,33 @@ struct PinSequence {
         self.sortMaster()
         
         self.cleanDoubles()
+        
+        let slavePath = self.buildSlavePath()
+        let masterPath = self.buildSlavePath()
+        
+        let n = slavePath.count
+        
+        var nodes = Array<PinNode>(repeating: PinNode(isPinPath: 0), count: n)
+        for j in 0...n-1 {
+            var node = nodes[j]
+            node.isPinPath = handlerArray[j].isPinPath
+            nodes[j] = node
+            
+            let slaveIndex = slavePath[j]
+            node = nodes[slaveIndex]
+            node.slaveIndex = slaveIndex
+            nodes[slaveIndex] = node
+
+            let masterIndex = masterPath[j]
+            node = nodes[masterIndex]
+            node.masterIndex = masterIndex
+            nodes[masterIndex] = node
+        }
+
+        
+        return PinNavigator(masterPath: masterPath, slavePath: slavePath,
+                            pinPathArray: pinPathArray, pinPointArray: pinPointArray,
+                            nodeArray: nodes)
     }
     
     
@@ -105,7 +133,7 @@ struct PinSequence {
         }
         
         if isCompactRequired {
-            compact()
+            self.compact()
         }
     }
     
@@ -141,4 +169,67 @@ struct PinSequence {
         self.handlerArray = handlers
     }
 
+    private func buildSlavePath() -> [Int] {
+        let n = handlerArray.count
+        
+        var iStones = [IndexMileStone]()
+        iStones.reserveCapacity(n)
+        
+        for j in 0...n - 1 {
+            let handler = handlerArray[j]
+            let index = handler.index
+            if handler.isPinPath == 0 {
+                let point = self.pinPointArray[index]
+                iStones.append(IndexMileStone(index: index, stone: point.slaveMileStone))
+            } else {
+                let path = self.pinPathArray[index]
+                iStones.append(IndexMileStone(index: index, stone: path.v1.slaveMileStone))
+            }
+        }
+        
+        
+        var isNotSorted: Bool
+        
+        var m = n
+        
+        repeat {
+            isNotSorted = false
+            var a = iStones[0]
+            var i = 1
+            while i < m {
+                let b = iStones[i]
+                if PathMileStone.compare(a: a.stone, b: b.stone) {
+                    iStones[i - 1] = b
+                    isNotSorted = true
+                } else {
+                    iStones[i - 1] = a
+                    a = b
+                }
+                i += 1
+            }
+            m -= 1
+            iStones[m] = a
+        } while isNotSorted
+        
+        var indexArray = Array<Int>(repeating: 0, count: n)
+        
+        for j in 0...n - 1 {
+            indexArray[j] = iStones[j].index
+        }
+        
+        return indexArray
+    }
+    
+    
+    private func buildMasterPath() -> [Int] {
+        let n = handlerArray.count
+        
+        var indexArray = Array<Int>(repeating: 0, count: n)
+        
+        for i in 0...n - 1 {
+            indexArray[i] = handlerArray[i].index
+        }
+        
+        return indexArray
+    }
 }

@@ -16,29 +16,6 @@ import XCTest
 
 class PinsCleanDoublesTest: XCTestCase {
     
-    
-    private func sequenceToBundle(sequence: PinSequence, iMaster: [Point]) -> IntersectorResult {
-        var borders = [[CGPoint]]()
-        var points = [PinPoint]()
-        
-        for pinHandler in sequence.handlerArray {
-            if pinHandler.marker == 0 {
-                let index = pinHandler.index
-                if pinHandler.isPinPath == 1 {
-                    let path = sequence.pinPathArray[index]
-                    borders.append(path.extract(points: iMaster))
-                } else {
-                    let pin = sequence.pinPointArray[index]
-                    points.append(pin)
-                }
-            }
-            
-        }
-        
-        return IntersectorResult(points: points, path: borders)
-    }
-    
-    
     func test_0() {
         
         var master = [CGPoint]()
@@ -55,11 +32,9 @@ class PinsCleanDoublesTest: XCTestCase {
         slave.append(CGPoint(x: 5, y: 5))
         let iSlave = DataNormalizer.convert(points: slave)
         
-        let sequence = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
-        
-        let result = self.sequenceToBundle(sequence: sequence, iMaster: iMaster)
-   
-        XCTAssertEqual(result.points.count, 1)
+        let navigator = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
+
+        XCTAssertEqual(navigator.pinPointArray.count, 1)
     }
     
 }

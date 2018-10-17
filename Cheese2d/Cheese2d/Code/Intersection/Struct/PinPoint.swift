@@ -15,7 +15,8 @@ struct PinPointDef {
     let ms1: IndexPoint
     let sl0: IndexPoint
     let sl1: IndexPoint
-    let sortFactor: PathMileStone
+    let masterMileStone: PathMileStone
+    let slaveMileStone: PathMileStone
 }
 
 
@@ -23,7 +24,8 @@ public struct PinPoint {
     
     public let point: CGPoint
     public let type: Int            // 1 - in, -1 - out, 2 in-out, -2 out-in
-    let sortFactor: PathMileStone
+    let masterMileStone: PathMileStone
+    let slaveMileStone: PathMileStone
     
     let slavePrev: Int
     let slaveNext: Int
@@ -36,7 +38,8 @@ public struct PinPoint {
         
         let point = DataNormalizer.convert(point: def.pt)
         
-        return PinPoint(point: point, type: type, sortFactor: def.sortFactor,
+        return PinPoint(point: point, type: type,
+                        masterMileStone: def.masterMileStone, slaveMileStone: def.slaveMileStone,
                         slavePrev: def.sl0.index, slaveNext: def.sl1.index, masterPrev: def.ms0.index, masterNext: def.ms1.index)
     }
 
@@ -54,7 +57,8 @@ public struct PinPoint {
 
         let point = DataNormalizer.convert(point: def.pt)
 
-        return PinPoint(point: point, type: type, sortFactor: def.sortFactor,
+        return PinPoint(point: point, type: type,
+                        masterMileStone: def.masterMileStone, slaveMileStone: def.slaveMileStone,
                         slavePrev: def.sl0.index, slaveNext: def.sl1.index, masterPrev: def.ms0.index, masterNext: def.ms1.index)
     }
     
@@ -72,7 +76,8 @@ public struct PinPoint {
         
         let point = DataNormalizer.convert(point: def.pt)
 
-        return PinPoint(point: point, type: type, sortFactor: def.sortFactor,
+        return PinPoint(point: point, type: type,
+                        masterMileStone: def.masterMileStone, slaveMileStone: def.slaveMileStone,
                         slavePrev: def.sl0.index, slaveNext: def.sl1.index, masterPrev: def.ms0.index, masterNext: def.ms1.index)
     }
     
@@ -94,7 +99,8 @@ public struct PinPoint {
         
         let point = DataNormalizer.convert(point: def.pt)
         
-        return PinPoint(point: point, type: type, sortFactor: def.sortFactor,
+        return PinPoint(point: point, type: type,
+                        masterMileStone: def.masterMileStone, slaveMileStone: def.slaveMileStone,
                         slavePrev: def.sl0.index, slaveNext: def.sl1.index, masterPrev: def.ms0.index, masterNext: def.ms1.index)
     }
     

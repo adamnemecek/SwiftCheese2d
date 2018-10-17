@@ -21,7 +21,7 @@ public struct Intersector {
         var borders = [[CGPoint]]()
         var points = [PinPoint]()
 
-        for pinHandler in sequence.pinHandlerArray {
+        for pinHandler in sequence.handlerArray {
             if pinHandler.marker == 0 {
                 let index = pinHandler.index
                 if pinHandler.isPinPath == 1 {
@@ -89,7 +89,8 @@ public struct Intersector {
                             ms1: IndexPoint(index: msIx1, point: ms1),
                             sl0: IndexPoint(index: slIx0, point: sl0),
                             sl1: IndexPoint(index: slIx1, point: sl1),
-                            sortFactor: PathMileStone(index: msIx0, offset: ms0.sqrDistance(point: point)))
+                            masterMileStone: PathMileStone(index: msIx0, offset: ms0.sqrDistance(point: point)),
+                            slaveMileStone: PathMileStone(index: slIx0, offset: sl0.sqrDistance(point: point)))
                         
                         let pinPoint = PinPoint.buildSimple(def: pinPointDef)
                         pinPoints.append(pinPoint)
@@ -103,15 +104,18 @@ public struct Intersector {
                         var prevSl = slIx0
                         var nextSl = slIx1
                         
-                        var edge = msIx0
-                        var offsetFactor: Int64 = 0
+                        var masterEdge = msIx0
+                        var masterOffset: Int64 = 0
+                        
+                        var slaveEdge = slIx0
+                        var slaveOffset: Int64 = 0
 
                         if isMsEnd {
                             if ms0 == point {
                                 prevMs = (msIx0 - 1 + masterCount) % masterCount
                             } else {
                                 nextMs = (msIx1 + 1) % masterCount
-                                edge = msIx1
+                                masterEdge = msIx1
                             }
                         }
                         
@@ -119,12 +123,17 @@ public struct Intersector {
                             if sl0 == point {
                                 prevSl = (slIx0 - 1 + slaveCount) % slaveCount
                             } else {
+                                slaveEdge = slIx1
                                 nextSl = (slIx1 + 1) % slaveCount
                             }
-                            
-                            if !isMsEnd {
-                                offsetFactor = ms0.sqrDistance(point: point)
-                            }
+                        }
+                        
+                        if isSlEnd && !isMsEnd {
+                            masterOffset = ms0.sqrDistance(point: point)
+                        }
+                        
+                        if isMsEnd && !isSlEnd {
+                            slaveOffset = sl0.sqrDistance(point: point)
                         }
 
                         let pinPointDef = PinPointDef(
@@ -133,7 +142,8 @@ public struct Intersector {
                             ms1: IndexPoint(index: nextMs, point: iMaster[nextMs]),
                             sl0: IndexPoint(index: prevSl, point: iSlave[prevSl]),
                             sl1: IndexPoint(index: nextSl, point: iSlave[nextSl]),
-                            sortFactor: PathMileStone(index: edge, offset: offsetFactor))
+                            masterMileStone: PathMileStone(index: masterEdge, offset: masterOffset),
+                            slaveMileStone: PathMileStone(index: slaveEdge, offset: slaveOffset))
                         
                         if isMsEnd && isSlEnd {
                             // pin point is on the cross

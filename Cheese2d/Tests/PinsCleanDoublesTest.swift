@@ -21,7 +21,7 @@ class PinsCleanDoublesTest: XCTestCase {
         var borders = [[CGPoint]]()
         var points = [PinPoint]()
         
-        for pinHandler in sequence.pinHandlerArray {
+        for pinHandler in sequence.handlerArray {
             if pinHandler.marker == 0 {
                 let index = pinHandler.index
                 if pinHandler.isPinPath == 1 {

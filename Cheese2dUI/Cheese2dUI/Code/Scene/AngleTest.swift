@@ -138,7 +138,6 @@ extension AngleTest: MouseCompatible {
                     return
                 }
             }
-            print("point: \(point)")
             self.points[index] = point
             self.update()
         }

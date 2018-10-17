@@ -94,7 +94,6 @@ public struct Intersector {
                         let pinPoint = PinPoint.buildSimple(def: pinPointDef)
                         pinPoints.append(pinPoint)
                     } else {
-                        print("PinPoint")
                         let isMsEnd = ms0 == point || ms1 == point
                         let isSlEnd = sl0 == point || sl1 == point
                         
@@ -109,10 +108,8 @@ public struct Intersector {
 
                         if isMsEnd {
                             if ms0 == point {
-                                print("case A")
                                 prevMs = (msIx0 - 1 + masterCount) % masterCount
                             } else {
-                                print("case B")
                                 nextMs = (msIx1 + 1) % masterCount
                                 edge = msIx1
                             }
@@ -120,14 +117,12 @@ public struct Intersector {
                         
                         if isSlEnd {
                             if sl0 == point {
-                                print("case C")
                                 prevSl = (slIx0 - 1 + slaveCount) % slaveCount
                             } else {
                                 nextSl = (slIx1 + 1) % slaveCount
                             }
                             
                             if !isMsEnd {
-                                print("case D")
                                 offsetFactor = ms0.sqrDistance(point: point)
                             }
                         }
@@ -144,17 +139,14 @@ public struct Intersector {
                             // pin point is on the cross
                             let pinPoint = PinPoint.buildOnCross(def: pinPointDef)
                             pinPoints.append(pinPoint)
-                            print("onCommon")
                         } else if isMsEnd {
                             // pin point is on slave
                             let pinPoint = PinPoint.buildOnSlave(def: pinPointDef)
                             pinPoints.append(pinPoint)
-                            print("onSlave")
                         } else if isSlEnd {
                             // pin point is on master
                             let pinPoint = PinPoint.buildOnMaster(def: pinPointDef)
                             pinPoints.append(pinPoint)
-                            print("OnMaster")
                         }
                     }
                 } else {
@@ -178,8 +170,6 @@ public struct Intersector {
         pinPaths = merger.merge()
         
         var sequence = PinSequence(pinPointArray: pinPoints, pinPathArray: pinPaths, masterCount: iMaster.count)
-        
-        //print(sequence.pinPointArray)
         
         sequence.prepareData()
 

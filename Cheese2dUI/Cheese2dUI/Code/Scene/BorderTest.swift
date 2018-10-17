@@ -142,7 +142,6 @@ extension BorderTest: MouseCompatible {
         if isSlave {
             let prevPoint = self.slave[index]
             if point != prevPoint {
-                print("point: \(point)")
                 self.slave[index] = point
                 self.update()
             }

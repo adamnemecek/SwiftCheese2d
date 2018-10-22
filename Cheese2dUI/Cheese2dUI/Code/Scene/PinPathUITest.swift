@@ -10,7 +10,7 @@
 import Cocoa
 import Cheese2d
 
-class BorderTest: CoordinateSystemScene {
+class PinPathUITest: CoordinateSystemScene {
 
     private var master: [CGPoint] = {
         var master = [CGPoint]()
@@ -20,18 +20,44 @@ class BorderTest: CoordinateSystemScene {
         master.append(CGPoint(x: 10, y: -10))
         master.append(CGPoint(x: -10, y: -10))
         
+        
         return master
     }()
     
+    
+    
+    
     private var slave: [CGPoint] = {
         var slave = [CGPoint]()
+        
+        // testSingle_0_0
+
+        slave.append(CGPoint(x: 0, y: 0))
+        slave.append(CGPoint(x: 5, y: 10))
+        slave.append(CGPoint(x: -5, y: 10))
+
+        
+        // testSingle_0_1
+/*
+        slave.append(CGPoint(x: 0, y: 0))
+        slave.append(CGPoint(x: -10, y: 5))
+        slave.append(CGPoint(x: -10, y: -5))
+  */
+        /*
         slave.append(CGPoint(x: 10, y: 0))
         slave.append(CGPoint(x: -10, y: 10))
         slave.append(CGPoint(x: -10, y: -10))
         slave.append(CGPoint(x: 0, y: -10))
-
+         */
         return slave
     }()
+    
+    
+    
+    
+    
+    
+    
     
     private var activeIndex: Int?
     private var isSlave: Bool = false
@@ -87,7 +113,7 @@ class BorderTest: CoordinateSystemScene {
 }
 
 
-extension BorderTest: MouseCompatible {
+extension PinPathUITest: MouseCompatible {
     
     private func findNearest(point: CGPoint, points: [CGPoint]) -> Int? {
         var i = 0

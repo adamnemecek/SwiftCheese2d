@@ -165,7 +165,7 @@ public struct Intersector {
                     let sl0Pt = IndexPoint(index: slIx0, point: sl0)
                     let sl1Pt = IndexPoint(index: slIx1, point: sl1)
                     
-                    let pinPath = PinPath.buildPinPath(ms0Pt: ms0Pt, ms1Pt: ms1Pt, sl0Pt: sl0Pt, sl1Pt: sl1Pt, msCount: masterCount, slCount: slaveCount)
+                    let pinPath = PinPath.buildPinPath(msPt0: ms0Pt, msPt1: ms1Pt, slPt0: sl0Pt, slPt1: sl1Pt, msCount: masterCount, slCount: slaveCount)
                     if !pinPath.isZeroLength {
                         pinPaths.append(pinPath)
                     }

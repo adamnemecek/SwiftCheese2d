@@ -15,6 +15,10 @@ struct IndexPoint: Comparable {
     let point: Point
     
     
+    func scrDistance(stone: Point) -> PathMileStone {
+        return PathMileStone(index: index, offset: point.sqrDistance(point: stone))
+    }
+    
     static func == (lhs: IndexPoint, rhs: IndexPoint) -> Bool {
         return lhs.point == rhs.point
     }

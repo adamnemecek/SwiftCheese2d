@@ -22,7 +22,7 @@ class ShapeText: CALayer {
         textLayer.foregroundColor = color
         textLayer.string = text
         textLayer.frame = rect
-        textLayer.alignmentMode = kCAAlignmentCenter
+        textLayer.alignmentMode = CATextLayerAlignmentMode.center
         textLayer.transform = CATransform3DMakeScale(0.05, 0.05, 1.0)
         
         self.addSublayer(ShapeLine(start: position, end: pin, lineWidth: lineWidth, strokeColor: strokeColor, dash: nil))

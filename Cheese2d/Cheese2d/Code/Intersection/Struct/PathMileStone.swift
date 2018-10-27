@@ -11,6 +11,8 @@ import Foundation
 
 struct PathMileStone {
     
+    static let zero = PathMileStone(index: 0, offset: 0)
+    
     let index: Int
     let offset: Int64
  

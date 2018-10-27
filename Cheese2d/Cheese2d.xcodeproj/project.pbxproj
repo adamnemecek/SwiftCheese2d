@@ -13,13 +13,15 @@
 		540F9470216F6A1B00CF8A9D /* PinHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F946F216F6A1B00CF8A9D /* PinHandler.swift */; };
 		540F9474216F888900CF8A9D /* CornerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F9473216F888900CF8A9D /* CornerTest.swift */; };
 		5411749F216764C000399820 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411749E216764C000399820 /* Range.swift */; };
-		541174A121676E9C00399820 /* PinPathAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541174A021676E9C00399820 /* PinPathAggregator.swift */; };
+		541174A121676E9C00399820 /* PinEdgeAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541174A021676E9C00399820 /* PinEdgeAggregator.swift */; };
 		5412993D2170AD39001F0F0A /* PinsCleanDoublesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5412993C2170AD39001F0F0A /* PinsCleanDoublesTest.swift */; };
 		5412993F2170C1F0001F0F0A /* PathMileStone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5412993E2170C1F0001F0F0A /* PathMileStone.swift */; };
 		54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */; };
 		54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FED2157E2C100E99295 /* SortedNumbers.swift */; };
 		5430C8E021621F4100DE1441 /* IndexPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5430C8DF21621F4100DE1441 /* IndexPoint.swift */; };
 		5430C8E42162551900DE1441 /* IntersectorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5430C8E32162551900DE1441 /* IntersectorResult.swift */; };
+		54336B842184D59300D53311 /* PinEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54336B832184D59300D53311 /* PinEdge.swift */; };
+		54336B892184FC8800D53311 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54336B882184FC8800D53311 /* Pin.swift */; };
 		5457CF1C216142AC0056728C /* PinPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457CF1B216142AC0056728C /* PinPath.swift */; };
 		545A2D2421550E8700047C8D /* Cheese2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 545A2D2321550E8700047C8D /* Cheese2d.h */; };
 		545A2D2621550E8700047C8D /* Cheese2d.m in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D2521550E8700047C8D /* Cheese2d.m */; };
@@ -54,13 +56,15 @@
 		540F946F216F6A1B00CF8A9D /* PinHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinHandler.swift; sourceTree = "<group>"; };
 		540F9473216F888900CF8A9D /* CornerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerTest.swift; sourceTree = "<group>"; };
 		5411749E216764C000399820 /* Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
-		541174A021676E9C00399820 /* PinPathAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPathAggregator.swift; sourceTree = "<group>"; };
+		541174A021676E9C00399820 /* PinEdgeAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinEdgeAggregator.swift; sourceTree = "<group>"; };
 		5412993C2170AD39001F0F0A /* PinsCleanDoublesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinsCleanDoublesTest.swift; sourceTree = "<group>"; };
 		5412993E2170C1F0001F0F0A /* PathMileStone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathMileStone.swift; sourceTree = "<group>"; };
 		54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixTest.swift; sourceTree = "<group>"; };
 		54191FED2157E2C100E99295 /* SortedNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedNumbers.swift; sourceTree = "<group>"; };
 		5430C8DF21621F4100DE1441 /* IndexPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexPoint.swift; sourceTree = "<group>"; };
 		5430C8E32162551900DE1441 /* IntersectorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntersectorResult.swift; sourceTree = "<group>"; };
+		54336B832184D59300D53311 /* PinEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinEdge.swift; sourceTree = "<group>"; };
+		54336B882184FC8800D53311 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		5457CF1B216142AC0056728C /* PinPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPath.swift; sourceTree = "<group>"; };
 		545A2D2021550E8700047C8D /* libCheese2d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libCheese2d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		545A2D2321550E8700047C8D /* Cheese2d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cheese2d.h; sourceTree = "<group>"; };
@@ -99,13 +103,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54336B872184FC6300D53311 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				54336B882184FC8800D53311 /* Pin.swift */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
 		5457CF18216141490056728C /* Struct */ = {
 			isa = PBXGroup;
 			children = (
+				54336B872184FC6300D53311 /* Public */,
 				5404A258215C0BDB00DC10BB /* Point.swift */,
+				54336B832184D59300D53311 /* PinEdge.swift */,
 				5457CF1B216142AC0056728C /* PinPath.swift */,
-				5430C8DF21621F4100DE1441 /* IndexPoint.swift */,
 				547BC90E216A878700A64EB0 /* PinPoint.swift */,
+				5430C8DF21621F4100DE1441 /* IndexPoint.swift */,
 				5412993E2170C1F0001F0F0A /* PathMileStone.swift */,
 			);
 			path = Struct;
@@ -159,7 +173,7 @@
 				5404A25A215C0D1200DC10BB /* DataNormalizer.swift */,
 				5430C8E32162551900DE1441 /* IntersectorResult.swift */,
 				540F9469216F271500CF8A9D /* Corner.swift */,
-				541174A021676E9C00399820 /* PinPathAggregator.swift */,
+				541174A021676E9C00399820 /* PinEdgeAggregator.swift */,
 			);
 			path = Intersection;
 			sourceTree = "<group>";
@@ -268,9 +282,11 @@
 				TargetAttributes = {
 					545A2D1F21550E8700047C8D = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					545A2D4321550F8F00047C8D = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -309,13 +325,15 @@
 			files = (
 				5404A25B215C0D1200DC10BB /* DataNormalizer.swift in Sources */,
 				54F2C54B21777C35001F4857 /* IndexMileStone.swift in Sources */,
+				54336B842184D59300D53311 /* PinEdge.swift in Sources */,
+				54336B892184FC8800D53311 /* Pin.swift in Sources */,
 				54F2C5482177790A001F4857 /* PinNode.swift in Sources */,
 				5430C8E021621F4100DE1441 /* IndexPoint.swift in Sources */,
 				547BC90F216A878700A64EB0 /* PinPoint.swift in Sources */,
 				540F946A216F271500CF8A9D /* Corner.swift in Sources */,
 				54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */,
 				545A2D2621550E8700047C8D /* Cheese2d.m in Sources */,
-				541174A121676E9C00399820 /* PinPathAggregator.swift in Sources */,
+				541174A121676E9C00399820 /* PinEdgeAggregator.swift in Sources */,
 				5411749F216764C000399820 /* Range.swift in Sources */,
 				545A2D3F21550F8200047C8D /* BoxArea.swift in Sources */,
 				5404A259215C0BDB00DC10BB /* Point.swift in Sources */,
@@ -478,7 +496,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -493,7 +511,7 @@
 				EXECUTABLE_PREFIX = lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -513,7 +531,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -533,7 +551,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

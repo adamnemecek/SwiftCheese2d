@@ -10,7 +10,7 @@ import Foundation
 
 public struct IntersectorResult {
     
-    public let points:  [PinPoint]
+    public let points:  [Pin]
     public let path: [[CGPoint]]
 
 }

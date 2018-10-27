@@ -19,7 +19,7 @@ public struct Intersector {
         let navigator = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
     
         var borders = [[CGPoint]]()
-        var points = [PinPoint]()
+        var points = [Pin]()
 
         for node in navigator.nodeArray {
             if node.marker == 0 {
@@ -28,7 +28,8 @@ public struct Intersector {
                     let path = navigator.pinPathArray[index]
                     borders.append(path.extract(points: iMaster))
                 } else {
-                    let pin = navigator.pinPointArray[index]
+                    let p = navigator.pinPointArray[index]
+                    let pin = Pin(point: DataNormalizer.convert(point: p.point), type: p.type)
                     points.append(pin)
                 }
             }
@@ -47,7 +48,7 @@ public struct Intersector {
         let slaveIndices = posMatrix.adjacencies
 
         var pinPoints = [PinPoint]()
-        var pinPaths = [PinPath]()
+        var pinEdges = [PinEdge]()
         
         let masterCount = iMaster.count
         let slaveCount = iSlave.count
@@ -165,9 +166,9 @@ public struct Intersector {
                     let sl0Pt = IndexPoint(index: slIx0, point: sl0)
                     let sl1Pt = IndexPoint(index: slIx1, point: sl1)
                     
-                    let pinPath = PinPath.buildPinPath(msPt0: ms0Pt, msPt1: ms1Pt, slPt0: sl0Pt, slPt1: sl1Pt, msCount: masterCount, slCount: slaveCount)
-                    if !pinPath.isZeroLength {
-                        pinPaths.append(pinPath)
+                    let pinEdge = PinEdge(msPt0: ms0Pt, msPt1: ms1Pt, slPt0: sl0Pt, slPt1: sl1Pt, msCount: masterCount, slCount: slaveCount)
+                    if !pinEdge.isZeroLength {
+                        pinEdges.append(pinEdge)
                     }
                 }
             } while j < n && msIx0 == masterIndices[j]
@@ -175,9 +176,9 @@ public struct Intersector {
             i = j
         }
         
-        var aggregator = PinPathAggregator(array: pinPaths, masterCount: iMaster.count)
+        var aggregator = PinEdgeAggregator(edges: pinEdges, masterCount: iMaster.count)
 
-        pinPaths = aggregator.merge()
+        let pinPaths = aggregator.merge()
         
         var sequence = PinSequence(pinPointArray: pinPoints, pinPathArray: pinPaths, masterCount: iMaster.count)
         

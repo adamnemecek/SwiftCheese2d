@@ -25,35 +25,24 @@ class PinPathUITest: CoordinateSystemScene {
     }()
     
     
+    private var slave: [CGPoint] = PinPathUITest.slave_0_1()
     
     
-    private var slave: [CGPoint] = {
-        var slave = [CGPoint]()
-        
-        // testSingle_0_0
-
-        slave.append(CGPoint(x: 0, y: 0))
-        slave.append(CGPoint(x: 5, y: 10))
-        slave.append(CGPoint(x: -5, y: 10))
-
-        
-        // testSingle_0_1
-/*
-        slave.append(CGPoint(x: 0, y: 0))
-        slave.append(CGPoint(x: -10, y: 5))
-        slave.append(CGPoint(x: -10, y: -5))
-  */
-        /*
-        slave.append(CGPoint(x: 10, y: 0))
-        slave.append(CGPoint(x: -10, y: 10))
-        slave.append(CGPoint(x: -10, y: -10))
-        slave.append(CGPoint(x: 0, y: -10))
-         */
-        return slave
-    }()
+    private static func slave_0_0() -> [CGPoint] {
+        return [
+            CGPoint(x: 0, y: 0),
+            CGPoint(x: 5, y: 10),
+            CGPoint(x: -5, y: 10)
+        ]
+    }
     
-    
-    
+    private static func slave_0_1() -> [CGPoint] {
+        return [
+            CGPoint(x: 0, y: 0),
+            CGPoint(x: -10, y: 5),
+            CGPoint(x: -10, y: -5)
+        ]
+    }
     
     
     

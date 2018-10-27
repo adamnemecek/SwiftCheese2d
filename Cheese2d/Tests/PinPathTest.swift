@@ -37,14 +37,10 @@ class PinPathTest: XCTestCase {
         
         let path = result.pinPathArray[0]
         
-        XCTAssertEqual(path.v0.ms, 0)
-        XCTAssertEqual(path.v1.ms, 1)
         XCTAssertEqual(path.v0.masterMileStone.index, 0)
         XCTAssertEqual(path.v1.masterMileStone.index, 0)
         XCTAssertEqual(path.v0.pt, DataNormalizer.convert(point: CGPoint(x: -5, y: 10)))
         XCTAssertEqual(path.v1.pt, DataNormalizer.convert(point: CGPoint(x: 5, y: 10)))
-        XCTAssertEqual(path.v0.sl, 0)
-        XCTAssertEqual(path.v1.sl, 0)
         XCTAssertEqual(path.length, 1)
         
         
@@ -77,14 +73,10 @@ class PinPathTest: XCTestCase {
         let path = result.pinPathArray[0]
         
         
-        XCTAssertEqual(path.v0.ms, 3)
-        XCTAssertEqual(path.v1.ms, 0)
         XCTAssertEqual(path.v0.masterMileStone.index, 3)
         XCTAssertEqual(path.v1.masterMileStone.index, 3)
-        XCTAssertEqual(path.v0.pt, DataNormalizer.convert(point: CGPoint(x: -10, y: 5)))
-        XCTAssertEqual(path.v1.pt, DataNormalizer.convert(point: CGPoint(x: -10, y: -5)))
-        XCTAssertEqual(path.v0.sl, 0)
-        XCTAssertEqual(path.v1.sl, 0)
+        XCTAssertEqual(path.v0.pt, DataNormalizer.convert(point: CGPoint(x: -10, y: -5)))
+        XCTAssertEqual(path.v1.pt, DataNormalizer.convert(point: CGPoint(x: -10, y: 5)))
         XCTAssertEqual(path.length, 1)
         
         let points = path.extract(points: DataNormalizer.convert(points: master))
@@ -118,14 +110,10 @@ class PinPathTest: XCTestCase {
         let border = result.pinPathArray[0]
         
         
-        XCTAssertEqual(border.v0.ms, 0)
-        XCTAssertEqual(border.v1.ms, 1)
         XCTAssertEqual(border.v0.masterMileStone.index, 0)
         XCTAssertEqual(border.v1.masterMileStone.index, 0)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 0)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 1)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -159,14 +147,10 @@ class PinPathTest: XCTestCase {
         let border = result.pinPathArray[0]
         
         
-        XCTAssertEqual(border.v0.ms, 1)
-        XCTAssertEqual(border.v1.ms, 2)
         XCTAssertEqual(border.v0.masterMileStone.index, 1)
         XCTAssertEqual(border.v1.masterMileStone.index, 1)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 0)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 1)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -200,14 +184,10 @@ class PinPathTest: XCTestCase {
         
         let border = result.pinPathArray[0]
         
-        XCTAssertEqual(border.v0.ms, 1)
-        XCTAssertEqual(border.v1.ms, 0)
         XCTAssertEqual(border.v0.masterMileStone.index, 2)
         XCTAssertEqual(border.v1.masterMileStone.index, 3)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 0)
-        XCTAssertEqual(border.v1.sl, 0)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
         XCTAssertEqual(points.count, 2)
@@ -241,14 +221,10 @@ class PinPathTest: XCTestCase {
         let border = result.pinPathArray[0]
         
         
-        XCTAssertEqual(border.v0.ms, 2)
-        XCTAssertEqual(border.v1.ms, 1)
         XCTAssertEqual(border.v0.masterMileStone.index, 3)
         XCTAssertEqual(border.v1.masterMileStone.index, 0)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 0)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 1)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -282,14 +258,10 @@ class PinPathTest: XCTestCase {
         let border = result.pinPathArray[0]
         
         
-        XCTAssertEqual(border.v0.ms, 3)
-        XCTAssertEqual(border.v1.ms, 2)
         XCTAssertEqual(border.v0.masterMileStone.index, 0)
         XCTAssertEqual(border.v1.masterMileStone.index, 1)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 0)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 1)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -323,14 +295,10 @@ class PinPathTest: XCTestCase {
         let border = result.pinPathArray[0]
         
         
-        XCTAssertEqual(border.v0.ms, 0)
-        XCTAssertEqual(border.v1.ms, 3)
         XCTAssertEqual(border.v0.masterMileStone.index, 1)
         XCTAssertEqual(border.v1.masterMileStone.index, 2)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 0)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 1)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -365,14 +333,10 @@ class PinPathTest: XCTestCase {
         
         let border = result.pinPathArray[0]
         
-        XCTAssertEqual(border.v0.ms, 1)
-        XCTAssertEqual(border.v1.ms, 0)
         XCTAssertEqual(border.v0.masterMileStone.index, 1)
         XCTAssertEqual(border.v1.masterMileStone.index, 3)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 3)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 3)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -407,14 +371,10 @@ class PinPathTest: XCTestCase {
         
         let border = result.pinPathArray[0]
         
-        XCTAssertEqual(border.v0.ms, 2)
-        XCTAssertEqual(border.v1.ms, 1)
         XCTAssertEqual(border.v0.masterMileStone.index, 2)
         XCTAssertEqual(border.v1.masterMileStone.index, 0)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 3)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 3)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -449,14 +409,10 @@ class PinPathTest: XCTestCase {
         
         let border = result.pinPathArray[0]
         
-        XCTAssertEqual(border.v0.ms, 3)
-        XCTAssertEqual(border.v1.ms, 2)
         XCTAssertEqual(border.v0.masterMileStone.index, 3)
         XCTAssertEqual(border.v1.masterMileStone.index, 1)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 3)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 3)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -490,15 +446,11 @@ class PinPathTest: XCTestCase {
         XCTAssertEqual(result.pinPointArray.count, 0)
         
         let border = result.pinPathArray[0]
-        
-        XCTAssertEqual(border.v0.ms, 0)
-        XCTAssertEqual(border.v1.ms, 3)
+
         XCTAssertEqual(border.v0.masterMileStone.index, 0)
         XCTAssertEqual(border.v1.masterMileStone.index, 2)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 3)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 3)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -533,14 +485,10 @@ class PinPathTest: XCTestCase {
         
         let border = result.pinPathArray[0]
         
-        XCTAssertEqual(border.v0.ms, 1)
-        XCTAssertEqual(border.v1.ms, 3)
         XCTAssertEqual(border.v0.masterMileStone.index, 1)
         XCTAssertEqual(border.v1.masterMileStone.index, 2)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 2)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 2)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -574,14 +522,10 @@ class PinPathTest: XCTestCase {
         
         let border = result.pinPathArray[0]
         
-        XCTAssertEqual(border.v0.ms, 2)
-        XCTAssertEqual(border.v1.ms, 0)
         XCTAssertEqual(border.v0.masterMileStone.index, 2)
         XCTAssertEqual(border.v1.masterMileStone.index, 3)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 2)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 2)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -615,14 +559,10 @@ class PinPathTest: XCTestCase {
         
         let border = result.pinPathArray[0]
         
-        XCTAssertEqual(border.v0.ms, 3)
-        XCTAssertEqual(border.v1.ms, 1)
         XCTAssertEqual(border.v0.masterMileStone.index, 3)
         XCTAssertEqual(border.v1.masterMileStone.index, 0)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 2)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 2)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -656,14 +596,10 @@ class PinPathTest: XCTestCase {
         
         let border = result.pinPathArray[0]
         
-        XCTAssertEqual(border.v0.ms, 0)
-        XCTAssertEqual(border.v1.ms, 2)
         XCTAssertEqual(border.v0.masterMileStone.index, 0)
         XCTAssertEqual(border.v1.masterMileStone.index, 1)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 2)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 2)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -700,14 +636,10 @@ class PinPathTest: XCTestCase {
         
         let border = sequence.pinPathArray[0]
         
-        XCTAssertEqual(border.v0.ms, 1)
-        XCTAssertEqual(border.v1.ms, 1)
         XCTAssertEqual(border.v0.masterMileStone.index, 1)
         XCTAssertEqual(border.v1.masterMileStone.index, 0)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt0))
-        XCTAssertEqual(border.v0.sl, 0)
-        XCTAssertEqual(border.v1.sl, 4)
         XCTAssertEqual(border.length, 4)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -745,14 +677,10 @@ class PinPathTest: XCTestCase {
         
         let border = result.pinPathArray[0]
         
-        XCTAssertEqual(border.v0.ms, 3)
-        XCTAssertEqual(border.v1.ms, 3)
         XCTAssertEqual(border.v0.masterMileStone.index, 3)
         XCTAssertEqual(border.v1.masterMileStone.index, 2)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 4)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 4)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -789,14 +717,10 @@ class PinPathTest: XCTestCase {
         
         let border = result.pinPathArray[0]
         
-        XCTAssertEqual(border.v0.ms, 0)
-        XCTAssertEqual(border.v1.ms, 0)
         XCTAssertEqual(border.v0.masterMileStone.index, 0)
         XCTAssertEqual(border.v1.masterMileStone.index, 3)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 4)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 4)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -833,14 +757,11 @@ class PinPathTest: XCTestCase {
         
         let border = result.pinPathArray[0]
         
-        XCTAssertEqual(border.v0.ms, 1)
-        XCTAssertEqual(border.v1.ms, 1)
+
         XCTAssertEqual(border.v0.masterMileStone.index, 1)
         XCTAssertEqual(border.v1.masterMileStone.index, 0)
         XCTAssertEqual(border.v0.pt, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(border.v1.pt, DataNormalizer.convert(point: pt1))
-        XCTAssertEqual(border.v0.sl, 4)
-        XCTAssertEqual(border.v1.sl, 0)
         XCTAssertEqual(border.length, 4)
         
         let points = border.extract(points: DataNormalizer.convert(points: master))
@@ -983,8 +904,6 @@ class PinPathTest: XCTestCase {
         let points_2 = path[2].extract(points: DataNormalizer.convert(points: master))
         XCTAssertEqual(points_2, [CGPoint(x: 5, y: -10), CGPoint(x: 0, y: -10)])
         
-       // let points_3 = path[3].extract(points: DataNormalizer.convert(points: master))
-       // XCTAssertEqual(points_3, [CGPoint(x: -5, y: -10), CGPoint(x: -10, y: -10), CGPoint(x: -10, y: -5)])
     }
     
     

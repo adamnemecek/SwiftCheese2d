@@ -12,7 +12,7 @@ import Cheese2d
 
 class ShapePinDot: CAShapeLayer {
     
-    init(pin: PinPoint, radius: CGFloat) {
+    init(pin: Pin, radius: CGFloat) {
         super.init()
         
         let topColor: CGColor

@@ -1,5 +1,5 @@
 //
-//  PinPathAggregator.swift
+//  PinEdgeAggregator.swift
 //  Cheese2d
 //
 //  Created by Nail Sharipov on 05/10/2018.
@@ -9,19 +9,19 @@
 import Foundation
 
 
-struct PinPathAggregator {
+struct PinEdgeAggregator {
     
-    private var pinPathArray: [PinPath]
+    private var pinEdges: [PinEdge]
     private let masterCount: Int
     
-    init(array: [PinPath], masterCount: Int) {
-        self.pinPathArray = array
+    init(edges: [PinEdge], masterCount: Int) {
+        self.pinEdges = edges
         self.masterCount = masterCount
     }
     
     
     mutating func merge() -> [PinPath] {
-        let n = pinPathArray.count
+        let n = pinEdges.count
         guard n > 0 else {
             return []
         }
@@ -33,7 +33,7 @@ struct PinPathAggregator {
 
         var i = 0
         while i < n {
-            let border = pinPathArray[i]
+            let border = pinEdges[i]
             
             var v1 = border.v1
             
@@ -42,10 +42,10 @@ struct PinPathAggregator {
             var j = i + 1
             
             while j < n {
-                let next = pinPathArray[j]
+                let next = pinEdges[j]
                 
                 // must be same or next edge
-                if v1.pt == next.v0.pt {
+                if v1.point == next.v0.point {
                     j += 1
                     v1 = next.v1
                     length += 1
@@ -65,7 +65,7 @@ struct PinPathAggregator {
             let first = paths[0]
             let last = paths[paths.count - 1]
             
-            if first.v0.pt == last.v1.pt {
+            if first.v0.point == last.v1.point {
                 // TODO master path != slave path
                 paths[0] = PinPath(v0: last.v0, v1: first.v1, length: first.length + last.length)
                 paths.remove(at: paths.count - 1)
@@ -78,7 +78,7 @@ struct PinPathAggregator {
     mutating func sort() {
         // this array is already sorted by edge index
         
-        let n = pinPathArray.count
+        let n = pinEdges.count
         
         var isNotSorted: Bool
         
@@ -86,21 +86,21 @@ struct PinPathAggregator {
         
         repeat {
             isNotSorted = false
-            var a = pinPathArray[0]
+            var a = pinEdges[0]
             var i = 1
             while i < m {
-                let b = pinPathArray[i]
+                let b = pinEdges[i]
                 if PathMileStone.compare(a: a.v0.masterMileStone, b: b.v0.masterMileStone) {
-                    pinPathArray[i - 1] = b
+                    pinEdges[i - 1] = b
                     isNotSorted = true
                 } else {
-                    pinPathArray[i - 1] = a
+                    pinEdges[i - 1] = a
                     a = b
                 }
                 i += 1
             }
             m -= 1
-            pinPathArray[m] = a
+            pinEdges[m] = a
         } while isNotSorted
     }
 

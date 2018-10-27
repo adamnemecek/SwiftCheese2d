@@ -21,26 +21,19 @@ struct PinPointDef {
 
 
 public struct PinPoint {
-    
-    public let point: CGPoint
-    public let type: Int            // 1 - in, -1 - out, 2 in-out, -2 out-in
+
+    let point: Point
+    let type: Int            // 1 - in, -1 - out, 2 in-out, -2 out-in
     let masterMileStone: PathMileStone
     let slaveMileStone: PathMileStone
-    
-    let slavePrev: Int
-    let slaveNext: Int
-    let masterPrev: Int
-    let masterNext: Int
+
 
     static func buildSimple(def: PinPointDef) -> PinPoint {
         let isCCW = self.isCCW(a: def.ms1.point, b: def.pt, c: def.sl1.point)
         let type: Int = isCCW ? -1 : 1
         
-        let point = DataNormalizer.convert(point: def.pt)
-        
-        return PinPoint(point: point, type: type,
-                        masterMileStone: def.masterMileStone, slaveMileStone: def.slaveMileStone,
-                        slavePrev: def.sl0.index, slaveNext: def.sl1.index, masterPrev: def.ms0.index, masterNext: def.ms1.index)
+        return PinPoint(point: def.pt, type: type,
+                        masterMileStone: def.masterMileStone, slaveMileStone: def.slaveMileStone)
     }
 
     
@@ -55,11 +48,8 @@ public struct PinPoint {
             type = isCCW0 ? -1 : 1
         }
 
-        let point = DataNormalizer.convert(point: def.pt)
-
-        return PinPoint(point: point, type: type,
-                        masterMileStone: def.masterMileStone, slaveMileStone: def.slaveMileStone,
-                        slavePrev: def.sl0.index, slaveNext: def.sl1.index, masterPrev: def.ms0.index, masterNext: def.ms1.index)
+        return PinPoint(point: def.pt, type: type,
+                        masterMileStone: def.masterMileStone, slaveMileStone: def.slaveMileStone)
     }
     
     
@@ -73,12 +63,9 @@ public struct PinPoint {
         } else {
             type = isCCW0 ? -1 : 1
         }
-        
-        let point = DataNormalizer.convert(point: def.pt)
 
-        return PinPoint(point: point, type: type,
-                        masterMileStone: def.masterMileStone, slaveMileStone: def.slaveMileStone,
-                        slavePrev: def.sl0.index, slaveNext: def.sl1.index, masterPrev: def.ms0.index, masterNext: def.ms1.index)
+        return PinPoint(point: def.pt, type: type,
+                        masterMileStone: def.masterMileStone, slaveMileStone: def.slaveMileStone)
     }
     
     
@@ -96,12 +83,9 @@ public struct PinPoint {
         } else {
             type = isSl0 ? 1 : -1
         }
-        
-        let point = DataNormalizer.convert(point: def.pt)
-        
-        return PinPoint(point: point, type: type,
-                        masterMileStone: def.masterMileStone, slaveMileStone: def.slaveMileStone,
-                        slavePrev: def.sl0.index, slaveNext: def.sl1.index, masterPrev: def.ms0.index, masterNext: def.ms1.index)
+
+        return PinPoint(point: def.pt, type: type,
+                        masterMileStone: def.masterMileStone, slaveMileStone: def.slaveMileStone)
     }
     
     

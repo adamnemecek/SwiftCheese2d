@@ -13,29 +13,43 @@ struct PinPath {
     let v0: PinPoint
     let v1: PinPoint
 
-    let length: Int
+    var type: Int = 0
     
-    
-    init(v0: PinPoint, v1: PinPoint, length: Int) {
+    init(v0: PinPoint, v1: PinPoint, type: Int) {
         self.v0 = v0
         self.v1 = v1
-        self.length = length
     }
     
     
+    func getLength(count: Int) -> Int {
+        let a = v0.masterMileStone
+        let b = v1.masterMileStone
+        var length: Int = 0
+        if PathMileStone.compare(a: a, b: b) {
+            length = count
+        }
+        length += b.index - a.index
+        if b.offset != 0 {
+            length += 1
+        }
+        return length
+    }
+    
     func extract(points: [Point]) -> [CGPoint] {
         let n = points.count
-        var path = [CGPoint]()
+        
+        let length = getLength(count: n)
         
         guard length > 1 else {
             return [DataNormalizer.convert(point: v0.point), DataNormalizer.convert(point: v1.point)]
         }
-        
+
         guard length != 2 else {
             let middle = DataNormalizer.convert(point: points[(v0.masterMileStone.index + 1 ) % n])
             return [DataNormalizer.convert(point: v0.point), middle, DataNormalizer.convert(point: v1.point)]
         }
         
+        var path = [CGPoint]()
         path.reserveCapacity(length + 1)
         path.append(DataNormalizer.convert(point: v0.point))
 
@@ -45,6 +59,7 @@ struct PinPath {
         path.append(DataNormalizer.convert(point: points[a % n]))
         
         while a <= b {
+            // TODO beda
             a += 1
             let index = a % n
             path.append(DataNormalizer.convert(point: points[index]))
@@ -58,10 +73,11 @@ struct PinPath {
     
     func extract(index: Int, pathCount: Int) -> [PinHandler] {
         let n = pathCount
-        var handlers = [PinHandler]()
         
         let firstHandler = PinHandler(sortFactor: v0.masterMileStone, index: index, isPinPath: 1, marker: 0)
         let lastHandler = PinHandler(sortFactor: v1.masterMileStone, index: index, isPinPath: 1, marker: 1)
+    
+        let length = getLength(count: n)
         
         guard length > 1 else {
             return [firstHandler, lastHandler]
@@ -74,6 +90,7 @@ struct PinPath {
             return [firstHandler, middle, lastHandler]
         }
         
+        var handlers = [PinHandler]()
         handlers.reserveCapacity(length + 1)
         handlers.append(firstHandler)
         

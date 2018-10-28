@@ -18,7 +18,12 @@ struct PinEdge {
         return v0.point == v1.point
     }
     
-    init(msPt0: IndexPoint, msPt1: IndexPoint, slPt0: IndexPoint, slPt1: IndexPoint, msCount: Int, slCount: Int) {
+    init(v0: PinPoint, v1: PinPoint) {
+        self.v0 = v0
+        self.v1 = v1
+    }
+    
+    init(msPt0: IndexPoint, msPt1: IndexPoint, slPt0: IndexPoint, slPt1: IndexPoint) {
         
         let minMsPt: IndexPoint
         let maxMsPt: IndexPoint

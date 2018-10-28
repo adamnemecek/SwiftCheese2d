@@ -29,9 +29,9 @@ class Colors {
     
     static let orange = NSColor(red: 1.0, green: 0.5, blue: 0.0, alpha: 1.0).cgColor
     
-    static let master = NSColor(red: 1.0, green: 0.5, blue: 0.0, alpha: 0.9).cgColor
-    static let slave = NSColor(red: 0.3, green: 0.6, blue: 0.3, alpha: 0.9).cgColor
-    static let border = NSColor(red: 0.3, green: 0.3, blue: 0.8, alpha: 1.0).cgColor
+    static let master = NSColor(red: 1.0, green: 0.5, blue: 0.0, alpha: 1.0).cgColor
+    static let slave = NSColor(red: 0.3, green: 0.6, blue: 0.3, alpha: 1.0).cgColor
+    static let border = NSColor(red: 0.1, green: 0.1, blue: 0.2, alpha: 0.6).cgColor
     
     
     static let into = NSColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0).cgColor

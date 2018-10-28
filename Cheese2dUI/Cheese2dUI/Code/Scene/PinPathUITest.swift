@@ -25,7 +25,7 @@ class PinPathUITest: CoordinateSystemScene {
     }()
     
     
-    private var slave: [CGPoint] = PinPathUITest.slave_0_1()
+    private var slave: [CGPoint] = PinPathUITest.slave_4_3()
     
     
     private static func slave_0_0() -> [CGPoint] {
@@ -44,9 +44,79 @@ class PinPathUITest: CoordinateSystemScene {
         ]
     }
     
+    private static func slave_0_2() -> [CGPoint] {
+        return [
+            CGPoint(x: 0, y: 0),
+            CGPoint(x: -5, y: -10),
+            CGPoint(x: 5, y: -10)
+        ]
+    }
     
+    private static func slave_0_3() -> [CGPoint] {
+        return [
+            CGPoint(x: 0, y: 0),
+            CGPoint(x: 10, y: -5),
+            CGPoint(x: 10, y: 5)
+        ]
+    }
     
+    private static func slave_1_0() -> [CGPoint] {
+        return [
+            CGPoint(x: 0, y: 0),
+            CGPoint(x: 10, y: 10),
+            CGPoint(x: -10, y: 10)
+        ]
+    }
     
+    private static func slave_1_1() -> [CGPoint] {
+        return [
+            CGPoint(x: 0, y: 0),
+            CGPoint(x: -10, y: 10),
+            CGPoint(x: -10, y: -10)
+        ]
+    }
+    
+    private static func slave_2_0() -> [CGPoint] {
+        return [
+            CGPoint(x: 10, y: 5),
+            CGPoint(x: 10, y: 10),
+            CGPoint(x: -10, y: 10),
+            CGPoint(x: -10, y: 5)
+        ]
+    }
+    
+    private static func slave_4_0() -> [CGPoint] {
+        return [
+            CGPoint(x: 0, y: 10),
+            CGPoint(x: -10, y: 10),
+            CGPoint(x: -10, y: -10),
+            CGPoint(x: 10, y: -10),
+            CGPoint(x: 10, y: 0)
+        ]
+    }
+    
+    private static func slave_4_3() -> [CGPoint] {
+        return [
+            CGPoint(x: 10, y: 0),
+            CGPoint(x: 10, y: 10),
+            CGPoint(x: -10, y: 10),
+            CGPoint(x: -10, y: -10),
+            CGPoint(x: 0, y: -10)
+        ]
+    }
+    
+    private static func slave_Octagon() -> [CGPoint] {
+        return [
+            CGPoint(x: 10, y: 5),
+            CGPoint(x: 5, y: 10),
+            CGPoint(x: -5, y: 10),
+            CGPoint(x: -10, y: 5),
+            CGPoint(x: -10, y: -5),
+            CGPoint(x: -5, y: -10),
+            CGPoint(x: 5, y: -10),
+            CGPoint(x: 10, y: -5)
+        ]
+    }
     
     private var activeIndex: Int?
     private var isSlave: Bool = false
@@ -85,6 +155,9 @@ class PinPathUITest: CoordinateSystemScene {
         let result = Intersector.findPins(master: master, slave: slave)
         let points = result.points
         
+        self.addSublayer(ShapePolygon(points: master, tip: 1.0, lineWidth: 0.2, color: Colors.slave, showIndeces: true, scaleIndeces: 4, dash: nil))
+        self.addSublayer(ShapePolygon(points: slave, tip: 1.0, lineWidth: 0.3, color: Colors.master, showIndeces: true, scaleIndeces: -2.5, dash: [2,3]))
+        
         for pin in points {
             self.addSublayer(ShapePinDot(pin: pin, radius: 1.0))
         }
@@ -95,8 +168,6 @@ class PinPathUITest: CoordinateSystemScene {
             self.addSublayer(shape)
         }
         
-        self.addSublayer(ShapePolygon(points: master, tip: 1.0, lineWidth: 0.2, color: Colors.slave, showIndeces: true, scaleIndeces: 4, dash: nil))
-        self.addSublayer(ShapePolygon(points: slave, tip: 1.0, lineWidth: 0.3, color: Colors.master, showIndeces: true, scaleIndeces: -2.5, dash: [2,3]))
     }
 
 }

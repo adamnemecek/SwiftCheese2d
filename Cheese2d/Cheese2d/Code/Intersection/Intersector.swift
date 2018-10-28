@@ -166,7 +166,7 @@ public struct Intersector {
                     let sl0Pt = IndexPoint(index: slIx0, point: sl0)
                     let sl1Pt = IndexPoint(index: slIx1, point: sl1)
                     
-                    let pinEdge = PinEdge(msPt0: ms0Pt, msPt1: ms1Pt, slPt0: sl0Pt, slPt1: sl1Pt, msCount: masterCount, slCount: slaveCount)
+                    let pinEdge = PinEdge(msPt0: ms0Pt, msPt1: ms1Pt, slPt0: sl0Pt, slPt1: sl1Pt)
                     if !pinEdge.isZeroLength {
                         pinEdges.append(pinEdge)
                     }
@@ -176,9 +176,9 @@ public struct Intersector {
             i = j
         }
         
-        var aggregator = PinEdgeAggregator(edges: pinEdges, masterCount: iMaster.count)
+        var aggregator = PinPathBuilder(edges: pinEdges)
 
-        let pinPaths = aggregator.merge()
+        let pinPaths = aggregator.build(master: iMaster, slave: iSlave)
         
         var sequence = PinSequence(pinPointArray: pinPoints, pinPathArray: pinPaths, masterCount: iMaster.count)
         

@@ -24,4 +24,8 @@ struct PathMileStone {
             return a.offset > b.offset
         }
     }
+    
+    func isNextOnRay(a: PathMileStone) -> Bool {
+        return index == a.index && offset <= a.offset
+    }
 }

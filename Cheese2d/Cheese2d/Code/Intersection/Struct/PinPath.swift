@@ -54,7 +54,7 @@ struct PinPath {
         path.append(DataNormalizer.convert(point: v0.point))
 
         
-        var index = (v0.masterMileStone.index + 1) % n
+        var i = (v0.masterMileStone.index + 1) % n
         let endIndex: Int
         if v1.masterMileStone.offset != 0 {
             endIndex = v1.masterMileStone.index
@@ -62,9 +62,9 @@ struct PinPath {
             endIndex = (v1.masterMileStone.index - 1 + n) % n
         }
 
-        while index != endIndex {
-            path.append(DataNormalizer.convert(point: points[index]))
-            index = (index + 1) % n
+        while i != endIndex {
+            path.append(DataNormalizer.convert(point: points[i]))
+            i = (i + 1) % n
         }
         path.append(DataNormalizer.convert(point: points[endIndex]))
         
@@ -97,16 +97,21 @@ struct PinPath {
         handlers.reserveCapacity(length + 1)
         handlers.append(firstHandler)
         
-        var a = (v0.masterMileStone.index + 1) % n
-        let b = (v1.masterMileStone.index - 1 + n) % n
-        
-        handlers.append(PinHandler(sortFactor: PathMileStone(index: a % n, offset: 0), index: index, isPinPath: 1, marker: 1))
-        
-        while a <= b {
-            a += 1
-            handlers.append(PinHandler(sortFactor: PathMileStone(index: a % n, offset: 0), index: index, isPinPath: 1, marker: 1))
+        var i = (v0.masterMileStone.index + 1) % n
+        let endIndex: Int
+        if v1.masterMileStone.offset != 0 {
+            endIndex = v1.masterMileStone.index
+        } else {
+            endIndex = (v1.masterMileStone.index - 1 + n) % n
+        }
+
+        while i != endIndex {
+            handlers.append(PinHandler(sortFactor: PathMileStone(index: i, offset: 0), index: index, isPinPath: 1, marker: 1))
+            i = (i + 1) % n
         }
         
+        handlers.append(PinHandler(sortFactor: PathMileStone(index: endIndex, offset: 0), index: index, isPinPath: 1, marker: 1))
+
         handlers.append(lastHandler)
         
         return handlers

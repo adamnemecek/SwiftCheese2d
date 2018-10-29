@@ -53,17 +53,20 @@ struct PinPath {
         path.reserveCapacity(length + 1)
         path.append(DataNormalizer.convert(point: v0.point))
 
-        var a = (v0.masterMileStone.index + 1) % n
-        let b = (v1.masterMileStone.index - 1 + n) % n
-
-        path.append(DataNormalizer.convert(point: points[a % n]))
         
-        while a <= b {
-            // TODO beda
-            a += 1
-            let index = a % n
-            path.append(DataNormalizer.convert(point: points[index]))
+        var index = (v0.masterMileStone.index + 1) % n
+        let endIndex: Int
+        if v1.masterMileStone.offset != 0 {
+            endIndex = v1.masterMileStone.index
+        } else {
+            endIndex = (v1.masterMileStone.index - 1 + n) % n
         }
+
+        while index != endIndex {
+            path.append(DataNormalizer.convert(point: points[index]))
+            index = (index + 1) % n
+        }
+        path.append(DataNormalizer.convert(point: points[endIndex]))
         
         path.append(DataNormalizer.convert(point: v1.point))
  

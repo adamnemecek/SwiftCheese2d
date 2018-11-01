@@ -113,5 +113,53 @@ struct PinPathBuilder {
         return pathList
     }
     
+    private func getType(v0: PinPoint, master: [Point], slave: [Point]) -> Int {
+
+        let mi = v0.masterMileStone.index
+        let mn = master.count
+        let m0: Point
+        let m1 = v0.point
+        let m2 = master[(mi + 1) % mn]
+        
+        if v0.masterMileStone.offset != 0 {
+            m0 = master[mi]
+        } else {
+            m0 = master[(mi - 1 + mn) % mn]
+        }
+
+        let si = v0.slaveMileStone.index
+        let sn = slave.count
+        let s0: Point
+        let s1 = v0.point
+        let s2 = slave[(si + 1) % sn]
+        
+        if v0.slaveMileStone.offset != 0 {
+            s0 = slave[si]
+        } else {
+            s0 = slave[(si - 1 + sn) % sn]
+        }
+        
+        let isSameDirection = (s1 < s2) == (m1 > m2)
+        
+        let corner = Corner(o: m1, a: m0, b: m2)
+        
+        let isBetween = corner.isBetween(p: s0)
+        
+        
+        if isSameDirection {
+            if isBetween {
+                return PinPoint.null_in
+            } else {
+                return PinPoint.null_out
+            }
+        } else {
+            if isBetween {
+                return PinPoint.null_in
+            } else {
+                return PinPoint.null_out
+            }
+        }
+    }
+    
     
 }

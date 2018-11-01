@@ -9,22 +9,32 @@
 import Foundation
 
 
-public struct Point: Equatable {
+public struct Point: Equatable, Comparable {
     
     static let zero = Point(x: 0, y: 0)
     
     var x: Int64
     var y: Int64
-
-    public static func == (lhs: Point, rhs: Point) -> Bool {
-        return lhs.x == rhs.x && lhs.y == rhs.y
-    }
     
     func sqrDistance(point: Point) -> Int64 {
         let dx = point.x - self.x
         let dy = point.y - self.y
         
         return dx * dx + dy * dy
+    }
+    
+    
+    public static func == (lhs: Point, rhs: Point) -> Bool {
+        return lhs.x == rhs.x && lhs.y == rhs.y
+    }
+    
+    
+    public static func < (lhs: Point, rhs: Point) -> Bool {
+        if lhs.x != rhs.x {
+            return lhs.x < rhs.x
+        } else {
+            return lhs.y < rhs.y
+        }
     }
 }
 

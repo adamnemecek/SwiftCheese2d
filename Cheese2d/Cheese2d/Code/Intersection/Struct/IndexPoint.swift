@@ -19,16 +19,13 @@ struct IndexPoint: Comparable {
         return PathMileStone(index: index, offset: point.sqrDistance(point: stone))
     }
     
+    
     static func == (lhs: IndexPoint, rhs: IndexPoint) -> Bool {
         return lhs.point == rhs.point
     }
     
     
     static func < (lhs: IndexPoint, rhs: IndexPoint) -> Bool {
-        if lhs.point.x != rhs.point.x {
-            return lhs.point.x < rhs.point.x
-        } else {
-            return lhs.point.y < rhs.point.y
-        }
+        return lhs.point < rhs.point
     }
 }

@@ -18,10 +18,33 @@ struct PinPointDef {
     let masterMileStone: PathMileStone
     let slaveMileStone: PathMileStone
 }
-
+/*
+ 
+ 1 in
+ 2 in-out
+ 3 in-0
+ 4 0-in
+ 
+-1 out
+-2 out-in
+-3 out-0
+-4 0-out
+ 
+*/
 
 public struct PinPoint {
 
+    public static let inside = 1
+    public static let in_out = 2
+    public static let in_null = 3
+    public static let null_in = 4
+    
+    public static let outside = -1
+    public static let out_in = -2
+    public static let out_null = -3
+    public static let null_out = -4
+    
+    
     let point: Point
     let type: Int            // 1 - in, -1 - out, 2 in-out, -2 out-in
     let masterMileStone: PathMileStone

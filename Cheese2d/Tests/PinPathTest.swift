@@ -25,6 +25,7 @@ class PinPathTest: XCTestCase {
         let iMaster = DataNormalizer.convert(points: master)
 
         var slave = [CGPoint]()
+        
         slave.append(CGPoint(x: 0, y: 0))
         slave.append(CGPoint(x: 5, y: 10))
         slave.append(CGPoint(x: -5, y: 10))
@@ -37,8 +38,21 @@ class PinPathTest: XCTestCase {
         
         let path = result.pinPathArray[0]
         
+        let z = DataNormalizer.convert(point: CGPoint(x: -10, y: 10))
+        
         XCTAssertEqual(path.v0.masterMileStone.index, 0)
+        XCTAssertEqual(path.v0.masterMileStone.offset, z.sqrDistance(point: path.v0.point))
+        
         XCTAssertEqual(path.v1.masterMileStone.index, 0)
+        XCTAssertEqual(path.v1.masterMileStone.offset, z.sqrDistance(point: path.v1.point))
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 2)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 1)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: CGPoint(x: -5, y: 10)))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: CGPoint(x: 5, y: 10)))
         XCTAssertEqual(path.getLength(count: iMaster.count), 1)
@@ -75,6 +89,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 3)
         XCTAssertEqual(path.v1.masterMileStone.index, 3)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 2)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 1)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: CGPoint(x: -10, y: -5)))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: CGPoint(x: -10, y: 5)))
         XCTAssertEqual(path.getLength(count: iMaster.count), 1)
@@ -112,6 +135,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 2)
         XCTAssertEqual(path.v1.masterMileStone.index, 2)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 2)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 1)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 1)
@@ -149,6 +181,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 1)
         XCTAssertEqual(path.v1.masterMileStone.index, 1)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 2)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 1)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 1)
@@ -186,6 +227,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 0)
         XCTAssertEqual(path.v1.masterMileStone.index, 1)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 2)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 1)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         
@@ -223,6 +273,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 3)
         XCTAssertEqual(path.v1.masterMileStone.index, 0)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 2)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 1)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 1)
@@ -260,6 +319,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 2)
         XCTAssertEqual(path.v1.masterMileStone.index, 3)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 2)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 1)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 1)
@@ -297,6 +365,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 1)
         XCTAssertEqual(path.v1.masterMileStone.index, 2)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 2)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 1)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 1)
@@ -335,6 +412,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 3)
         XCTAssertEqual(path.v1.masterMileStone.index, 1)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 3)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 0)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 3)
@@ -373,6 +459,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 2)
         XCTAssertEqual(path.v1.masterMileStone.index, 0)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 3)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 0)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 3)
@@ -411,6 +506,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 1)
         XCTAssertEqual(path.v1.masterMileStone.index, 3)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 3)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 0)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 3)
@@ -449,6 +553,15 @@ class PinPathTest: XCTestCase {
 
         XCTAssertEqual(path.v0.masterMileStone.index, 0)
         XCTAssertEqual(path.v1.masterMileStone.index, 2)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 3)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 0)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 3)
@@ -487,6 +600,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 0)
         XCTAssertEqual(path.v1.masterMileStone.index, 1)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 2)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 0)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 2)
@@ -524,6 +646,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 3)
         XCTAssertEqual(path.v1.masterMileStone.index, 0)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 2)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 0)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 2)
@@ -561,6 +692,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 2)
         XCTAssertEqual(path.v1.masterMileStone.index, 3)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 2)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 0)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 2)
@@ -598,6 +738,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 1)
         XCTAssertEqual(path.v1.masterMileStone.index, 2)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 2)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 0)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 2)
@@ -638,6 +787,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 1)
         XCTAssertEqual(path.v1.masterMileStone.index, 0)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 4)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 0)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 4)
@@ -678,6 +836,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 0)
         XCTAssertEqual(path.v1.masterMileStone.index, 3)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 4)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 0)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 4)
@@ -718,6 +885,15 @@ class PinPathTest: XCTestCase {
         
         XCTAssertEqual(path.v0.masterMileStone.index, 3)
         XCTAssertEqual(path.v1.masterMileStone.index, 2)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 4)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 0)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 4)
@@ -759,6 +935,15 @@ class PinPathTest: XCTestCase {
 
         XCTAssertEqual(path.v0.masterMileStone.index, 2)
         XCTAssertEqual(path.v1.masterMileStone.index, 1)
+        
+        
+        XCTAssertEqual(path.v0.slaveMileStone.index, 4)
+        XCTAssertEqual(path.v0.slaveMileStone.offset, 0)
+        
+        XCTAssertEqual(path.v1.slaveMileStone.index, 0)
+        XCTAssertEqual(path.v1.slaveMileStone.offset, 0)
+        
+        
         XCTAssertEqual(path.v0.point, DataNormalizer.convert(point: pt1))
         XCTAssertEqual(path.v1.point, DataNormalizer.convert(point: pt0))
         XCTAssertEqual(path.getLength(count: iMaster.count), 4)

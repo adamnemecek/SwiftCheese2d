@@ -25,7 +25,7 @@ class PinPathUITest: CoordinateSystemScene {
     }()
     
     
-    private var slave: [CGPoint] = PinPathUITest.slave_4_3()
+    private var slave: [CGPoint] = PinPathUITest.slave_5_0()
     
     
     private static func slave_0_0() -> [CGPoint] {
@@ -85,6 +85,14 @@ class PinPathUITest: CoordinateSystemScene {
         ]
     }
     
+    private static func slave_3_0() -> [CGPoint] {
+        return [
+            CGPoint(x: 10, y: 0),
+            CGPoint(x: 10, y: 10),
+            CGPoint(x: 0, y: 10)
+        ]
+    }
+    
     private static func slave_4_0() -> [CGPoint] {
         return [
             CGPoint(x: 0, y: 10),
@@ -104,6 +112,17 @@ class PinPathUITest: CoordinateSystemScene {
             CGPoint(x: 0, y: -10)
         ]
     }
+    
+    
+    private static func slave_5_0() -> [CGPoint] {
+        return [
+            CGPoint(x: 10, y: 5),
+            CGPoint(x: 15, y: 15),
+            CGPoint(x: -10, y: 10),
+            CGPoint(x: -10, y: 5)
+        ]
+    }
+    
     
     private static func slave_Octagon() -> [CGPoint] {
         return [
@@ -158,14 +177,16 @@ class PinPathUITest: CoordinateSystemScene {
         self.addSublayer(ShapePolygon(points: master, tip: 1.0, lineWidth: 0.2, color: Colors.slave, showIndeces: true, scaleIndeces: 4, dash: nil))
         self.addSublayer(ShapePolygon(points: slave, tip: 1.0, lineWidth: 0.3, color: Colors.master, showIndeces: true, scaleIndeces: -2.5, dash: [2,3]))
         
-        for pin in points {
-            self.addSublayer(ShapePinDot(pin: pin, radius: 1.0))
-        }
         
         let paths = result.path
         for path in paths {
             let shape = ShapePath(points: path, tip: 1.5, lineWidth: 0.3, color: Colors.border, showIndeces: false, showLast: false, scaleIndeces: 1, dash: nil)
             self.addSublayer(shape)
+        }
+        
+        
+        for pin in points {
+            self.addSublayer(ShapePinDot(pin: pin, radius: 1.0))
         }
         
     }

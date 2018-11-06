@@ -63,7 +63,7 @@ class AngleTest: CoordinateSystemScene {
         
         let corner = Corner(o: points[0], a: points[1], b: points[2])
         
-        let result = corner.isBetween(p: points[3])
+        let result = corner.isBetween(p: points[3], clockwise: true)
         
         let color: CGColor
         if result {

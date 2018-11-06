@@ -15,11 +15,13 @@ struct PinNode {
     var masterIndex: Int            // index in master path array
     var slaveIndex: Int             // index in slave path array
     var marker: Int                 // 0 - present, 1 - removed
+    var index: Int                  // index in supply array (PinPoints or PinPaths)
     
     init(isPinPath: Int) {
         self.isPinPath = isPinPath
         self.masterIndex = -1
         self.slaveIndex = -1
         self.marker = 0
+        self.index = -1
     }
 }

@@ -48,14 +48,16 @@ struct PinSequence {
         self.cleanDoubles()
         
         let slavePath = self.buildSlavePath()
-        let masterPath = self.buildSlavePath()
+        let masterPath = self.buildMasterPath()
         
         let n = slavePath.count
         
         var nodes = Array<PinNode>(repeating: PinNode(isPinPath: 0), count: n)
         for j in 0...n-1 {
             var node = nodes[j]
-            node.isPinPath = handlerArray[j].isPinPath
+            let handler = handlerArray[j]
+            node.isPinPath = handler.isPinPath
+            node.index = handler.index
             nodes[j] = node
             
             let slaveIndex = slavePath[j]
@@ -180,10 +182,12 @@ struct PinSequence {
             let index = handler.index
             if handler.isPinPath == 0 {
                 let point = self.pinPointArray[index]
-                iStones.append(IndexMileStone(index: index, stone: point.slaveMileStone))
+                //iStones.append(IndexMileStone(index: index, stone: point.slaveMileStone))
+                iStones.append(IndexMileStone(index: j, stone: point.slaveMileStone))
             } else {
                 let path = self.pinPathArray[index]
-                iStones.append(IndexMileStone(index: index, stone: path.v1.slaveMileStone))
+                //iStones.append(IndexMileStone(index: index, stone: path.v1.slaveMileStone))
+                iStones.append(IndexMileStone(index: j, stone: path.v0.slaveMileStone))
             }
         }
         
@@ -227,7 +231,8 @@ struct PinSequence {
         var indexArray = Array<Int>(repeating: 0, count: n)
         
         for i in 0...n - 1 {
-            indexArray[i] = handlerArray[i].index
+            //indexArray[i] = handlerArray[i].index
+            indexArray[i] = i
         }
         
         return indexArray

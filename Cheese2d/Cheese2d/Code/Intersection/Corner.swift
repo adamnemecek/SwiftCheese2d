@@ -40,12 +40,13 @@ public struct Corner {
     }
     
     
-    public func isBetween(p: CGPoint) -> Bool {
-        return isBetween(p: DataNormalizer.convert(point: p))
+    public func isBetween(p: CGPoint, clockwise: Bool = false) -> Bool {
+        return isBetween(p: DataNormalizer.convert(point: p), clockwise: clockwise)
     }
     
     
-    func isBetween(p: Point) -> Bool {
+    // counter clockwise direction
+    func isBetween(p: Point, clockwise: Bool = false) -> Bool {
         let target = Corner.normal(vec: Point(x: spin.x - p.x, y: spin.y - p.y))
         let targetProjection = basis.mul(vector: target)
         let isTragetCWS = Corner.isCCWDirection(a: dir, b: spin, c: p)
@@ -59,8 +60,8 @@ public struct Corner {
         } else {
             result = !self.isCWS
         }
-        
-        return result
+
+        return result != clockwise
     }
     
     

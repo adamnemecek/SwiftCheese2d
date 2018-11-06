@@ -23,10 +23,16 @@ public struct Intersector {
 
         for node in navigator.nodeArray {
             if node.marker == 0 {
-                let index = node.masterIndex
+                let index = node.index
                 if node.isPinPath == 1 {
                     let path = navigator.pinPathArray[index]
                     borders.append(path.extract(points: iMaster))
+                    
+                    let pin0 = Pin(point: DataNormalizer.convert(point: path.v0.point), type: path.v0.type)
+                    points.append(pin0)
+                    
+                    let pin1 = Pin(point: DataNormalizer.convert(point: path.v1.point), type: path.v1.type)
+                    points.append(pin1)
                 } else {
                     let p = navigator.pinPointArray[index]
                     let pin = Pin(point: DataNormalizer.convert(point: p.point), type: p.type)

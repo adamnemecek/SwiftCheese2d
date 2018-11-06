@@ -17,8 +17,8 @@ class ViewController: NSViewController {
         }
     }
     
-    private let scene = PinPathUITest()
-    //private let scene = AngleTest()
+    //private let scene = PinPathUITest()
+    private let scene = AngleTest()
 
     override func viewDidLoad() {
         super.viewDidLoad()

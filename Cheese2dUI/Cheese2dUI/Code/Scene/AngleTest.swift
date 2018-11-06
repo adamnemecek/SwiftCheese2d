@@ -11,17 +11,22 @@ import Cocoa
 import Cheese2d
 
 class AngleTest: CoordinateSystemScene {
+    /*
+    private var points: [CGPoint] = [
+        CGPoint(x: 0, y: 0),        // 0
+        CGPoint(x: 0, y: 10),       // A
+        CGPoint(x: 10, y: -10),     // B
+        CGPoint(x: 10, y: 0)        // P
+    ]
+    */
     
-    private var points: [CGPoint] = {
-        var points = [CGPoint]()
-        
-        points.append(CGPoint(x: 0, y: 0))
-        points.append(CGPoint(x: 0, y: 10))
-        points.append(CGPoint(x: 10, y: -10))
-        points.append(CGPoint(x: 10, y: 0))
-        
-        return points
-    }()
+    private var points: [CGPoint] = [
+        CGPoint(x: -10, y: 0),        // 0
+        CGPoint(x: -10, y: 10),       // A
+        CGPoint(x: -10, y: -10),     // B
+        CGPoint(x: 0, y: 0)        // P
+    ]
+    
     
     private var activeIndex: Int?
     

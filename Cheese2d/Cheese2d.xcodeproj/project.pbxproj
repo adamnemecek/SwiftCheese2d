@@ -22,6 +22,8 @@
 		5430C8E42162551900DE1441 /* IntersectorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5430C8E32162551900DE1441 /* IntersectorResult.swift */; };
 		54336B842184D59300D53311 /* PinEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54336B832184D59300D53311 /* PinEdge.swift */; };
 		54336B892184FC8800D53311 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54336B882184FC8800D53311 /* Pin.swift */; };
+		54445FF021921C570087A228 /* Solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54445FEF21921C570087A228 /* Solver.swift */; };
+		54445FF22192224C0087A228 /* PointConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54445FF12192224C0087A228 /* PointConverter.swift */; };
 		5457CF1C216142AC0056728C /* PinPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457CF1B216142AC0056728C /* PinPath.swift */; };
 		545A2D2421550E8700047C8D /* Cheese2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 545A2D2321550E8700047C8D /* Cheese2d.h */; };
 		545A2D2621550E8700047C8D /* Cheese2d.m in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D2521550E8700047C8D /* Cheese2d.m */; };
@@ -65,6 +67,8 @@
 		5430C8E32162551900DE1441 /* IntersectorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntersectorResult.swift; sourceTree = "<group>"; };
 		54336B832184D59300D53311 /* PinEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinEdge.swift; sourceTree = "<group>"; };
 		54336B882184FC8800D53311 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		54445FEF21921C570087A228 /* Solver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solver.swift; sourceTree = "<group>"; };
+		54445FF12192224C0087A228 /* PointConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointConverter.swift; sourceTree = "<group>"; };
 		5457CF1B216142AC0056728C /* PinPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPath.swift; sourceTree = "<group>"; };
 		545A2D2021550E8700047C8D /* libCheese2d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libCheese2d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		545A2D2321550E8700047C8D /* Cheese2d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cheese2d.h; sourceTree = "<group>"; };
@@ -109,6 +113,15 @@
 				54336B882184FC8800D53311 /* Pin.swift */,
 			);
 			path = Public;
+			sourceTree = "<group>";
+		};
+		54445FEE21921C400087A228 /* Solver */ = {
+			isa = PBXGroup;
+			children = (
+				54445FEF21921C570087A228 /* Solver.swift */,
+				54445FF12192224C0087A228 /* PointConverter.swift */,
+			);
+			path = Solver;
 			sourceTree = "<group>";
 		};
 		5457CF18216141490056728C /* Struct */ = {
@@ -156,6 +169,7 @@
 		545A2D2C21550F8200047C8D /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				54445FEE21921C400087A228 /* Solver */,
 				545A2D3221550F8200047C8D /* Intersection */,
 				545A2D3421550F8200047C8D /* Struct */,
 				545A2D532155233300047C8D /* DebugFile.swift */,
@@ -325,6 +339,7 @@
 			files = (
 				5404A25B215C0D1200DC10BB /* DataNormalizer.swift in Sources */,
 				54F2C54B21777C35001F4857 /* IndexMileStone.swift in Sources */,
+				54445FF021921C570087A228 /* Solver.swift in Sources */,
 				54336B842184D59300D53311 /* PinEdge.swift in Sources */,
 				54336B892184FC8800D53311 /* Pin.swift in Sources */,
 				54F2C5482177790A001F4857 /* PinNode.swift in Sources */,
@@ -339,6 +354,7 @@
 				5404A259215C0BDB00DC10BB /* Point.swift in Sources */,
 				540F9470216F6A1B00CF8A9D /* PinHandler.swift in Sources */,
 				54F2C546217777FC001F4857 /* PinNavigator.swift in Sources */,
+				54445FF22192224C0087A228 /* PointConverter.swift in Sources */,
 				5430C8E42162551900DE1441 /* IntersectorResult.swift in Sources */,
 				5457CF1C216142AC0056728C /* PinPath.swift in Sources */,
 				545A2D3C21550F8200047C8D /* Intersector.swift in Sources */,

@@ -119,23 +119,23 @@ struct PinPathBuilder {
         let type0 = self.getStartDisposition(vertex: edge.v0, master: master, slave: slave, iterposition: edge.interposition)
         let type1 = self.getEndDisposition(vertex: edge.v1, master: master, slave: slave, iterposition: edge.interposition)
         
-        var type: Int = 0
-        
-        if type0 == PinPoint.in_null {
-            if type1 == PinPoint.null_in {
-                type = PinPoint.inside
-            } else if type1 == PinPoint.null_out {
-                type = PinPoint.in_out
-            }
-        } else if type0 == PinPoint.out_null {
-            if type1 == PinPoint.null_in {
-                type = PinPoint.out_in
-            } else if type1 == PinPoint.null_out {
-                type = PinPoint.outside
-            }
+        if type0 == PinPoint.in_null && type1 == PinPoint.null_in || type1 == PinPoint.in_null && type0 == PinPoint.null_in {
+            return PinPoint.inside
         }
         
-        return type
+        if type0 == PinPoint.out_null && type1 == PinPoint.null_out || type1 == PinPoint.out_null && type0 == PinPoint.null_out {
+            return PinPoint.outside
+        }
+        
+        if type0 == PinPoint.out_null && type1 == PinPoint.null_in || type1 == PinPoint.out_null && type0 == PinPoint.null_in {
+            return PinPoint.out_in
+        }
+        
+        if type0 == PinPoint.in_null && type1 == PinPoint.null_out || type1 == PinPoint.in_null && type0 == PinPoint.null_out {
+            return PinPoint.in_out
+        }
+        
+        return PinPoint.empty
     }
     
     
@@ -164,7 +164,7 @@ struct PinPathBuilder {
         let isBetween = corner.isBetween(p: s, clockwise: true)
         
         let type: Int
-        
+
         if iterposition == 1 {
             if isBetween {
                 type = PinPoint.out_null
@@ -173,9 +173,9 @@ struct PinPathBuilder {
             }
         } else {
             if isBetween {
-                type = PinPoint.null_out
-            } else {
                 type = PinPoint.null_in
+            } else {
+                type = PinPoint.null_out
             }
         }
         
@@ -232,7 +232,7 @@ struct PinPathBuilder {
             m0 = master[(mi - 1 + mn) % mn]
         }
         
-        return Corner(o: m1, a: m0, b: m2)
+        return Corner(o: m1, a: m2, b: m0)
     }
     
     

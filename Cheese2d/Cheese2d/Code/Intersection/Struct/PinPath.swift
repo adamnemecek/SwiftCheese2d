@@ -9,15 +9,13 @@
 import Foundation
 
 struct PinPath {
-    // Edge
+    
     let v0: PinPoint
     let v1: PinPoint
-
-    var type: Int = 0
     
     init(v0: PinPoint, v1: PinPoint, type: Int) {
-        self.v0 = v0
-        self.v1 = v1
+        self.v0 = PinPoint(pin: v0, type: type)
+        self.v1 = PinPoint(pin: v1, type: type)
     }
     
     

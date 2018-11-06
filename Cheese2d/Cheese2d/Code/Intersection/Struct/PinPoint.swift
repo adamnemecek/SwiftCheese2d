@@ -34,6 +34,8 @@ struct PinPointDef {
 
 public struct PinPoint {
 
+    public static let empty = 0     // can be ignored
+    
     public static let inside = 1
     public static let in_out = 2
     public static let in_null = 3
@@ -50,7 +52,21 @@ public struct PinPoint {
     let masterMileStone: PathMileStone
     let slaveMileStone: PathMileStone
 
-
+    init(point: Point, type: Int, masterMileStone: PathMileStone, slaveMileStone: PathMileStone) {
+        self.point = point
+        self.type = type
+        self.masterMileStone = masterMileStone
+        self.slaveMileStone = slaveMileStone
+    }
+    
+    init(pin: PinPoint, type: Int) {
+        self.point = pin.point
+        self.type = type
+        self.masterMileStone = pin.masterMileStone
+        self.slaveMileStone = pin.slaveMileStone
+    }
+    
+    
     static func buildSimple(def: PinPointDef) -> PinPoint {
         let isCCW = self.isCCW(a: def.ms1.point, b: def.pt, c: def.sl1.point)
         let type: Int = isCCW ? -1 : 1

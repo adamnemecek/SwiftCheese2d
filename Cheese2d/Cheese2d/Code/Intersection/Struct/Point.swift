@@ -46,7 +46,8 @@ extension Point: CustomStringConvertible, CustomDebugStringConvertible {
     
     
     public var description: String {
-        return "(\(CGFloat(x) * DataNormalizer.convertation_precision), \(CGFloat(y) * DataNormalizer.convertation_precision))"
+        let point = PointConverter.defaultConverter.convert(point: self)
+        return "(\(point.x), \(point.y))"
     }
     
 }

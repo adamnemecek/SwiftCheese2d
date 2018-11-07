@@ -12,9 +12,11 @@ import Foundation
 struct PinPathBuilder {
     
     private var pinEdges: [PinEdge]
+    private let converter: PointConverter
     
-    init(edges: [PinEdge]) {
+    init(edges: [PinEdge], converter: PointConverter) {
         self.pinEdges = edges
+        self.converter = converter
     }
     
     
@@ -159,7 +161,7 @@ struct PinPathBuilder {
             s = slave[(i - iterposition + n) % n]
         }
 
-        let corner = PinPathBuilder.buildCorner(vertex: vertex, master: master)
+        let corner = PinPathBuilder.buildCorner(vertex: vertex, master: master, converter: converter)
         
         let isBetween = corner.isBetween(p: s, clockwise: true)
         
@@ -195,7 +197,7 @@ struct PinPathBuilder {
             s = slave[(i + iterposition + n) % n]
         }
         
-        let corner = PinPathBuilder.buildCorner(vertex: vertex, master: master)
+        let corner = PinPathBuilder.buildCorner(vertex: vertex, master: master, converter: converter)
         
         let isBetween = corner.isBetween(p: s, clockwise: true)
         
@@ -219,7 +221,7 @@ struct PinPathBuilder {
     }
     
     
-    private static func buildCorner(vertex: PinPoint, master: [Point]) -> Corner {
+    private static func buildCorner(vertex: PinPoint, master: [Point], converter: PointConverter) -> Corner {
         let mi = vertex.masterMileStone.index
         let mn = master.count
         let m0: Point
@@ -232,7 +234,7 @@ struct PinPathBuilder {
             m0 = master[(mi - 1 + mn) % mn]
         }
         
-        return Corner(o: m1, a: m2, b: m0)
+        return Corner(o: m1, a: m2, b: m0, converter: converter)
     }
     
     

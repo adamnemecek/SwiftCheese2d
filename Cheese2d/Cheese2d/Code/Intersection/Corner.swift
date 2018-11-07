@@ -11,43 +11,45 @@ import Foundation
 
 public struct Corner {
     
-    let basis: Point
-    let dir: Point
-    let spin: Point
-    let projection: Int64
-    let isCWS: Bool
+    private let basis: Point
+    private let dir: Point
+    private let spin: Point
+    private let projection: Int64
+    private let isCWS: Bool
+    private let converter: PointConverter
     
     
-    public init(o: CGPoint, a: CGPoint, b: CGPoint) {
-        let o = DataNormalizer.convert(point: o)
-        let a = DataNormalizer.convert(point: a)
-        let b = DataNormalizer.convert(point: b)
+    public init(o: CGPoint, a: CGPoint, b: CGPoint, converter: PointConverter = PointConverter()) {
+        let o = converter.convert(point: o)
+        let a = converter.convert(point: a)
+        let b = converter.convert(point: b)
         
-        self.init(o: o, a: a, b: b)
+        self.init(o: o, a: a, b: b, converter: converter)
     }
     
 
-    init(o: Point, a: Point, b: Point) {
+    init(o: Point, a: Point, b: Point, converter: PointConverter) {
         spin = o
         
         dir = a
-        basis = Corner.normal(vec: Point(x: spin.x - dir.x, y: spin.y - dir.y))
+        basis = Corner.normal(vec: Point(x: spin.x - dir.x, y: spin.y - dir.y), converter: converter)
         
-        let satellite = Corner.normal(vec: Point(x: spin.x - b.x, y: spin.y - b.y))
+        let satellite = Corner.normal(vec: Point(x: spin.x - b.x, y: spin.y - b.y), converter: converter)
         
         self.projection = basis.mul(vector: satellite)
         self.isCWS = Corner.isCCWDirection(a: dir, b: spin, c: b)
+        self.converter = converter
     }
     
     
     public func isBetween(p: CGPoint, clockwise: Bool = false) -> Bool {
-        return isBetween(p: DataNormalizer.convert(point: p), clockwise: clockwise)
+        return isBetween(p: converter.convert(point: p), clockwise: clockwise)
     }
     
     
     // counter clockwise direction
     func isBetween(p: Point, clockwise: Bool = false) -> Bool {
-        let target = Corner.normal(vec: Point(x: spin.x - p.x, y: spin.y - p.y))
+        let target = Corner.normal(vec: Point(x: spin.x - p.x, y: spin.y - p.y), converter: converter)
         let targetProjection = basis.mul(vector: target)
         let isTragetCWS = Corner.isCCWDirection(a: dir, b: spin, c: p)
 
@@ -74,14 +76,14 @@ public struct Corner {
     }
     
     
-    private static func normal(vec: Point) -> Point {
-        var p = DataNormalizer.convert(point: vec)
+    private static func normal(vec: Point, converter: PointConverter) -> Point {
+        var p = converter.convert(point: vec)
         let l = sqrt(p.x * p.x + p.y * p.y)
         let k = 1 / l
         p.x *= k
         p.y *= k
         
-        return DataNormalizer.convert(point: p)
+        return converter.convert(point: p)
     }
 }
 

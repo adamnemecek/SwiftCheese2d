@@ -16,6 +16,8 @@ import XCTest
 
 class PinsCleanDoublesTest: XCTestCase {
     
+    
+    
     func test_0() {
         
         var master = [CGPoint]()
@@ -24,15 +26,15 @@ class PinsCleanDoublesTest: XCTestCase {
         master.append(CGPoint(x: -10, y: 10))
         master.append(CGPoint(x: -10, y: -10))
         
-        let iMaster = DataNormalizer.convert(points: master)
+        let iMaster = PointConverter.defaultConverter.convert(points: master)
         
         var slave = [CGPoint]()
         slave.append(CGPoint(x: -10, y: 10))
         slave.append(CGPoint(x: 0, y: 5))
         slave.append(CGPoint(x: 5, y: 5))
-        let iSlave = DataNormalizer.convert(points: slave)
+        let iSlave = PointConverter.defaultConverter.convert(points: slave)
         
-        let navigator = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
+        let navigator = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: PointConverter.defaultConverter)
 
         XCTAssertEqual(navigator.pinPointArray.count, 1)
     }

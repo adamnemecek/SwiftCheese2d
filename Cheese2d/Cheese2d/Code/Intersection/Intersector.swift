@@ -12,11 +12,11 @@ import Foundation
 
 public struct Intersector {
 
-    public static func findPins(master: [CGPoint], slave: [CGPoint]) -> IntersectorResult {
-        let iMaster = DataNormalizer.convert(points: master)
-        let iSlave = DataNormalizer.convert(points: slave)
+    public static func findPins(master: [CGPoint], slave: [CGPoint], converter: PointConverter = PointConverter.defaultConverter) -> IntersectorResult {
+        let iMaster = converter.convert(points: master)
+        let iSlave = converter.convert(points: slave)
         
-        let navigator = Intersector.findPins(iMaster: iMaster, iSlave: iSlave)
+        let navigator = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
     
         var borders = [[CGPoint]]()
         var points = [Pin]()
@@ -26,16 +26,16 @@ public struct Intersector {
                 let index = node.index
                 if node.isPinPath == 1 {
                     let path = navigator.pinPathArray[index]
-                    borders.append(path.extract(points: iMaster))
+                    borders.append(path.extract(points: iMaster, converter: converter))
                     
-                    let pin0 = Pin(point: DataNormalizer.convert(point: path.v0.point), type: path.v0.type)
+                    let pin0 = Pin(point: converter.convert(point: path.v0.point), type: path.v0.type)
                     points.append(pin0)
                     
-                    let pin1 = Pin(point: DataNormalizer.convert(point: path.v1.point), type: path.v1.type)
+                    let pin1 = Pin(point: converter.convert(point: path.v1.point), type: path.v1.type)
                     points.append(pin1)
                 } else {
                     let p = navigator.pinPointArray[index]
-                    let pin = Pin(point: DataNormalizer.convert(point: p.point), type: p.type)
+                    let pin = Pin(point: converter.convert(point: p.point), type: p.type)
                     points.append(pin)
                 }
             }
@@ -46,7 +46,7 @@ public struct Intersector {
     }
     
     
-    static func findPins(iMaster: [Point], iSlave: [Point]) -> PinNavigator {
+    static func findPins(iMaster: [Point], iSlave: [Point], converter: PointConverter) -> PinNavigator {
         
         let posMatrix = self.buildPossibilityMatrix(master: iMaster, slave: iSlave)
 
@@ -154,7 +154,7 @@ public struct Intersector {
                         
                         if isMsEnd && isSlEnd {
                             // pin point is on the cross
-                            let pinPoint = PinPoint.buildOnCross(def: pinPointDef)
+                            let pinPoint = PinPoint.buildOnCross(def: pinPointDef, converter: converter)
                             pinPoints.append(pinPoint)
                         } else if isMsEnd {
                             // pin point is on slave
@@ -182,7 +182,7 @@ public struct Intersector {
             i = j
         }
         
-        var aggregator = PinPathBuilder(edges: pinEdges)
+        var aggregator = PinPathBuilder(edges: pinEdges, converter: converter)
 
         let pinPaths = aggregator.build(master: iMaster, slave: iSlave)
         

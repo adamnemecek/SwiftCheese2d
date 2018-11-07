@@ -8,14 +8,17 @@
 
 import Foundation
 
-struct PointConverter {
+public struct PointConverter {
     
-    private let convertation_precision: CGFloat
-    private let revert_convertation_precision: CGFloat
+    public static let defaultConverter = PointConverter()
+    public static let defaultPrecision: CGFloat = 0.0001
     
-    init(precision: CGFloat) {
-        self.convertation_precision = precision
-        self.revert_convertation_precision = 1.0 / precision
+    private let directConvertationScale: CGFloat
+    private let revertConvertationScale: CGFloat
+    
+    public init(precision: CGFloat = PointConverter.defaultPrecision) {
+        self.directConvertationScale = precision
+        self.revertConvertationScale = 1.0 / precision
     }
     
     func convert(points: [CGPoint]) -> [Point] {
@@ -29,7 +32,7 @@ struct PointConverter {
         while i < n {
             let p = points[i]
             i += 1
-            let iPoint = Point(x: Int64(p.x * revert_convertation_precision), y: Int64(p.y * revert_convertation_precision))
+            let iPoint = Point(x: Int64(p.x * revertConvertationScale), y: Int64(p.y * revertConvertationScale))
             if iPoint.x != prev.x || iPoint.y != prev.y {
                 iPoints.append(iPoint)
                 prev = iPoint
@@ -44,7 +47,7 @@ struct PointConverter {
         var points = Array<CGPoint>()
         points.reserveCapacity(iPoints.count)
         for p in iPoints {
-            points.append(CGPoint(x: CGFloat(p.x) * convertation_precision, y: CGFloat(p.y) * convertation_precision))
+            points.append(CGPoint(x: CGFloat(p.x) * directConvertationScale, y: CGFloat(p.y) * directConvertationScale))
         }
         
         return points
@@ -52,11 +55,11 @@ struct PointConverter {
     
     
     func convert(point: Point) -> CGPoint {
-        return CGPoint(x: CGFloat(point.x) * convertation_precision, y: CGFloat(point.y) * convertation_precision)
+        return CGPoint(x: CGFloat(point.x) * directConvertationScale, y: CGFloat(point.y) * directConvertationScale)
     }
     
     func convert(point: CGPoint) -> Point {
-        return Point(x: Int64(point.x * revert_convertation_precision), y: Int64(point.y * revert_convertation_precision))
+        return Point(x: Int64(point.x * revertConvertationScale), y: Int64(point.y * revertConvertationScale))
     }
     
 }

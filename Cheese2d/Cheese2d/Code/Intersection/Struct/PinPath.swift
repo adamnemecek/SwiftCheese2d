@@ -33,23 +33,23 @@ struct PinPath {
         return length
     }
     
-    func extract(points: [Point]) -> [CGPoint] {
+    func extract(points: [Point], converter: PointConverter) -> [CGPoint] {
         let n = points.count
         
         let length = getLength(count: n)
         
         guard length > 1 else {
-            return [DataNormalizer.convert(point: v0.point), DataNormalizer.convert(point: v1.point)]
+            return [converter.convert(point: v0.point), converter.convert(point: v1.point)]
         }
 
         guard length != 2 else {
-            let middle = DataNormalizer.convert(point: points[(v0.masterMileStone.index + 1 ) % n])
-            return [DataNormalizer.convert(point: v0.point), middle, DataNormalizer.convert(point: v1.point)]
+            let middle = converter.convert(point: points[(v0.masterMileStone.index + 1 ) % n])
+            return [converter.convert(point: v0.point), middle, converter.convert(point: v1.point)]
         }
         
         var path = [CGPoint]()
         path.reserveCapacity(length + 1)
-        path.append(DataNormalizer.convert(point: v0.point))
+        path.append(converter.convert(point: v0.point))
 
         
         var i = (v0.masterMileStone.index + 1) % n
@@ -61,12 +61,12 @@ struct PinPath {
         }
 
         while i != endIndex {
-            path.append(DataNormalizer.convert(point: points[i]))
+            path.append(converter.convert(point: points[i]))
             i = (i + 1) % n
         }
-        path.append(DataNormalizer.convert(point: points[endIndex]))
+        path.append(converter.convert(point: points[endIndex]))
         
-        path.append(DataNormalizer.convert(point: v1.point))
+        path.append(converter.convert(point: v1.point))
  
         return path
     }

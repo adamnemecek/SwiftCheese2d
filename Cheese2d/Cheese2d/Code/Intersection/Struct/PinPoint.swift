@@ -108,8 +108,8 @@ public struct PinPoint {
     }
     
     
-    static func buildOnCross(def: PinPointDef) -> PinPoint {
-        let corner = Corner(o: def.pt, a: def.ms0.point, b: def.ms1.point)
+    static func buildOnCross(def: PinPointDef, converter: PointConverter) -> PinPoint {
+        let corner = Corner(o: def.pt, a: def.ms0.point, b: def.ms1.point, converter: converter)
         
         let isSl0 = corner.isBetween(p: def.sl0.point)
         let isSl1 = corner.isBetween(p: def.sl1.point)

@@ -32,7 +32,10 @@ public struct Solver {
     
     
     public func substract() -> [Point] {
-        let navigator = Intersector.findPins(iMaster: master, iSlave: slave)
+        let navigator = Intersector.findPins(iMaster: master, iSlave: slave, converter: converter)
+        
+        
+        
         
         return []
     }

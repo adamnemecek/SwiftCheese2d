@@ -16,7 +16,7 @@ public struct Solver {
     private let converter: PointConverter
     
     
-    public init(master: [CGPoint], slave: [CGPoint], precision: CGFloat = 0.0001) {
+    public init(master: [CGPoint], slave: [CGPoint], precision: CGFloat = PointConverter.defaultPrecision) {
         let converter = PointConverter(precision: precision)
         self.master = converter.convert(points: master)
         self.slave = converter.convert(points: slave)
@@ -24,20 +24,133 @@ public struct Solver {
     }
     
     
-    public init(master: [Point], slave: [Point], precision: CGFloat = 0.0001) {
+    public init(master: [Point], slave: [Point], precision: CGFloat = PointConverter.defaultPrecision) {
         self.master = master
         self.slave = slave
         self.converter = PointConverter(precision: precision)
     }
     
     
-    public func substract() -> [Point] {
-        let navigator = Intersector.findPins(iMaster: master, iSlave: slave, converter: converter)
+    public func substract() -> FloatSolution {
+        let solution: Solution = self.substract()
         
+        if solution.disposition == .hasIntersections {
+            var pathCollection = Array<[CGPoint]>()
+            pathCollection.reserveCapacity(solution.pathCollection.count)
+            for p in solution.pathCollection {
+                let path = converter.convert(iPoints: p)
+                pathCollection.append(path)
+            }
+            return FloatSolution(pathCollection: pathCollection, disposition: .hasIntersections)
+        } else {
+            return FloatSolution(pathCollection: [], disposition: .noIntersections)
+        }
+
+    }
+
+    
+    public func substract() -> Solution {
+        var navigator = Intersector.findPins(iMaster: master, iSlave: slave, converter: converter)
         
+        var result = [[Point]]()
+
+        var cursor = navigator.hasNext()
         
+        let masterCount = master.count
+        let masterLastIndex = masterCount - 1
         
-        return []
+        let slaveCount = slave.count
+        let slaveLastIndex = slaveCount - 1
+        
+        while cursor.isNotEmpty {
+            
+            navigator.mark(cursor: cursor)
+
+            if cursor.type == PinPoint.inside || cursor.type == PinPoint.out_in {
+            
+                var path = [Point]()
+                let start = cursor
+                
+                repeat {
+                    let outCursor = navigator.nextSlave(cursor: cursor)
+                    navigator.mark(cursor: outCursor)
+                    
+                    // in-out slave ppath
+                    
+                    let inSlaveStart = navigator.slaveStartStone(cursor: cursor)
+                    let outSlaveEnd = navigator.slaveEndStone(cursor: outCursor)
+                    
+                    if inSlaveStart.offset != 0 {
+                        let startPoint = navigator.slaveStartPoint(cursor: cursor)
+                        path.append(startPoint)
+                    }
+                    
+                    let inSlaveIndex = (inSlaveStart.index + 1) % slaveCount
+                    let outSlaveIndex = outSlaveEnd.index
+                    
+                    if PathMileStone.compare(a: inSlaveStart, b: outSlaveEnd) {
+                        // a > b
+                        if inSlaveIndex != 0 {
+                            let sliceA = slave[inSlaveIndex...slaveLastIndex]
+                            path.append(contentsOf: sliceA)
+                        }
+
+                        let sliceB = slave[0...outSlaveIndex]
+                        path.append(contentsOf: sliceB)
+                    } else {
+                        // a < b
+                        let slice = slave[inSlaveIndex...outSlaveIndex]
+                        path.append(contentsOf: slice)
+                    }
+                    
+                    if outSlaveEnd.offset != 0 {
+                        let endPoint = navigator.slaveEndPoint(cursor: outCursor)
+                        path.append(endPoint)
+                    }
+                    
+                    cursor = navigator.nextMaster(cursor: outCursor)
+                    navigator.mark(cursor: cursor)
+                    
+                    // out-in master path
+                    
+                    let outMasterEnd = navigator.masterEndStone(cursor: cursor)
+                    let inMasterStart = navigator.masterStartStone(cursor: cursor)
+                    
+                    let outMasterIndex = (outMasterEnd.index + 1) % masterCount
+                    let inMasterIndex = inMasterStart.index
+                    
+                    
+                    if PathMileStone.compare(a: outMasterEnd, b: inMasterStart) {
+                        // a > b
+                        if outMasterIndex != 0 {
+                            let sliceA = slave[outMasterIndex...masterLastIndex]
+                            path.append(contentsOf: sliceA)
+                        }
+                        
+                        let sliceB = slave[0...inMasterIndex]
+                        path.append(contentsOf: sliceB)
+                    } else {
+                        // a < b
+                     //   let slice = slave[outMasterIndex...inMasterIndex]
+                     //   path.append(contentsOf: slice)
+                    }
+                } while cursor != start
+                
+                result.append(path)
+                
+                cursor = navigator.hasNext()
+            }
+        }
+        
+        let solution: Solution
+        
+        if result.count > 0 {
+            solution = Solution(pathCollection: result, disposition: .hasIntersections)
+        } else {
+            solution = Solution(pathCollection: [], disposition: .noIntersections)
+        }
+
+        return solution
     }
     
 }

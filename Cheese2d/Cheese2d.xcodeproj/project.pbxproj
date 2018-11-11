@@ -34,6 +34,9 @@
 		545A2D542155233300047C8D /* DebugFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A2D532155233300047C8D /* DebugFile.swift */; };
 		5470E5B82163FB0600AC2577 /* PinPathTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470E5B72163FB0600AC2577 /* PinPathTest.swift */; };
 		547BC90F216A878700A64EB0 /* PinPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547BC90E216A878700A64EB0 /* PinPoint.swift */; };
+		549B9E782194B7A800B88899 /* Solution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B9E772194B7A800B88899 /* Solution.swift */; };
+		54B285C22198B570009027DD /* FloatSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C12198B570009027DD /* FloatSolution.swift */; };
+		54B285C42198B995009027DD /* Disposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C32198B995009027DD /* Disposition.swift */; };
 		54BB545D2171D13500B61F3C /* PinSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB545C2171D13500B61F3C /* PinSequence.swift */; };
 		54F2C546217777FC001F4857 /* PinNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2C545217777FC001F4857 /* PinNavigator.swift */; };
 		54F2C5482177790A001F4857 /* PinNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2C5472177790A001F4857 /* PinNode.swift */; };
@@ -80,6 +83,9 @@
 		545A2D532155233300047C8D /* DebugFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugFile.swift; sourceTree = "<group>"; };
 		5470E5B72163FB0600AC2577 /* PinPathTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPathTest.swift; sourceTree = "<group>"; };
 		547BC90E216A878700A64EB0 /* PinPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPoint.swift; sourceTree = "<group>"; };
+		549B9E772194B7A800B88899 /* Solution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solution.swift; sourceTree = "<group>"; };
+		54B285C12198B570009027DD /* FloatSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatSolution.swift; sourceTree = "<group>"; };
+		54B285C32198B995009027DD /* Disposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disposition.swift; sourceTree = "<group>"; };
 		54BB545C2171D13500B61F3C /* PinSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSequence.swift; sourceTree = "<group>"; };
 		54F2C545217777FC001F4857 /* PinNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNavigator.swift; sourceTree = "<group>"; };
 		54F2C5472177790A001F4857 /* PinNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNode.swift; sourceTree = "<group>"; };
@@ -117,6 +123,9 @@
 			isa = PBXGroup;
 			children = (
 				54445FEF21921C570087A228 /* Solver.swift */,
+				549B9E772194B7A800B88899 /* Solution.swift */,
+				54B285C12198B570009027DD /* FloatSolution.swift */,
+				54B285C32198B995009027DD /* Disposition.swift */,
 			);
 			path = Solver;
 			sourceTree = "<group>";
@@ -334,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				549B9E782194B7A800B88899 /* Solution.swift in Sources */,
 				54F2C54B21777C35001F4857 /* IndexMileStone.swift in Sources */,
 				54445FF021921C570087A228 /* Solver.swift in Sources */,
 				54336B842184D59300D53311 /* PinEdge.swift in Sources */,
@@ -352,8 +362,10 @@
 				54F2C546217777FC001F4857 /* PinNavigator.swift in Sources */,
 				54445FF22192224C0087A228 /* PointConverter.swift in Sources */,
 				5430C8E42162551900DE1441 /* IntersectorResult.swift in Sources */,
+				54B285C22198B570009027DD /* FloatSolution.swift in Sources */,
 				5457CF1C216142AC0056728C /* PinPath.swift in Sources */,
 				545A2D3C21550F8200047C8D /* Intersector.swift in Sources */,
+				54B285C42198B995009027DD /* Disposition.swift in Sources */,
 				545A2D3E21550F8200047C8D /* AdjacencyMatrix.swift in Sources */,
 				545A2D542155233300047C8D /* DebugFile.swift in Sources */,
 				54BB545D2171D13500B61F3C /* PinSequence.swift in Sources */,

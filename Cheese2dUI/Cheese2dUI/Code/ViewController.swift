@@ -16,9 +16,9 @@ class ViewController: NSViewController {
             return self.view as! CanvasView
         }
     }
-    
+    private let scene = ControlUITest()
     //private let scene = PinPathUITest()
-    private let scene = AngleTest()
+    //private let scene = AngleTest()
 
     override func viewDidLoad() {
         super.viewDidLoad()

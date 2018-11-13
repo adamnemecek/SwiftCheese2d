@@ -113,26 +113,27 @@ public struct Solver {
                     
                     // out-in master path
                     
-                    let outMasterEnd = navigator.masterEndStone(cursor: cursor)
+                    let outMasterEnd = navigator.masterEndStone(cursor: outCursor)
                     let inMasterStart = navigator.masterStartStone(cursor: cursor)
                     
                     let outMasterIndex = (outMasterEnd.index + 1) % masterCount
-                    let inMasterIndex = inMasterStart.index
+                    let inMasterIndex = inMasterStart.offset == 0 ? (inMasterStart.index - 1 + masterCount) % masterCount : inMasterStart.index
                     
                     
                     if PathMileStone.compare(a: outMasterEnd, b: inMasterStart) {
                         // a > b
                         if outMasterIndex != 0 {
-                            let sliceA = slave[outMasterIndex...masterLastIndex]
+                            let sliceA = master[outMasterIndex...masterLastIndex]
                             path.append(contentsOf: sliceA)
                         }
-                        
-                        let sliceB = slave[0...inMasterIndex]
-                        path.append(contentsOf: sliceB)
+                        if outMasterIndex > inMasterIndex {
+                            let sliceB = master[0...inMasterIndex]
+                            path.append(contentsOf: sliceB)
+                        }
                     } else {
                         // a < b
-                     //   let slice = slave[outMasterIndex...inMasterIndex]
-                     //   path.append(contentsOf: slice)
+                        let slice = master[outMasterIndex...inMasterIndex]
+                        path.append(contentsOf: slice)
                     }
                 } while cursor != start
                 

@@ -95,7 +95,7 @@ class ControlUITest: CoordinateSystemScene {
         
         if solution.disposition == .hasIntersections {
             for path in solution.pathCollection {
-                let shape = ShapePath(points: path, tip: 1.5, lineWidth: 2.0, color: Colors.solution, showIndeces: false, showLast: false, scaleIndeces: 1, dash: nil)
+                let shape = ShapePath(points: path, tip: 1.5, lineWidth: 2.0, color: Colors.solution, showIndeces: false, showLast: true, scaleIndeces: 1, dash: nil)
                 self.addSublayer(shape)
             }
         }

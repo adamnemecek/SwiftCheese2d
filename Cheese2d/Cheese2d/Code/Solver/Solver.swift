@@ -80,12 +80,15 @@ public struct Solver {
                     let inSlaveStart = navigator.slaveStartStone(cursor: cursor)
                     let outSlaveEnd = navigator.slaveEndStone(cursor: outCursor)
                     
+                    let inSlaveIndex: Int
                     if inSlaveStart.offset != 0 {
                         let startPoint = navigator.slaveStartPoint(cursor: cursor)
                         path.append(startPoint)
+                        inSlaveIndex = (inSlaveStart.index + 1) % slaveCount
+                    } else {
+                        inSlaveIndex = inSlaveStart.index
                     }
-                    
-                    let inSlaveIndex = (inSlaveStart.index + 1) % slaveCount
+
                     let outSlaveIndex = outSlaveEnd.index
                     
                     if PathMileStone.compare(a: inSlaveStart, b: outSlaveEnd) {

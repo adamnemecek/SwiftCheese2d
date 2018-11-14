@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		540F9466216F248800CF8A9D /* AngleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F9465216F248800CF8A9D /* AngleTest.swift */; };
 		5412FFAA216399D70038D458 /* PinPathUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5412FFA9216399D70038D458 /* PinPathUITest.swift */; };
+		542C2D59219C688A006D62EB /* ShapeForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542C2D58219C688A006D62EB /* ShapeForm.swift */; };
 		542D78DA2154CD1E000B1D1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542D78D92154CD1E000B1D1A /* Assets.xcassets */; };
 		542D78DD2154CD1E000B1D1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 542D78DB2154CD1E000B1D1A /* Main.storyboard */; };
 		542D78F72154CD7F000B1D1A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D78E62154CD7F000B1D1A /* ViewController.swift */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		540F9465216F248800CF8A9D /* AngleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleTest.swift; sourceTree = "<group>"; };
 		5412FFA9216399D70038D458 /* PinPathUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPathUITest.swift; sourceTree = "<group>"; };
+		542C2D58219C688A006D62EB /* ShapeForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeForm.swift; sourceTree = "<group>"; };
 		542D78D22154CD1D000B1D1A /* Cheese2dUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cheese2dUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		542D78D92154CD1E000B1D1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		542D78DC2154CD1E000B1D1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				542D78EF2154CD7F000B1D1A /* ShapePolygon.swift */,
 				542D78F02154CD7F000B1D1A /* ShapeText.swift */,
 				54E25D7D216CD8CE00B6FE58 /* ShapePinDot.swift */,
+				542C2D58219C688A006D62EB /* ShapeForm.swift */,
 			);
 			path = Shape;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542C2D59219C688A006D62EB /* ShapeForm.swift in Sources */,
 				542D79012154CD7F000B1D1A /* AppDelegate.swift in Sources */,
 				542D79022154CD7F000B1D1A /* Colors.swift in Sources */,
 				5412FFAA216399D70038D458 /* PinPathUITest.swift in Sources */,

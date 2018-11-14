@@ -80,16 +80,14 @@ public struct Solver {
                     let inSlaveStart = navigator.slaveStartStone(cursor: cursor)
                     let outSlaveEnd = navigator.slaveEndStone(cursor: outCursor)
                     
-                    let inSlaveIndex: Int
-                    if inSlaveStart.offset != 0 {
+                    
+//                    if inSlaveStart.offset != 0 {
                         let startPoint = navigator.slaveStartPoint(cursor: cursor)
                         path.append(startPoint)
-                        inSlaveIndex = (inSlaveStart.index + 1) % slaveCount
-                    } else {
-                        inSlaveIndex = inSlaveStart.index
-                    }
-
-                    let outSlaveIndex = outSlaveEnd.index
+//                    }
+                    
+                    let inSlaveIndex: Int = (inSlaveStart.index + 1) % slaveCount // TODO always
+                    let outSlaveIndex: Int = outSlaveEnd.index
                     
                     if PathMileStone.compare(a: inSlaveStart, b: outSlaveEnd) {
                         // a > b
@@ -102,14 +100,16 @@ public struct Solver {
                         path.append(contentsOf: sliceB)
                     } else {
                         // a < b
-                        let slice = slave[inSlaveIndex...outSlaveIndex]
-                        path.append(contentsOf: slice)
+                        if inSlaveStart.index != outSlaveEnd.index {
+                            let slice = slave[inSlaveIndex...outSlaveIndex]
+                            path.append(contentsOf: slice)
+                        }
                     }
                     
-                    if outSlaveEnd.offset != 0 {
+  //                  if outSlaveEnd.offset != 0 {
                         let endPoint = navigator.slaveEndPoint(cursor: outCursor)
                         path.append(endPoint)
-                    }
+//                    }
                     
                     cursor = navigator.nextMaster(cursor: outCursor)
                     navigator.mark(cursor: cursor)

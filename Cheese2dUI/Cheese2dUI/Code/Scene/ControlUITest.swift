@@ -25,7 +25,7 @@ class ControlUITest: CoordinateSystemScene {
     }()
     
     
-    private var slave: [CGPoint] = ControlUITest.slave_0_0()
+    private var slave: [CGPoint] = ControlUITest.slave_0_2()
     
     
     private static func slave_0_0() -> [CGPoint] {
@@ -34,6 +34,26 @@ class ControlUITest: CoordinateSystemScene {
             CGPoint(x: 5, y: -15),
             CGPoint(x: 5, y: 0),
             CGPoint(x: -5, y: 0)
+        ]
+    }
+    
+    
+    private static func slave_0_1() -> [CGPoint] {
+        return [
+            CGPoint(x: -5, y: -15),
+            CGPoint(x: 15, y: -15),
+            CGPoint(x: 15, y: 15),
+            CGPoint(x: -5, y: 15)
+        ]
+    }
+    
+    
+    private static func slave_0_2() -> [CGPoint] {
+        return [
+            CGPoint(x: -5, y: -15),
+            CGPoint(x: 15, y: -15),
+            CGPoint(x: 15, y: 15),
+            CGPoint(x: -5, y: 10)
         ]
     }
     

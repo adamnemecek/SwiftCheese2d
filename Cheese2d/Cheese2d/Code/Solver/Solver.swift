@@ -81,46 +81,44 @@ public struct Solver {
                     let outSlaveEnd = navigator.slaveEndStone(cursor: outCursor)
                     
                     
-//                    if inSlaveStart.offset != 0 {
-                        let startPoint = navigator.slaveStartPoint(cursor: cursor)
-                        path.append(startPoint)
-//                    }
+                    let startPoint = navigator.slaveStartPoint(cursor: cursor)
+                    path.append(startPoint)
                     
-                    let isInSlaveOverflow: Bool
+                    let isInSlaveNotOverflow: Bool
                     let inSlaveIndex: Int
                     if inSlaveStart.index + 1 < slaveCount {
-                        isInSlaveOverflow = false
+                        isInSlaveNotOverflow = true
                         inSlaveIndex = inSlaveStart.index + 1
                     } else {
-                        isInSlaveOverflow = true
+                        isInSlaveNotOverflow = false
                         inSlaveIndex = 0
                     }
                     
                     
-                    let isOutSlaveOverflow: Bool
+                    let isOutSlaveNotOverflow: Bool
                     let outSlaveIndex: Int
                     
                     if outSlaveEnd.offset != 0 {
-                        isOutSlaveOverflow = false
+                        isOutSlaveNotOverflow = true
                         outSlaveIndex = outSlaveEnd.index
                     } else {
                         if outSlaveEnd.index != 0 {
-                            isOutSlaveOverflow = false
+                            isOutSlaveNotOverflow = true
                             outSlaveIndex = outSlaveEnd.index - 1
                         } else {
-                            isOutSlaveOverflow = true
+                            isOutSlaveNotOverflow = false
                             outSlaveIndex = slaveCount - 1
                         }
                     }
                     
                     if PathMileStone.compare(a: inSlaveStart, b: outSlaveEnd) {
                         // a > b
-                        if !isInSlaveOverflow {
+                        if isInSlaveNotOverflow {
                             let sliceA = slave[inSlaveIndex...slaveLastIndex]
                             path.append(contentsOf: sliceA)
                         }
 
-                        if !isOutSlaveOverflow {
+                        if isOutSlaveNotOverflow {
                             let sliceB = slave[0...outSlaveIndex]
                             path.append(contentsOf: sliceB)
                         }
@@ -131,11 +129,9 @@ public struct Solver {
                             path.append(contentsOf: slice)
                         }
                     }
-                    
-  //                  if outSlaveEnd.offset != 0 {
-                        let endPoint = navigator.slaveEndPoint(cursor: outCursor)
-                        path.append(endPoint)
-//                    }
+
+                    let endPoint = navigator.slaveEndPoint(cursor: outCursor)
+                    path.append(endPoint)
                     
                     cursor = navigator.nextMaster(cursor: outCursor)
                     navigator.mark(cursor: cursor)

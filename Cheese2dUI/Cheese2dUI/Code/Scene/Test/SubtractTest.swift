@@ -25,7 +25,7 @@ class SubtractTest: CoordinateSystemScene {
     }()
     
     
-    private var slave: [CGPoint] = SubtractTest.slave_0_3()
+    private var slave: [CGPoint] = SubtractTest.slave_0_6()
     
     
     private static func slave_0_0() -> [CGPoint] {
@@ -64,6 +64,35 @@ class SubtractTest: CoordinateSystemScene {
             CGPoint(x: 15, y: -15),
             CGPoint(x: 15, y: 15),
             CGPoint(x: -5, y: 10)
+        ]
+    }
+
+    
+    private static func slave_0_4() -> [CGPoint] {
+        return [
+            CGPoint(x: -5, y: -10),
+            CGPoint(x: 15, y: -15),
+            CGPoint(x: 15, y: 15),
+            CGPoint(x: -10, y: 10)
+        ]
+    }
+    
+    
+    private static func slave_0_5() -> [CGPoint] {
+        return [
+            CGPoint(x: 0, y: -10),
+            CGPoint(x: 15, y: -15),
+            CGPoint(x: 15, y: 15),
+            CGPoint(x: -20, y: 10)
+        ]
+    }
+    
+    
+    private static func slave_0_6() -> [CGPoint] {
+        return [
+            CGPoint(x: 15, y: -15),
+            CGPoint(x: 15, y: 15),
+            CGPoint(x: -15, y: 0)
         ]
     }
     

@@ -120,7 +120,7 @@ public struct PinPoint {
         } else if !isSl0 && !isSl1 {
             type = 2
         } else {
-            type = isSl0 ? 1 : -1
+            type = isSl0 ? -1 : 1
         }
 
         return PinPoint(point: def.pt, type: type,

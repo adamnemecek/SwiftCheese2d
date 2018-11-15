@@ -55,6 +55,7 @@ public struct Solver {
         var result = [[Point]]()
 
         var cursor = navigator.hasNext()
+        navigator.mark(cursor: cursor)
         
         let masterCount = master.count
         let masterLastIndex = masterCount - 1
@@ -63,11 +64,11 @@ public struct Solver {
         let slaveLastIndex = slaveCount - 1
         
         while cursor.isNotEmpty {
-            
-            navigator.mark(cursor: cursor)
 
-            if cursor.type == PinPoint.inside || cursor.type == PinPoint.out_in {
+            navigator.mark(cursor: cursor)
             
+            if cursor.type == PinPoint.inside || cursor.type == PinPoint.out_in {
+
                 var path = [Point]()
                 let start = cursor
                 
@@ -141,31 +142,57 @@ public struct Solver {
                     let outMasterEnd = navigator.masterEndStone(cursor: outCursor)
                     let inMasterStart = navigator.masterStartStone(cursor: cursor)
                     
-                    let outMasterIndex = (outMasterEnd.index + 1) % masterCount
-                    let inMasterIndex = inMasterStart.offset == 0 ? (inMasterStart.index - 1 + masterCount) % masterCount : inMasterStart.index
+                    
+                    let isOutMsterNotOverflow: Bool
+                    let outMasterIndex: Int
+                    if outMasterEnd.index + 1 < masterCount {
+                        outMasterIndex = outMasterEnd.index + 1
+                        isOutMsterNotOverflow = true
+                    } else {
+                        outMasterIndex = 0
+                        isOutMsterNotOverflow = false
+                    }
+                    
+                    
+                    let isInMsterNotOverflow: Bool
+                    let inMasterIndex: Int
+                    if inMasterStart.offset != 0 {
+                        inMasterIndex = inMasterStart.index
+                        isInMsterNotOverflow = true
+                    } else {
+                        if inMasterStart.index != 0 {
+                            inMasterIndex = inMasterStart.index - 1
+                            isInMsterNotOverflow = true
+                        } else {
+                            inMasterIndex = masterCount - 1
+                            isInMsterNotOverflow = false
+                        }
+                    }
                     
                     
                     if PathMileStone.compare(a: outMasterEnd, b: inMasterStart) {
                         // a > b
-                        if outMasterIndex != 0 {
+                        if isOutMsterNotOverflow {
                             let sliceA = master[outMasterIndex...masterLastIndex]
                             path.append(contentsOf: sliceA)
                         }
-                        if outMasterIndex > inMasterIndex {
+                        if isInMsterNotOverflow {
                             let sliceB = master[0...inMasterIndex]
                             path.append(contentsOf: sliceB)
                         }
                     } else {
                         // a < b
-                        let slice = master[outMasterIndex...inMasterIndex]
-                        path.append(contentsOf: slice)
+                        if outMasterIndex <= inMasterIndex {
+                            let slice = master[outMasterIndex...inMasterIndex]
+                            path.append(contentsOf: slice)
+                        }
                     }
                 } while cursor != start
                 
                 result.append(path)
-                
-                cursor = navigator.hasNext()
             }
+            
+            cursor = navigator.hasNext()
         }
         
         let solution: Solution

@@ -16,7 +16,7 @@ class ViewController: NSViewController {
             return self.view as! CanvasView
         }
     }
-    private let scene = ControlUITest()
+    private let scene = SubtractTest()
     //private let scene = PinPathUITest()
     //private let scene = AngleTest()
 

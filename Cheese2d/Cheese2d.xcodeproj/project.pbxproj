@@ -35,6 +35,7 @@
 		5470E5B82163FB0600AC2577 /* PinPathTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470E5B72163FB0600AC2577 /* PinPathTest.swift */; };
 		547BC90F216A878700A64EB0 /* PinPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547BC90E216A878700A64EB0 /* PinPoint.swift */; };
 		549B9E782194B7A800B88899 /* Solution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B9E772194B7A800B88899 /* Solution.swift */; };
+		54A7C3E3219D5CDB005C9283 /* SubtractTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7C3E2219D5CDB005C9283 /* SubtractTest.swift */; };
 		54B285C22198B570009027DD /* FloatSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C12198B570009027DD /* FloatSolution.swift */; };
 		54B285C42198B995009027DD /* Disposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C32198B995009027DD /* Disposition.swift */; };
 		54BB545D2171D13500B61F3C /* PinSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB545C2171D13500B61F3C /* PinSequence.swift */; };
@@ -84,6 +85,7 @@
 		5470E5B72163FB0600AC2577 /* PinPathTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPathTest.swift; sourceTree = "<group>"; };
 		547BC90E216A878700A64EB0 /* PinPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPoint.swift; sourceTree = "<group>"; };
 		549B9E772194B7A800B88899 /* Solution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solution.swift; sourceTree = "<group>"; };
+		54A7C3E2219D5CDB005C9283 /* SubtractTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractTest.swift; sourceTree = "<group>"; };
 		54B285C12198B570009027DD /* FloatSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatSolution.swift; sourceTree = "<group>"; };
 		54B285C32198B995009027DD /* Disposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disposition.swift; sourceTree = "<group>"; };
 		54BB545C2171D13500B61F3C /* PinSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSequence.swift; sourceTree = "<group>"; };
@@ -212,11 +214,12 @@
 		545A2D4521550F9000047C8D /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */,
+				540F9473216F888900CF8A9D /* CornerTest.swift */,
 				5470E5B72163FB0600AC2577 /* PinPathTest.swift */,
 				5412993C2170AD39001F0F0A /* PinsCleanDoublesTest.swift */,
-				540F9473216F888900CF8A9D /* CornerTest.swift */,
-				54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */,
 				545A2D4F2155142600047C8D /* SortedNumbersTest.swift */,
+				54A7C3E2219D5CDB005C9283 /* SubtractTest.swift */,
 				545A2D4821550F9000047C8D /* Info.plist */,
 			);
 			path = Tests;
@@ -380,6 +383,7 @@
 				545A2D502155142600047C8D /* SortedNumbersTest.swift in Sources */,
 				54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */,
 				5470E5B82163FB0600AC2577 /* PinPathTest.swift in Sources */,
+				54A7C3E3219D5CDB005C9283 /* SubtractTest.swift in Sources */,
 				5412993D2170AD39001F0F0A /* PinsCleanDoublesTest.swift in Sources */,
 				540F9474216F888900CF8A9D /* CornerTest.swift in Sources */,
 			);

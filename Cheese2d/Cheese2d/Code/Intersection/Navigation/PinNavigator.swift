@@ -28,11 +28,11 @@ struct PinNavigator {
     
     // TODO optimise, we could remove masterPath
     
-    let masterPath: [Int]
-    let slavePath: [Int]
-    let pinPathArray: [PinPath]
-    let pinPointArray: [PinPoint]
-    var nodeArray: [PinNode]
+    let masterPath: [Int]           // for m in masterPath { nodeArray[m] }  iterate all pins in clockwise order by master path
+    let slavePath: [Int]            // for s in slavePath { nodeArray[s] }  iterate all pins in counter clockwise order by slave path
+    let pinPathArray: [PinPath]     // pinPathArray[nodeArray[i].index] return PinPath for this pin
+    let pinPointArray: [PinPoint]   // supply array for nodeArray[i].index return PinPoint for this pin
+    var nodeArray: [PinNode]        // keep info about each pin node
     
     init(masterPath: [Int], slavePath: [Int], pinPathArray: [PinPath], pinPointArray: [PinPoint], nodeArray: [PinNode]) {
         self.masterPath = masterPath

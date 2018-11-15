@@ -27,8 +27,8 @@
 		542D79032154CD7F000B1D1A /* IntersectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D78F52154CD7F000B1D1A /* IntersectionTest.swift */; };
 		542D79042154CD7F000B1D1A /* CoordinateSystemScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D78F62154CD7F000B1D1A /* CoordinateSystemScene.swift */; };
 		542D790F2154CDB0000B1D1A /* libCheese2d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 542D790B2154CDA7000B1D1A /* libCheese2d.dylib */; };
-		549607F32174DC7D00E562ED /* BorderTest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549607F22174DC7D00E562ED /* BorderTest2.swift */; };
-		54B285C62198BBB7009027DD /* ControlUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C52198BBB7009027DD /* ControlUITest.swift */; };
+		549607F32174DC7D00E562ED /* BorderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549607F22174DC7D00E562ED /* BorderTest.swift */; };
+		54B285C62198BBB7009027DD /* SubtractTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C52198BBB7009027DD /* SubtractTest.swift */; };
 		54B8756C2169356900D823AE /* MouseCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B8756B2169356900D823AE /* MouseCompatible.swift */; };
 		54E25D7E216CD8CE00B6FE58 /* ShapePinDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E25D7D216CD8CE00B6FE58 /* ShapePinDot.swift */; };
 /* End PBXBuildFile section */
@@ -74,8 +74,8 @@
 		542D78F52154CD7F000B1D1A /* IntersectionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntersectionTest.swift; sourceTree = "<group>"; };
 		542D78F62154CD7F000B1D1A /* CoordinateSystemScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateSystemScene.swift; sourceTree = "<group>"; };
 		542D79052154CDA6000B1D1A /* Cheese2d.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Cheese2d.xcodeproj; path = ../Cheese2d/Cheese2d.xcodeproj; sourceTree = "<group>"; };
-		549607F22174DC7D00E562ED /* BorderTest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderTest2.swift; sourceTree = "<group>"; };
-		54B285C52198BBB7009027DD /* ControlUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlUITest.swift; sourceTree = "<group>"; };
+		549607F22174DC7D00E562ED /* BorderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderTest.swift; sourceTree = "<group>"; };
+		54B285C52198BBB7009027DD /* SubtractTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractTest.swift; sourceTree = "<group>"; };
 		54B8756B2169356900D823AE /* MouseCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseCompatible.swift; sourceTree = "<group>"; };
 		54E25D7D216CD8CE00B6FE58 /* ShapePinDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapePinDot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,13 +163,9 @@
 		542D78F42154CD7F000B1D1A /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				542D78F52154CD7F000B1D1A /* IntersectionTest.swift */,
+				54A7C3E6219D5E0F005C9283 /* Test */,
 				542D78F62154CD7F000B1D1A /* CoordinateSystemScene.swift */,
-				5412FFA9216399D70038D458 /* PinPathUITest.swift */,
 				54B8756B2169356900D823AE /* MouseCompatible.swift */,
-				540F9465216F248800CF8A9D /* AngleTest.swift */,
-				549607F22174DC7D00E562ED /* BorderTest2.swift */,
-				54B285C52198BBB7009027DD /* ControlUITest.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -188,6 +184,18 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		54A7C3E6219D5E0F005C9283 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				540F9465216F248800CF8A9D /* AngleTest.swift */,
+				549607F22174DC7D00E562ED /* BorderTest.swift */,
+				542D78F52154CD7F000B1D1A /* IntersectionTest.swift */,
+				5412FFA9216399D70038D458 /* PinPathUITest.swift */,
+				54B285C52198BBB7009027DD /* SubtractTest.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,7 +299,7 @@
 				542D79032154CD7F000B1D1A /* IntersectionTest.swift in Sources */,
 				542D78F82154CD7F000B1D1A /* CanvasView.swift in Sources */,
 				540F9466216F248800CF8A9D /* AngleTest.swift in Sources */,
-				549607F32174DC7D00E562ED /* BorderTest2.swift in Sources */,
+				549607F32174DC7D00E562ED /* BorderTest.swift in Sources */,
 				542D78FB2154CD7F000B1D1A /* ShapeDot.swift in Sources */,
 				542D78F72154CD7F000B1D1A /* ViewController.swift in Sources */,
 				542D78FA2154CD7F000B1D1A /* ShapeCoordinatSystem.swift in Sources */,
@@ -302,7 +310,7 @@
 				542D78FC2154CD7F000B1D1A /* ShapeLine.swift in Sources */,
 				542D79042154CD7F000B1D1A /* CoordinateSystemScene.swift in Sources */,
 				542D79002154CD7F000B1D1A /* CGPoint+Extension.swift in Sources */,
-				54B285C62198BBB7009027DD /* ControlUITest.swift in Sources */,
+				54B285C62198BBB7009027DD /* SubtractTest.swift in Sources */,
 				54E25D7E216CD8CE00B6FE58 /* ShapePinDot.swift in Sources */,
 				542D78FF2154CD7F000B1D1A /* ShapeText.swift in Sources */,
 			);

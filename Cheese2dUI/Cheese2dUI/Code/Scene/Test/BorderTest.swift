@@ -1,5 +1,5 @@
 //
-//  BorderTest2.swift
+//  BorderTest.swift
 //  Cheese2dUI
 //
 //  Created by Nail Sharipov on 15/10/2018.
@@ -10,7 +10,7 @@
 import Cocoa
 import Cheese2d
 
-class BorderTest2: CoordinateSystemScene {
+class BorderTest: CoordinateSystemScene {
     
     private var master: [CGPoint] = {
         var master = [CGPoint]()
@@ -122,7 +122,7 @@ class BorderTest2: CoordinateSystemScene {
 }
 
 
-extension BorderTest2: MouseCompatible {
+extension BorderTest: MouseCompatible {
     
     private func findNearest(point: CGPoint, points: [CGPoint]) -> Int? {
         var i = 0

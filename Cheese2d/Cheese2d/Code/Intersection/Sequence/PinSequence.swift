@@ -62,12 +62,14 @@ struct PinSequence {
             
             let slaveIndex = slavePath[j]
             node = nodes[slaveIndex]
-            node.slaveIndex = slaveIndex
+            //node.slaveIndex = slaveIndex
+            node.slaveIndex = j
             nodes[slaveIndex] = node
 
             let masterIndex = masterPath[j]
             node = nodes[masterIndex]
-            node.masterIndex = masterIndex
+            //node.masterIndex = masterIndex
+            node.masterIndex = j
             nodes[masterIndex] = node
         }
 
@@ -182,11 +184,9 @@ struct PinSequence {
             let index = handler.index
             if handler.isPinPath == 0 {
                 let point = self.pinPointArray[index]
-                //iStones.append(IndexMileStone(index: index, stone: point.slaveMileStone))
                 iStones.append(IndexMileStone(index: j, stone: point.slaveMileStone))
             } else {
                 let path = self.pinPathArray[index]
-                //iStones.append(IndexMileStone(index: index, stone: path.v1.slaveMileStone))
                 iStones.append(IndexMileStone(index: j, stone: path.v0.slaveMileStone))
             }
         }

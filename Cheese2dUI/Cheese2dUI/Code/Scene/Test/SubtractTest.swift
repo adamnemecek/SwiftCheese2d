@@ -1,5 +1,5 @@
 //
-//  ControlUITest.swift
+//  SubtractTest.swift
 //  Cheese2dUI
 //
 //  Created by Nail Sharipov on 11/11/2018.
@@ -10,7 +10,7 @@ import Cocoa
 import Cheese2d
 
 
-class ControlUITest: CoordinateSystemScene {
+class SubtractTest: CoordinateSystemScene {
     
     private var master: [CGPoint] = {
         var master = [CGPoint]()
@@ -25,7 +25,7 @@ class ControlUITest: CoordinateSystemScene {
     }()
     
     
-    private var slave: [CGPoint] = ControlUITest.slave_0_2()
+    private var slave: [CGPoint] = SubtractTest.slave_0_3()
     
     
     private static func slave_0_0() -> [CGPoint] {
@@ -56,6 +56,17 @@ class ControlUITest: CoordinateSystemScene {
             CGPoint(x: -5, y: 10)
         ]
     }
+    
+    
+    private static func slave_0_3() -> [CGPoint] {
+        return [
+            CGPoint(x: -5, y: -10),
+            CGPoint(x: 15, y: -15),
+            CGPoint(x: 15, y: 15),
+            CGPoint(x: -5, y: 10)
+        ]
+    }
+    
     
     private var activeIndex: Int?
     private var isSlave: Bool = false
@@ -124,7 +135,7 @@ class ControlUITest: CoordinateSystemScene {
 }
 
 
-extension ControlUITest: MouseCompatible {
+extension SubtractTest: MouseCompatible {
     
     private func findNearest(point: CGPoint, points: [CGPoint]) -> Int? {
         var i = 0

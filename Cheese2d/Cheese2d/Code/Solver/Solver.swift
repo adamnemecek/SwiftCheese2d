@@ -86,18 +86,44 @@ public struct Solver {
                         path.append(startPoint)
 //                    }
                     
-                    let inSlaveIndex: Int = (inSlaveStart.index + 1) % slaveCount // TODO always
-                    let outSlaveIndex: Int = outSlaveEnd.index
+                    let isInSlaveOverflow: Bool
+                    let inSlaveIndex: Int
+                    if inSlaveStart.index + 1 < slaveCount {
+                        isInSlaveOverflow = false
+                        inSlaveIndex = inSlaveStart.index + 1
+                    } else {
+                        isInSlaveOverflow = true
+                        inSlaveIndex = 0
+                    }
+                    
+                    
+                    let isOutSlaveOverflow: Bool
+                    let outSlaveIndex: Int
+                    
+                    if outSlaveEnd.offset != 0 {
+                        isOutSlaveOverflow = false
+                        outSlaveIndex = outSlaveEnd.index
+                    } else {
+                        if outSlaveEnd.index != 0 {
+                            isOutSlaveOverflow = false
+                            outSlaveIndex = outSlaveEnd.index - 1
+                        } else {
+                            isOutSlaveOverflow = true
+                            outSlaveIndex = slaveCount - 1
+                        }
+                    }
                     
                     if PathMileStone.compare(a: inSlaveStart, b: outSlaveEnd) {
                         // a > b
-                        if inSlaveIndex != 0 {
+                        if !isInSlaveOverflow {
                             let sliceA = slave[inSlaveIndex...slaveLastIndex]
                             path.append(contentsOf: sliceA)
                         }
 
-                        let sliceB = slave[0...outSlaveIndex]
-                        path.append(contentsOf: sliceB)
+                        if !isOutSlaveOverflow {
+                            let sliceB = slave[0...outSlaveIndex]
+                            path.append(contentsOf: sliceB)
+                        }
                     } else {
                         // a < b
                         if inSlaveStart.index != outSlaveEnd.index {

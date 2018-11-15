@@ -124,7 +124,7 @@ public struct Solver {
                         }
                     } else {
                         // a < b
-                        if inSlaveStart.index != outSlaveEnd.index {
+                        if inSlaveStart.index != outSlaveEnd.index && inSlaveIndex < outSlaveIndex {
                             let slice = slave[inSlaveIndex...outSlaveIndex]
                             path.append(contentsOf: slice)
                         }

@@ -25,7 +25,7 @@ class SubtractTest: CoordinateSystemScene {
     }()
     
     
-    private var slave: [CGPoint] = SubtractTest.slave_0_6()
+    private var slave: [CGPoint] = SubtractTest.slave_0_8()
     
     
     private static func slave_0_0() -> [CGPoint] {
@@ -93,6 +93,24 @@ class SubtractTest: CoordinateSystemScene {
             CGPoint(x: 15, y: -15),
             CGPoint(x: 15, y: 15),
             CGPoint(x: -15, y: 0)
+        ]
+    }
+    
+    
+    private static func slave_0_7() -> [CGPoint] {
+        return [
+            CGPoint(x: 0, y: -15),
+            CGPoint(x: 0, y: 0),
+            CGPoint(x: -15, y: 0)
+        ]
+    }
+    
+    
+    private static func slave_0_8() -> [CGPoint] {
+        return [
+            CGPoint(x: 0, y: 0),
+            CGPoint(x: 10, y: 0),
+            CGPoint(x: 0, y: 10)
         ]
     }
     
@@ -225,7 +243,7 @@ extension SubtractTest: MouseCompatible {
         } else {
             let prevPoint = self.master[index]
             if point != prevPoint {
-                print("dragg: \(point)")
+                print("drag: \(point)")
                 self.master[index] = point
                 self.update()
             }

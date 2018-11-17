@@ -82,7 +82,7 @@ public struct PinPoint {
         
         let type: Int
         if isCCW0 == isCCW1 {
-            type = isCCW0 ? -2 : 2
+            type = isCCW0 ? 2 : -2
         } else {
             type = isCCW0 ? -1 : 1
         }
@@ -111,8 +111,8 @@ public struct PinPoint {
     static func buildOnCross(def: PinPointDef, converter: PointConverter) -> PinPoint {
         let corner = Corner(o: def.pt, a: def.ms0.point, b: def.ms1.point, converter: converter)
         
-        let isSl0 = corner.isBetween(p: def.sl0.point)
-        let isSl1 = corner.isBetween(p: def.sl1.point)
+        let isSl0 = corner.isBetween(p: def.sl0.point, clockwise: true)
+        let isSl1 = corner.isBetween(p: def.sl1.point, clockwise: true)
 
         let type: Int
         if isSl0 && isSl1 {
@@ -120,7 +120,7 @@ public struct PinPoint {
         } else if !isSl0 && !isSl1 {
             type = 2
         } else {
-            type = isSl0 ? -1 : 1
+            type = isSl0 ? 1 : -1
         }
 
         return PinPoint(point: def.pt, type: type,

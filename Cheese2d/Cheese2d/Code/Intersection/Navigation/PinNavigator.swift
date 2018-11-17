@@ -43,16 +43,16 @@ struct PinNavigator {
     }
     
 
-    mutating func hasNext(cursor: Cursor) -> Cursor {
-        return hasNext(index: cursor.index)
+    mutating func nextIn(cursor: Cursor) -> Cursor {
+        return nextIn(index: cursor.index)
     }
     
-    mutating func hasNext() -> Cursor {
-        return hasNext(index: 0)
+    mutating func nextIn() -> Cursor {
+        return nextIn(index: 0)
     }
     
     
-    mutating private func hasNext(index: Int) -> Cursor {
+    mutating private func nextIn(index: Int) -> Cursor {
         var i = index
         let n = nodeArray.count
         repeat {
@@ -60,10 +60,14 @@ struct PinNavigator {
             if node.marker == 0 {
                 if node.isPinPath == 0 {
                     let pin = pinPointArray[node.index]
-                    return Cursor(type: pin.type, index: i)
+                    if pin.type > 0 { // in or in-out
+                        return Cursor(type: pin.type, index: i)
+                    }
                 } else {
                     let path = pinPathArray[node.index]
-                    return Cursor(type: path.v0.type, index: i)
+                    if path.v0.type > 0 { // in or in-out
+                        return Cursor(type: path.v0.type, index: i)
+                    }
                 }
             }
             i = (i + 1) % n

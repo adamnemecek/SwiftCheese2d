@@ -233,8 +233,8 @@ struct PinPathBuilder {
         } else {
             m0 = master[(mi - 1 + mn) % mn]
         }
-        
-        return Corner(o: m1, a: m2, b: m0, converter: converter)
+
+        return Corner(o: m1, a: m0, b: m2, converter: converter)
     }
     
     

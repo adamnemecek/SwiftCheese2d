@@ -11,21 +11,39 @@ import Cheese2d
 
 
 class SubtractTest: CoordinateSystemScene {
-    
-    private var master: [CGPoint] = {
-        var master = [CGPoint]()
-        
-        master.append(CGPoint(x: -10, y: 10))
-        master.append(CGPoint(x: 10, y: 10))
-        master.append(CGPoint(x: 10, y: -10))
-        master.append(CGPoint(x: -10, y: -10))
-        
-        
-        return master
-    }()
+
+    private var master: [CGPoint] = SubtractTest.master_spiral_1()
+    private var slave: [CGPoint] = SubtractTest.slave_spiral_0()
     
     
-    private var slave: [CGPoint] = SubtractTest.slave_0_10()
+    private static func master_0() -> [CGPoint] {
+        return [
+            CGPoint(x: -10, y: 10),
+            CGPoint(x: 10, y: 10),
+            CGPoint(x: 10, y: -10),
+            CGPoint(x: -10, y: -10)
+        ]
+        
+    }
+    
+    private static func master_spiral_0() -> [CGPoint] {
+        return [
+            CGPoint(x: -7.5, y: 10),
+            CGPoint(x: 12.5, y: 10),
+            CGPoint(x: 12.5, y: 5),
+            CGPoint(x: -7.5, y: 5)
+        ]
+    }
+    
+    
+    private static func master_spiral_1() -> [CGPoint] {
+        return [
+            CGPoint(x: -7.5, y: 2.5),
+            CGPoint(x: 12.5, y: 2.5),
+            CGPoint(x: 12.5, y: -2.5),
+            CGPoint(x: -7.5, y: -2.5)
+        ]
+    }
     
     
     private static func slave_0_0() -> [CGPoint] {
@@ -133,6 +151,76 @@ class SubtractTest: CoordinateSystemScene {
     }
     
     
+    private static func slave_0_11() -> [CGPoint] {
+        return [
+            CGPoint(x: -30, y: -10),
+            CGPoint(x: 0, y: -10),
+            CGPoint(x: 10, y: 10)
+        ]
+    }
+    
+    
+    private static func slave_0_12() -> [CGPoint] {
+        return [
+            CGPoint(x: 0, y: 0),
+            CGPoint(x: 10, y: -5),
+            CGPoint(x: 10, y: 5)
+        ]
+    }
+    
+    
+    private static func slave_0_13() -> [CGPoint] {
+        return [
+            CGPoint(x: 5, y: -10),
+            CGPoint(x: -5, y: -10),
+            CGPoint(x: 0, y: -15)
+        ]
+    }
+    
+    
+    private static func slave_0_14() -> [CGPoint] {
+        return [
+            CGPoint(x: -5, y: 10),
+            CGPoint(x: -10, y: 5),
+            CGPoint(x: -10, y: -5),
+            CGPoint(x: -5, y: -10),
+            CGPoint(x: 5, y: -10),
+            CGPoint(x: 10, y: -5),
+            CGPoint(x: 10, y: 5),
+            CGPoint(x: 5, y: 10)
+        ]
+    }
+    
+    
+    private static func slave_spiral_0() -> [CGPoint] {
+        return [
+            CGPoint(x: 0, y: 0),
+            CGPoint(x: 0, y: 20),
+            CGPoint(x: -15, y: 20),
+            CGPoint(x: -15, y: -10),
+            CGPoint(x: 10, y: -10),
+            CGPoint(x: 10, y: 30),
+            CGPoint(x: -25, y: 30),
+            CGPoint(x: -25, y: -20),
+            CGPoint(x: 20, y: -20),
+            CGPoint(x: 20, y: 20),
+            CGPoint(x: 15, y: 20),
+            CGPoint(x: 15, y: -15),
+            CGPoint(x: -20, y: -15),
+            CGPoint(x: -20, y: 25),
+            CGPoint(x: 5, y: 25),
+            CGPoint(x: 5, y: -5),
+            CGPoint(x: -10, y: -5),
+            CGPoint(x: -10, y: 15),
+            CGPoint(x: -5, y: 15),
+            CGPoint(x: -5, y: 0)
+            
+        ]
+    }
+    
+    
+    
+    
     private var activeIndex: Int?
     private var isSlave: Bool = false
     
@@ -170,21 +258,7 @@ class SubtractTest: CoordinateSystemScene {
         let result = Intersector.findPins(master: master, slave: slave)
         let points = result.points
         
-        self.addSublayer(ShapePolygon(points: master, tip: 1.0, lineWidth: 0.2, color: Colors.slave, showIndeces: true, scaleIndeces: 4, dash: nil))
-        self.addSublayer(ShapePolygon(points: slave, tip: 1.0, lineWidth: 0.3, color: Colors.master, showIndeces: true, scaleIndeces: -2.5, dash: [2,3]))
-        
-        
-        let paths = result.path
-        for path in paths {
-            let shape = ShapePath(points: path, tip: 1.5, lineWidth: 0.3, color: Colors.border, showIndeces: false, showLast: false, scaleIndeces: 1, dash: nil)
-            self.addSublayer(shape)
-        }
-        
-        
-        for pin in points {
-            self.addSublayer(ShapePinDot(pin: pin, radius: 1.0))
-        }
-        
+        self.addSublayer(ShapeForm(points: slave, color: Colors.slave_second))
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -194,6 +268,20 @@ class SubtractTest: CoordinateSystemScene {
                 let shape = ShapeForm(points: path, color: Colors.solution)
                 self.addSublayer(shape)
             }
+        }
+        
+        self.addSublayer(ShapePolygon(points: master, tip: 1.0, lineWidth: 0.2, color: Colors.slave, showIndeces: true, scaleIndeces: 4, dash: nil))
+        self.addSublayer(ShapePolygon(points: slave, tip: 1.0, lineWidth: 0.3, color: Colors.master, showIndeces: true, scaleIndeces: -2.5, dash: [2,3]))
+        
+        let paths = result.path
+        for path in paths {
+            let shape = ShapePath(points: path, tip: 1.5, lineWidth: 0.3, color: Colors.border, showIndeces: false, showLast: false, scaleIndeces: 1, dash: nil)
+            self.addSublayer(shape)
+        }
+
+        
+        for pin in points {
+            self.addSublayer(ShapePinDot(pin: pin, radius: 0.6))
         }
     }
     

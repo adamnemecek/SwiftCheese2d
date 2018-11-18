@@ -175,9 +175,9 @@ struct PinPathBuilder {
             }
         } else {
             if isBetween {
-                type = PinPoint.null_in
+                type = PinPoint.out_null
             } else {
-                type = PinPoint.null_out
+                type = PinPoint.in_null
             }
         }
         
@@ -211,9 +211,9 @@ struct PinPathBuilder {
             }
         } else {
             if isBetween {
-                type = PinPoint.out_null
+                type = PinPoint.null_in
             } else {
-                type = PinPoint.in_null
+                type = PinPoint.null_out
             }
         }
         

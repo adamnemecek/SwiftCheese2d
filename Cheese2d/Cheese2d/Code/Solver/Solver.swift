@@ -51,11 +51,17 @@ public struct Solver {
     
     public func substract() -> Solution {
         var navigator = Intersector.findPins(iMaster: master, iSlave: slave, converter: converter)
-        
-        var result = [[Point]]()
 
         var cursor = navigator.nextIn()
+        
+        guard cursor.isNotEmpty else {
+            return Solution(pathCollection: [], disposition: .noIntersections)
+        }
+        
+        
         navigator.mark(cursor: cursor)
+
+        var result = [[Point]]()
         
         let masterCount = master.count
         let masterLastIndex = masterCount - 1

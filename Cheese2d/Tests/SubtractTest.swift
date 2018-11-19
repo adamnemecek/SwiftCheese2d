@@ -717,4 +717,47 @@ class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path1, sample1)
     }
+    
+    
+    
+    
+    func test_1_0() {
+        let master = [
+            CGPoint(x: -10, y: 10),
+            CGPoint(x: 0, y: 10),
+            CGPoint(x: 0, y: 0),
+            CGPoint(x: 10, y: 0),
+            CGPoint(x: 10, y: -10),
+            CGPoint(x: -10, y: -10)
+        ]
+        
+        let slave = [
+            CGPoint(x: 0, y: 10),
+            CGPoint(x: 0, y: -5),
+            CGPoint(x: 5, y: -5),
+            CGPoint(x: 5, y: 10)
+        ]
+        
+        let solver = Solver(master: master, slave: slave)
+        let solution: FloatSolution = solver.substract()
+        
+        XCTAssertEqual(solution.disposition, .hasIntersections)
+        XCTAssertEqual(solution.pathCollection.count, 1)
+        
+        let path = solution.pathCollection[0]
+        let sample = [
+            CGPoint(x: 0, y: 10),
+            CGPoint(x: 0, y: -5),
+            CGPoint(x: 5, y: -5),
+            CGPoint(x: 5, y: 0),
+            CGPoint(x: 10, y: 0),
+            CGPoint(x: 10, y: -10),
+            CGPoint(x: -10, y: -10),
+            CGPoint(x: -10, y: 10)
+        ]
+        
+        XCTAssertEqual(path, sample)
+    
+    }
+    
 }

@@ -12,8 +12,8 @@ import Cheese2d
 
 class SubtractTest: CoordinateSystemScene {
 
-    private var master: [CGPoint] = SubtractTest.master_spiral_1()
-    private var slave: [CGPoint] = SubtractTest.slave_spiral_0()
+    private var master: [CGPoint] = SubtractTest.master_0()
+    private var slave: [CGPoint] = SubtractTest.slave_0_12()
     
     
     private static func master_0() -> [CGPoint] {
@@ -23,8 +23,8 @@ class SubtractTest: CoordinateSystemScene {
             CGPoint(x: 10, y: -10),
             CGPoint(x: -10, y: -10)
         ]
-        
     }
+    
     
     private static func master_spiral_0() -> [CGPoint] {
         return [
@@ -42,6 +42,18 @@ class SubtractTest: CoordinateSystemScene {
             CGPoint(x: 12.5, y: 2.5),
             CGPoint(x: 12.5, y: -2.5),
             CGPoint(x: -7.5, y: -2.5)
+        ]
+    }
+    
+    
+    private static func master_1_0() -> [CGPoint] {
+        return [
+            CGPoint(x: -10, y: 10),
+            CGPoint(x: 0, y: 10),
+            CGPoint(x: 0, y: 0),
+            CGPoint(x: 10, y: 0),
+            CGPoint(x: 10, y: -10),
+            CGPoint(x: -10, y: -10)
         ]
     }
     
@@ -192,6 +204,20 @@ class SubtractTest: CoordinateSystemScene {
     }
     
     
+    private static func slave_0_15() -> [CGPoint] {
+        return [
+            CGPoint(x: -5, y: 10),
+            CGPoint(x: -10, y: 5),
+            CGPoint(x: -10, y: -5),
+            CGPoint(x: -5, y: -10),
+            CGPoint(x: 5, y: -10),
+            CGPoint(x: 10, y: -5),
+            CGPoint(x: 10, y: 5),
+            CGPoint(x: 5, y: 10)
+        ]
+    }
+    
+    
     private static func slave_spiral_0() -> [CGPoint] {
         return [
             CGPoint(x: 0, y: 0),
@@ -218,6 +244,15 @@ class SubtractTest: CoordinateSystemScene {
         ]
     }
     
+    
+    private static func slave_1_0() -> [CGPoint] {
+        return [
+            CGPoint(x: 0, y: 10),
+            CGPoint(x: 0, y: -5),
+            CGPoint(x: 5, y: -5),
+            CGPoint(x: 5, y: 10)
+        ]
+    }
     
     
     

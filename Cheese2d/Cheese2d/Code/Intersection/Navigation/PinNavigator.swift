@@ -28,11 +28,11 @@ struct PinNavigator {
     
     // TODO optimise, we could remove masterPath
     
-    let masterPath: [Int]           // for m in masterPath { nodeArray[m] }  iterate all pins in clockwise order by master path
-    let slavePath: [Int]            // for s in slavePath { nodeArray[s] }  iterate all pins in counter clockwise order by slave path
+    private let masterPath: [Int]           // for m in masterPath { nodeArray[m] }  iterate all pins in clockwise order by master path
+    private let slavePath: [Int]            // for s in slavePath { nodeArray[s] }  iterate all pins in counter clockwise order by slave path
     let pinPathArray: [PinPath]     // pinPathArray[nodeArray[i].index] return PinPath for this pin
     let pinPointArray: [PinPoint]   // supply array for nodeArray[i].index return PinPoint for this pin
-    var nodeArray: [PinNode]        // keep info about each pin node
+    var nodeArray: [PinNode]                // keep info about each pin node //TODO make private
     
     init(masterPath: [Int], slavePath: [Int], pinPathArray: [PinPath], pinPointArray: [PinPoint], nodeArray: [PinNode]) {
         self.masterPath = masterPath
@@ -42,13 +42,16 @@ struct PinNavigator {
         self.nodeArray = nodeArray
     }
     
+    var hasIntersections: Bool {
+        return nodeArray.count > 1
+    }
 
     mutating func nextIn(cursor: Cursor) -> Cursor {
         return nextIn(index: cursor.index)
     }
     
     mutating func nextIn() -> Cursor {
-        return nextIn(index: 0)
+         return nextIn(index: 0)
     }
     
     
@@ -58,16 +61,16 @@ struct PinNavigator {
         repeat {
             let node = nodeArray[i]
             if node.marker == 0 {
+                let type: Int
                 if node.isPinPath == 0 {
                     let pin = pinPointArray[node.index]
-                    if pin.type > 0 { // in or in-out
-                        return Cursor(type: pin.type, index: i)
-                    }
+                    type = pin.type
                 } else {
                     let path = pinPathArray[node.index]
-                    if path.v0.type > 0 { // in or in-out
-                        return Cursor(type: path.v0.type, index: i)
-                    }
+                    type = path.v0.type
+                }
+                if type == PinPoint.inside || type == PinPoint.out_in || type == PinPoint.in_out {
+                    return Cursor(type: type, index: i)
                 }
             }
             i = (i + 1) % n

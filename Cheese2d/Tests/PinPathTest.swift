@@ -983,16 +983,16 @@ class PinPathTest: XCTestCase {
         XCTAssertEqual(path.count, 4)
         
         let points_0 = path[0].extract(points: converter.convert(points: master), converter: converter)
-        XCTAssertEqual(points_0, [CGPoint(x: -5, y: -10), CGPoint(x: 5, y: -10)])
+        XCTAssertEqual(points_0, [CGPoint(x: -5, y: 10), CGPoint(x: 5, y: 10)])
         
         let points_1 = path[1].extract(points: converter.convert(points: master), converter: converter)
-        XCTAssertEqual(points_1, [CGPoint(x: 10, y: -5), CGPoint(x: 10, y: 5)])
+        XCTAssertEqual(points_1, [CGPoint(x: 10, y: 5), CGPoint(x: 10, y: -5)])
         
-       // let points_2 = path[2].extract(points: converter.convert(points: master))
-       // XCTAssertEqual(points_2, [CGPoint(x: 5, y: 10), CGPoint(x: -5, y: 10)])
+        let points_2 = path[2].extract(points: converter.convert(points: master), converter: converter)
+        XCTAssertEqual(points_2, [CGPoint(x: 5, y: -10), CGPoint(x: -5, y: -10)])
         
-        //let points_3 = path[3].extract(points: converter.convert(points: master))
-        //XCTAssertEqual(points_3, [CGPoint(x: -10, y: 5), CGPoint(x: -10, y: -5)])
+        let points_3 = path[3].extract(points: converter.convert(points: master), converter: converter)
+        XCTAssertEqual(points_3, [CGPoint(x: -10, y: -5), CGPoint(x: -10, y: 5)])
     }
     
     

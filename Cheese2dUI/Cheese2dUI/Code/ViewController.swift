@@ -22,7 +22,11 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
+            self.keyDown(with: $0)
+            return $0
+        }
         canvasView.add(shape: scene)
     }
 
@@ -40,6 +44,14 @@ class ViewController: NSViewController {
     override func mouseDragged(with event: NSEvent) {
         let point = self.canvasView.convert(point: event.locationInWindow)
         self.scene.mouseDragged(point: point)
+    }
+    
+    override func keyDown(with theEvent: NSEvent) {
+        if theEvent.keyCode == 124 || theEvent.keyCode == 49 || theEvent.keyCode == 36 {
+            scene.next()
+        } else if theEvent.keyCode == 123 {
+            scene.back()
+        }
     }
     
 }

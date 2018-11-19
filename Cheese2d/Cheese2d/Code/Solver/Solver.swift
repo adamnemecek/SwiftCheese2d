@@ -52,7 +52,7 @@ public struct Solver {
     public func substract() -> Solution {
         var navigator = Intersector.findPins(iMaster: master, iSlave: slave, converter: converter)
 
-        var cursor = navigator.nextIn()
+        var cursor = navigator.nextSub()
         
         guard cursor.isNotEmpty else {
             return Solution(pathCollection: [], disposition: .noIntersections)
@@ -193,9 +193,8 @@ public struct Solver {
             } while cursor != start
             
             result.append(path)
-            
-            
-            cursor = navigator.nextIn()
+
+            cursor = navigator.nextSub()
         }
         
         let solution: Solution
@@ -207,6 +206,21 @@ public struct Solver {
         }
 
         return solution
+    }
+    
+}
+
+fileprivate extension PinNavigator {
+    
+    fileprivate mutating func nextSub() -> Cursor {
+        var cursor = self.next()
+
+        while cursor.isNotEmpty && cursor.type != PinPoint.inside && cursor.type != PinPoint.in_out {
+            self.mark(cursor: cursor)
+            cursor = self.next()
+        }
+        
+        return cursor
     }
     
 }

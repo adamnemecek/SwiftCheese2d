@@ -41,21 +41,22 @@ struct PinNavigator {
         self.pinPointArray = pinPointArray
         self.nodeArray = nodeArray
     }
-    
-    var hasIntersections: Bool {
-        return nodeArray.count > 1
-    }
 
-    mutating func nextIn(cursor: Cursor) -> Cursor {
-        return nextIn(index: cursor.index)
+    
+    mutating func next(cursor: Cursor) -> Cursor {
+        return next(index: cursor.index)
     }
     
-    mutating func nextIn() -> Cursor {
-         return nextIn(index: 0)
+    mutating func next() -> Cursor {
+        if self.nodeArray.count != 0 {
+            return next(index: 0)
+        } else {
+            return Cursor.empty
+        }
     }
     
     
-    mutating private func nextIn(index: Int) -> Cursor {
+    mutating private func next(index: Int) -> Cursor {
         var i = index
         let n = nodeArray.count
         repeat {
@@ -69,9 +70,8 @@ struct PinNavigator {
                     let path = pinPathArray[node.index]
                     type = path.v0.type
                 }
-                if type == PinPoint.inside || type == PinPoint.out_in || type == PinPoint.in_out {
-                    return Cursor(type: type, index: i)
-                }
+
+                return Cursor(type: type, index: i)
             }
             i = (i + 1) % n
         } while i != index

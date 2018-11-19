@@ -13,8 +13,10 @@ import Cheese2d
 class SubtractTest: CoordinateSystemScene {
 
     private var master: [CGPoint] = SubtractTest.master_0()
-    private var slave: [CGPoint] = SubtractTest.slave_0_0()
+    private var slave: [CGPoint] = SubtractTest.slave_0_13()
     
+    private let maxPageIndex: Int = 14
+    private var pageIndex: Int = 0
     
     private static func master_0() -> [CGPoint] {
         return [
@@ -218,7 +220,6 @@ class SubtractTest: CoordinateSystemScene {
         ]
     }
     
-
     private var activeIndex: Int?
     private var isSlave: Bool = false
     
@@ -281,6 +282,57 @@ class SubtractTest: CoordinateSystemScene {
         for pin in points {
             self.addSublayer(ShapePinDot(pin: pin, radius: 0.6))
         }
+    }
+    
+    func showPpage(index: Int) {
+        switch index {
+        case 1:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_1()
+        case 2:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_2()
+        case 3:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_3()
+        case 4:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_4()
+        case 5:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_5()
+        case 6:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_6()
+        case 7:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_7()
+        case 8:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_8()
+        case 9:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_9()
+        case 10:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_10()
+        case 11:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_11()
+        case 12:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_12()
+        case 13:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_13()
+        case 14:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_14()
+        default:
+            self.master = SubtractTest.master_0()
+            self.slave = SubtractTest.slave_0_0()
+        }
+        self.update()
     }
     
 }
@@ -352,6 +404,18 @@ extension SubtractTest: MouseCompatible {
                 self.update()
             }
         }
+    }
+}
+
+extension SubtractTest: Navigation {
+    func next() {
+        self.pageIndex = (self.pageIndex + 1) % maxPageIndex
+        self.showPpage(index: self.pageIndex)
+    }
+    
+    func back() {
+        self.pageIndex = (self.pageIndex - 1 + maxPageIndex) % maxPageIndex
+        self.showPpage(index: self.pageIndex)
     }
 }
 

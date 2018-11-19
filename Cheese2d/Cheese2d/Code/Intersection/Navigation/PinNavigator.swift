@@ -41,14 +41,18 @@ struct PinNavigator {
         self.pinPointArray = pinPointArray
         self.nodeArray = nodeArray
     }
-    
 
+    
     mutating func nextIn(cursor: Cursor) -> Cursor {
         return nextIn(index: cursor.index)
     }
     
     mutating func nextIn() -> Cursor {
-        return nextIn(index: 0)
+        if self.nodeArray.count != 0 {
+            return nextIn(index: 0)
+        } else {
+            return Cursor.empty
+        }
     }
     
     

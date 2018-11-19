@@ -12,8 +12,8 @@ import Cheese2d
 
 class SubtractTest: CoordinateSystemScene {
 
-    private var master: [CGPoint] = SubtractTest.master_spiral_1()
-    private var slave: [CGPoint] = SubtractTest.slave_spiral_0()
+    private var master: [CGPoint] = SubtractTest.master_0()
+    private var slave: [CGPoint] = SubtractTest.slave_0_0()
     
     
     private static func master_0() -> [CGPoint] {
@@ -218,9 +218,7 @@ class SubtractTest: CoordinateSystemScene {
         ]
     }
     
-    
-    
-    
+
     private var activeIndex: Int?
     private var isSlave: Bool = false
     

@@ -43,8 +43,11 @@ struct PinSequence {
             i += 1
         }
 
-        self.sortMaster()
+        guard i > 0 else {
+            return PinNavigator(masterPath: [], slavePath: [], pinPathArray: [], pinPointArray: [], nodeArray: [])
+        }
         
+        self.sortMaster()
         self.cleanDoubles()
         
         let slavePath = self.buildSlavePath()

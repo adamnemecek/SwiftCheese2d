@@ -193,8 +193,7 @@ public struct Solver {
             } while cursor != start
             
             result.append(path)
-            
-            
+
             cursor = navigator.nextIn()
         }
         

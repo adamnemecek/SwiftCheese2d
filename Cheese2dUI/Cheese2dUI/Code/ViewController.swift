@@ -17,17 +17,11 @@ class ViewController: NSViewController {
         }
     }
     private let scene = SubtractTest()
-    //private let scene = PinPathUITest()
-    //private let scene = AngleTest()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
-            self.keyDown(with: $0)
-            return $0
-        }
         canvasView.add(shape: scene)
+        self.canvasView.testName.stringValue = scene.getName()
     }
 
     override func mouseDown(with event: NSEvent) {
@@ -49,8 +43,10 @@ class ViewController: NSViewController {
     override func keyDown(with theEvent: NSEvent) {
         if theEvent.keyCode == 124 || theEvent.keyCode == 49 || theEvent.keyCode == 36 {
             scene.next()
+            self.canvasView.testName.stringValue = scene.getName()
         } else if theEvent.keyCode == 123 {
             scene.back()
+            self.canvasView.testName.stringValue = scene.getName()
         }
     }
     

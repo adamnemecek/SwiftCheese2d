@@ -9,10 +9,12 @@
 import Foundation
 
 
-protocol Navigation {
+protocol TestNavigation {
     
     func next()
     
     func back()
+    
+    func getName() -> String
     
 }

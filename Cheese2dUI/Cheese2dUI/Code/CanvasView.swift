@@ -13,12 +13,21 @@ class CanvasView: NSView {
     
     private var transform: CATransform3D
     private static let canvasSize: CGFloat = 10
+    private (set) var testName: NSTextField = {
+        let textField = NSTextField()
+        textField.isEditable = false
+        textField.stringValue = "none"
+        textField.alignment = .center
+        textField.isBordered = false
+        return textField
+    }()
     
     override init(frame frameRect: NSRect) {
         transform = CanvasView.calculateCurrentTransform(rect: frameRect)
         super.init(frame: frameRect)
         wantsLayer = true
         self.layer?.backgroundColor = Colors.white
+        self.addSubview(testName)
     }
     
     required init?(coder decoder: NSCoder) {
@@ -26,6 +35,7 @@ class CanvasView: NSView {
         super.init(coder: decoder)
         wantsLayer = true
         self.layer?.backgroundColor = Colors.white
+        self.addSubview(testName)
     }
     
     override func layout() {
@@ -40,6 +50,11 @@ class CanvasView: NSView {
         for layer in layers {
             layer.transform = self.transform
         }
+        
+        let size = self.frame.size
+        let width: CGFloat = 100
+        let height: CGFloat = 20
+        self.testName.frame = CGRect(x: 0.5 * (size.width - width), y: size.height - height, width: width, height: height)
     }
     
     private static func calculateCurrentTransform(rect: CGRect) -> CATransform3D {
@@ -60,5 +75,9 @@ class CanvasView: NSView {
         shape.transform = transform
         self.layer?.addSublayer(shape)
     }
-    
+
+    override var acceptsFirstResponder: Bool {
+        return true
+    }
+
 }

@@ -497,7 +497,7 @@ extension SubtractTest: MouseCompatible {
     }
 }
 
-extension SubtractTest: Navigation {
+extension SubtractTest: TestNavigation {
     func next() {
         self.pageIndex = (self.pageIndex + 1) % maxPageIndex
         self.showPpage(index: self.pageIndex)
@@ -506,6 +506,10 @@ extension SubtractTest: Navigation {
     func back() {
         self.pageIndex = (self.pageIndex - 1 + maxPageIndex) % maxPageIndex
         self.showPpage(index: self.pageIndex)
+    }
+    
+    func getName() -> String {
+        return "test \(self.pageIndex)"
     }
 }
 

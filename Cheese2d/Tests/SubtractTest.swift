@@ -13,7 +13,7 @@ import XCTest
 @testable import Cheese2d
 
 
-class SubtractTest: XCTestCase {
+public class SubtractTest: XCTestCase {
     
     
     func test_0() {

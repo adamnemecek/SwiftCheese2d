@@ -121,6 +121,7 @@ struct PinPathBuilder {
         let type0 = self.getStartDisposition(vertex: edge.v0, master: master, slave: slave, iterposition: edge.interposition)
         let type1 = self.getEndDisposition(vertex: edge.v1, master: master, slave: slave, iterposition: edge.interposition)
         
+        
         if type0 == PinPoint.in_null && type1 == PinPoint.null_in || type1 == PinPoint.in_null && type0 == PinPoint.null_in {
             return PinPoint.inside
         }
@@ -169,15 +170,15 @@ struct PinPathBuilder {
 
         if iterposition == 1 {
             if isBetween {
-                type = PinPoint.out_null
-            } else {
                 type = PinPoint.in_null
+            } else {
+                type = PinPoint.out_null
             }
         } else {
             if isBetween {
-                type = PinPoint.out_null
+                type = PinPoint.null_out
             } else {
-                type = PinPoint.in_null
+                type = PinPoint.null_in
             }
         }
         
@@ -205,15 +206,15 @@ struct PinPathBuilder {
         
         if iterposition == 1 {
             if isBetween {
-                type = PinPoint.null_in
-            } else {
                 type = PinPoint.null_out
+            } else {
+                type = PinPoint.null_in
             }
         } else {
             if isBetween {
-                type = PinPoint.null_in
+                type = PinPoint.in_null
             } else {
-                type = PinPoint.null_out
+                type = PinPoint.out_null
             }
         }
         

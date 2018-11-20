@@ -15,7 +15,7 @@ class SubtractTest: CoordinateSystemScene {
     private var master: [CGPoint] = []
     private var slave: [CGPoint] = []
 
-    private var pageIndex: Int = 0
+    private var pageIndex: Int = SubtractTestData.active
     
     private var activeIndex: Int?
     private var isSlave: Bool = false
@@ -23,7 +23,7 @@ class SubtractTest: CoordinateSystemScene {
     
     override init() {
         super.init()
-        self.showPpage(index: 0)
+        self.showPpage(index: pageIndex)
     }
     
     required init?(coder aDecoder: NSCoder) {

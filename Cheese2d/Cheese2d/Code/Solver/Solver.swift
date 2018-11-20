@@ -115,7 +115,7 @@ public struct Solver {
                     }
                 }
                 
-                if PathMileStone.compare(a: inSlaveStart, b: outSlaveEnd) {
+                if PathMileStone.moreOrEqual(a: inSlaveStart, b: outSlaveEnd) {
                     // a > b
                     if isInSlaveNotOverflow {
                         let sliceA = slave[inSlaveIndex...slaveLastIndex]
@@ -128,7 +128,7 @@ public struct Solver {
                     }
                 } else {
                     // a < b
-                    if inSlaveStart.index != outSlaveEnd.index && inSlaveIndex <= outSlaveIndex {
+                    if isInSlaveNotOverflow && isOutSlaveNotOverflow && inSlaveIndex <= outSlaveIndex {
                         let slice = slave[inSlaveIndex...outSlaveIndex]
                         path.append(contentsOf: slice)
                     }
@@ -173,7 +173,7 @@ public struct Solver {
                 }
                 
                 
-                if PathMileStone.compare(a: outMasterEnd, b: inMasterStart) {
+                if PathMileStone.moreOrEqual(a: outMasterEnd, b: inMasterStart) {
                     // a > b
                     if isOutMsterNotOverflow {
                         let sliceA = master[outMasterIndex...masterLastIndex]
@@ -215,7 +215,7 @@ fileprivate extension PinNavigator {
     fileprivate mutating func nextSub() -> Cursor {
         var cursor = self.next()
 
-        while cursor.isNotEmpty && cursor.type != PinPoint.inside && cursor.type != PinPoint.in_out {
+        while cursor.isNotEmpty && cursor.type != PinPoint.inside && cursor.type != PinPoint.out_in {
             self.mark(cursor: cursor)
             cursor = self.next()
         }

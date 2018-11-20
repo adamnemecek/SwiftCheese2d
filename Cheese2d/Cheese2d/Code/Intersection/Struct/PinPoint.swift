@@ -82,7 +82,7 @@ public struct PinPoint {
         
         let type: Int
         if isCCW0 == isCCW1 {
-            type = isCCW0 ? 2 : -2
+            type = isCCW0 ? -2 : 2
         } else {
             type = isCCW0 ? -1 : 1
         }
@@ -116,9 +116,9 @@ public struct PinPoint {
 
         let type: Int
         if isSl0 && isSl1 {
-            type = -2
-        } else if !isSl0 && !isSl1 {
             type = 2
+        } else if !isSl0 && !isSl1 {
+            type = -2
         } else {
             type = isSl0 ? 1 : -1
         }

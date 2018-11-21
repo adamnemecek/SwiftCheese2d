@@ -121,6 +121,16 @@ struct PinPathBuilder {
         let type0 = self.getStartDisposition(vertex: edge.v0, master: master, slave: slave, iterposition: edge.interposition)
         let type1 = self.getEndDisposition(vertex: edge.v1, master: master, slave: slave, iterposition: edge.interposition)
         
+        if type0 == PinPoint.null || type1 == PinPoint.null {
+            if type0 > 0 || type1 > 0 {
+                return PinPoint.inside
+            } else if type0 < 0 || type1 < 0 {
+                return PinPoint.outside
+            } else {
+               // fatalError("impossible")
+            }
+        }
+        
         
         if type0 == PinPoint.in_null && type1 == PinPoint.null_in || type1 == PinPoint.in_null && type0 == PinPoint.null_in {
             return PinPoint.inside
@@ -138,7 +148,7 @@ struct PinPathBuilder {
             return PinPoint.in_out
         }
         
-        return PinPoint.empty
+        return PinPoint.null
     }
     
     
@@ -163,6 +173,10 @@ struct PinPathBuilder {
         }
 
         let corner = PinPathBuilder.buildCorner(vertex: vertex, master: master, converter: converter)
+
+        if corner.isOnBorder(p: s) {
+            return PinPoint.null
+        }
         
         let isBetween = corner.isBetween(p: s, clockwise: true)
         
@@ -199,6 +213,10 @@ struct PinPathBuilder {
         }
         
         let corner = PinPathBuilder.buildCorner(vertex: vertex, master: master, converter: converter)
+        
+        if corner.isOnBorder(p: s) {
+            return PinPoint.null
+        }
         
         let isBetween = corner.isBetween(p: s, clockwise: true)
         

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		540F9466216F248800CF8A9D /* AngleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F9465216F248800CF8A9D /* AngleTest.swift */; };
-		5412FFAA216399D70038D458 /* PinPathUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5412FFA9216399D70038D458 /* PinPathUITest.swift */; };
 		542C2D59219C688A006D62EB /* ShapeForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542C2D58219C688A006D62EB /* ShapeForm.swift */; };
 		542D78DA2154CD1E000B1D1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542D78D92154CD1E000B1D1A /* Assets.xcassets */; };
 		542D78DD2154CD1E000B1D1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 542D78DB2154CD1E000B1D1A /* Main.storyboard */; };
@@ -24,11 +23,9 @@
 		542D79002154CD7F000B1D1A /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D78F12154CD7F000B1D1A /* CGPoint+Extension.swift */; };
 		542D79012154CD7F000B1D1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D78F22154CD7F000B1D1A /* AppDelegate.swift */; };
 		542D79022154CD7F000B1D1A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D78F32154CD7F000B1D1A /* Colors.swift */; };
-		542D79032154CD7F000B1D1A /* IntersectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D78F52154CD7F000B1D1A /* IntersectionTest.swift */; };
 		542D79042154CD7F000B1D1A /* CoordinateSystemScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D78F62154CD7F000B1D1A /* CoordinateSystemScene.swift */; };
 		542D790F2154CDB0000B1D1A /* libCheese2d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 542D790B2154CDA7000B1D1A /* libCheese2d.dylib */; };
 		542FD2E021A2FF9500A0A289 /* TestNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FD2DF21A2FF9500A0A289 /* TestNavigation.swift */; };
-		549607F32174DC7D00E562ED /* BorderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549607F22174DC7D00E562ED /* BorderTest.swift */; };
 		54B285C62198BBB7009027DD /* SubtractTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C52198BBB7009027DD /* SubtractTest.swift */; };
 		54B8756C2169356900D823AE /* MouseCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B8756B2169356900D823AE /* MouseCompatible.swift */; };
 		54E25D7E216CD8CE00B6FE58 /* ShapePinDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E25D7D216CD8CE00B6FE58 /* ShapePinDot.swift */; };
@@ -53,7 +50,6 @@
 
 /* Begin PBXFileReference section */
 		540F9465216F248800CF8A9D /* AngleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleTest.swift; sourceTree = "<group>"; };
-		5412FFA9216399D70038D458 /* PinPathUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPathUITest.swift; sourceTree = "<group>"; };
 		542C2D58219C688A006D62EB /* ShapeForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeForm.swift; sourceTree = "<group>"; };
 		542D78D22154CD1D000B1D1A /* Cheese2dUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cheese2dUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		542D78D92154CD1E000B1D1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,11 +68,9 @@
 		542D78F12154CD7F000B1D1A /* CGPoint+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 		542D78F22154CD7F000B1D1A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		542D78F32154CD7F000B1D1A /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		542D78F52154CD7F000B1D1A /* IntersectionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntersectionTest.swift; sourceTree = "<group>"; };
 		542D78F62154CD7F000B1D1A /* CoordinateSystemScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateSystemScene.swift; sourceTree = "<group>"; };
 		542D79052154CDA6000B1D1A /* Cheese2d.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Cheese2d.xcodeproj; path = ../Cheese2d/Cheese2d.xcodeproj; sourceTree = "<group>"; };
 		542FD2DF21A2FF9500A0A289 /* TestNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNavigation.swift; sourceTree = "<group>"; };
-		549607F22174DC7D00E562ED /* BorderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderTest.swift; sourceTree = "<group>"; };
 		54B285C52198BBB7009027DD /* SubtractTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractTest.swift; sourceTree = "<group>"; };
 		54B8756B2169356900D823AE /* MouseCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseCompatible.swift; sourceTree = "<group>"; };
 		54E25D7D216CD8CE00B6FE58 /* ShapePinDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapePinDot.swift; sourceTree = "<group>"; };
@@ -193,9 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				540F9465216F248800CF8A9D /* AngleTest.swift */,
-				549607F22174DC7D00E562ED /* BorderTest.swift */,
-				542D78F52154CD7F000B1D1A /* IntersectionTest.swift */,
-				5412FFA9216399D70038D458 /* PinPathUITest.swift */,
 				54B285C52198BBB7009027DD /* SubtractTest.swift */,
 			);
 			path = Test;
@@ -299,11 +290,8 @@
 				542D79012154CD7F000B1D1A /* AppDelegate.swift in Sources */,
 				542D79022154CD7F000B1D1A /* Colors.swift in Sources */,
 				542FD2E021A2FF9500A0A289 /* TestNavigation.swift in Sources */,
-				5412FFAA216399D70038D458 /* PinPathUITest.swift in Sources */,
-				542D79032154CD7F000B1D1A /* IntersectionTest.swift in Sources */,
 				542D78F82154CD7F000B1D1A /* CanvasView.swift in Sources */,
 				540F9466216F248800CF8A9D /* AngleTest.swift in Sources */,
-				549607F32174DC7D00E562ED /* BorderTest.swift in Sources */,
 				542D78FB2154CD7F000B1D1A /* ShapeDot.swift in Sources */,
 				542D78F72154CD7F000B1D1A /* ViewController.swift in Sources */,
 				542D78FA2154CD7F000B1D1A /* ShapeCoordinatSystem.swift in Sources */,

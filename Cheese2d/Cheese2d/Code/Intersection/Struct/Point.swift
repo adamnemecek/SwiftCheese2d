@@ -36,7 +36,17 @@ public struct Point: Equatable, Comparable {
             return lhs.y < rhs.y
         }
     }
+    
+    static func +(left: Point, right: Point) -> Point {
+        return Point(x: left.x + right.x, y: left.y + right.y)
+    }
+    
+    static func -(left: Point, right: Point) -> Point {
+        return Point(x: left.x - right.x, y: left.y - right.y)
+    }
 }
+
+
 
 extension Point: CustomStringConvertible, CustomDebugStringConvertible {
     

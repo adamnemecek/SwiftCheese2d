@@ -8,18 +8,11 @@
 
 
 import Cocoa
-import Cheese2d
+//import XCTest
+@testable import Cheese2d
 
 class AngleTest: CoordinateSystemScene {
-    /*
-    private var points: [CGPoint] = [
-        CGPoint(x: 0, y: 0),        // 0
-        CGPoint(x: 0, y: 10),       // A
-        CGPoint(x: 10, y: -10),     // B
-        CGPoint(x: 10, y: 0)        // P
-    ]
-    */
-    
+
     private var points: [CGPoint] = [
         CGPoint(x: -10, y: 0),        // 0
         CGPoint(x: -10, y: 10),       // A
@@ -68,15 +61,18 @@ class AngleTest: CoordinateSystemScene {
         
         let corner = Corner(o: points[0], a: points[1], b: points[2])
         
-        let result = corner.isBetween(p: points[3], clockwise: true)
-        
         let color: CGColor
-        if result {
-            color = Colors.red
+        if corner.isOnBorder(p: points[3]) {
+            color = Colors.black
         } else {
-            color = Colors.blue
+            let result = corner.isBetween(p: points[3], clockwise: true)
+            if result {
+                color = Colors.red
+            } else {
+                color = Colors.blue
+            }
         }
-        
+
         
         let dot = ShapeDot(position: points[3], radius: 1.0, color: color)
 
@@ -146,5 +142,19 @@ extension AngleTest: MouseCompatible {
             self.points[index] = point
             self.update()
         }
+    }
+}
+
+extension AngleTest: TestNavigation {
+    func next() {
+        
+    }
+    
+    func back() {
+
+    }
+    
+    func getName() -> String {
+        return "test 0"
     }
 }

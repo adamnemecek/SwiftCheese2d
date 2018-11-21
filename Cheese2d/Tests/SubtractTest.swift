@@ -17,19 +17,9 @@ public class SubtractTest: XCTestCase {
     
     
     func test_0() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: -5, y: -15),
-            CGPoint(x: 5, y: -15),
-            CGPoint(x: 5, y: 0),
-            CGPoint(x: -5, y: 0)
-        ]
+        let data = SubtractTestData.data(index: 0)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -54,19 +44,9 @@ public class SubtractTest: XCTestCase {
     
     
     func test_1() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: -5, y: -15),
-            CGPoint(x: 15, y: -15),
-            CGPoint(x: 15, y: 15),
-            CGPoint(x: -5, y: 15)
-        ]
+        let data = SubtractTestData.data(index: 1)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -87,19 +67,9 @@ public class SubtractTest: XCTestCase {
     
     
     func test_2() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: -5, y: -15),
-            CGPoint(x: 15, y: -15),
-            CGPoint(x: 15, y: 15),
-            CGPoint(x: -5, y: 10)
-        ]
+        let data = SubtractTestData.data(index: 2)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -120,19 +90,9 @@ public class SubtractTest: XCTestCase {
     
     
     func test_3() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: -5, y: -10),
-            CGPoint(x: 15, y: -15),
-            CGPoint(x: 15, y: 15),
-            CGPoint(x: -5, y: 10)
-        ]
+        let data = SubtractTestData.data(index: 3)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -153,19 +113,9 @@ public class SubtractTest: XCTestCase {
     
     
     func test_4() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: -5, y: -10),
-            CGPoint(x: 15, y: -15),
-            CGPoint(x: 15, y: 15),
-            CGPoint(x: -10, y: 10)
-        ]
+        let data = SubtractTestData.data(index: 4)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -185,19 +135,9 @@ public class SubtractTest: XCTestCase {
     
     
     func test_5() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: 0, y: -10),
-            CGPoint(x: 15, y: -15),
-            CGPoint(x: 15, y: 15),
-            CGPoint(x: -20, y: 10)
-        ]
+        let data = SubtractTestData.data(index: 5)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -217,18 +157,9 @@ public class SubtractTest: XCTestCase {
 
     
     func test_6() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: 15, y: -15),
-            CGPoint(x: 15, y: 15),
-            CGPoint(x: -15, y: 0)
-        ]
+        let data = SubtractTestData.data(index: 6)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -257,18 +188,9 @@ public class SubtractTest: XCTestCase {
     
     
     func test_7() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: 0, y: -15),
-            CGPoint(x: 0, y: 0),
-            CGPoint(x: -15, y: 0)
-        ]
+        let data = SubtractTestData.data(index: 7)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -300,18 +222,9 @@ public class SubtractTest: XCTestCase {
     
     
     func test_8() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: 0, y: 0),
-            CGPoint(x: 10, y: 0),
-            CGPoint(x: 0, y: 10)
-        ]
+        let data = SubtractTestData.data(index: 8)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -344,18 +257,9 @@ public class SubtractTest: XCTestCase {
     
     
     func test_9() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: -5, y: -10),
-            CGPoint(x: 5, y: -10),
-            CGPoint(x: 0, y: 10)
-        ]
+        let data = SubtractTestData.data(index: 9)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -386,18 +290,9 @@ public class SubtractTest: XCTestCase {
     
     
     func test_10() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: -5, y: 5),
-            CGPoint(x: 0, y: -10),
-            CGPoint(x: 10, y: 10)
-        ]
+        let data = SubtractTestData.data(index: 10)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -428,18 +323,9 @@ public class SubtractTest: XCTestCase {
     
     
     func test_11() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: -30, y: -10),
-            CGPoint(x: 0, y: -10),
-            CGPoint(x: 10, y: 10)
-        ]
+        let data = SubtractTestData.data(index: 11)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -468,18 +354,9 @@ public class SubtractTest: XCTestCase {
     
     
     func test_12() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: 0, y: 0),
-            CGPoint(x: 10, y: -5),
-            CGPoint(x: 10, y: 5)
-        ]
+        let data = SubtractTestData.data(index: 12)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -503,18 +380,9 @@ public class SubtractTest: XCTestCase {
     
     
     func test_13() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: 5, y: -10),
-            CGPoint(x: -5, y: -10),
-            CGPoint(x: 0, y: -15)
-        ]
+        let data = SubtractTestData.data(index: 13)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -525,23 +393,9 @@ public class SubtractTest: XCTestCase {
     
     
     func test_14() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: -5, y: 10),
-            CGPoint(x: -10, y: 5),
-            CGPoint(x: -10, y: -5),
-            CGPoint(x: -5, y: -10),
-            CGPoint(x: 5, y: -10),
-            CGPoint(x: 10, y: -5),
-            CGPoint(x: 10, y: 5),
-            CGPoint(x: 5, y: 10)
-        ]
+        let data = SubtractTestData.data(index: 14)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -586,37 +440,11 @@ public class SubtractTest: XCTestCase {
         XCTAssertEqual(path3, sample3)
     }
     
-    
-    func test_spiral_0() {
-        let master = [
-            CGPoint(x: -7.5, y: 10),
-            CGPoint(x: 12.5, y: 10),
-            CGPoint(x: 12.5, y: 5),
-            CGPoint(x: -7.5, y: 5)
-        ]
-        
-        let slave: [CGPoint] = [
-            CGPoint(x: 0, y: 0),
-            CGPoint(x: 0, y: 20),
-            CGPoint(x: -15, y: 20),
-            CGPoint(x: -15, y: -10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: 10, y: 30),
-            CGPoint(x: -25, y: 30),
-            CGPoint(x: -25, y: -20),
-            CGPoint(x: 20, y: -20),
-            CGPoint(x: 20, y: 20),
-            CGPoint(x: 15, y: 20),
-            CGPoint(x: 15, y: -15),
-            CGPoint(x: -20, y: -15),
-            CGPoint(x: -20, y: 25),
-            CGPoint(x: 5, y: 25),
-            CGPoint(x: 5, y: -5),
-            CGPoint(x: -10, y: -5),
-            CGPoint(x: -10, y: 15),
-            CGPoint(x: -5, y: 15),
-            CGPoint(x: -5, y: 0)
-        ]
+    // spiral
+    func test_17() {
+        let data = SubtractTestData.data(index: 17)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -656,36 +484,10 @@ public class SubtractTest: XCTestCase {
     }
     
     
-    func test_spiral_1() {
-        let master = [
-            CGPoint(x: -7.5, y: 2.5),
-            CGPoint(x: 12.5, y: 2.5),
-            CGPoint(x: 12.5, y: -2.5),
-            CGPoint(x: -7.5, y: -2.5)
-        ]
-        
-        let slave: [CGPoint] = [
-            CGPoint(x: 0, y: 0),
-            CGPoint(x: 0, y: 20),
-            CGPoint(x: -15, y: 20),
-            CGPoint(x: -15, y: -10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: 10, y: 30),
-            CGPoint(x: -25, y: 30),
-            CGPoint(x: -25, y: -20),
-            CGPoint(x: 20, y: -20),
-            CGPoint(x: 20, y: 20),
-            CGPoint(x: 15, y: 20),
-            CGPoint(x: 15, y: -15),
-            CGPoint(x: -20, y: -15),
-            CGPoint(x: -20, y: 25),
-            CGPoint(x: 5, y: 25),
-            CGPoint(x: 5, y: -5),
-            CGPoint(x: -10, y: -5),
-            CGPoint(x: -10, y: 15),
-            CGPoint(x: -5, y: 15),
-            CGPoint(x: -5, y: 0)
-        ]
+    func test_18() {
+        let data = SubtractTestData.data(index: 18)
+        let master = data.master
+        let slave = data.slave
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -717,47 +519,4 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path1, sample1)
     }
-    
-    
-    
-    
-    func test_1_0() {
-        let master = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 0, y: 10),
-            CGPoint(x: 0, y: 0),
-            CGPoint(x: 10, y: 0),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let slave = [
-            CGPoint(x: 0, y: 10),
-            CGPoint(x: 0, y: -5),
-            CGPoint(x: 5, y: -5),
-            CGPoint(x: 5, y: 10)
-        ]
-        
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
-        
-        XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
-        
-        let path = solution.pathCollection[0]
-        let sample = [
-            CGPoint(x: 0, y: 10),
-            CGPoint(x: 0, y: -5),
-            CGPoint(x: 5, y: -5),
-            CGPoint(x: 5, y: 0),
-            CGPoint(x: 10, y: 0),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10),
-            CGPoint(x: -10, y: 10)
-        ]
-        
-        XCTAssertEqual(path, sample)
-    
-    }
-    
 }

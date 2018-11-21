@@ -16,7 +16,8 @@ class ViewController: NSViewController {
             return self.view as! CanvasView
         }
     }
-    private let scene = SubtractTest()
+    //private let scene = SubtractTest()
+    private let scene = AngleTest()
 
     override func viewDidLoad() {
         super.viewDidLoad()

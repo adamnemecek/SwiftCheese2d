@@ -34,7 +34,7 @@ struct PinPointDef {
 
 public struct PinPoint {
 
-    public static let empty = 0     // can be ignored
+    public static let null = 0     // can be ignored
     
     public static let inside = 1
     public static let in_out = 2

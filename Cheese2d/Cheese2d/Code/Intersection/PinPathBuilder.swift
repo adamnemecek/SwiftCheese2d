@@ -127,7 +127,7 @@ struct PinPathBuilder {
             } else if type0 < 0 || type1 < 0 {
                 return PinPoint.outside
             } else {
-               // fatalError("impossible")
+                fatalError("impossible")
             }
         }
         
@@ -148,7 +148,7 @@ struct PinPathBuilder {
             return PinPoint.in_out
         }
         
-        return PinPoint.null
+        fatalError("impossible")
     }
     
     
@@ -165,13 +165,19 @@ struct PinPathBuilder {
         let i = vertex.slaveMileStone.index
         let n = slave.count
         let s: Point
-        
-        if vertex.slaveMileStone.offset != 0 {
-            s = slave[i]
-        } else {
-            s = slave[(i - iterposition + n) % n]
-        }
 
+        if iterposition != 1 {
+            if vertex.slaveMileStone.offset != 0 {
+                s = slave[i]
+            } else {
+                s = slave[(i + 1 + n) % n]
+            }
+        } else {
+            s = slave[(i - 1 + n) % n]
+        }
+        
+        
+        
         let corner = PinPathBuilder.buildCorner(vertex: vertex, master: master, converter: converter)
 
         if corner.isOnBorder(p: s) {
@@ -206,11 +212,16 @@ struct PinPathBuilder {
         let n = slave.count
         let s: Point
         
-        if vertex.slaveMileStone.offset != 0 {
-            s = slave[i]
+        if iterposition != 1 {
+            if vertex.slaveMileStone.offset != 0 {
+                s = slave[i]
+            } else {
+                s = slave[(i - 1 + n) % n]
+            }
         } else {
-            s = slave[(i + iterposition + n) % n]
+            s = slave[(i + 1) % n]
         }
+
         
         let corner = PinPathBuilder.buildCorner(vertex: vertex, master: master, converter: converter)
         

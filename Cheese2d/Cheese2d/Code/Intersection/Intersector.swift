@@ -16,7 +16,7 @@ public struct Intersector {
         let iMaster = converter.convert(points: master)
         let iSlave = converter.convert(points: slave)
         
-        let navigator = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let navigator = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
     
         var borders = [[CGPoint]]()
         var points = [Pin]()
@@ -46,7 +46,7 @@ public struct Intersector {
     }
     
     
-    static func findPins(iMaster: [Point], iSlave: [Point], converter: PointConverter) -> PinNavigator {
+    static func findPins(iMaster: [Point], iSlave: [Point], converter: PointConverter, exclusionPinType: Int) -> PinNavigator {
         
         let posMatrix = self.buildPossibilityMatrix(master: iMaster, slave: iSlave)
 
@@ -151,19 +151,25 @@ public struct Intersector {
                             sl1: IndexPoint(index: nextSl, point: iSlave[nextSl]),
                             masterMileStone: PathMileStone(index: masterEdge, offset: masterOffset),
                             slaveMileStone: PathMileStone(index: slaveEdge, offset: slaveOffset))
-                        
+
                         if isMsEnd && isSlEnd {
                             // pin point is on the cross
                             let pinPoint = PinPoint.buildOnCross(def: pinPointDef, converter: converter)
-                            pinPoints.append(pinPoint)
+                            if pinPoint.type != exclusionPinType {
+                                pinPoints.append(pinPoint)
+                            }
                         } else if isMsEnd {
                             // pin point is on slave
                             let pinPoint = PinPoint.buildOnSlave(def: pinPointDef)
-                            pinPoints.append(pinPoint)
+                            if pinPoint.type != exclusionPinType {
+                                pinPoints.append(pinPoint)
+                            }
                         } else if isSlEnd {
                             // pin point is on master
                             let pinPoint = PinPoint.buildOnMaster(def: pinPointDef)
-                            pinPoints.append(pinPoint)
+                            if pinPoint.type != exclusionPinType {
+                                pinPoints.append(pinPoint)
+                            }
                         }
                     }
                 } else {
@@ -184,7 +190,7 @@ public struct Intersector {
         
         var aggregator = PinPathBuilder(edges: pinEdges, converter: converter)
 
-        let pinPaths = aggregator.build(master: iMaster, slave: iSlave)
+        let pinPaths = aggregator.build(master: iMaster, slave: iSlave, exclusionPinType: exclusionPinType)
         
         var sequence = PinSequence(pinPointArray: pinPoints, pinPathArray: pinPaths, masterCount: iMaster.count)
         

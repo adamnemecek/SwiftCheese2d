@@ -50,7 +50,7 @@ public struct Solver {
 
     
     public func substract() -> Solution {
-        var navigator = Intersector.findPins(iMaster: master, iSlave: slave, converter: converter)
+        var navigator = Intersector.findPins(iMaster: master, iSlave: slave, converter: converter, exclusionPinType: PinPoint.in_out)
 
         var cursor = navigator.nextSub()
         

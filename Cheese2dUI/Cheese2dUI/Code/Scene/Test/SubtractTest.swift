@@ -152,7 +152,6 @@ extension SubtractTest: MouseCompatible {
         } else {
             let prevPoint = self.master[index]
             if point != prevPoint {
-                print("drag: \(point)")
                 self.master[index] = point
                 self.update()
             }

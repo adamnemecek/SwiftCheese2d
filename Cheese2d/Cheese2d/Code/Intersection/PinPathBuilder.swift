@@ -20,7 +20,7 @@ struct PinPathBuilder {
     }
     
     
-    mutating func build(master: [Point], slave: [Point]) -> [PinPath] {
+    mutating func build(master: [Point], slave: [Point], exclusionPinType: Int) -> [PinPath] {
         let n = pinEdges.count
         guard n > 0 else {
             return []
@@ -69,7 +69,7 @@ struct PinPathBuilder {
             }
         }
         
-        let pathList = self.buildPath(edges: mergedEdges, master: master, slave: slave)
+        let pathList = self.buildPath(edges: mergedEdges, master: master, slave: slave, exclusionPinType: exclusionPinType)
 
         return pathList
     }
@@ -104,13 +104,15 @@ struct PinPathBuilder {
     }
 
 
-    private func buildPath(edges: [PinEdge], master: [Point], slave: [Point]) -> [PinPath] {
+    private func buildPath(edges: [PinEdge], master: [Point], slave: [Point], exclusionPinType: Int) -> [PinPath] {
         var pathList = [PinPath]()
         pathList.reserveCapacity(edges.count)
         for edge in edges {
             let type = self.getType(edge: edge, master: master, slave: slave)
-            let path = PinPath(v0: edge.v0, v1: edge.v1, type: type)
-            pathList.append(path)
+            if type != exclusionPinType {
+                let path = PinPath(v0: edge.v0, v1: edge.v1, type: type)
+                pathList.append(path)
+            }
         }
         
         return pathList

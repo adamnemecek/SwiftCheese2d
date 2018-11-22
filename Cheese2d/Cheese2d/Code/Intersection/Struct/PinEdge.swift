@@ -73,11 +73,14 @@ struct PinEdge {
                 if isDirectMaster {
                     pnt0 = crossPoint
                     masterMileStone0 = msStone
-                    slaveMileStone0 = minSlPt.scrDistance(stone: crossPoint)
+                    if isDirectSlave {
+                        slaveMileStone0 = minSlPt.scrDistance(stone: crossPoint)
+                    } else {
+                        slaveMileStone0 = maxSlPt.scrDistance(stone: crossPoint)
+                    }
                 } else {
                     pnt1 = crossPoint
                     masterMileStone1 = msStone
-                    slaveMileStone1 = maxSlPt.scrDistance(stone: crossPoint)
                 }
             } else {
                 

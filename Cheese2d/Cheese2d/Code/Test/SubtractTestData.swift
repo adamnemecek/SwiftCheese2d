@@ -15,8 +15,8 @@ public class SubtractTestData {
         public let slave: [CGPoint]
     }
     
-    public static let count = 23
-    public static let active = 22
+    public static let count = 25
+    public static let active = 24
     
     public static func data(index: Int) -> Result {
         
@@ -90,6 +90,12 @@ public class SubtractTestData {
         case 22:
             master = SubtractTestData.master_22()
             slave = SubtractTestData.slave_22()
+        case 23:
+            master = SubtractTestData.master_23()
+            slave = SubtractTestData.slave_23()
+        case 24:
+            master = SubtractTestData.master_24()
+            slave = SubtractTestData.slave_24()
         default:
             master = SubtractTestData.master_square()
             slave = SubtractTestData.slave_0()
@@ -389,6 +395,49 @@ public class SubtractTestData {
             CGPoint(x: 5, y: 0),
             CGPoint(x: 5, y: -5),
             CGPoint(x: -5, y: -5)
+        ]
+    }
+    
+    private static func slave_23() -> [CGPoint] {
+        return [
+            CGPoint(x: -10, y: 10),
+            CGPoint(x: -10, y: 5),
+            CGPoint(x: 5, y: 5),
+            CGPoint(x: 5, y: -10),
+            CGPoint(x: 10, y: -10),
+            CGPoint(x: 10, y: 10)
+        ]
+    }
+    
+    private static func master_23() -> [CGPoint] {
+        return [
+            CGPoint(x: 5, y: 15),
+            CGPoint(x: 15, y: 15),
+            CGPoint(x: 15, y: -15),
+            CGPoint(x: -15, y: -15),
+            CGPoint(x: -15, y: -5),
+            CGPoint(x: 5, y: -5)
+        ]
+    }
+    
+    
+    private static func slave_24() -> [CGPoint] {
+        return [
+            CGPoint(x: -5, y: 5),
+            CGPoint(x: 5, y: -5),
+            CGPoint(x: 15, y: -5),
+            CGPoint(x: 15, y: 5)
+        ]
+    }
+    
+    private static func master_24() -> [CGPoint] {
+        return [
+            CGPoint(x: 5, y: 15),
+            CGPoint(x: 15, y: 15),
+            CGPoint(x: 15, y: -15),
+            CGPoint(x: -15, y: -15),
+            CGPoint(x: -15, y: -5),
+            CGPoint(x: 5, y: -5)
         ]
     }
 

@@ -22,12 +22,22 @@ class CanvasView: NSView {
         return textField
     }()
     
+    private (set) var help: NSTextField = {
+        let textField = NSTextField()
+        textField.isEditable = false
+        textField.stringValue = "use left/right keys to select test"
+        textField.alignment = .center
+        textField.isBordered = false
+        return textField
+    }()
+    
     override init(frame frameRect: NSRect) {
         transform = CanvasView.calculateCurrentTransform(rect: frameRect)
         super.init(frame: frameRect)
         wantsLayer = true
         self.layer?.backgroundColor = Colors.white
         self.addSubview(testName)
+        self.addSubview(help)
     }
     
     required init?(coder decoder: NSCoder) {
@@ -36,6 +46,7 @@ class CanvasView: NSView {
         wantsLayer = true
         self.layer?.backgroundColor = Colors.white
         self.addSubview(testName)
+        self.addSubview(help)
     }
     
     override func layout() {
@@ -52,9 +63,11 @@ class CanvasView: NSView {
         }
         
         let size = self.frame.size
-        let width: CGFloat = 100
+        let width1: CGFloat = 100
+        let width2: CGFloat = 100
         let height: CGFloat = 20
-        self.testName.frame = CGRect(x: 0.5 * (size.width - width), y: size.height - height, width: width, height: height)
+        self.testName.frame = CGRect(x: 0.5 * (size.width - width1), y: size.height - height, width: width1, height: height)
+        self.help.frame = CGRect(x: 0.5 * (size.width - width2), y: size.height - 10 * height, width: width2, height: height)
     }
     
     private static func calculateCurrentTransform(rect: CGRect) -> CATransform3D {

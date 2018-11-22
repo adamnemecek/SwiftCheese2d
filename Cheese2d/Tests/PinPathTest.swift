@@ -32,7 +32,7 @@ class PinPathTest: XCTestCase {
         slave.append(CGPoint(x: -5, y: 10))
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
 
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -80,7 +80,7 @@ class PinPathTest: XCTestCase {
 
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
        
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -126,7 +126,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -172,7 +172,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -219,7 +219,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -264,7 +264,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -310,7 +310,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -356,7 +356,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -404,7 +404,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -451,7 +451,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -498,7 +498,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -545,7 +545,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -592,7 +592,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -638,7 +638,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -684,7 +684,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -730,7 +730,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -779,7 +779,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let sequence = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let sequence = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(sequence.pinPathArray.count, 1)
         XCTAssertEqual(sequence.pinPointArray.count, 0)
@@ -828,7 +828,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -877,7 +877,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -926,7 +926,7 @@ class PinPathTest: XCTestCase {
         slave.append(pt1)
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         
         XCTAssertEqual(result.pinPathArray.count, 1)
         XCTAssertEqual(result.pinPointArray.count, 0)
@@ -977,7 +977,7 @@ class PinPathTest: XCTestCase {
         
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 4)
@@ -1027,7 +1027,7 @@ class PinPathTest: XCTestCase {
         
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 4)
@@ -1074,7 +1074,7 @@ class PinPathTest: XCTestCase {
 
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 4)
@@ -1111,7 +1111,7 @@ class PinPathTest: XCTestCase {
         
         let iSlave = converter.convert(points: slave)
         
-        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter)
+        let result = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
         let path = result.pinPathArray
         
         XCTAssertEqual(path.count, 1)

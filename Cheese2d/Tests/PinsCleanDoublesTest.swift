@@ -34,7 +34,7 @@ class PinsCleanDoublesTest: XCTestCase {
         slave.append(CGPoint(x: 5, y: 5))
         let iSlave = PointConverter.defaultConverter.convert(points: slave)
         
-        let navigator = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: PointConverter.defaultConverter)
+        let navigator = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: PointConverter.defaultConverter, exclusionPinType: PinPoint.null)
 
         XCTAssertEqual(navigator.pinPointArray.count, 1)
     }

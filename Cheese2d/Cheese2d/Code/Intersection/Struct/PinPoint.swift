@@ -11,10 +11,10 @@ import Foundation
 
 struct PinPointDef {
     let pt: Point
-    let ms0: IndexPoint
-    let ms1: IndexPoint
-    let sl0: IndexPoint
-    let sl1: IndexPoint
+    let ms0: Point
+    let ms1: Point
+    let sl0: Point
+    let sl1: Point
     let masterMileStone: PathMileStone
     let slaveMileStone: PathMileStone
 }
@@ -68,7 +68,7 @@ public struct PinPoint {
     
     
     static func buildSimple(def: PinPointDef) -> PinPoint {
-        let isCCW = self.isCCW(a: def.ms1.point, b: def.pt, c: def.sl1.point)
+        let isCCW = self.isCCW(a: def.ms1, b: def.pt, c: def.sl1)
         let type: Int = isCCW ? -1 : 1
         
         return PinPoint(point: def.pt, type: type,
@@ -77,8 +77,8 @@ public struct PinPoint {
 
     
     static func buildOnMaster(def: PinPointDef) -> PinPoint {
-        let isCCW0 = self.isCCW(a: def.pt, b: def.ms1.point, c: def.sl0.point)
-        let isCCW1 = self.isCCW(a: def.pt, b: def.ms1.point, c: def.sl1.point)
+        let isCCW0 = self.isCCW(a: def.pt, b: def.ms1, c: def.sl0)
+        let isCCW1 = self.isCCW(a: def.pt, b: def.ms1, c: def.sl1)
         
         let type: Int
         if isCCW0 == isCCW1 {
@@ -93,8 +93,8 @@ public struct PinPoint {
     
     
     static func buildOnSlave(def: PinPointDef) -> PinPoint {
-        let isCCW0 = self.isCCW(a: def.pt, b: def.ms0.point, c: def.sl1.point)
-        let isCCW1 = self.isCCW(a: def.pt, b: def.ms1.point, c: def.sl1.point)
+        let isCCW0 = self.isCCW(a: def.pt, b: def.ms0, c: def.sl1)
+        let isCCW1 = self.isCCW(a: def.pt, b: def.ms1, c: def.sl1)
         
         let type: Int
         if isCCW0 == isCCW1 {
@@ -109,10 +109,10 @@ public struct PinPoint {
     
     
     static func buildOnCross(def: PinPointDef, converter: PointConverter) -> PinPoint {
-        let corner = Corner(o: def.pt, a: def.ms0.point, b: def.ms1.point, converter: converter)
+        let corner = Corner(o: def.pt, a: def.ms0, b: def.ms1, converter: converter)
         
-        let isSl0 = corner.isBetween(p: def.sl0.point, clockwise: true)
-        let isSl1 = corner.isBetween(p: def.sl1.point, clockwise: true)
+        let isSl0 = corner.isBetween(p: def.sl0, clockwise: true)
+        let isSl1 = corner.isBetween(p: def.sl1, clockwise: true)
 
         let type: Int
         if isSl0 && isSl1 {

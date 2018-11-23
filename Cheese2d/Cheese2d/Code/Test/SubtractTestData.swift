@@ -448,7 +448,7 @@ public class SubtractTestData {
         return [
             CGPoint(x: -5, y: 5),
             CGPoint(x: 5, y: -5),
-            CGPoint(x: 20, y: 0),
+            CGPoint(x: 25, y: 0),
             CGPoint(x: 15, y: 5)
         ]
     }

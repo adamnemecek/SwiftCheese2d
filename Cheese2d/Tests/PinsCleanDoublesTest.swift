@@ -23,7 +23,7 @@ class PinsCleanDoublesTest: XCTestCase {
         var master = [CGPoint]()
         master.append(CGPoint(x: -10, y: 10))
         master.append(CGPoint(x: 10, y: 10))
-        master.append(CGPoint(x: -10, y: 10))
+        master.append(CGPoint(x: 10, y: -10))
         master.append(CGPoint(x: -10, y: -10))
         
         let iMaster = PointConverter.defaultConverter.convert(points: master)

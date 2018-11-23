@@ -80,13 +80,51 @@ public struct Intersector {
                 
                 let sl0 = iSlave[slIx0]
                 let sl1 = iSlave[slIx1]
-                
+
                 let intersectionTest = Intersector.disposition(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
                 
+                let isCrossPossible = ms0 == sl0 || ms0 == sl1
+                
+                var crossPinPoint: PinPoint? = nil
+                
+                if isCrossPossible {
+                    let point: Point = ms0
+                    
+                    let masterIndex: Int = msIx0
+                    var slaveIndex: Int = slIx0
+                    
+                    let prevMs = (msIx0 - 1 + masterCount) % masterCount
+                    let nextMs = msIx1
+                    
+                    var prevSl = slIx0
+                    var nextSl = slIx1
+                    
+                    if sl0 == point {
+                        slaveIndex = slIx0
+                        prevSl = (slIx0 - 1 + slaveCount) % slaveCount
+                    } else {
+                        slaveIndex = slIx1
+                        nextSl = (slIx1 + 1) % slaveCount
+                    }
+                    
+                    let pinPointDef = PinPointDef(
+                        pt: point,
+                        ms0: iMaster[prevMs],
+                        ms1: iMaster[nextMs],
+                        sl0: iSlave[prevSl],
+                        sl1: iSlave[nextSl],
+                        masterMileStone: PathMileStone(index: masterIndex, offset: 0),
+                        slaveMileStone: PathMileStone(index: slaveIndex, offset: 0)
+                    )
+                    
+                    let pinPoint = PinPoint.buildOnCross(def: pinPointDef, converter: converter)
+                    if pinPoint.type != exclusionPinType {
+                        crossPinPoint = pinPoint
+                    }
+                }
+                
                 j += 1
-                if intersectionTest == -1 {
-                    continue
-                } else if intersectionTest > 0 {
+                if intersectionTest > 0 {
                     let point = Intersector.cross(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
                     if intersectionTest == 1 {
                         let pinPointDef = PinPointDef(
@@ -151,13 +189,7 @@ public struct Intersector {
                             masterMileStone: PathMileStone(index: masterEdge, offset: masterOffset),
                             slaveMileStone: PathMileStone(index: slaveEdge, offset: slaveOffset))
 
-                        if isMsEnd && isSlEnd {
-                            // pin point is on the cross
-                            let pinPoint = PinPoint.buildOnCross(def: pinPointDef, converter: converter)
-                            if pinPoint.type != exclusionPinType {
-                                pinPoints.append(pinPoint)
-                            }
-                        } else if isMsEnd {
+                            if isMsEnd {
                             // pin point is on slave
                             let pinPoint = PinPoint.buildOnSlave(def: pinPointDef)
                             if pinPoint.type != exclusionPinType {
@@ -171,7 +203,7 @@ public struct Intersector {
                             }
                         }
                     }
-                } else {
+                } else if intersectionTest == 0 {
                     let ms0Pt = IndexPoint(index: msIx0, point: ms0)
                     let ms1Pt = IndexPoint(index: msIx1, point: ms1)
                     let sl0Pt = IndexPoint(index: slIx0, point: sl0)
@@ -180,54 +212,14 @@ public struct Intersector {
                     let pinEdge = PinEdge(msPt0: ms0Pt, msPt1: ms1Pt, slPt0: sl0Pt, slPt1: sl1Pt)
                     if !pinEdge.isZeroLength {
                         pinEdges.append(pinEdge)
-                    } else {
-                        // still possible cross intersection
-                        let point: Point
-                        
-                        var masterIndex: Int = msIx0
-                        var slaveIndex: Int = slIx0
-                        
-                        var prevMs = msIx0
-                        var nextMs = msIx1
-                        
-                        var prevSl = slIx0
-                        var nextSl = slIx1
-                        
-                        
-                        if ms0 == sl0 || ms0 == sl1 {
-                            point = ms0
-                            prevMs = (msIx0 - 1 + masterCount) % masterCount
-                            masterIndex = msIx0
-                        } else {
-                            point = ms1
-                            nextMs = (msIx1 + 1) % masterCount
-                            masterIndex = msIx1
-                        }
-
-                        if sl0 == point {
-                            slaveIndex = slIx0
-                            prevSl = (slIx0 - 1 + slaveCount) % slaveCount
-                        } else {
-                            slaveIndex = slIx1
-                            nextSl = (slIx1 + 1) % slaveCount
-                        }
-                        
-                        let pinPointDef = PinPointDef(
-                            pt: point,
-                            ms0: iMaster[prevMs],
-                            ms1: iMaster[nextMs],
-                            sl0: iSlave[prevSl],
-                            sl1: iSlave[nextSl],
-                            masterMileStone: PathMileStone(index: masterIndex, offset: 0),
-                            slaveMileStone: PathMileStone(index: slaveIndex, offset: 0))
-                        /*
-                        let pinPoint = PinPoint.buildOnCross(def: pinPointDef, converter: converter)
-                        if pinPoint.type != exclusionPinType {
-                            pinPoints.append(pinPoint)
-                        }
-                        */
+                        crossPinPoint = nil
                     }
                 }
+                
+                if let pinPoint = crossPinPoint {
+                    pinPoints.append(pinPoint)
+                }
+                
             } while j < n && msIx0 == masterIndices[j]
             
             i = j

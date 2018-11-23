@@ -122,7 +122,7 @@
 			path = Solver;
 			sourceTree = "<group>";
 		};
-		5457CF18216141490056728C /* Struct */ = {
+		5457CF18216141490056728C /* Primitives */ = {
 			isa = PBXGroup;
 			children = (
 				5404A258215C0BDB00DC10BB /* Point.swift */,
@@ -132,7 +132,7 @@
 				5430C8DF21621F4100DE1441 /* IndexPoint.swift */,
 				5412993E2170C1F0001F0F0A /* PathMileStone.swift */,
 			);
-			path = Struct;
+			path = Primitives;
 			sourceTree = "<group>";
 		};
 		545A2D1721550E8700047C8D = {
@@ -169,7 +169,7 @@
 				54BB025B21A46BE400AD7F2F /* Test */,
 				54445FEE21921C400087A228 /* Solver */,
 				545A2D3221550F8200047C8D /* Intersection */,
-				545A2D3421550F8200047C8D /* Struct */,
+				545A2D3421550F8200047C8D /* Support */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -179,25 +179,25 @@
 			children = (
 				54F2C54921777B63001F4857 /* Sequence */,
 				54F2C544217777DD001F4857 /* Navigation */,
-				5457CF18216141490056728C /* Struct */,
+				5457CF18216141490056728C /* Primitives */,
 				545A2D3321550F8200047C8D /* Intersector.swift */,
 				5430C8E32162551900DE1441 /* IntersectorResult.swift */,
-				540F9469216F271500CF8A9D /* Corner.swift */,
 				541174A021676E9C00399820 /* PinPathBuilder.swift */,
 			);
 			path = Intersection;
 			sourceTree = "<group>";
 		};
-		545A2D3421550F8200047C8D /* Struct */ = {
+		545A2D3421550F8200047C8D /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				54445FF12192224C0087A228 /* PointConverter.swift */,
-				54191FED2157E2C100E99295 /* SortedNumbers.swift */,
 				545A2D3621550F8200047C8D /* AdjacencyMatrix.swift */,
 				545A2D3721550F8200047C8D /* BoxArea.swift */,
+				540F9469216F271500CF8A9D /* Corner.swift */,
+				54445FF12192224C0087A228 /* PointConverter.swift */,
 				5411749E216764C000399820 /* Range.swift */,
+				54191FED2157E2C100E99295 /* SortedNumbers.swift */,
 			);
-			path = Struct;
+			path = Support;
 			sourceTree = "<group>";
 		};
 		545A2D4521550F9000047C8D /* Tests */ = {

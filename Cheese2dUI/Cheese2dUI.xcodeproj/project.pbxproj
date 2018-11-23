@@ -123,13 +123,13 @@
 		542D78E52154CD7F000B1D1A /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				542D78E82154CD7F000B1D1A /* DebugApi */,
 				54A9D41E21A80DA200DFC8CC /* Extension */,
+				542D78F42154CD7F000B1D1A /* Scene */,
 				542D78E62154CD7F000B1D1A /* ViewController.swift */,
 				542D78E72154CD7F000B1D1A /* CanvasView.swift */,
-				542D78E82154CD7F000B1D1A /* DebugApi */,
 				542D78F22154CD7F000B1D1A /* AppDelegate.swift */,
 				542D78F32154CD7F000B1D1A /* Colors.swift */,
-				542D78F42154CD7F000B1D1A /* Scene */,
 			);
 			path = Code;
 			sourceTree = "<group>";

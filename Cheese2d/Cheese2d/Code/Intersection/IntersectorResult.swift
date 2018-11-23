@@ -8,9 +8,9 @@
 
 import Foundation
 
-public struct IntersectorResult {
+struct IntersectorResult {
     
-    public let points:  [Pin]
-    public let path: [[CGPoint]]
+    let points:  [PinPoint]
+    let path: [[CGPoint]]
 
 }

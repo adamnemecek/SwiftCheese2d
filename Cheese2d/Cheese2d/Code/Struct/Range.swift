@@ -9,7 +9,7 @@
 import Foundation
 
 
-public struct Range {
+struct Range {
     let begin: Int
     let end: Int
     var isEmpty: Bool {

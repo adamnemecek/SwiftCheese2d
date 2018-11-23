@@ -26,6 +26,7 @@
 		542D79042154CD7F000B1D1A /* CoordinateSystemScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D78F62154CD7F000B1D1A /* CoordinateSystemScene.swift */; };
 		542D790F2154CDB0000B1D1A /* libCheese2d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 542D790B2154CDA7000B1D1A /* libCheese2d.dylib */; };
 		542FD2E021A2FF9500A0A289 /* TestNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FD2DF21A2FF9500A0A289 /* TestNavigation.swift */; };
+		54A9D42221A80DBA00DFC8CC /* Intersector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A9D42121A80DBA00DFC8CC /* Intersector.swift */; };
 		54B285C62198BBB7009027DD /* SubtractTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C52198BBB7009027DD /* SubtractTest.swift */; };
 		54B8756C2169356900D823AE /* MouseCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B8756B2169356900D823AE /* MouseCompatible.swift */; };
 		54E25D7E216CD8CE00B6FE58 /* ShapePinDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E25D7D216CD8CE00B6FE58 /* ShapePinDot.swift */; };
@@ -71,6 +72,7 @@
 		542D78F62154CD7F000B1D1A /* CoordinateSystemScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateSystemScene.swift; sourceTree = "<group>"; };
 		542D79052154CDA6000B1D1A /* Cheese2d.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Cheese2d.xcodeproj; path = ../Cheese2d/Cheese2d.xcodeproj; sourceTree = "<group>"; };
 		542FD2DF21A2FF9500A0A289 /* TestNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNavigation.swift; sourceTree = "<group>"; };
+		54A9D42121A80DBA00DFC8CC /* Intersector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intersector.swift; sourceTree = "<group>"; };
 		54B285C52198BBB7009027DD /* SubtractTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractTest.swift; sourceTree = "<group>"; };
 		54B8756B2169356900D823AE /* MouseCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseCompatible.swift; sourceTree = "<group>"; };
 		54E25D7D216CD8CE00B6FE58 /* ShapePinDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapePinDot.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		542D78E52154CD7F000B1D1A /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				54A9D41E21A80DA200DFC8CC /* Extension */,
 				542D78E62154CD7F000B1D1A /* ViewController.swift */,
 				542D78E72154CD7F000B1D1A /* CanvasView.swift */,
 				542D78E82154CD7F000B1D1A /* DebugApi */,
@@ -190,6 +193,14 @@
 				54B285C52198BBB7009027DD /* SubtractTest.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		54A9D41E21A80DA200DFC8CC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				54A9D42121A80DBA00DFC8CC /* Intersector.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +303,7 @@
 				542FD2E021A2FF9500A0A289 /* TestNavigation.swift in Sources */,
 				542D78F82154CD7F000B1D1A /* CanvasView.swift in Sources */,
 				540F9466216F248800CF8A9D /* AngleTest.swift in Sources */,
+				54A9D42221A80DBA00DFC8CC /* Intersector.swift in Sources */,
 				542D78FB2154CD7F000B1D1A /* ShapeDot.swift in Sources */,
 				542D78F72154CD7F000B1D1A /* ViewController.swift in Sources */,
 				542D78FA2154CD7F000B1D1A /* ShapeCoordinatSystem.swift in Sources */,

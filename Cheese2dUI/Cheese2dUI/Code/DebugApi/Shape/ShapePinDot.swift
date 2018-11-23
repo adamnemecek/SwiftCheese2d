@@ -8,11 +8,11 @@
 
 
 import Cocoa
-import Cheese2d
+@testable import Cheese2d
 
 class ShapePinDot: CAShapeLayer {
     
-    init(pin: Pin, radius: CGFloat) {
+    init(pin: PinPoint, radius: CGFloat) {
         super.init()
         
         let topColor: CGColor
@@ -36,9 +36,10 @@ class ShapePinDot: CAShapeLayer {
             bottomColor = Colors.black
         }
         
+        let point = PointConverter.defaultConverter.convert(point: pin.point)
         
-        let topArc = self.buildArc(point: pin.point, radius: radius, color: topColor, clockwise: false)
-        let bottomArc = self.buildArc(point: pin.point, radius: radius, color: bottomColor, clockwise: true)
+        let topArc = self.buildArc(point: point, radius: radius, color: topColor, clockwise: false)
+        let bottomArc = self.buildArc(point: point, radius: radius, color: bottomColor, clockwise: true)
         
         self.addSublayer(topArc)
         self.addSublayer(bottomArc)

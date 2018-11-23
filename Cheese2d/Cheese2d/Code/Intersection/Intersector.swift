@@ -10,41 +10,7 @@
 import Foundation
 
 
-public struct Intersector {
-
-    public static func findPins(master: [CGPoint], slave: [CGPoint], converter: PointConverter = PointConverter.defaultConverter) -> IntersectorResult {
-        let iMaster = converter.convert(points: master)
-        let iSlave = converter.convert(points: slave)
-        
-        let navigator = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
-    
-        var borders = [[CGPoint]]()
-        var points = [Pin]()
-
-        for node in navigator.nodeArray {
-            if node.marker == 0 {
-                let index = node.index
-                if node.isPinPath == 1 {
-                    let path = navigator.pinPathArray[index]
-                    borders.append(path.extract(points: iMaster, converter: converter))
-                    
-                    let pin0 = Pin(point: converter.convert(point: path.v0.point), type: path.v0.type)
-                    points.append(pin0)
-                    
-                    let pin1 = Pin(point: converter.convert(point: path.v1.point), type: path.v1.type)
-                    points.append(pin1)
-                } else {
-                    let p = navigator.pinPointArray[index]
-                    let pin = Pin(point: converter.convert(point: p.point), type: p.type)
-                    points.append(pin)
-                }
-            }
-            
-        }
-        
-        return IntersectorResult(points: points, path: borders)
-    }
-    
+struct Intersector {
     
     static func findPins(iMaster: [Point], iSlave: [Point], converter: PointConverter, exclusionPinType: Int) -> PinNavigator {
         

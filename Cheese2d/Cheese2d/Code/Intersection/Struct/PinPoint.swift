@@ -32,19 +32,19 @@ struct PinPointDef {
  
 */
 
-public struct PinPoint {
+struct PinPoint {
 
-    public static let null = 0     // can be ignored
+    static let null = 0     // can be ignored
     
-    public static let inside = 1
-    public static let in_out = 2
-    public static let in_null = 3
-    public static let null_in = 4
+    static let inside = 1
+    static let in_out = 2
+    static let in_null = 3
+    static let null_in = 4
     
-    public static let outside = -1
-    public static let out_in = -2
-    public static let out_null = -3
-    public static let null_out = -4
+    static let outside = -1
+    static let out_in = -2
+    static let out_null = -3
+    static let null_out = -4
     
     
     let point: Point

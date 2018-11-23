@@ -7,8 +7,7 @@
 //
 
 import Cocoa
-import Cheese2d
-
+@testable import Cheese2d
 
 class SubtractTest: CoordinateSystemScene {
 

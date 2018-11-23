@@ -8,17 +8,17 @@
 
 import Foundation
 
-public class SubtractTestData {
+class SubtractTestData {
     
-    public struct Result {
-        public let master: [CGPoint]
-        public let slave: [CGPoint]
+    struct Result {
+        let master: [CGPoint]
+        let slave: [CGPoint]
     }
     
-    public static let count = 26
-    public static let active = 25
+    static let count = 26
+    static let active = 25
     
-    public static func data(index: Int) -> Result {
+    static func data(index: Int) -> Result {
         
         let master: [CGPoint]
         let slave: [CGPoint]

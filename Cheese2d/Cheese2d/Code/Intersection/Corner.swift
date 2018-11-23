@@ -9,7 +9,7 @@
 import Foundation
 
 
-public struct Corner {
+struct Corner {
     
     private let basis: Point
     private let a: Point
@@ -20,7 +20,7 @@ public struct Corner {
     private let converter: PointConverter
     
     
-    public init(o: CGPoint, a: CGPoint, b: CGPoint, converter: PointConverter = PointConverter()) {
+    init(o: CGPoint, a: CGPoint, b: CGPoint, converter: PointConverter = PointConverter()) {
         let o = converter.convert(point: o)
         let a = converter.convert(point: a)
         let b = converter.convert(point: b)
@@ -43,7 +43,7 @@ public struct Corner {
     }
     
     
-    public func isBetween(p: CGPoint, clockwise: Bool = false) -> Bool {
+    func isBetween(p: CGPoint, clockwise: Bool = false) -> Bool {
         return isBetween(p: converter.convert(point: p), clockwise: clockwise)
     }
     
@@ -112,4 +112,3 @@ extension Point {
     }
 
 }
-

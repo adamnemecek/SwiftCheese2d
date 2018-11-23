@@ -12,34 +12,13 @@ import Cocoa
 
 class ShapePinDot: CAShapeLayer {
     
-    init(pin: PinPoint, radius: CGFloat) {
+    init(pin: Pin, radius: CGFloat) {
         super.init()
         
-        let topColor: CGColor
-        let bottomColor: CGColor
-        
-        switch pin.type {
-        case -2:
-            topColor = Colors.out
-            bottomColor = Colors.into
-        case -1:
-            topColor = Colors.out
-            bottomColor = Colors.out
-        case 1:
-            topColor = Colors.into
-            bottomColor = Colors.into
-        case 2:
-            topColor = Colors.into
-            bottomColor = Colors.out
-        default:
-            topColor = Colors.black
-            bottomColor = Colors.black
-        }
-        
-        let point = PointConverter.defaultConverter.convert(point: pin.point)
-        
-        let topArc = self.buildArc(point: point, radius: radius, color: topColor, clockwise: false)
-        let bottomArc = self.buildArc(point: point, radius: radius, color: bottomColor, clockwise: true)
+        let colors = pin.colors
+
+        let topArc = self.buildArc(point: pin.point, radius: radius, color: colors[0], clockwise: false)
+        let bottomArc = self.buildArc(point: pin.point, radius: radius, color: colors[1], clockwise: true)
         
         self.addSublayer(topArc)
         self.addSublayer(bottomArc)

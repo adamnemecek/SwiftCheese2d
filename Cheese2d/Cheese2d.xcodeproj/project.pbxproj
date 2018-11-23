@@ -18,7 +18,6 @@
 		54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */; };
 		54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FED2157E2C100E99295 /* SortedNumbers.swift */; };
 		5430C8E021621F4100DE1441 /* IndexPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5430C8DF21621F4100DE1441 /* IndexPoint.swift */; };
-		5430C8E42162551900DE1441 /* IntersectorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5430C8E32162551900DE1441 /* IntersectorResult.swift */; };
 		54336B842184D59300D53311 /* PinEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54336B832184D59300D53311 /* PinEdge.swift */; };
 		54445FF021921C570087A228 /* Solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54445FEF21921C570087A228 /* Solver.swift */; };
 		54445FF22192224C0087A228 /* PointConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54445FF12192224C0087A228 /* PointConverter.swift */; };
@@ -65,7 +64,6 @@
 		54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixTest.swift; sourceTree = "<group>"; };
 		54191FED2157E2C100E99295 /* SortedNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedNumbers.swift; sourceTree = "<group>"; };
 		5430C8DF21621F4100DE1441 /* IndexPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexPoint.swift; sourceTree = "<group>"; };
-		5430C8E32162551900DE1441 /* IntersectorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntersectorResult.swift; sourceTree = "<group>"; };
 		54336B832184D59300D53311 /* PinEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinEdge.swift; sourceTree = "<group>"; };
 		54445FEF21921C570087A228 /* Solver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solver.swift; sourceTree = "<group>"; };
 		54445FF12192224C0087A228 /* PointConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointConverter.swift; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 				54F2C544217777DD001F4857 /* Navigation */,
 				5457CF18216141490056728C /* Primitives */,
 				545A2D3321550F8200047C8D /* Intersector.swift */,
-				5430C8E32162551900DE1441 /* IntersectorResult.swift */,
 				541174A021676E9C00399820 /* PinPathBuilder.swift */,
 			);
 			path = Intersection;
@@ -360,7 +357,6 @@
 				540F9470216F6A1B00CF8A9D /* PinHandler.swift in Sources */,
 				54F2C546217777FC001F4857 /* PinNavigator.swift in Sources */,
 				54445FF22192224C0087A228 /* PointConverter.swift in Sources */,
-				5430C8E42162551900DE1441 /* IntersectorResult.swift in Sources */,
 				54BB025A21A46BDC00AD7F2F /* SubtractTestData.swift in Sources */,
 				54B285C22198B570009027DD /* FloatSolution.swift in Sources */,
 				5457CF1C216142AC0056728C /* PinPath.swift in Sources */,

@@ -136,9 +136,7 @@ extension SubtractTest: MouseCompatible {
         guard let index = self.activeIndex else {
             return
         }
-        
-        
-        
+
         let x = CGFloat(Int(point.x * 2)) / 2
         let y = CGFloat(Int(point.y * 2)) / 2
         

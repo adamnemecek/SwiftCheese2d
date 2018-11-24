@@ -48,13 +48,27 @@ struct Intersector {
                 let sl1 = iSlave[slIx1]
 
                 let intersectionTest = Intersector.disposition(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
+
+                // -1, 1 are the most possible cases (more then 99%)
+                // -1 - no intersections
+                //  1 - simple intersection with no overlaps
                 
+                
+                // 0, 2 are very specific, but still possible cases
+                // 0 - same line
+                // 2 - one of the end is lying on others edge
+
+                // case when one on of slave ends is overlaped by on of the master ends
+                // can conflict with possible edge case
                 var isCrossPossible = ms0 == sl0 || ms0 == sl1
 
                 j += 1
                 if intersectionTest > 0 {
                     let point = Intersector.cross(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
                     if intersectionTest == 1 {
+                        
+                        // simple intersection and most common case
+                        
                         let pinPointDef = PinPointDef(
                             pt: point,
                             ms0: ms0,
@@ -67,6 +81,9 @@ struct Intersector {
                         let pinPoint = PinPoint.buildSimple(def: pinPointDef)
                         pinPoints.append(pinPoint)
                     } else {
+                        
+                        // one of the end is lying on others edge
+                        
                         let isMsEnd = ms0 == point || ms1 == point
                         let isSlEnd = sl0 == point || sl1 == point
                         
@@ -132,6 +149,9 @@ struct Intersector {
                         }
                     }
                 } else if intersectionTest == 0 {
+                    
+                    // possible edge case
+                    
                     let ms0Pt = IndexPoint(index: msIx0, point: ms0)
                     let ms1Pt = IndexPoint(index: msIx1, point: ms1)
                     let sl0Pt = IndexPoint(index: slIx0, point: sl0)
@@ -185,12 +205,16 @@ struct Intersector {
             i = j
         }
         
+        // merge all edges
         var aggregator = PinPathBuilder(edges: pinEdges, converter: converter)
 
+        // build pin paths from edges
         let pinPaths = aggregator.build(master: iMaster, slave: iSlave, exclusionPinType: exclusionPinType)
         
+        // combine pin points and paths
         var sequence = PinSequence(pinPointArray: pinPoints, pinPathArray: pinPaths, masterCount: iMaster.count)
         
+        // remove doubles and organize data
         let navigator = sequence.buildNavigator()
 
         return navigator
@@ -243,7 +267,10 @@ struct Intersector {
     }
 
     
-    // -1 not intersecting, 0 same line, 1 - intersecting, 2 - possible end
+    //-1 - no intersections
+    // 0 - same line
+    // 1 - simple intersection with no overlaps
+    // 2 - one of the end is lying on others edge
     private static func disposition(a0: Point, a1: Point, b0: Point, b1: Point) -> Int {
         let d0 = Intersector.isCCW(a: a0, b: b0, c: b1)
         let d1 = Intersector.isCCW(a: a1, b: b0, c: b1)

@@ -71,15 +71,13 @@ class SubtractTest: CoordinateSystemScene {
         let paths = result.path
         for edgePath in paths {
             let colors = edgePath.colors
-            let shape1 = ShapePath(points: edgePath.path, tip: 1.5, lineWidth: 0.3, color: colors[0], showIndeces: false, showLast: false, scaleIndeces: 1, dash: nil)
-            let shape2 = ShapePath(points: edgePath.path, tip: 1.5, lineWidth: 0.3, color: colors[1], showIndeces: false, showLast: false, scaleIndeces: 1, dash: [1,1])
-            self.addSublayer(shape1)
-            self.addSublayer(shape2)
+            let shape = ShapePath(points: edgePath.path, tip: 1.5, lineWidth: 0.4, color: colors[0], showIndeces: false, showLast: false, scaleIndeces: 1, dash: nil, arrowColor: colors[1])
+            self.addSublayer(shape)
         }
 
         
         for pin in points {
-            self.addSublayer(ShapePinDot(pin: pin, radius: 0.6))
+            self.addSublayer(ShapePinDot(pin: pin, radius: 0.7))
         }
     }
     

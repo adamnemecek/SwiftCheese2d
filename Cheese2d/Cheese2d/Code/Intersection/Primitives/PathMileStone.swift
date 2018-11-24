@@ -16,6 +16,10 @@ struct PathMileStone {
     let index: Int
     let offset: Int64
  
+    init(index: Int, offset: Int64 = 0) {
+        self.index = index
+        self.offset = offset
+    }
     
     static func compare(a: PathMileStone, b: PathMileStone) -> Bool {
         if a.index != b.index {

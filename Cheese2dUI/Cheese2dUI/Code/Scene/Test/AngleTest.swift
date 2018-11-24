@@ -55,8 +55,8 @@ class AngleTest: CoordinateSystemScene {
     
     private func addShapes() {
 
-        let vecOA = ShapeVector(start: points[0], end: points[1], tip: 1.5, lineWidth: 0.3, strokeColor: Colors.darkGray, dash: nil)
-        let vecOB = ShapeVector(start: points[0], end: points[2], tip: 1.5, lineWidth: 0.3, strokeColor: Colors.darkGray, dash: nil)
+        let vecOA = ShapeVector(start: points[0], end: points[1], tip: 1.5, lineWidth: 0.3, strokeColor: Colors.darkGray, arrowColor: Colors.darkGray, dash: nil)
+        let vecOB = ShapeVector(start: points[0], end: points[2], tip: 1.5, lineWidth: 0.3, strokeColor: Colors.darkGray, arrowColor: Colors.darkGray, dash: nil)
         
         
         let corner = Corner(o: points[0], a: points[1], b: points[2])

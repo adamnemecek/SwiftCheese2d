@@ -17,26 +17,16 @@ class ShapePinDot: CAShapeLayer {
         
         let colors = pin.colors
 
-        let topArc = self.buildArc(point: pin.point, radius: radius, color: colors[0], clockwise: false)
-        let bottomArc = self.buildArc(point: pin.point, radius: radius, color: colors[1], clockwise: true)
-        
-        self.addSublayer(topArc)
-        self.addSublayer(bottomArc)
-    }
-    
-    
-    private func buildArc(point: CGPoint, radius: CGFloat, color: CGColor, clockwise: Bool) -> CAShapeLayer {
-        let arc = CAShapeLayer()
+        let point = pin.point
         
         let linePath = CGMutablePath()
+        linePath.addEllipse(in: CGRect(x: point.x - 0.5 * radius, y: point.y - 0.5 * radius, width: radius, height: radius))
         
-        linePath.addArc(center: point, radius: radius, startAngle: 0, endAngle: CGFloat.pi, clockwise: clockwise)
-        
-        arc.path = linePath
-        arc.fillColor = color
-        arc.opacity = 1.0
-        
-        return arc
+        self.path = linePath
+        self.fillColor = colors[0]
+        self.strokeColor = colors[1]
+        self.lineWidth = 0.3 * radius
+        self.opacity = 1.0
     }
     
     

@@ -201,7 +201,7 @@ struct Intersector {
 
         var slaveBoxArea = BoxArea.empty
 
-        var slaveSegmentsBoxArea: [BoxArea] = []
+        var slaveSegmentsBoxAreas: [BoxArea] = []
         
         let lastSlaveIndex = slave.count - 1
         
@@ -210,7 +210,7 @@ struct Intersector {
             let b = slave[i != lastSlaveIndex ? i + 1 : 0]
             
             slaveBoxArea.assimilate(p: a)
-            slaveSegmentsBoxArea.append(BoxArea(a: a, b: b))
+            slaveSegmentsBoxAreas.append(BoxArea(a: a, b: b))
         }
         
         var posMatrix = AdjacencyMatrix(size: 0)
@@ -231,7 +231,7 @@ struct Intersector {
         
             
             for j in 0...lastSlaveIndex {
-                let isIntersectionPossible = slaveSegmentsBoxArea[j].isInterscting(box: segmentBoxArea)
+                let isIntersectionPossible = slaveSegmentsBoxAreas[j].isInterscting(box: segmentBoxArea)
                 
                 if isIntersectionPossible {
                     posMatrix.addMate(master: i, slave: j)

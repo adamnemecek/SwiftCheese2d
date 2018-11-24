@@ -13,8 +13,8 @@ class ShapeCoordinatSystem: CALayer {
     init(position: CGPoint, length: CGFloat, tip: CGFloat, lineWidth: CGFloat, strokeColor: CGColor) {
         super.init()
         
-        let vecOx = ShapeVector(start: position, end: position + CGPoint(radius: length, angle: 0), tip: tip, lineWidth: lineWidth, strokeColor: strokeColor, dash: nil)
-        let vecOy = ShapeVector(start: position, end: position + CGPoint(radius: length, angle: 0.5 * CGFloat.pi), tip: tip, lineWidth: lineWidth, strokeColor: strokeColor, dash: nil)
+        let vecOx = ShapeVector(start: position, end: position + CGPoint(radius: length, angle: 0), tip: tip, lineWidth: lineWidth, strokeColor: strokeColor, arrowColor: strokeColor, dash: nil)
+        let vecOy = ShapeVector(start: position, end: position + CGPoint(radius: length, angle: 0.5 * CGFloat.pi), tip: tip, lineWidth: lineWidth, strokeColor: strokeColor, arrowColor: strokeColor, dash: nil)
         
         self.addSublayer(vecOx)
         self.addSublayer(vecOy)

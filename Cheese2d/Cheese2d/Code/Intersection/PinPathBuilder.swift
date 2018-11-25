@@ -168,14 +168,14 @@ struct PinPathBuilder {
         let n = slave.count
         let s: Point
 
-        if iterposition != 1 {
+        if iterposition == -1 {
+            s = slave[(i + 1) % n]
+        } else {
             if vertex.slaveMileStone.offset != 0 {
                 s = slave[i]
             } else {
-                s = slave[(i + 1 + n) % n]
+                s = slave[(i - 1 + n) % n]
             }
-        } else {
-            s = slave[(i - 1 + n) % n]
         }
         
         

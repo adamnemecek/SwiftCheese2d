@@ -60,33 +60,42 @@ struct Intersector {
 
                 // case when one on of slave ends is overlaped by on of the master ends
                 // can conflict with possible edge case
-                var isCrossPossible = ms0 == sl0 || ms0 == sl1
-
                 j += 1
-                if intersectionTest > 0 {
+                
+                if intersectionTest == -1 {
+                    continue
+                }
+                
+                if intersectionTest == 1 {
                     let point = Intersector.cross(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
-                    if intersectionTest == 1 {
-                        
-                        // simple intersection and most common case
-                        
-                        let pinPointDef = PinPointDef(
-                            pt: point,
-                            ms0: ms0,
-                            ms1: ms1,
-                            sl0: sl0,
-                            sl1: sl1,
-                            masterMileStone: PathMileStone(index: msIx0, offset: ms0.sqrDistance(point: point)),
-                            slaveMileStone: PathMileStone(index: slIx0, offset: sl0.sqrDistance(point: point)))
-                        
-                        let pinPoint = PinPoint.buildSimple(def: pinPointDef)
-                        pinPoints.append(pinPoint)
-                    } else {
-                        
-                        // one of the end is lying on others edge
-                        
-                        let isMsEnd = ms0 == point || ms1 == point
-                        let isSlEnd = sl0 == point || sl1 == point
-                        
+                    // simple intersection and most common case
+                    
+                    let pinPointDef = PinPointDef(
+                        pt: point,
+                        ms0: ms0,
+                        ms1: ms1,
+                        sl0: sl0,
+                        sl1: sl1,
+                        masterMileStone: PathMileStone(index: msIx0, offset: ms0.sqrDistance(point: point)),
+                        slaveMileStone: PathMileStone(index: slIx0, offset: sl0.sqrDistance(point: point)))
+                    
+                    let pinPoint = PinPoint.buildSimple(def: pinPointDef)
+                    pinPoints.append(pinPoint)
+                    
+                    continue
+                }
+                
+                if intersectionTest == 2 {
+                    
+                    // one of the end is lying on others edge
+                
+                    let point = Intersector.cross(a0: ms0, a1: ms1, b0: sl0, b1: sl1)
+                
+                    let isMsEnd = ms0 == point || ms1 == point
+                    let isSlEnd = sl0 == point || sl1 == point
+                    
+                    if !(isMsEnd && isSlEnd) {  // skip case when on of the slave end is equal to one of the master end
+
                         var prevMs = msIx0
                         var nextMs = msIx1
                         
@@ -98,7 +107,7 @@ struct Intersector {
                         
                         var slaveEdge = slIx0
                         var slaveOffset: Int64 = 0
-
+                        
                         if isMsEnd {
                             if ms0 == point {
                                 prevMs = (msIx0 - 1 + masterCount) % masterCount
@@ -124,7 +133,7 @@ struct Intersector {
                         if isMsEnd && !isSlEnd {
                             slaveOffset = sl0.sqrDistance(point: point)
                         }
-
+                        
                         let pinPointDef = PinPointDef(
                             pt: point,
                             ms0: iMaster[prevMs],
@@ -133,8 +142,8 @@ struct Intersector {
                             sl1: iSlave[nextSl],
                             masterMileStone: PathMileStone(index: masterEdge, offset: masterOffset),
                             slaveMileStone: PathMileStone(index: slaveEdge, offset: slaveOffset))
-
-                            if isMsEnd {
+                        
+                        if isMsEnd {
                             // pin point is on slave
                             let pinPoint = PinPoint.buildOnSlave(def: pinPointDef)
                             if pinPoint.type != exclusionPinType {
@@ -147,8 +156,13 @@ struct Intersector {
                                 pinPoints.append(pinPoint)
                             }
                         }
+                        
+                        continue
                     }
-                } else if intersectionTest == 0 {
+                }
+                
+                
+                if intersectionTest == 0 {
                     
                     // possible edge case
                     
@@ -160,11 +174,14 @@ struct Intersector {
                     let pinEdge = PinEdge(msPt0: ms0Pt, msPt1: ms1Pt, slPt0: sl0Pt, slPt1: sl1Pt)
                     if !pinEdge.isZeroLength {
                         pinEdges.append(pinEdge)
-                        isCrossPossible = false // we just add edge, so cross point is useless
+                        continue
                     }
                 }
                 
-                if isCrossPossible {
+                // only 0, 2, 3 cases are possible here
+                
+                let isFirstPointCross = ms0 == sl0 || ms0 == sl1    // lets ignore case for second end (it just add double)
+                if isFirstPointCross {
                     let point: Point = ms0
                     
                     let masterIndex: Int = msIx0
@@ -271,6 +288,7 @@ struct Intersector {
     // 0 - same line
     // 1 - simple intersection with no overlaps
     // 2 - one of the end is lying on others edge
+    // 3 - first master end is equal to one of slave ends
     private static func disposition(a0: Point, a1: Point, b0: Point, b1: Point) -> Int {
         let d0 = Intersector.isCCW(a: a0, b: b0, c: b1)
         let d1 = Intersector.isCCW(a: a1, b: b0, c: b1)
@@ -289,9 +307,12 @@ struct Intersector {
                 } else {
                     return 2
                 }
-                
             } else {
-                return -1
+                if a0 != b0 && a0 != b1 {
+                    return -1
+                } else {
+                    return 3
+                }
             }
         } else {
             return 0
@@ -335,3 +356,4 @@ struct Intersector {
     }
     
 }
+

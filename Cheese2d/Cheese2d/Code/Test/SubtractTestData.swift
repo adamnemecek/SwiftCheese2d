@@ -16,7 +16,7 @@ class SubtractTestData {
     }
     
     static let count = 27
-    static let active = 20
+    static let active = 4
     
     static func data(index: Int) -> Result {
         

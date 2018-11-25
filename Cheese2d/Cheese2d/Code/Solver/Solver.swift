@@ -57,9 +57,6 @@ public struct Solver {
         guard cursor.isNotEmpty else {
             return Solution(pathCollection: [], disposition: .noIntersections)
         }
-        
-        
-        navigator.mark(cursor: cursor)
 
         var result = [[Point]]()
         
@@ -79,11 +76,11 @@ public struct Solver {
             repeat {
                 // in-out slave ppath
                 
-                let outCursor = navigator.nextSlave(cursor: cursor)
-                
+                let outCursor = navigator.nextSlaveOut(cursor: cursor)
+
                 let inSlaveStart = navigator.slaveStartStone(cursor: cursor)
-                let outSlaveEnd = navigator.slaveEndStone(cursor: outCursor)
                 
+                let outSlaveEnd = navigator.slaveEndStone(cursor: outCursor)
                 
                 let startPoint = navigator.slaveStartPoint(cursor: cursor)
                 path.append(startPoint)
@@ -210,6 +207,7 @@ public struct Solver {
     
 }
 
+
 fileprivate extension PinNavigator {
     
     fileprivate mutating func nextSub() -> Cursor {
@@ -224,3 +222,31 @@ fileprivate extension PinNavigator {
     }
     
 }
+
+
+fileprivate extension PinNavigator {
+    
+    fileprivate mutating func nextSlaveOut(cursor: Cursor) -> Cursor {
+        let start: Cursor = cursor
+        var cursor = self.nextSlave(cursor: cursor)
+
+        if cursor.type != PinPoint.out_in {
+            return cursor
+        }
+        
+        while start != cursor {
+            let nextMaster = self.nextMaster(cursor: cursor)
+            let nextMasterType = nextMaster.type
+            if nextMaster == start || nextMasterType == PinPoint.inside || nextMasterType == PinPoint.out_in {
+                return cursor
+            }
+            
+            self.mark(cursor: cursor)
+            cursor = self.nextSlave(cursor: cursor)
+        }
+        
+        return cursor
+    }
+    
+}
+

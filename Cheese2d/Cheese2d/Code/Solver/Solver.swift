@@ -76,11 +76,20 @@ public struct Solver {
             repeat {
                 // in-out slave ppath
                 
-                let outCursor = navigator.nextSlaveOut(cursor: cursor)
+                let outCursor = navigator.nextSlaveOut(cursor: cursor, stop: start)
 
                 let inSlaveStart = navigator.slaveStartStone(cursor: cursor)
                 
-                let outSlaveEnd = navigator.slaveEndStone(cursor: outCursor)
+                let outSlaveEnd: PathMileStone
+
+                let isOutInStart = outCursor == start && path.count > 0
+                
+                if !isOutInStart {
+                   outSlaveEnd = navigator.slaveEndStone(cursor: outCursor)
+                } else {
+                    // possible if we start with out-in
+                    outSlaveEnd = navigator.slaveStartStone(cursor: outCursor)
+                }
                 
                 let startPoint = navigator.slaveStartPoint(cursor: cursor)
                 path.append(startPoint)
@@ -131,6 +140,11 @@ public struct Solver {
                     }
                 }
 
+                if isOutInStart {
+                    // possible if we start with out-in
+                    break
+                }
+                
                 let endPoint = navigator.slaveEndPoint(cursor: outCursor)
                 path.append(endPoint)
                 
@@ -226,15 +240,15 @@ fileprivate extension PinNavigator {
 
 fileprivate extension PinNavigator {
     
-    fileprivate mutating func nextSlaveOut(cursor: Cursor) -> Cursor {
+    fileprivate mutating func nextSlaveOut(cursor: Cursor, stop: Cursor) -> Cursor {
         let start: Cursor = cursor
         var cursor = self.nextSlave(cursor: cursor)
 
-        if cursor.type != PinPoint.out_in {
+        if cursor.type != PinPoint.out_in || stop == cursor {
             return cursor
         }
         
-        while start != cursor {
+        while start != cursor && stop != cursor {
             let nextMaster = self.nextMaster(cursor: cursor)
             let nextMasterType = nextMaster.type
             if nextMaster == start || nextMasterType == PinPoint.inside || nextMasterType == PinPoint.out_in {

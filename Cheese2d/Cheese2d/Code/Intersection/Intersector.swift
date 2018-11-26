@@ -352,7 +352,7 @@ struct Intersector {
         let x = xyA * CGFloat(b0.x - b1.x) - CGFloat(a0.x - a1.x) * xyB
         let y = xyA * CGFloat(b0.y - b1.y) - CGFloat(a0.y - a1.y) * xyB
         
-        return Point(x: Int64(x * invert_divider), y: Int64(y * invert_divider))
+        return Point(x: Int64(round(x * invert_divider)), y: Int64(round(y * invert_divider)))
     }
     
 }

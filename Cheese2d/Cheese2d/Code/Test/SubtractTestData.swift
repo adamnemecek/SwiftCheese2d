@@ -15,8 +15,8 @@ class SubtractTestData {
         let slave: [CGPoint]
     }
     
-    static let count = 30
-    static let active = 29
+    static let count = 31
+    static let active = 30
     
     static func data(index: Int) -> Result {
         
@@ -111,6 +111,9 @@ class SubtractTestData {
         case 29:
             master = SubtractTestData.master_29()
             slave = SubtractTestData.slave_29()
+        case 30:
+            master = SubtractTestData.master_30()
+            slave = SubtractTestData.slave_30()
         default:
             master = SubtractTestData.master_square()
             slave = SubtractTestData.slave_0()
@@ -566,6 +569,32 @@ class SubtractTestData {
             CGPoint(x: -15, y: 10),
             CGPoint(x: -5, y: 15),
             CGPoint(x: -10, y: 7)
+        ]
+    }
+    
+    private static func slave_30() -> [CGPoint] {
+        return [
+            CGPoint(x: 5, y: 5),
+            CGPoint(x: -15, y: 5),
+            CGPoint(x: -15, y: -15),
+            CGPoint(x: 15, y: -15),
+            CGPoint(x: 15, y: 20),
+            CGPoint(x: -15, y: 20),
+            CGPoint(x: -15, y: 10),
+            CGPoint(x: 10, y: 10),
+            CGPoint(x: 10, y: -10),
+            CGPoint(x: -10, y: -10),
+            CGPoint(x: -10, y: 0),
+            CGPoint(x: 5, y: 0)
+        ]
+    }
+    
+    private static func master_30() -> [CGPoint] {
+        return [
+            CGPoint(x: -5, y: 15),
+            CGPoint(x: -0, y: 15),
+            CGPoint(x: -0, y: 3),
+            CGPoint(x: -5, y: 3)
         ]
     }
 

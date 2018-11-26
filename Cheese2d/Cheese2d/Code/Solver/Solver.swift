@@ -182,7 +182,7 @@ public struct Solver {
                     }
                 } else {
                     // a < b
-                    if outMasterIndex <= inMasterIndex {
+                    if isInMsterNotOverflow && isOutMsterNotOverflow && outMasterIndex <= inMasterIndex {
                         let slice = master[outMasterIndex...inMasterIndex]
                         path.append(contentsOf: slice)
                     }

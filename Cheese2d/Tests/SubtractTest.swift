@@ -783,4 +783,77 @@ public class SubtractTest: XCTestCase {
         XCTAssertEqual(path, sample)
     }
     
+    
+    func test_28() {
+        let data = SubtractTestData.data(index: 28)
+        let master = data.master
+        let slave = data.slave
+        
+        let solver = Solver(master: master, slave: slave)
+        let solution: FloatSolution = solver.substract()
+        
+        XCTAssertEqual(solution.disposition, .hasIntersections)
+        XCTAssertEqual(solution.pathCollection.count, 2)
+        
+        let path0 = solution.pathCollection[0]
+        let sample0 = [
+            CGPoint(x: -10, y: 0),
+            CGPoint(x: -5, y: 0),
+            CGPoint(x: -5, y: -5),
+            CGPoint(x: -10, y: -5)
+        ]
+        
+        XCTAssertEqual(path0, sample0)
+        
+        let path1 = solution.pathCollection[1]
+        let sample1 = [
+            CGPoint(x: -10, y: 10),
+            CGPoint(x: -5, y: 10),
+            CGPoint(x: -5, y: 5),
+            CGPoint(x: -10, y: 5)
+        ]
+        
+        XCTAssertEqual(path1, sample1)
+    }
+    
+    
+    func test_29() {
+        let data = SubtractTestData.data(index: 29)
+        let master = data.master
+        let slave = data.slave
+        
+        let solver = Solver(master: master, slave: slave)
+        let solution: FloatSolution = solver.substract()
+        
+        XCTAssertEqual(solution.disposition, .hasIntersections)
+        XCTAssertEqual(solution.pathCollection.count, 1)
+        
+        let path = solution.pathCollection[0]
+        
+        XCTAssertEqual(path.count, 5)
+    }
+    
+    
+    func test_30() {
+        let data = SubtractTestData.data(index: 30)
+        let master = data.master
+        let slave = data.slave
+        
+        let solver = Solver(master: master, slave: slave)
+        let solution: FloatSolution = solver.substract()
+        
+        XCTAssertEqual(solution.disposition, .hasIntersections)
+        XCTAssertEqual(solution.pathCollection.count, 1)
+        
+        let path = solution.pathCollection[0]
+        let sample = [
+            CGPoint(x: 0, y: 5),
+            CGPoint(x: -5, y: 5),
+            CGPoint(x: -5, y: 10),
+            CGPoint(x: 0, y: 10)
+        ]
+        
+        XCTAssertEqual(path, sample)
+    }
+    
 }

@@ -250,7 +250,7 @@ fileprivate extension PinNavigator {
         
         while start != cursor && stop != cursor && cursor.type == PinPoint.out_in {
             let nextMaster = self.nextMaster(cursor: cursor)
-            if nextMaster == start {
+            if nextMaster == start || nextMaster == stop {
                 return cursor
             }
             self.mark(cursor: cursor)

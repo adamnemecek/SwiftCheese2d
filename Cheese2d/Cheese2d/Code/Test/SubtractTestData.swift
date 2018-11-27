@@ -131,7 +131,7 @@ class SubtractTestData {
             slave = SubtractTestData.slave_spiral_modified_0()
         case 36:
             master = SubtractTestData.master_36()
-            slave = SubtractTestData.slave_spiral()
+            slave = SubtractTestData.slave_36()
         default:
             master = SubtractTestData.master_square()
             slave = SubtractTestData.slave_0()
@@ -687,12 +687,22 @@ class SubtractTestData {
         ]
     }
     
+    private static func slave_36() -> [CGPoint] {
+        return [
+            CGPoint(x: 0, y: 15),
+            CGPoint(x: -5, y: 15),
+            CGPoint(x: -5, y: -10),
+            CGPoint(x: 10, y: -10),
+            CGPoint(x: 10, y: 0),
+            CGPoint(x: 0, y: 0)
+        ]
+    }
+    
     private static func master_36() -> [CGPoint] {
         return [
-            CGPoint(x: -18, y: 0),
-            CGPoint(x: -8, y: 0),
-            CGPoint(x: -8, y: -8),
-            CGPoint(x: -10, y: -5)
+            CGPoint(x: 5, y: 10),
+            CGPoint(x: 5, y: -5),
+            CGPoint(x: -10, y: 10)
         ]
     }
 

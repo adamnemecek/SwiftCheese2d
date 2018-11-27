@@ -73,10 +73,14 @@ public struct Solver {
             var path = [Point]()
             let start = cursor
             
+            var skipOutIn = false
+            
             repeat {
                 // in-out slave ppath
                 
-                let outCursor = navigator.nextSlaveOut(cursor: cursor, stop: start)
+                let outCursor = navigator.nextSlaveOut(cursor: cursor, stop: start, skipOutIn: skipOutIn)
+                
+                skipOutIn = true
 
                 let inSlaveStart = navigator.slaveStartStone(cursor: cursor)
                 
@@ -240,7 +244,7 @@ fileprivate extension PinNavigator {
 
 fileprivate extension PinNavigator {
     
-    fileprivate mutating func nextSlaveOut(cursor: Cursor, stop: Cursor) -> Cursor {
+    fileprivate mutating func nextSlaveOut(cursor: Cursor, stop: Cursor, skipOutIn: Bool) -> Cursor {
         let start: Cursor = cursor
         var cursor = self.nextSlave(cursor: cursor)
 
@@ -251,10 +255,10 @@ fileprivate extension PinNavigator {
         while start != cursor && stop != cursor {
             let nextMaster = self.nextMaster(cursor: cursor)
             let nextMasterType = nextMaster.type
-            if nextMaster == start || nextMasterType == PinPoint.inside || nextMasterType == PinPoint.out_in {
+            if nextMaster == start || nextMasterType == PinPoint.inside || (nextMasterType == PinPoint.out_in && !skipOutIn) {
                 return cursor
             }
-            
+
             self.mark(cursor: cursor)
             cursor = self.nextSlave(cursor: cursor)
         }

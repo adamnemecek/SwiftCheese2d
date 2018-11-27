@@ -244,21 +244,20 @@ fileprivate extension PinNavigator {
         let start: Cursor = cursor
         var cursor = self.nextSlave(cursor: cursor)
 
-        if cursor.type != PinPoint.out_in || stop == cursor {
-            return cursor
-        }
-        
         while start != cursor && stop != cursor && cursor.type == PinPoint.out_in {
             let nextMaster = self.nextMaster(cursor: cursor)
-            if nextMaster == start || nextMaster == stop {
+            let nextSlave = self.nextSlave(cursor: cursor)
+            let canNotSkip = nextMaster != nextSlave
+            
+            if nextMaster == start || canNotSkip {
                 return cursor
             }
+            
             self.mark(cursor: cursor)
-            cursor = self.nextSlave(cursor: cursor)
+            cursor = nextSlave
         }
         
         return cursor
     }
-    
 }
 

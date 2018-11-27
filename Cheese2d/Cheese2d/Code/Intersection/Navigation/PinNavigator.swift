@@ -87,7 +87,7 @@ struct PinNavigator {
     }
     
     
-    mutating func nextSlave(cursor: Cursor) -> Cursor {
+    func nextSlave(cursor: Cursor) -> Cursor {
         let node = nodeArray[cursor.index]
         
         let n = slavePath.count
@@ -105,7 +105,7 @@ struct PinNavigator {
     }
 
     
-    mutating func nextMaster(cursor: Cursor) -> Cursor {
+    func nextMaster(cursor: Cursor) -> Cursor {
         let node = nodeArray[cursor.index]
         
         let n = masterPath.count

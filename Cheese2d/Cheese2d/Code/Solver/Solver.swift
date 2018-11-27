@@ -240,6 +240,7 @@ fileprivate extension PinNavigator {
 
 fileprivate extension PinNavigator {
     
+    /*
     fileprivate mutating func nextSlaveOut(cursor: Cursor, stop: Cursor) -> Cursor {
         let start: Cursor = cursor
         var cursor = self.nextSlave(cursor: cursor)
@@ -258,6 +259,60 @@ fileprivate extension PinNavigator {
         }
         
         return cursor
+    }
+    */
+    
+    fileprivate mutating func nextSlaveOut(cursor: Cursor, stop: Cursor) -> Cursor {
+        let start: Cursor = cursor
+        
+        var prev = cursor
+        var cursor = self.nextSlave(cursor: cursor)
+
+        while start != cursor && stop != cursor && cursor.type == PinPoint.out_in {
+            //let nextMaster = self.nextMaster(cursor: cursor)
+            
+            /*
+            let canNotSkip = nextMaster != nextSlave
+            
+            
+            if nextMaster == start || canNotSkip {
+                return cursor
+            }
+            */
+            let nextMaster = self.nextMaster(cursor: cursor)
+            if nextMaster == start {
+                return cursor
+            }
+
+            let isCanSkip = self.isCanSkip(prev: prev, cursor: cursor)
+            if !isCanSkip {
+                return cursor
+            }
+            
+
+            self.mark(cursor: cursor)
+            prev = cursor
+            cursor = self.nextSlave(cursor: cursor)
+        }
+        
+        
+        return cursor
+    }
+    
+    private mutating func isCanSkip(prev: Cursor, cursor: Cursor) -> Bool {
+        let nextSlave = self.nextSlave(cursor: cursor)
+        
+        var nextMaster = cursor
+        var isFoundMaster = false
+        var isFoundStart = false
+        repeat {
+            nextMaster = self.nextMaster(cursor: nextMaster)
+            isFoundMaster = nextMaster == nextSlave
+            isFoundStart = nextMaster == prev
+        } while !(isFoundMaster || isFoundStart)
+        
+        
+        return isFoundMaster
     }
 }
 

@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct PathMileStone {
+struct PathMileStone: Equatable {
     
     static let zero = PathMileStone(index: 0, offset: 0)
     
@@ -39,5 +39,9 @@ struct PathMileStone {
     
     func isNextOnRay(a: PathMileStone) -> Bool {
         return index == a.index && offset <= a.offset
+    }
+    
+    public static func == (lhs: PathMileStone, rhs: PathMileStone) -> Bool {
+        return lhs.index == rhs.index && lhs.offset == rhs.offset
     }
 }

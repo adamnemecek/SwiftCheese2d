@@ -65,13 +65,11 @@ struct PinSequence {
             
             let slaveIndex = slavePath[j]
             node = nodes[slaveIndex]
-            //node.slaveIndex = slaveIndex
             node.slaveIndex = j
             nodes[slaveIndex] = node
 
             let masterIndex = masterPath[j]
             node = nodes[masterIndex]
-            //node.masterIndex = masterIndex
             node.masterIndex = j
             nodes[masterIndex] = node
         }

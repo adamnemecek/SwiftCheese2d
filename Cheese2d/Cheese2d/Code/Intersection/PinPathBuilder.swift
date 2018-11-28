@@ -32,7 +32,7 @@ struct PinPathBuilder {
         mergedEdges.reserveCapacity(n)
 
         var i = 0
-        while i < n { // todo repeat
+        repeat {
             let edge = pinEdges[i]
             
             var v1 = edge.v1
@@ -43,7 +43,7 @@ struct PinPathBuilder {
                 let next = pinEdges[j]
                 
                 // must be same or next edge
-                if v1.point == next.v0.point {
+                if v1.masterMileStone == next.v0.masterMileStone {
                     j += 1
                     v1 = next.v1
                 } else {
@@ -56,13 +56,13 @@ struct PinPathBuilder {
             mergedEdges.append(path)
             
             i = j
-        }
+        } while i < n
         
         if mergedEdges.count > 1 {
             let first = mergedEdges[0]
             let last = mergedEdges[mergedEdges.count - 1]
             
-            if first.v0.point == last.v1.point {
+            if first.v0.masterMileStone == last.v1.masterMileStone {
 
                 mergedEdges[0] = PinEdge(v0: last.v0, v1: first.v1, interposition: first.interposition)
                 mergedEdges.remove(at: mergedEdges.count - 1)

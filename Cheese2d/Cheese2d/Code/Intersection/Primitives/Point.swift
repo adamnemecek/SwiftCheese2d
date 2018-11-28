@@ -10,8 +10,7 @@ import Foundation
 
 
 public struct Point: Equatable, Comparable {
-    
-    static let none = Point(x: Int64.max, y: Int64.max)
+
     static let zero = Point(x: 0, y: 0)
     
     var x: Int64

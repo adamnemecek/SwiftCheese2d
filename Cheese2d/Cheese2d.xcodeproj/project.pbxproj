@@ -35,6 +35,7 @@
 		54A7C3E3219D5CDB005C9283 /* SubtractTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7C3E2219D5CDB005C9283 /* SubtractTest.swift */; };
 		54B285C22198B570009027DD /* FloatSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C12198B570009027DD /* FloatSolution.swift */; };
 		54B285C42198B995009027DD /* Disposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C32198B995009027DD /* Disposition.swift */; };
+		54B460DF21AE983D0008110F /* PinPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B460DE21AE983D0008110F /* PinPath+Extension.swift */; };
 		54BB025A21A46BDC00AD7F2F /* SubtractTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB025821A466BC00AD7F2F /* SubtractTestData.swift */; };
 		54BB545D2171D13500B61F3C /* PinSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB545C2171D13500B61F3C /* PinSequence.swift */; };
 		54F2C546217777FC001F4857 /* PinNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2C545217777FC001F4857 /* PinNavigator.swift */; };
@@ -83,6 +84,7 @@
 		54A7C3E2219D5CDB005C9283 /* SubtractTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractTest.swift; sourceTree = "<group>"; };
 		54B285C12198B570009027DD /* FloatSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatSolution.swift; sourceTree = "<group>"; };
 		54B285C32198B995009027DD /* Disposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disposition.swift; sourceTree = "<group>"; };
+		54B460DE21AE983D0008110F /* PinPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinPath+Extension.swift"; sourceTree = "<group>"; };
 		54BB025821A466BC00AD7F2F /* SubtractTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractTestData.swift; sourceTree = "<group>"; };
 		54BB545C2171D13500B61F3C /* PinSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSequence.swift; sourceTree = "<group>"; };
 		54F2C545217777FC001F4857 /* PinNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNavigator.swift; sourceTree = "<group>"; };
@@ -211,9 +213,18 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		54B460DD21AE98240008110F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				54B460DE21AE983D0008110F /* PinPath+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		54BB025B21A46BE400AD7F2F /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				54B460DD21AE98240008110F /* Extension */,
 				54BB025821A466BC00AD7F2F /* SubtractTestData.swift */,
 			);
 			path = Test;
@@ -364,6 +375,7 @@
 				54B285C42198B995009027DD /* Disposition.swift in Sources */,
 				545A2D3E21550F8200047C8D /* AdjacencyMatrix.swift in Sources */,
 				54BB545D2171D13500B61F3C /* PinSequence.swift in Sources */,
+				54B460DF21AE983D0008110F /* PinPath+Extension.swift in Sources */,
 				5412993F2170C1F0001F0F0A /* PathMileStone.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

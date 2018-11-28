@@ -54,6 +54,7 @@ class SubtractTest: CoordinateSystemScene {
         let points = result.points
         
         self.addSublayer(ShapeForm(points: slave, color: Colors.slave_second))
+        self.addSublayer(ShapeForm(points: master, color: Colors.master_second))
         
         let solver = Solver(master: master, slave: slave)
         let solution: FloatSolution = solver.substract()
@@ -65,17 +66,9 @@ class SubtractTest: CoordinateSystemScene {
             }
         }
         
-        self.addSublayer(ShapePolygon(points: master, tip: 1.0, lineWidth: 0.2, color: Colors.master, showIndeces: true, scaleIndeces: 4, dash: nil))
-        self.addSublayer(ShapePolygon(points: slave, tip: 1.0, lineWidth: 0.3, color: Colors.slave, showIndeces: true, scaleIndeces: -2.5, dash: [2,3]))
-
-        
-        if solution.disposition == .hasIntersections {
-            for path in solution.pathCollection {
-                self.addSublayer(ShapePath(points: path + [path[0]], tip: 1.0, lineWidth: 1.0, color: Colors.solution_second, showIndeces: false, showLast: false, scaleIndeces: 4, dash: nil, arrowColor: Colors.clear))
-            }
-        }
-        
-        
+        self.addSublayer(ShapePolygon(points: master, tip: 1.0, lineWidth: 0.4, color: Colors.master, showIndeces: true, scaleIndeces: 4, dash: nil))
+        self.addSublayer(ShapePolygon(points: slave, tip: 1.0, lineWidth: 0.4, color: Colors.slave, showIndeces: true, scaleIndeces: -2.5, dash: [2,3]))
+      
         let paths = result.path
         for edgePath in paths {
             let colors = edgePath.colors

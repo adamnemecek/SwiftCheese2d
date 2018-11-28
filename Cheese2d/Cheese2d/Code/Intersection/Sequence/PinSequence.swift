@@ -44,14 +44,13 @@ struct PinSequence {
         }
 
         guard i > 0 else {
-            return PinNavigator(masterPath: [], slavePath: [], pinPathArray: [], pinPointArray: [], nodeArray: [])
+            return PinNavigator(slavePath: [], pinPathArray: [], pinPointArray: [], nodeArray: [])
         }
         
         self.sortMaster()
         self.cleanDoubles()
         
         let slavePath = self.buildSlavePath()
-        let masterPath = self.buildMasterPath()
         
         let n = slavePath.count
         
@@ -61,21 +60,17 @@ struct PinSequence {
             let handler = handlerArray[j]
             node.isPinPath = handler.isPinPath
             node.index = handler.index
+            node.masterIndex = j
             nodes[j] = node
             
             let slaveIndex = slavePath[j]
             node = nodes[slaveIndex]
             node.slaveIndex = j
             nodes[slaveIndex] = node
-
-            let masterIndex = masterPath[j]
-            node = nodes[masterIndex]
-            node.masterIndex = j
-            nodes[masterIndex] = node
         }
 
         
-        return PinNavigator(masterPath: masterPath, slavePath: slavePath,
+        return PinNavigator(slavePath: slavePath,
                             pinPathArray: pinPathArray, pinPointArray: pinPointArray,
                             nodeArray: nodes)
     }
@@ -232,7 +227,6 @@ struct PinSequence {
         var indexArray = Array<Int>(repeating: 0, count: n)
         
         for i in 0...n - 1 {
-            //indexArray[i] = handlerArray[i].index
             indexArray[i] = i
         }
         

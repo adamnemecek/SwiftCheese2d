@@ -1057,4 +1057,68 @@ public class SubtractTest: XCTestCase {
         XCTAssertEqual(path, sample)
         
     }
+    
+    func test_38() {
+        let data = SubtractTestData.data(index: 38)
+        let master = data.master
+        let slave = data.slave
+        
+        let solver = Solver(master: master, slave: slave)
+        let solution: FloatSolution = solver.substract()
+        
+        XCTAssertEqual(solution.disposition, .hasIntersections)
+        XCTAssertEqual(solution.pathCollection.count, 5)
+        
+        let path0 = solution.pathCollection[0]
+        let sample0 = [
+            CGPoint(x: 5, y: 0),
+            CGPoint(x: 5, y: -5),
+            CGPoint(x: -5, y: -5),
+            CGPoint(x: -5, y: 0)
+        ]
+        
+        XCTAssertEqual(path0, sample0)
+        
+        let path1 = solution.pathCollection[1]
+        let sample1 = [
+            CGPoint(x: 10, y: 0),
+            CGPoint(x: 10, y: 15),
+            CGPoint(x: 15, y: 15),
+            CGPoint(x: 15, y: -5),
+            CGPoint(x: 10, y: -5)
+        ]
+        
+        XCTAssertEqual(path1, sample1)
+        
+        let path2 = solution.pathCollection[2]
+        let sample2 = [
+            CGPoint(x: 0, y: 10),
+            CGPoint(x: 0, y: 15),
+            CGPoint(x: 5, y: 15),
+            CGPoint(x: 5, y: 10)
+        ]
+        
+        XCTAssertEqual(path2, sample2)
+        
+        let path3 = solution.pathCollection[3]
+        let sample3 = [
+            CGPoint(x: -10, y: 10),
+            CGPoint(x: -10, y: 15),
+            CGPoint(x: -5, y: 15),
+            CGPoint(x: -5, y: 10)
+        ]
+        
+        XCTAssertEqual(path3, sample3)
+        
+        let path4 = solution.pathCollection[4]
+        let sample4 = [
+            CGPoint(x: -15, y: -10),
+            CGPoint(x: 10, y: -10),
+            CGPoint(x: 15, y: -10),
+            CGPoint(x: 15, y: -15),
+            CGPoint(x: -15, y: -15)
+        ]
+        
+        XCTAssertEqual(path4, sample4)
+    }
 }

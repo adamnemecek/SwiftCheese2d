@@ -25,17 +25,14 @@ struct PinNavigator {
             return lhs.index == rhs.index
         }
     }
+
     
-    // TODO optimise, we could remove masterPath
+    private let slavePath: [Int]                // for s in slavePath { nodeArray[s] }  iterate all pins in counter clockwise order by slave path
+    let pinPathArray: [PinPath]                 // pinPathArray[nodeArray[i].index] return PinPath for this pin
+    let pinPointArray: [PinPoint]               // supply array for nodeArray[i].index return PinPoint for this pin
+    private (set)var nodeArray: [PinNode]            // keep info about each pin node, also for n in nodeArray iterate all pins in clockwise order by master path
     
-    private let masterPath: [Int]           // for m in masterPath { nodeArray[m] }  iterate all pins in clockwise order by master path
-    private let slavePath: [Int]            // for s in slavePath { nodeArray[s] }  iterate all pins in counter clockwise order by slave path
-    let pinPathArray: [PinPath]     // pinPathArray[nodeArray[i].index] return PinPath for this pin
-    let pinPointArray: [PinPoint]   // supply array for nodeArray[i].index return PinPoint for this pin
-    var nodeArray: [PinNode]                // keep info about each pin node //TODO make private
-    
-    init(masterPath: [Int], slavePath: [Int], pinPathArray: [PinPath], pinPointArray: [PinPoint], nodeArray: [PinNode]) {
-        self.masterPath = masterPath
+    init(slavePath: [Int], pinPathArray: [PinPath], pinPointArray: [PinPoint], nodeArray: [PinNode]) {
         self.slavePath = slavePath
         self.pinPathArray = pinPathArray
         self.pinPointArray = pinPointArray
@@ -43,11 +40,11 @@ struct PinNavigator {
     }
 
     
-    mutating func next(cursor: Cursor) -> Cursor {
+    func next(cursor: Cursor) -> Cursor {
         return next(index: cursor.index)
     }
     
-    mutating func next() -> Cursor {
+    func next() -> Cursor {
         if self.nodeArray.count != 0 {
             return next(index: 0)
         } else {
@@ -56,7 +53,7 @@ struct PinNavigator {
     }
     
     
-    mutating private func next(index: Int) -> Cursor {
+    private func next(index: Int) -> Cursor {
         var i = index
         let n = nodeArray.count
         repeat {
@@ -108,9 +105,9 @@ struct PinNavigator {
     func nextMaster(cursor: Cursor) -> Cursor {
         let node = nodeArray[cursor.index]
         
-        let n = masterPath.count
+        let n = nodeArray.count
         let nextMasterIndex = (node.masterIndex + 1) % n
-        let index = masterPath[nextMasterIndex]
+        let index = nextMasterIndex
         let nextNode = nodeArray[index]
         
         if nextNode.isPinPath == 0 {
@@ -122,12 +119,16 @@ struct PinNavigator {
         }
     }
     
-    
+
     func pin(cursor: Cursor) -> PinPoint {
         let node = nodeArray[cursor.index]
         return pinPointArray[node.index]
     }
     
+    func isPinPath(cursor: Cursor) -> Bool {
+        let node = nodeArray[cursor.index]
+        return node.isPinPath != 0
+    }
     
     func path(cursor: Cursor) -> PinPath {
         let node = nodeArray[cursor.index]

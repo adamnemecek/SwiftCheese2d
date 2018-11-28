@@ -56,8 +56,7 @@ class SubtractTest: CoordinateSystemScene {
         self.addSublayer(ShapeForm(points: slave, color: Colors.slave_second))
         self.addSublayer(ShapeForm(points: master, color: Colors.master_second))
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         if solution.disposition == .hasIntersections {
             for path in solution.pathCollection {

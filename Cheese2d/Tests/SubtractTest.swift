@@ -21,8 +21,7 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -48,8 +47,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -71,8 +70,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -94,8 +93,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -117,8 +116,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -139,8 +138,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -161,8 +160,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -192,8 +191,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -226,8 +225,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -261,8 +260,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -294,8 +293,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -327,8 +326,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -358,8 +357,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -384,8 +383,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .noIntersections)
         XCTAssertEqual(solution.pathCollection.count, 0)
@@ -397,8 +396,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 4)
@@ -446,8 +445,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 3)
@@ -489,8 +488,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -526,8 +525,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -553,8 +552,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -579,8 +578,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -606,8 +605,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -629,8 +628,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -658,8 +657,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -692,8 +691,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -726,8 +725,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -760,8 +759,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -789,8 +788,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -822,8 +821,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -839,8 +838,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -862,8 +861,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -888,8 +887,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -914,8 +913,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -953,8 +952,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -972,8 +971,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -1005,8 +1004,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 2)
@@ -1037,8 +1036,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 1)
@@ -1063,8 +1062,8 @@ public class SubtractTest: XCTestCase {
         let master = data.master
         let slave = data.slave
         
-        let solver = Solver(master: master, slave: slave)
-        let solution: FloatSolution = solver.substract()
+        
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
         XCTAssertEqual(solution.pathCollection.count, 5)

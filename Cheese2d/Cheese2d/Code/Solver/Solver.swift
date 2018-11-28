@@ -11,28 +11,12 @@ import Foundation
 
 public struct Solver {
     
-    private let master: [Point]
-    private let slave: [Point]
-    private let converter: PointConverter
     
-    
-    public init(master: [CGPoint], slave: [CGPoint], precision: CGFloat = PointConverter.defaultPrecision) {
-        let converter = PointConverter(precision: precision)
-        self.master = converter.convert(points: master)
-        self.slave = converter.convert(points: slave)
-        self.converter = converter
-    }
-    
-    
-    public init(master: [Point], slave: [Point], precision: CGFloat = PointConverter.defaultPrecision) {
-        self.master = master
-        self.slave = slave
-        self.converter = PointConverter(precision: precision)
-    }
-    
-    
-    public func substract() -> FloatSolution {
-        let solution: Solution = self.substract()
+    public static func substract(master: [CGPoint], slave: [CGPoint], converter: PointConverter = PointConverter.defaultConverter) -> FloatSolution {
+        let iMaster = converter.convert(points: master)
+        let iSlave = converter.convert(points: slave)
+        
+        let solution = Solver.substract(master: iMaster, slave: iSlave, converter: converter)
         
         if solution.disposition == .hasIntersections {
             var pathCollection = Array<[CGPoint]>()
@@ -49,7 +33,7 @@ public struct Solver {
     }
 
     
-    public func substract() -> Solution {
+    public static func substract(master: [Point], slave: [Point], converter: PointConverter = PointConverter.defaultConverter) -> Solution {
         var navigator = Intersector.findPins(iMaster: master, iSlave: slave, converter: converter, exclusionPinType: PinPoint.in_out)
 
         var cursor = navigator.nextSub()

@@ -13,8 +13,8 @@ public struct Point: Equatable, Comparable {
 
     static let zero = Point(x: 0, y: 0)
     
-    var x: Int64
-    var y: Int64
+    let x: Int64
+    let y: Int64
     
     func sqrDistance(point: Point) -> Int64 {
         let dx = point.x - self.x

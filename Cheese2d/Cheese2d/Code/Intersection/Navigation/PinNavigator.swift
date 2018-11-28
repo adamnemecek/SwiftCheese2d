@@ -30,7 +30,7 @@ struct PinNavigator {
     private let slavePath: [Int]                // for s in slavePath { nodeArray[s] }  iterate all pins in counter clockwise order by slave path
     let pinPathArray: [PinPath]                 // pinPathArray[nodeArray[i].index] return PinPath for this pin
     let pinPointArray: [PinPoint]               // supply array for nodeArray[i].index return PinPoint for this pin
-    private (set)var nodeArray: [PinNode]            // keep info about each pin node, also for n in nodeArray iterate all pins in clockwise order by master path
+    private (set)var nodeArray: [PinNode]       // keep info about each pin node, also for n in nodeArray iterate all pins in clockwise order by master path
     
     init(slavePath: [Int], pinPathArray: [PinPath], pinPointArray: [PinPoint], nodeArray: [PinNode]) {
         self.slavePath = slavePath
@@ -123,11 +123,6 @@ struct PinNavigator {
     func pin(cursor: Cursor) -> PinPoint {
         let node = nodeArray[cursor.index]
         return pinPointArray[node.index]
-    }
-    
-    func isPinPath(cursor: Cursor) -> Bool {
-        let node = nodeArray[cursor.index]
-        return node.isPinPath != 0
     }
     
     func path(cursor: Cursor) -> PinPath {

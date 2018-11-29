@@ -1,5 +1,5 @@
 //
-//  Solver.swift
+//  Subtractor.swift
 //  Cheese2d
 //
 //  Created by Nail Sharipov on 06/11/2018.
@@ -9,14 +9,14 @@
 import Foundation
 
 
-public struct Solver {
+public struct Subtractor {
     
     
     public static func substract(master: [CGPoint], slave: [CGPoint], converter: PointConverter = PointConverter.defaultConverter) -> FloatSolution {
         let iMaster = converter.convert(points: master)
         let iSlave = converter.convert(points: slave)
         
-        let solution = Solver.substract(master: iMaster, slave: iSlave, converter: converter)
+        let solution = Subtractor.substract(master: iMaster, slave: iSlave, converter: converter)
         
         if solution.disposition == .hasIntersections {
             var pathCollection = Array<[CGPoint]>()

@@ -1,20 +1,21 @@
 //
-//  SubtractTest.swift
+//  CombineTest.swift
 //  Cheese2dUI
 //
-//  Created by Nail Sharipov on 11/11/2018.
+//  Created by Nail Sharipov on 29/11/2018.
 //  Copyright © 2018 Nail Sharipov. All rights reserved.
 //
+
 
 import Cocoa
 @testable import Cheese2d
 
-class SubtractTest: CoordinateSystemScene {
-
+class CombineTest: CoordinateSystemScene {
+    
     private var master: [CGPoint] = []
     private var slave: [CGPoint] = []
-
-    private var pageIndex: Int = SubtractTestData.active
+    
+    private var pageIndex: Int = CombineTestData.active
     
     private var activeIndex: Int?
     private var isSlave: Bool = false
@@ -56,7 +57,8 @@ class SubtractTest: CoordinateSystemScene {
         self.addSublayer(ShapeForm(points: slave, color: Colors.slave_second))
         self.addSublayer(ShapeForm(points: master, color: Colors.master_second))
         
-        let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
+        /*
+        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
         
         if solution.disposition == .hasIntersections {
             for path in solution.pathCollection {
@@ -64,17 +66,17 @@ class SubtractTest: CoordinateSystemScene {
                 self.addSublayer(shape)
             }
         }
-        
+        */
         self.addSublayer(ShapePolygon(points: master, tip: 1.0, lineWidth: 0.4, color: Colors.master, showIndeces: true, scaleIndeces: 4, dash: nil))
         self.addSublayer(ShapePolygon(points: slave, tip: 1.0, lineWidth: 0.4, color: Colors.slave, showIndeces: true, scaleIndeces: -2.5, dash: [2,3]))
-      
+        
         let paths = result.path
         for edgePath in paths {
             let colors = edgePath.colors
             let shape = ShapePath(points: edgePath.path, tip: 1.5, lineWidth: 0.4, color: colors[0], showIndeces: false, showLast: false, scaleIndeces: 1, dash: nil, arrowColor: colors[1])
             self.addSublayer(shape)
         }
-
+        
         
         for pin in points {
             self.addSublayer(ShapePinDot(pin: pin, radius: 0.7))
@@ -82,7 +84,7 @@ class SubtractTest: CoordinateSystemScene {
     }
     
     func showPpage(index: Int) {
-        let result = SubtractTestData.data(index: index)
+        let result = CombineTestData.data(index: index)
         self.master = result.master
         self.slave = result.slave
         self.update()
@@ -91,7 +93,7 @@ class SubtractTest: CoordinateSystemScene {
 }
 
 
-extension SubtractTest: MouseCompatible {
+extension CombineTest: MouseCompatible {
     
     private func findNearest(point: CGPoint, points: [CGPoint]) -> Int? {
         var i = 0
@@ -136,7 +138,7 @@ extension SubtractTest: MouseCompatible {
         guard let index = self.activeIndex else {
             return
         }
-
+        
         let x = CGFloat(Int(point.x * 2)) / 2
         let y = CGFloat(Int(point.y * 2)) / 2
         
@@ -157,14 +159,14 @@ extension SubtractTest: MouseCompatible {
     }
 }
 
-extension SubtractTest: TestNavigation {
+extension CombineTest: TestNavigation {
     func next() {
-        self.pageIndex = (self.pageIndex + 1) % SubtractTestData.count
+        self.pageIndex = (self.pageIndex + 1) % CombineTestData.count
         self.showPpage(index: self.pageIndex)
     }
     
     func back() {
-        self.pageIndex = (self.pageIndex - 1 + SubtractTestData.count) % SubtractTestData.count
+        self.pageIndex = (self.pageIndex - 1 + CombineTestData.count) % CombineTestData.count
         self.showPpage(index: self.pageIndex)
     }
     

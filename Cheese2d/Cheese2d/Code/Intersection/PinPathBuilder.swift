@@ -129,7 +129,7 @@ struct PinPathBuilder {
             } else if type0 < 0 || type1 < 0 {
                 return PinPoint.outside
             } else {
-                fatalError("impossible")
+                return PinPoint.null
             }
         }
         

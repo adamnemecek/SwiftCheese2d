@@ -30,6 +30,7 @@
 		54B285C62198BBB7009027DD /* SubtractTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C52198BBB7009027DD /* SubtractTest.swift */; };
 		54B8756C2169356900D823AE /* MouseCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B8756B2169356900D823AE /* MouseCompatible.swift */; };
 		54E25D7E216CD8CE00B6FE58 /* ShapePinDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E25D7D216CD8CE00B6FE58 /* ShapePinDot.swift */; };
+		54EDFC2321B0687B00647B6C /* CombineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EDFC2221B0687B00647B6C /* CombineTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		54B285C52198BBB7009027DD /* SubtractTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractTest.swift; sourceTree = "<group>"; };
 		54B8756B2169356900D823AE /* MouseCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseCompatible.swift; sourceTree = "<group>"; };
 		54E25D7D216CD8CE00B6FE58 /* ShapePinDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapePinDot.swift; sourceTree = "<group>"; };
+		54EDFC2221B0687B00647B6C /* CombineTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			children = (
 				540F9465216F248800CF8A9D /* AngleTest.swift */,
 				54B285C52198BBB7009027DD /* SubtractTest.swift */,
+				54EDFC2221B0687B00647B6C /* CombineTest.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				542D78F92154CD7F000B1D1A /* ShapeVector.swift in Sources */,
 				542D78FE2154CD7F000B1D1A /* ShapePolygon.swift in Sources */,
 				542D78FC2154CD7F000B1D1A /* ShapeLine.swift in Sources */,
+				54EDFC2321B0687B00647B6C /* CombineTest.swift in Sources */,
 				542D79042154CD7F000B1D1A /* CoordinateSystemScene.swift in Sources */,
 				542D79002154CD7F000B1D1A /* CGPoint+Extension.swift in Sources */,
 				54B285C62198BBB7009027DD /* SubtractTest.swift in Sources */,

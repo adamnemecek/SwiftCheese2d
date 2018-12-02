@@ -45,11 +45,11 @@ struct IntersectorResult {
 
 
 extension Intersector {
-    static func findPins(master: [CGPoint], slave: [CGPoint], converter: PointConverter = PointConverter.defaultConverter) -> IntersectorResult {
+    static func findPins(master: [CGPoint], slave: [CGPoint], converter: PointConverter = PointConverter.defaultConverter, exclusionPinType: Int = 0) -> IntersectorResult {
         let iMaster = converter.convert(points: master)
         let iSlave = converter.convert(points: slave)
         
-        let navigator = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: PinPoint.null)
+        let navigator = Intersector.findPins(iMaster: iMaster, iSlave: iSlave, converter: converter, exclusionPinType: exclusionPinType)
         
         var borders = [EdgePath]()
         var points = [Pin]()

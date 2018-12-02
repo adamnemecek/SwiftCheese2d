@@ -154,6 +154,29 @@ struct PinNavigator {
         }
     }
     
+    func masterStartPoint(cursor: Cursor) -> Point {
+        let node = nodeArray[cursor.index]
+        if node.isPinPath == 0 {
+            let pin = pinPointArray[node.index]
+            return pin.point
+        } else {
+            let path = pinPathArray[node.index]
+            return path.v0.point
+        }
+    }
+    
+    
+    func masterEndPoint(cursor: Cursor) -> Point {
+        let node = nodeArray[cursor.index]
+        if node.isPinPath == 0 {
+            let pin = pinPointArray[node.index]
+            return pin.point
+        } else {
+            let path = pinPathArray[node.index]
+            return path.v1.point
+        }
+    }
+    
     
     func slaveStartStone(cursor: Cursor) -> PathMileStone {
         let node = nodeArray[cursor.index]

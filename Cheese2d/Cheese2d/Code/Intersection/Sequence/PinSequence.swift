@@ -25,7 +25,7 @@ struct PinSequence {
     }
     
     
-    mutating func buildNavigator() -> PinNavigator {
+    mutating func buildNavigator(exclusionPinType: Int) -> PinNavigator {
         var i = 0
         while i < pinPathArray.count {
             let path = pinPathArray[i]
@@ -43,12 +43,16 @@ struct PinSequence {
             i += 1
         }
 
-        guard i > 0 else {
+        guard handlerArray.count > 0 else {
             return PinNavigator(slavePath: [], pinPathArray: [], pinPointArray: [], nodeArray: [])
         }
         
         self.sortMaster()
-        self.cleanDoubles()
+        self.cleanDoubles(exclusionPinType: exclusionPinType)
+        
+        guard handlerArray.count > 0 else {
+            return PinNavigator(slavePath: [], pinPathArray: [], pinPointArray: [], nodeArray: [])
+        }
         
         let slavePath = self.buildSlavePath()
         
@@ -106,7 +110,7 @@ struct PinSequence {
     }
     
     
-    private mutating func cleanDoubles() {
+    private mutating func cleanDoubles(exclusionPinType: Int) {
         var i = 1
         var prevIndex = 0
         var prev = handlerArray[prevIndex]
@@ -132,6 +136,17 @@ struct PinSequence {
             i += 1
         }
         
+        i = 0
+        while i < handlerArray.count {
+            var handler = handlerArray[i]
+            if handler.marker == 0 && handler.type == exclusionPinType {
+                handler.marker = 1
+                handlerArray[i] = handler
+                isCompactRequired = true
+            }
+            i += 1
+        }
+        
         if isCompactRequired {
             self.compact()
         }
@@ -152,13 +167,13 @@ struct PinSequence {
                     let path = self.pinPathArray[index]
                     paths.append(path)
 
-                    let handler = PinHandler(sortFactor: pinHandler.masterSortFactor, index: paths.count - 1, isPinPath: 1)
+                    let handler = PinHandler(sortFactor: pinHandler.masterSortFactor, index: paths.count - 1, isPinPath: 1, type: pinHandler.type)
                     handlers.append(handler)
                 } else {
                     let pin = self.pinPointArray[index]
                     points.append(pin)
 
-                    let handler = PinHandler(sortFactor: pinHandler.masterSortFactor, index: points.count - 1, isPinPath: 0)
+                    let handler = PinHandler(sortFactor: pinHandler.masterSortFactor, index: points.count - 1, isPinPath: 0, type: pinHandler.type)
                     handlers.append(handler)
                 }
             }

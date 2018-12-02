@@ -51,22 +51,23 @@ class CombineTest: CoordinateSystemScene {
     }
     
     private func addShapes() {
-        let result = Intersector.findPins(master: master, slave: slave)
+        let result = Intersector.findPins(master: master, slave: slave, converter: PointConverter.defaultConverter, exclusionPinType: -2)
         let points = result.points
         
         self.addSublayer(ShapeForm(points: slave, color: Colors.slave_second))
         self.addSublayer(ShapeForm(points: master, color: Colors.master_second))
         
-        /*
-        let solution: FloatSolution = Solver.substract(master: master, slave: slave)
+        
+        let solution: FloatSolution = Combiner.combine(master: master, slave: slave)
         
         if solution.disposition == .hasIntersections {
-            for path in solution.pathCollection {
-                let shape = ShapeForm(points: path, color: Colors.solution)
+            for polygon in solution.polygons {
+                let color = polygon.isHole ? Colors.solution_second : Colors.solution
+                let shape = ShapeForm(points: polygon.path, color: color)
                 self.addSublayer(shape)
             }
         }
-        */
+        
         self.addSublayer(ShapePolygon(points: master, tip: 1.0, lineWidth: 0.4, color: Colors.master, showIndeces: true, scaleIndeces: 4, dash: nil))
         self.addSublayer(ShapePolygon(points: slave, tip: 1.0, lineWidth: 0.4, color: Colors.slave, showIndeces: true, scaleIndeces: -2.5, dash: [2,3]))
         

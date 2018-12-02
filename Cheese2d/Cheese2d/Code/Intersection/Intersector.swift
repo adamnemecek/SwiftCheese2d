@@ -226,13 +226,13 @@ struct Intersector {
         var aggregator = PinPathBuilder(edges: pinEdges, converter: converter)
 
         // build pin paths from edges
-        let pinPaths = aggregator.build(master: iMaster, slave: iSlave, exclusionPinType: exclusionPinType)
+        let pinPaths = aggregator.build(master: iMaster, slave: iSlave)
         
         // combine pin points and paths
         var sequence = PinSequence(pinPointArray: pinPoints, pinPathArray: pinPaths, masterCount: iMaster.count)
         
         // remove doubles and organize data
-        let navigator = sequence.buildNavigator()
+        let navigator = sequence.buildNavigator(exclusionPinType: exclusionPinType)
 
         return navigator
     }
@@ -308,6 +308,7 @@ struct Intersector {
                     return 2
                 }
             } else {
+                // TODO check corner case 
                 if a0 != b0 && a0 != b1 {
                     return -1
                 } else {

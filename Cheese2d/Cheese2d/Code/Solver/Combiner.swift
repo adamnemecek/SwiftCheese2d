@@ -18,27 +18,18 @@ public struct Combiner {
         
         let solution = Combiner.combine(master: iMaster, slave: iSlave, converter: converter)
         
-        if solution.disposition == .hasIntersections {
-            var pathCollection = Array<[CGPoint]>()
-            pathCollection.reserveCapacity(solution.pathCollection.count)
-            for p in solution.pathCollection {
-                let path = converter.convert(iPoints: p)
-                pathCollection.append(path)
-            }
-            return FloatSolution(pathCollection: pathCollection, disposition: .hasIntersections)
-        } else {
-            return FloatSolution(pathCollection: [], disposition: .noIntersections)
-        }
+        return FloatSolution(solution: solution, converter: converter)
     }
     
     
     public static func combine(master: [Point], slave: [Point], converter: PointConverter = PointConverter.defaultConverter) -> Solution {
-        var navigator = Intersector.findPins(iMaster: master, iSlave: slave, converter: converter, exclusionPinType: PinPoint.in_out)
+        var navigator = Intersector.findPins(iMaster: master, iSlave: slave, converter: converter, exclusionPinType: PinPoint.out_in)
         
-        var cursor = navigator.nextSub()
+        var cursor = navigator.nextCombine()
         
         guard cursor.isNotEmpty else {
-            return Solution(pathCollection: [], disposition: .noIntersections)
+            // TODO check is polygon completely inside
+            return Solution(polygons: [], disposition: .noIntersections)
         }
         
         var result = [[Point]]()
@@ -63,16 +54,7 @@ public struct Combiner {
                 
                 let inSlaveStart = navigator.slaveStartStone(cursor: cursor)
                 
-                let outSlaveEnd: PathMileStone
-                
-                let isOutInStart = outCursor == start && path.count > 0
-                
-                if !isOutInStart {
-                    outSlaveEnd = navigator.slaveEndStone(cursor: outCursor)
-                } else {
-                    // possible if we start with out-in
-                    outSlaveEnd = navigator.slaveStartStone(cursor: outCursor)
-                }
+                let outSlaveEnd = navigator.slaveEndStone(cursor: outCursor)
                 
                 let startPoint = navigator.slaveStartPoint(cursor: cursor)
                 path.append(startPoint)
@@ -122,11 +104,7 @@ public struct Combiner {
                         path.append(contentsOf: slice)
                     }
                 }
-                
-                if isOutInStart {
-                    // possible if we start with out-in
-                    break
-                }
+
                 
                 let endPoint = navigator.slaveEndPoint(cursor: outCursor)
                 path.append(endPoint)
@@ -188,18 +166,29 @@ public struct Combiner {
             
             result.append(path)
             
-            cursor = navigator.nextSub()
+            cursor = navigator.nextCombine()
         }
         
         let solution: Solution
         
         if result.count > 0 {
-            solution = Solution(pathCollection: result, disposition: .hasIntersections)
+            solution = Combiner.buildSolution(pathList: result)
         } else {
-            solution = Solution(pathCollection: [], disposition: .noIntersections)
+            solution = Solution(polygons: [], disposition: .noIntersections)
         }
         
         return solution
+    }
+    
+    private static func buildSolution(pathList: [[Point]]) -> Solution {
+        var polygons = [Polygon]()
+        for path in pathList {
+            let isClockWise = path.isClockWise()
+            let polygon = Polygon(path: path, isHole: !isClockWise)
+            polygons.append(polygon)
+        }
+        
+        return Solution(polygons: polygons, disposition: .hasIntersections)
     }
     
 }
@@ -207,10 +196,10 @@ public struct Combiner {
 
 fileprivate extension PinNavigator {
     
-    fileprivate mutating func nextSub() -> Cursor {
+    fileprivate mutating func nextCombine() -> Cursor {
         var cursor = self.next()
         
-        while cursor.isNotEmpty && cursor.type != PinPoint.inside && cursor.type != PinPoint.out_in {
+        while cursor.isNotEmpty && cursor.type != PinPoint.outside && cursor.type != PinPoint.in_out {
             self.mark(cursor: cursor)
             cursor = self.next()
         }
@@ -229,7 +218,7 @@ fileprivate extension PinNavigator {
         var prev = cursor
         var cursor = self.nextSlave(cursor: cursor)
         
-        while start != cursor && stop != cursor && cursor.type == PinPoint.out_in {
+        while start != cursor && stop != cursor && cursor.type == PinPoint.in_out {
             let nextMaster = self.nextMaster(cursor: cursor)
             
             if nextMaster == start {

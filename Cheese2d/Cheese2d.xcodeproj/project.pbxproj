@@ -33,6 +33,9 @@
 		547BC90F216A878700A64EB0 /* PinPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547BC90E216A878700A64EB0 /* PinPoint.swift */; };
 		549B9E782194B7A800B88899 /* Solution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B9E772194B7A800B88899 /* Solution.swift */; };
 		54A7C3E3219D5CDB005C9283 /* SubtractTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7C3E2219D5CDB005C9283 /* SubtractTest.swift */; };
+		54AD2E7221B313EA0049B49F /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AD2E7121B313EA0049B49F /* Polygon.swift */; };
+		54AD2E7421B314770049B49F /* FloatPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AD2E7321B314770049B49F /* FloatPolygon.swift */; };
+		54AD2E7621B3CAF10049B49F /* Point+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AD2E7521B3CAF10049B49F /* Point+Array.swift */; };
 		54B285C22198B570009027DD /* FloatSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C12198B570009027DD /* FloatSolution.swift */; };
 		54B285C42198B995009027DD /* Disposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C32198B995009027DD /* Disposition.swift */; };
 		54B460DF21AE983D0008110F /* PinPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B460DE21AE983D0008110F /* PinPath+Extension.swift */; };
@@ -84,6 +87,9 @@
 		547BC90E216A878700A64EB0 /* PinPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPoint.swift; sourceTree = "<group>"; };
 		549B9E772194B7A800B88899 /* Solution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solution.swift; sourceTree = "<group>"; };
 		54A7C3E2219D5CDB005C9283 /* SubtractTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractTest.swift; sourceTree = "<group>"; };
+		54AD2E7121B313EA0049B49F /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
+		54AD2E7321B314770049B49F /* FloatPolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatPolygon.swift; sourceTree = "<group>"; };
+		54AD2E7521B3CAF10049B49F /* Point+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Point+Array.swift"; sourceTree = "<group>"; };
 		54B285C12198B570009027DD /* FloatSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatSolution.swift; sourceTree = "<group>"; };
 		54B285C32198B995009027DD /* Disposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disposition.swift; sourceTree = "<group>"; };
 		54B460DE21AE983D0008110F /* PinPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinPath+Extension.swift"; sourceTree = "<group>"; };
@@ -123,6 +129,8 @@
 				549B9E772194B7A800B88899 /* Solution.swift */,
 				54B285C12198B570009027DD /* FloatSolution.swift */,
 				54B285C32198B995009027DD /* Disposition.swift */,
+				54AD2E7121B313EA0049B49F /* Polygon.swift */,
+				54AD2E7321B314770049B49F /* FloatPolygon.swift */,
 			);
 			path = Solver;
 			sourceTree = "<group>";
@@ -222,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				54B460DE21AE983D0008110F /* PinPath+Extension.swift */,
+				54AD2E7521B3CAF10049B49F /* Point+Array.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -363,12 +372,15 @@
 				54336B842184D59300D53311 /* PinEdge.swift in Sources */,
 				54F2C5482177790A001F4857 /* PinNode.swift in Sources */,
 				5430C8E021621F4100DE1441 /* IndexPoint.swift in Sources */,
+				54AD2E7621B3CAF10049B49F /* Point+Array.swift in Sources */,
 				547BC90F216A878700A64EB0 /* PinPoint.swift in Sources */,
 				540F946A216F271500CF8A9D /* Corner.swift in Sources */,
 				54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */,
+				54AD2E7221B313EA0049B49F /* Polygon.swift in Sources */,
 				545A2D2621550E8700047C8D /* Cheese2d.m in Sources */,
 				541174A121676E9C00399820 /* PinPathBuilder.swift in Sources */,
 				5411749F216764C000399820 /* Range.swift in Sources */,
+				54AD2E7421B314770049B49F /* FloatPolygon.swift in Sources */,
 				545A2D3F21550F8200047C8D /* BoxArea.swift in Sources */,
 				5404A259215C0BDB00DC10BB /* Point.swift in Sources */,
 				540F9470216F6A1B00CF8A9D /* PinHandler.swift in Sources */,

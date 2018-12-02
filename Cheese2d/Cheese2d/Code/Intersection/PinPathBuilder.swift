@@ -20,7 +20,7 @@ struct PinPathBuilder {
     }
     
     
-    mutating func build(master: [Point], slave: [Point], exclusionPinType: Int) -> [PinPath] {
+    mutating func build(master: [Point], slave: [Point]) -> [PinPath] {
         let n = pinEdges.count
         guard n > 0 else {
             return []
@@ -69,7 +69,7 @@ struct PinPathBuilder {
             }
         }
         
-        let pathList = self.buildPath(edges: mergedEdges, master: master, slave: slave, exclusionPinType: exclusionPinType)
+        let pathList = self.buildPath(edges: mergedEdges, master: master, slave: slave)
 
         return pathList
     }
@@ -104,15 +104,13 @@ struct PinPathBuilder {
     }
 
 
-    private func buildPath(edges: [PinEdge], master: [Point], slave: [Point], exclusionPinType: Int) -> [PinPath] {
+    private func buildPath(edges: [PinEdge], master: [Point], slave: [Point]) -> [PinPath] {
         var pathList = [PinPath]()
         pathList.reserveCapacity(edges.count)
         for edge in edges {
             let type = self.getType(edge: edge, master: master, slave: slave)
-            if type != exclusionPinType {
-                let path = PinPath(v0: edge.v0, v1: edge.v1, type: type)
-                pathList.append(path)
-            }
+            let path = PinPath(v0: edge.v0, v1: edge.v1, type: type)
+            pathList.append(path)
         }
         
         return pathList
@@ -163,46 +161,76 @@ struct PinPathBuilder {
     }
     
     private func getStartDisposition(vertex: PinPoint, master: [Point], slave: [Point], iterposition: Int) -> Int {
-        
-        let i = vertex.slaveMileStone.index
-        let n = slave.count
-        let s: Point
 
-        if iterposition == -1 {
-            s = slave[(i + 1) % n]
-        } else {
-            if vertex.slaveMileStone.offset != 0 {
-                s = slave[i]
-            } else {
-                s = slave[(i - 1 + n) % n]
-            }
-        }
-        
-        
-        
         let corner = PinPathBuilder.buildCorner(vertex: vertex, master: master, converter: converter)
 
-        if corner.isOnBorder(p: s) {
-            return PinPoint.null
-        }
+        let si = vertex.slaveMileStone.index
+        let sn = slave.count
+        let s: Point
         
-        let isBetween = corner.isBetween(p: s, clockwise: true)
+        if iterposition == -1 {
+            s = slave[(si + 1) % sn]
+        } else {
+            if vertex.slaveMileStone.offset != 0 {
+                s = slave[si]
+            } else {
+                s = slave[(si - 1 + sn) % sn]
+            }
+        }
         
         let type: Int
-
-        if iterposition == 1 {
-            if isBetween {
-                type = PinPoint.in_null
+        
+        if corner.isOnBorder(p: s) {
+            let slaveCorner = PinPathBuilder.buildCorner(vertex: vertex, slave: slave, converter: converter)
+            
+            let mi = vertex.masterMileStone.index
+            let mn = master.count
+            let m: Point
+            
+            if iterposition == -1 {
+                m = master[(mi + 1) % mn]
             } else {
-                type = PinPoint.out_null
+                if vertex.masterMileStone.offset != 0 {
+                    m = master[mi]
+                } else {
+                    m = slave[(mi - 1 + mn) % mn]
+                }
+            }
+            
+            let isBetween = slaveCorner.isBetween(p: m, clockwise: true)
+            
+            if iterposition == 1 {
+                if isBetween {
+                    type = PinPoint.in_null
+                } else {
+                    type = PinPoint.out_null
+                }
+            } else {
+                if isBetween {
+                    type = PinPoint.null_out
+                } else {
+                    type = PinPoint.null_in
+                }
             }
         } else {
-            if isBetween {
-                type = PinPoint.null_out
+            
+            let isBetween = corner.isBetween(p: s, clockwise: true)
+            
+            if iterposition == 1 {
+                if isBetween {
+                    type = PinPoint.in_null
+                } else {
+                    type = PinPoint.out_null
+                }
             } else {
-                type = PinPoint.null_in
+                if isBetween {
+                    type = PinPoint.null_out
+                } else {
+                    type = PinPoint.null_in
+                }
             }
         }
+
         
         return type
     }
@@ -267,6 +295,23 @@ struct PinPathBuilder {
         }
 
         return Corner(o: m1, a: m0, b: m2, converter: converter)
+    }
+    
+    
+    private static func buildCorner(vertex: PinPoint, slave: [Point], converter: PointConverter) -> Corner {
+        let si = vertex.slaveMileStone.index
+        let sn = slave.count
+        let s0: Point
+        let s1 = vertex.point
+        let s2 = slave[(si + 1) % sn]
+        
+        if vertex.slaveMileStone.offset != 0 {
+            s0 = slave[si]
+        } else {
+            s0 = slave[(si - 1 + sn) % sn]
+        }
+        
+        return Corner(o: s1, a: s0, b: s2, converter: converter)
     }
     
     

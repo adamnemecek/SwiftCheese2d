@@ -18,18 +18,7 @@ public struct Subtractor {
         
         let solution = Subtractor.substract(master: iMaster, slave: iSlave, converter: converter)
         
-        if solution.disposition == .hasIntersections {
-            var pathCollection = Array<[CGPoint]>()
-            pathCollection.reserveCapacity(solution.pathCollection.count)
-            for p in solution.pathCollection {
-                let path = converter.convert(iPoints: p)
-                pathCollection.append(path)
-            }
-            return FloatSolution(pathCollection: pathCollection, disposition: .hasIntersections)
-        } else {
-            return FloatSolution(pathCollection: [], disposition: .noIntersections)
-        }
-
+        return FloatSolution(solution: solution, converter: converter)
     }
 
     
@@ -39,7 +28,7 @@ public struct Subtractor {
         var cursor = navigator.nextSub()
         
         guard cursor.isNotEmpty else {
-            return Solution(pathCollection: [], disposition: .noIntersections)
+            return Solution(polygons: [], disposition: .noIntersections)
         }
 
         var result = [[Point]]()
@@ -195,9 +184,14 @@ public struct Subtractor {
         let solution: Solution
         
         if result.count > 0 {
-            solution = Solution(pathCollection: result, disposition: .hasIntersections)
+            var polygons = [Polygon]()
+            for path in result {
+                let polygon = Polygon(path: path, isHole: false)
+                polygons.append(polygon)
+            }
+            solution = Solution(polygons: polygons, disposition: .hasIntersections)
         } else {
-            solution = Solution(pathCollection: [], disposition: .noIntersections)
+            solution = Solution(polygons: [], disposition: .noIntersections)
         }
 
         return solution

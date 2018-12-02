@@ -37,8 +37,8 @@ struct PinPath {
     func extract(index: Int, pathCount: Int) -> [PinHandler] {
         let n = pathCount
         
-        let firstHandler = PinHandler(sortFactor: v0.masterMileStone, index: index, isPinPath: 1, marker: 0)
-        let lastHandler = PinHandler(sortFactor: v1.masterMileStone, index: index, isPinPath: 1, marker: 1)
+        let firstHandler = PinHandler(sortFactor: v0.masterMileStone, index: index, isPinPath: 1, marker: 0, type: v0.type)
+        let lastHandler = PinHandler(sortFactor: v1.masterMileStone, index: index, isPinPath: 1, marker: 1, type: v0.type)
     
         let length = getLength(count: n)
         
@@ -49,7 +49,7 @@ struct PinPath {
         guard length != 2 else {
             let middleIndex = (v0.masterMileStone.index + 1) % n
             let middleSortFactor = PathMileStone(index: middleIndex, offset: 0)
-            let middle = PinHandler(sortFactor: middleSortFactor, index: index, isPinPath: 1, marker: 1)
+            let middle = PinHandler(sortFactor: middleSortFactor, index: index, isPinPath: 1, marker: 1, type: v0.type)
             return [firstHandler, middle, lastHandler]
         }
         
@@ -66,11 +66,11 @@ struct PinPath {
         }
 
         while i != endIndex {
-            handlers.append(PinHandler(sortFactor: PathMileStone(index: i, offset: 0), index: index, isPinPath: 1, marker: 1))
+            handlers.append(PinHandler(sortFactor: PathMileStone(index: i, offset: 0), index: index, isPinPath: 1, marker: 1, type: v0.type))
             i = (i + 1) % n
         }
         
-        handlers.append(PinHandler(sortFactor: PathMileStone(index: endIndex, offset: 0), index: index, isPinPath: 1, marker: 1))
+        handlers.append(PinHandler(sortFactor: PathMileStone(index: endIndex, offset: 0), index: index, isPinPath: 1, marker: 1, type: v0.type))
 
         handlers.append(lastHandler)
         

@@ -24,9 +24,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: 5, y: -10),
             CGPoint(x: 5, y: 0),
@@ -51,9 +51,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: -5, y: 10),
             CGPoint(x: -5, y: -10),
@@ -74,9 +74,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: -5, y: 10),
             CGPoint(x: -5, y: -10),
@@ -97,9 +97,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: -5, y: 10),
             CGPoint(x: -5, y: -10),
@@ -120,9 +120,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: -10, y: 10),
             CGPoint(x: -5, y: -10),
@@ -142,9 +142,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: -10, y: 0),
             CGPoint(x: 0, y: -10),
@@ -164,9 +164,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: 5, y: 10),
             CGPoint(x: -10, y: 2.5),
@@ -175,7 +175,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: -10, y: -2.5),
             CGPoint(x: 5, y: -10),
@@ -195,9 +195,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: 0, y: -10),
             CGPoint(x: 0, y: 0),
@@ -209,7 +209,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: -10, y: -5),
             CGPoint(x: -5, y: -10),
@@ -229,9 +229,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: 0, y: 10),
             CGPoint(x: 0, y: 0),
@@ -243,7 +243,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: 10, y: 0),
             CGPoint(x: 0, y: 10),
@@ -264,9 +264,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: 0, y: 10),
             CGPoint(x: -5, y: -10),
@@ -276,7 +276,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: 5, y: -10),
             CGPoint(x: 0, y: 10),
@@ -297,9 +297,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: 10, y: 10),
             CGPoint(x: -5, y: 5),
@@ -310,7 +310,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: 0, y: -10),
             CGPoint(x: 10, y: 10),
@@ -330,9 +330,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: 10, y: 10),
             CGPoint(x: -10, y: 0),
@@ -341,7 +341,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: 0, y: -10),
             CGPoint(x: 10, y: 10),
@@ -361,9 +361,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: 10, y: 5),
             CGPoint(x: 0, y: 0),
@@ -387,7 +387,7 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .noIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 0)
+        XCTAssertEqual(solution.polygons.count, 0)
     }
     
     
@@ -400,9 +400,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 4)
+        XCTAssertEqual(solution.polygons.count, 4)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: -5, y: 10),
             CGPoint(x: -10, y: 5),
@@ -411,7 +411,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: 10, y: 5),
             CGPoint(x: 5, y: 10),
@@ -420,7 +420,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path1, sample1)
         
-        let path2 = solution.pathCollection[2]
+        let path2 = solution.polygons[2].path
         let sample2 = [
             CGPoint(x: 5, y: -10),
             CGPoint(x: 10, y: -5),
@@ -429,7 +429,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path2, sample2)
 
-        let path3 = solution.pathCollection[3]
+        let path3 = solution.polygons[3].path
         let sample3 = [
             CGPoint(x: -10, y: -5),
             CGPoint(x: -5, y: -10),
@@ -449,9 +449,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 3)
+        XCTAssertEqual(solution.polygons.count, 3)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: -5, y: 10),
             CGPoint(x: -5, y: 5),
@@ -461,7 +461,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: 5, y: 10),
             CGPoint(x: 5, y: 5),
@@ -471,7 +471,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path1, sample1)
         
-        let path2 = solution.pathCollection[2]
+        let path2 = solution.polygons[2].path
         let sample2 = [
             CGPoint(x: 10, y: 5),
             CGPoint(x: 10, y: 10),
@@ -492,9 +492,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: -5, y: 2.5),
             CGPoint(x: -5, y: 0),
@@ -508,7 +508,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: 10, y: -2.5),
             CGPoint(x: 10, y: 2.5),
@@ -529,9 +529,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: 10, y: 0),
             CGPoint(x: 0, y: 5),
@@ -556,9 +556,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: 10, y: 10),
             CGPoint(x: 0, y: 5),
@@ -582,9 +582,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: 10, y: 5),
             CGPoint(x: 0, y: 5),
@@ -609,9 +609,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: 0, y: -5),
             CGPoint(x: 0, y: 0),
@@ -632,9 +632,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: 5, y: -5),
             CGPoint(x: 5, y: -10),
@@ -661,9 +661,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: 15, y: 5),
             CGPoint(x: 5, y: 5),
@@ -673,7 +673,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: 5, y: -5),
             CGPoint(x: 15, y: -5),
@@ -695,9 +695,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: 15, y: 5),
             CGPoint(x: 5, y: 5),
@@ -707,7 +707,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: 5, y: -5),
             CGPoint(x: 15, y: -2.5),
@@ -729,9 +729,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: 15, y: 5),
             CGPoint(x: 5, y: 15),
@@ -740,7 +740,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: 5, y: -5),
             CGPoint(x: 5, y: -10),
@@ -763,9 +763,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: -10, y: -5),
             CGPoint(x: -10, y: -10),
@@ -792,9 +792,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: -10, y: 0),
             CGPoint(x: -5, y: 0),
@@ -804,7 +804,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: -10, y: 10),
             CGPoint(x: -5, y: 10),
@@ -825,9 +825,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         
         XCTAssertEqual(path.count, 5)
     }
@@ -842,9 +842,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: 0, y: 5),
             CGPoint(x: -5, y: 5),
@@ -865,9 +865,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: -10, y: 15),
             CGPoint(x: -5, y: 15),
@@ -891,9 +891,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: -10, y: 15),
             CGPoint(x: -5, y: 15),
@@ -917,9 +917,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: -15, y: 20),
             CGPoint(x: -15, y: -10),
@@ -931,7 +931,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: 5, y: 20),
             CGPoint(x: 5, y: -5),
@@ -956,12 +956,12 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         XCTAssertEqual(path0.count, 6)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         XCTAssertEqual(path1.count, 9)
     }
     
@@ -975,9 +975,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: -4, y: -10),
             CGPoint(x: 10, y: -10),
@@ -987,7 +987,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: 10, y: -10),
             CGPoint(x: 10, y: -5.625),
@@ -1008,9 +1008,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 2)
+        XCTAssertEqual(solution.polygons.count, 2)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: 5, y: 0),
             CGPoint(x: 0, y: 0),
@@ -1020,7 +1020,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: -5, y: 10),
             CGPoint(x: -5, y: 5),
@@ -1040,9 +1040,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 1)
+        XCTAssertEqual(solution.polygons.count, 1)
         
-        let path = solution.pathCollection[0]
+        let path = solution.polygons[0].path
         let sample = [
             CGPoint(x: 5, y: 0),
             CGPoint(x: 0, y: 0),
@@ -1066,9 +1066,9 @@ public class SubtractTest: XCTestCase {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         XCTAssertEqual(solution.disposition, .hasIntersections)
-        XCTAssertEqual(solution.pathCollection.count, 5)
+        XCTAssertEqual(solution.polygons.count, 5)
         
-        let path0 = solution.pathCollection[0]
+        let path0 = solution.polygons[0].path
         let sample0 = [
             CGPoint(x: 5, y: 0),
             CGPoint(x: 5, y: -5),
@@ -1078,7 +1078,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path0, sample0)
         
-        let path1 = solution.pathCollection[1]
+        let path1 = solution.polygons[1].path
         let sample1 = [
             CGPoint(x: 10, y: 0),
             CGPoint(x: 10, y: 15),
@@ -1089,7 +1089,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path1, sample1)
         
-        let path2 = solution.pathCollection[2]
+        let path2 = solution.polygons[2].path
         let sample2 = [
             CGPoint(x: 0, y: 10),
             CGPoint(x: 0, y: 15),
@@ -1099,7 +1099,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path2, sample2)
         
-        let path3 = solution.pathCollection[3]
+        let path3 = solution.polygons[3].path
         let sample3 = [
             CGPoint(x: -10, y: 10),
             CGPoint(x: -10, y: 15),
@@ -1109,7 +1109,7 @@ public class SubtractTest: XCTestCase {
         
         XCTAssertEqual(path3, sample3)
         
-        let path4 = solution.pathCollection[4]
+        let path4 = solution.polygons[4].path
         let sample4 = [
             CGPoint(x: -15, y: -10),
             CGPoint(x: 10, y: -10),

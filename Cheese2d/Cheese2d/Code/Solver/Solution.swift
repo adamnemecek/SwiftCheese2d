@@ -11,7 +11,12 @@ import Foundation
 
 public struct Solution {
     
-    public let pathCollection: [[Point]]
+    public let polygons: [Polygon]
     public let disposition: Disposition
 
+    
+    init(polygons: [Polygon], disposition: Disposition) {
+        self.polygons = polygons
+        self.disposition = disposition
+    }
 }

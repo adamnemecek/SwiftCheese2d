@@ -59,8 +59,8 @@ class SubtractTest: CoordinateSystemScene {
         let solution: FloatSolution = Subtractor.substract(master: master, slave: slave)
         
         if solution.disposition == .hasIntersections {
-            for path in solution.pathCollection {
-                let shape = ShapeForm(points: path, color: Colors.solution)
+            for polygon in solution.polygons {
+                let shape = ShapeForm(points: polygon.path, color: Colors.solution)
                 self.addSublayer(shape)
             }
         }

@@ -1,17 +1,18 @@
 //
-//  AppDelegate.swift
-//  SwiftCheese2d
+//  TriangulatorTest.swift
+//  Tests
 //
-//  Created by Nail Sharipov on 18/09/2018.
+//  Created by Nail Sharipov on 03/12/2018.
 //  Copyright © 2018 Nail Sharipov. All rights reserved.
 //
 
-import Cocoa
+import XCTest
 @testable import Cheese2d
 
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
 
+class TriangulatorTest: XCTestCase {
+    
+    
     private func convert(points: [CGPoint], converter: PointConverter = PointConverter.defaultConverter) -> [IndexPoint] {
         var path = [IndexPoint]()
         path.reserveCapacity(points.count)
@@ -22,9 +23,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         return path
     }
+    
+    
+    func testSquare() {
 
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
         let points: [CGPoint] = [
             CGPoint(x: -10, y: 10),
             CGPoint(x: 10, y: 10),
@@ -36,13 +38,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let index = Triangulator.triangulate(path: path)
         
-        print(index)
+        XCTAssertEqual(index.count, 0)
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-
-
+    
 }
 

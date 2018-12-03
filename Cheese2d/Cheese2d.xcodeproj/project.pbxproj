@@ -17,6 +17,8 @@
 		5412993F2170C1F0001F0F0A /* PathMileStone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5412993E2170C1F0001F0F0A /* PathMileStone.swift */; };
 		54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */; };
 		54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FED2157E2C100E99295 /* SortedNumbers.swift */; };
+		541E50D421B5564F00076427 /* Triangulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541E50D321B5564F00076427 /* Triangulator.swift */; };
+		541E50D621B5677100076427 /* TriangulatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541E50D521B5677100076427 /* TriangulatorTest.swift */; };
 		5430C8E021621F4100DE1441 /* IndexPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5430C8DF21621F4100DE1441 /* IndexPoint.swift */; };
 		54336B842184D59300D53311 /* PinEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54336B832184D59300D53311 /* PinEdge.swift */; };
 		54445FF021921C570087A228 /* Subtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54445FEF21921C570087A228 /* Subtractor.swift */; };
@@ -69,6 +71,8 @@
 		5412993E2170C1F0001F0F0A /* PathMileStone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathMileStone.swift; sourceTree = "<group>"; };
 		54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixTest.swift; sourceTree = "<group>"; };
 		54191FED2157E2C100E99295 /* SortedNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedNumbers.swift; sourceTree = "<group>"; };
+		541E50D321B5564F00076427 /* Triangulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangulator.swift; sourceTree = "<group>"; };
+		541E50D521B5677100076427 /* TriangulatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangulatorTest.swift; sourceTree = "<group>"; };
 		5430C8DF21621F4100DE1441 /* IndexPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexPoint.swift; sourceTree = "<group>"; };
 		54336B832184D59300D53311 /* PinEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinEdge.swift; sourceTree = "<group>"; };
 		54445FEF21921C570087A228 /* Subtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subtractor.swift; sourceTree = "<group>"; };
@@ -121,6 +125,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		541E50D221B5562600076427 /* Triangulation */ = {
+			isa = PBXGroup;
+			children = (
+				541E50D321B5564F00076427 /* Triangulator.swift */,
+			);
+			path = Triangulation;
+			sourceTree = "<group>";
+		};
 		54445FEE21921C400087A228 /* Solver */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +191,7 @@
 		545A2D2C21550F8200047C8D /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				541E50D221B5562600076427 /* Triangulation */,
 				54BB025B21A46BE400AD7F2F /* Test */,
 				54445FEE21921C400087A228 /* Solver */,
 				545A2D3221550F8200047C8D /* Intersection */,
@@ -222,6 +235,7 @@
 				545A2D4F2155142600047C8D /* SortedNumbersTest.swift */,
 				54A7C3E2219D5CDB005C9283 /* SubtractTest.swift */,
 				545A2D4821550F9000047C8D /* Info.plist */,
+				541E50D521B5677100076427 /* TriangulatorTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -378,6 +392,7 @@
 				54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */,
 				54AD2E7221B313EA0049B49F /* Polygon.swift in Sources */,
 				545A2D2621550E8700047C8D /* Cheese2d.m in Sources */,
+				541E50D421B5564F00076427 /* Triangulator.swift in Sources */,
 				541174A121676E9C00399820 /* PinPathBuilder.swift in Sources */,
 				5411749F216764C000399820 /* Range.swift in Sources */,
 				54AD2E7421B314770049B49F /* FloatPolygon.swift in Sources */,
@@ -409,6 +424,7 @@
 				5470E5B82163FB0600AC2577 /* PinPathTest.swift in Sources */,
 				54A7C3E3219D5CDB005C9283 /* SubtractTest.swift in Sources */,
 				5412993D2170AD39001F0F0A /* PinsCleanDoublesTest.swift in Sources */,
+				541E50D621B5677100076427 /* TriangulatorTest.swift in Sources */,
 				540F9474216F888900CF8A9D /* CornerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -62,9 +62,16 @@ class CombineTest: CoordinateSystemScene {
         
         if solution.disposition == .hasIntersections {
             for polygon in solution.polygons {
-                let color = polygon.isHole ? Colors.solution_second : Colors.solution
-                let shape = ShapeForm(points: polygon.path, color: color)
-                self.addSublayer(shape)
+                if !polygon.isHole {
+                    let shape = ShapeForm(points: polygon.path, color: Colors.solution)
+                    self.addSublayer(shape)
+                }
+            }
+            for polygon in solution.polygons {
+                if polygon.isHole {
+                    let shape = ShapeForm(points: polygon.path, color: Colors.solution_second)
+                    self.addSublayer(shape)
+                }
             }
         }
         

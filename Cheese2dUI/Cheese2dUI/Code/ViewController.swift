@@ -16,7 +16,9 @@ class ViewController: NSViewController {
             return self.view as! CanvasView
         }
     }
-    private let scene = CombineTest()
+    
+    private let scene = BreakTest()
+    //private let scene = CombineTest()
     //private let scene = SubtractTest()
     //private let scene = AngleTest()
 

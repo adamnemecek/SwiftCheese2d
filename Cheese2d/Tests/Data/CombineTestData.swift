@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CombineTestData {
+final class CombineTestData {
     
     struct Result {
         let master: [CGPoint]

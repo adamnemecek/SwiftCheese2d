@@ -36,7 +36,7 @@ class TriangulatorTest: XCTestCase {
         
         let path = self.convert(points: points)
         
-        let index = Triangulator.triangulate(path: path)
+        let index = Breaker.triangulate(path: path)
         
         XCTAssertEqual(index.count, 0)
     }

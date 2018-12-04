@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SubtractTestData {
+final class SubtractTestData {
     
     struct Result {
         let master: [CGPoint]

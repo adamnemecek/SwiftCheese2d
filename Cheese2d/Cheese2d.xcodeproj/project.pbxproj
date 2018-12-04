@@ -17,7 +17,7 @@
 		5412993F2170C1F0001F0F0A /* PathMileStone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5412993E2170C1F0001F0F0A /* PathMileStone.swift */; };
 		54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */; };
 		54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54191FED2157E2C100E99295 /* SortedNumbers.swift */; };
-		541E50D421B5564F00076427 /* Triangulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541E50D321B5564F00076427 /* Triangulator.swift */; };
+		541E50D421B5564F00076427 /* Breaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541E50D321B5564F00076427 /* Breaker.swift */; };
 		541E50D621B5677100076427 /* TriangulatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541E50D521B5677100076427 /* TriangulatorTest.swift */; };
 		5430C8E021621F4100DE1441 /* IndexPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5430C8DF21621F4100DE1441 /* IndexPoint.swift */; };
 		54336B842184D59300D53311 /* PinEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54336B832184D59300D53311 /* PinEdge.swift */; };
@@ -40,10 +40,17 @@
 		54B285C22198B570009027DD /* FloatSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C12198B570009027DD /* FloatSolution.swift */; };
 		54B285C42198B995009027DD /* Disposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C32198B995009027DD /* Disposition.swift */; };
 		54BB545D2171D13500B61F3C /* PinSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB545C2171D13500B61F3C /* PinSequence.swift */; };
-		54DB8C7E21B67F2B00A3E4A0 /* PinPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B460DE21AE983D0008110F /* PinPath+Extension.swift */; };
-		54DB8C7F21B67F2B00A3E4A0 /* Point+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AD2E7521B3CAF10049B49F /* Point+Array.swift */; };
 		54DB8C8121B67F2B00A3E4A0 /* CombineTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EDFC2621B068E700647B6C /* CombineTestData.swift */; };
 		54DB8C8221B67F5B00A3E4A0 /* SubtractTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB025821A466BC00AD7F2F /* SubtractTestData.swift */; };
+		54DB8C8821B6803500A3E4A0 /* BreakTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB8C8721B6803500A3E4A0 /* BreakTestData.swift */; };
+		54DB8C8B21B682EE00A3E4A0 /* Point+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AD2E7521B3CAF10049B49F /* Point+Array.swift */; };
+		54DB8C8D21B6832B00A3E4A0 /* PinPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B460DE21AE983D0008110F /* PinPath+Extension.swift */; };
+		54DB8C8E21B6836800A3E4A0 /* BreakTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB8C8721B6803500A3E4A0 /* BreakTestData.swift */; };
+		54DB8C8F21B6836B00A3E4A0 /* CombineTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EDFC2621B068E700647B6C /* CombineTestData.swift */; };
+		54DB8C9021B6836E00A3E4A0 /* SubtractTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB025821A466BC00AD7F2F /* SubtractTestData.swift */; };
+		54DB8C9121B6838B00A3E4A0 /* PinPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B460DE21AE983D0008110F /* PinPath+Extension.swift */; };
+		54DB8C9421B6891500A3E4A0 /* PolygonMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB8C9321B6891500A3E4A0 /* PolygonMap.swift */; };
+		54DB8C9921B6C06000A3E4A0 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB8C9821B6C06000A3E4A0 /* Triangle.swift */; };
 		54EDFC2921B0728D00647B6C /* Combiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EDFC2821B0728D00647B6C /* Combiner.swift */; };
 		54F2C546217777FC001F4857 /* PinNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2C545217777FC001F4857 /* PinNavigator.swift */; };
 		54F2C5482177790A001F4857 /* PinNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2C5472177790A001F4857 /* PinNode.swift */; };
@@ -71,7 +78,7 @@
 		5412993E2170C1F0001F0F0A /* PathMileStone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathMileStone.swift; sourceTree = "<group>"; };
 		54191FEB2157E15700E99295 /* AdjacencyMatrixTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixTest.swift; sourceTree = "<group>"; };
 		54191FED2157E2C100E99295 /* SortedNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedNumbers.swift; sourceTree = "<group>"; };
-		541E50D321B5564F00076427 /* Triangulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangulator.swift; sourceTree = "<group>"; };
+		541E50D321B5564F00076427 /* Breaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breaker.swift; sourceTree = "<group>"; };
 		541E50D521B5677100076427 /* TriangulatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangulatorTest.swift; sourceTree = "<group>"; };
 		5430C8DF21621F4100DE1441 /* IndexPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexPoint.swift; sourceTree = "<group>"; };
 		54336B832184D59300D53311 /* PinEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinEdge.swift; sourceTree = "<group>"; };
@@ -99,6 +106,9 @@
 		54B460DE21AE983D0008110F /* PinPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinPath+Extension.swift"; sourceTree = "<group>"; };
 		54BB025821A466BC00AD7F2F /* SubtractTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractTestData.swift; sourceTree = "<group>"; };
 		54BB545C2171D13500B61F3C /* PinSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSequence.swift; sourceTree = "<group>"; };
+		54DB8C8721B6803500A3E4A0 /* BreakTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakTestData.swift; sourceTree = "<group>"; };
+		54DB8C9321B6891500A3E4A0 /* PolygonMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonMap.swift; sourceTree = "<group>"; };
+		54DB8C9821B6C06000A3E4A0 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		54EDFC2621B068E700647B6C /* CombineTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTestData.swift; sourceTree = "<group>"; };
 		54EDFC2821B0728D00647B6C /* Combiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Combiner.swift; sourceTree = "<group>"; };
 		54F2C545217777FC001F4857 /* PinNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNavigator.swift; sourceTree = "<group>"; };
@@ -128,7 +138,8 @@
 		541E50D221B5562600076427 /* Triangulation */ = {
 			isa = PBXGroup;
 			children = (
-				541E50D321B5564F00076427 /* Triangulator.swift */,
+				541E50D321B5564F00076427 /* Breaker.swift */,
+				54DB8C9821B6C06000A3E4A0 /* Triangle.swift */,
 			);
 			path = Triangulation;
 			sourceTree = "<group>";
@@ -191,6 +202,8 @@
 		545A2D2C21550F8200047C8D /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				54DB8C9221B6890400A3E4A0 /* Polygon */,
+				54DB8C8A21B682E500A3E4A0 /* Extension */,
 				541E50D221B5562600076427 /* Triangulation */,
 				54445FEE21921C400087A228 /* Solver */,
 				545A2D3221550F8200047C8D /* Intersection */,
@@ -244,7 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				54B460DE21AE983D0008110F /* PinPath+Extension.swift */,
-				54AD2E7521B3CAF10049B49F /* Point+Array.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -255,8 +267,25 @@
 				54B460DD21AE98240008110F /* Extension */,
 				54BB025821A466BC00AD7F2F /* SubtractTestData.swift */,
 				54EDFC2621B068E700647B6C /* CombineTestData.swift */,
+				54DB8C8721B6803500A3E4A0 /* BreakTestData.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		54DB8C8A21B682E500A3E4A0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				54AD2E7521B3CAF10049B49F /* Point+Array.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		54DB8C9221B6890400A3E4A0 /* Polygon */ = {
+			isa = PBXGroup;
+			children = (
+				54DB8C9321B6891500A3E4A0 /* PolygonMap.swift */,
+			);
+			path = Polygon;
 			sourceTree = "<group>";
 		};
 		54F2C544217777DD001F4857 /* Navigation */ = {
@@ -381,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				549B9E782194B7A800B88899 /* Solution.swift in Sources */,
+				54DB8C8B21B682EE00A3E4A0 /* Point+Array.swift in Sources */,
 				54F2C54B21777C35001F4857 /* IndexMileStone.swift in Sources */,
 				54445FF021921C570087A228 /* Subtractor.swift in Sources */,
 				54336B842184D59300D53311 /* PinEdge.swift in Sources */,
@@ -388,24 +418,30 @@
 				5430C8E021621F4100DE1441 /* IndexPoint.swift in Sources */,
 				547BC90F216A878700A64EB0 /* PinPoint.swift in Sources */,
 				540F946A216F271500CF8A9D /* Corner.swift in Sources */,
+				54DB8C9421B6891500A3E4A0 /* PolygonMap.swift in Sources */,
 				54191FEE2157E2C100E99295 /* SortedNumbers.swift in Sources */,
 				54AD2E7221B313EA0049B49F /* Polygon.swift in Sources */,
+				54DB8C9921B6C06000A3E4A0 /* Triangle.swift in Sources */,
 				545A2D2621550E8700047C8D /* Cheese2d.m in Sources */,
-				541E50D421B5564F00076427 /* Triangulator.swift in Sources */,
+				541E50D421B5564F00076427 /* Breaker.swift in Sources */,
 				541174A121676E9C00399820 /* PinPathBuilder.swift in Sources */,
 				5411749F216764C000399820 /* Range.swift in Sources */,
 				54AD2E7421B314770049B49F /* FloatPolygon.swift in Sources */,
 				545A2D3F21550F8200047C8D /* BoxArea.swift in Sources */,
 				5404A259215C0BDB00DC10BB /* Point.swift in Sources */,
 				540F9470216F6A1B00CF8A9D /* PinHandler.swift in Sources */,
+				54DB8C9021B6836E00A3E4A0 /* SubtractTestData.swift in Sources */,
 				54F2C546217777FC001F4857 /* PinNavigator.swift in Sources */,
 				54445FF22192224C0087A228 /* PointConverter.swift in Sources */,
 				54B285C22198B570009027DD /* FloatSolution.swift in Sources */,
 				5457CF1C216142AC0056728C /* PinPath.swift in Sources */,
 				545A2D3C21550F8200047C8D /* Intersector.swift in Sources */,
 				54B285C42198B995009027DD /* Disposition.swift in Sources */,
+				54DB8C9121B6838B00A3E4A0 /* PinPath+Extension.swift in Sources */,
 				545A2D3E21550F8200047C8D /* AdjacencyMatrix.swift in Sources */,
 				54BB545D2171D13500B61F3C /* PinSequence.swift in Sources */,
+				54DB8C8E21B6836800A3E4A0 /* BreakTestData.swift in Sources */,
+				54DB8C8F21B6836B00A3E4A0 /* CombineTestData.swift in Sources */,
 				54EDFC2921B0728D00647B6C /* Combiner.swift in Sources */,
 				5412993F2170C1F0001F0F0A /* PathMileStone.swift in Sources */,
 			);
@@ -419,12 +455,12 @@
 				54191FEC2157E15700E99295 /* AdjacencyMatrixTest.swift in Sources */,
 				54DB8C8121B67F2B00A3E4A0 /* CombineTestData.swift in Sources */,
 				54DB8C8221B67F5B00A3E4A0 /* SubtractTestData.swift in Sources */,
-				54DB8C7F21B67F2B00A3E4A0 /* Point+Array.swift in Sources */,
+				54DB8C8D21B6832B00A3E4A0 /* PinPath+Extension.swift in Sources */,
 				5470E5B82163FB0600AC2577 /* PinPathTest.swift in Sources */,
 				54A7C3E3219D5CDB005C9283 /* SubtractTest.swift in Sources */,
 				5412993D2170AD39001F0F0A /* PinsCleanDoublesTest.swift in Sources */,
 				541E50D621B5677100076427 /* TriangulatorTest.swift in Sources */,
-				54DB8C7E21B67F2B00A3E4A0 /* PinPath+Extension.swift in Sources */,
+				54DB8C8821B6803500A3E4A0 /* BreakTestData.swift in Sources */,
 				540F9474216F888900CF8A9D /* CornerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

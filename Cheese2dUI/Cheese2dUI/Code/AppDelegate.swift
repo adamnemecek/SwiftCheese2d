@@ -12,31 +12,8 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    private func convert(points: [CGPoint], converter: PointConverter = PointConverter.defaultConverter) -> [IndexPoint] {
-        var path = [IndexPoint]()
-        path.reserveCapacity(points.count)
-        var i = 0
-        for point in points {
-            path.append(IndexPoint(index: i, point: converter.convert(point: point)))
-            i += 1
-        }
-        return path
-    }
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        let points: [CGPoint] = [
-            CGPoint(x: -10, y: 10),
-            CGPoint(x: 10, y: 10),
-            CGPoint(x: 10, y: -10),
-            CGPoint(x: -10, y: -10)
-        ]
-        
-        let path = self.convert(points: points)
-        
-        let index = Triangulator.triangulate(path: path)
-        
-        print(index)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

@@ -37,7 +37,7 @@ struct PolygonMap {
         while i < n {
             let c = vertex[i]
             
-            if a.index != c.index && a.index != d.index && b.index != c.index && a.index != d.index {
+            if a.index != c.index && a.index != d.index && b.index != c.index && b.index != d.index {
                 if PolygonMap.areSegmentsIntersecting(a: a, b: b, c: c, d: d) {
                     return true
                 }

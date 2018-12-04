@@ -20,9 +20,11 @@ public struct Breaker {
     
     
     private static func triangulate(map: PolygonMap) -> [Int] {
+        
+        //return []
         var path = map.vertex
 
-        let n = path.count
+        var n = path.count
         let totalCount = n - 2
         
         var index = [Int]()
@@ -31,52 +33,57 @@ public struct Breaker {
         var count = 0
         var i = 0
         repeat {
-            var leftIx = (i - 1 + n) % n
-            var rightIx = (i + 1) % n
-            
-            var isCCW = Triangle.isCCW(a: path[leftIx].point, b: path[i].point, c: path[rightIx].point)
-            if !isCCW {
-                i = rightIx
-                continue
-            }
-            
             let start = path[i].point
-
-            // find right end
-            var nextIx = rightIx
-            var prev = path[rightIx].point
-            while isCCW && nextIx != leftIx {
+            let prev = path[(i - 1 + n) % n].point
+            var nextIx = (i + 1) % n
+            var next0 = path[nextIx].point
+            var isCCW = true
+            repeat {
                 nextIx = (nextIx + 1) % n
-                let next = path[nextIx].point
-                isCCW = Triangle.isCCW(a: start, b: prev, c: next)
-                prev = next
-            }
-            rightIx = nextIx
+                let next1 = path[nextIx].point
+                let isCCW0 = Triangle.isCCW(a: start, b: next0, c: next1)
+                let isCCW1 = Triangle.isCCW(a: prev, b: start, c: next1)
+                isCCW = isCCW0 && isCCW1
+                next0 = next1
+            } while isCCW && nextIx != i
             
-            // find left end
-            nextIx = leftIx
-            prev = path[leftIx].point
-            while isCCW && nextIx != rightIx {
-                nextIx = (nextIx - 1 + n) % n
-                let next = path[nextIx].point
-                isCCW = Triangle.isCCW(a: start, b: next, c: prev)
-                prev = next
-            }
-            leftIx = nextIx
-
-            while map.isIntersected(a: path[leftIx], b: path[rightIx]) && leftIx != rightIx {
-                leftIx = (i + 1) % n
+            var endIx = (nextIx - 1 + n) % n
+            
+            let first = path[i]
+            while map.isIntersected(a: first, b: path[endIx]) && i != endIx {
+                endIx = (endIx - 1 + n) % n
             }
             
-            let first = leftIx
-            leftIx = (i + 1) % n
-            while leftIx != rightIx {
-                let j = 3 * count
-                index[j] = first
-                index[j + 1] = leftIx
-                index[j + 2] = rightIx
+            let firstIx = path[i].index
+            nextIx = (i + 1) % n
+            var index0 = path[nextIx].index
+            while nextIx != endIx {
+                nextIx = (nextIx + 1) % n
+                let index1 = path[nextIx].index
+                index.append(firstIx)
+                index.append(index0)
+                index.append(index1)
                 count += 1
+                index0 = index1
             }
+            
+            i = (endIx + 1) % n
+            
+            if i < endIx {
+                let length = endIx - i
+                let range = endIx...n - 1
+                var slice = path[range]
+                slice.replaceSubrange(i...i + length, with: slice)
+            } else if i > endIx {
+                let length = i - endIx
+                let range = endIx...n - 1
+                var slice = path[range]
+                slice.replaceSubrange(0...length, with: slice)
+            }
+            
+            
+            
+            path = 
 
         } while count < totalCount
         

@@ -21,7 +21,7 @@ final class BreakTestData {
                 CGPoint(x: -20, y: 10),
                 CGPoint(x: -10, y: 15),
                 //CGPoint(x: 0, y: -10),
-                CGPoint(x: -15, y: 0),
+                CGPoint(x: -14, y: -9),
                 CGPoint(x: 10, y: 15),
                 CGPoint(x: 20, y: 10),
                 CGPoint(x: 20, y: 0),

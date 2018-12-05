@@ -11,9 +11,11 @@ import Foundation
 struct PolygonMap {
     
     let vertex: [IndexPoint]
+    let pointsCount: Int
 
     init(points: [CGPoint], converter: PointConverter = PointConverter.defaultConverter) {
         var vertex = [IndexPoint]()
+        self.pointsCount = points.count
         vertex.reserveCapacity(points.count)
         var i = 0
         for point in points {

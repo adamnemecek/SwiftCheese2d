@@ -50,8 +50,12 @@ struct PolygonMap {
     }
     
     private static func areSegmentsIntersecting(a: IndexPoint, b: IndexPoint, c: IndexPoint, d: IndexPoint) -> Bool {
-        return Triangle.isCCW(a: a.point, b: c.point, c: d.point) != Triangle.isCCW(a: b.point, b: c.point, c: d.point)
-            && Triangle.isCCW(a: a.point, b: b.point, c: c.point) != Triangle.isCCW(a: a.point, b: c.point, c: d.point)
+        let acd = Triangle.isCCW(a: a.point, b: c.point, c: d.point)
+        let bcd = Triangle.isCCW(a: b.point, b: c.point, c: d.point)
+        let abc = Triangle.isCCW(a: a.point, b: b.point, c: c.point)
+        let abd = Triangle.isCCW(a: a.point, b: b.point, c: d.point)
+
+        return acd != bcd && abc != abd
     }
 
 }

@@ -25,6 +25,7 @@
 		542D79022154CD7F000B1D1A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D78F32154CD7F000B1D1A /* Colors.swift */; };
 		542D79042154CD7F000B1D1A /* CoordinateSystemScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D78F62154CD7F000B1D1A /* CoordinateSystemScene.swift */; };
 		542FD2E021A2FF9500A0A289 /* TestNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FD2DF21A2FF9500A0A289 /* TestNavigation.swift */; };
+		54A5ED9A21B7E6AB00E2BC36 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A5ED9921B7E6AB00E2BC36 /* Triangle.swift */; };
 		54A9D42221A80DBA00DFC8CC /* Intersector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A9D42121A80DBA00DFC8CC /* Intersector.swift */; };
 		54B285C62198BBB7009027DD /* SubtractTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C52198BBB7009027DD /* SubtractTest.swift */; };
 		54B8756C2169356900D823AE /* MouseCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B8756B2169356900D823AE /* MouseCompatible.swift */; };
@@ -74,6 +75,7 @@
 		542D78F62154CD7F000B1D1A /* CoordinateSystemScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateSystemScene.swift; sourceTree = "<group>"; };
 		542D79052154CDA6000B1D1A /* Cheese2d.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Cheese2d.xcodeproj; path = ../Cheese2d/Cheese2d.xcodeproj; sourceTree = "<group>"; };
 		542FD2DF21A2FF9500A0A289 /* TestNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNavigation.swift; sourceTree = "<group>"; };
+		54A5ED9921B7E6AB00E2BC36 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		54A9D42121A80DBA00DFC8CC /* Intersector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intersector.swift; sourceTree = "<group>"; };
 		54B285C52198BBB7009027DD /* SubtractTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractTest.swift; sourceTree = "<group>"; };
 		54B8756B2169356900D823AE /* MouseCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseCompatible.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				542D78F02154CD7F000B1D1A /* ShapeText.swift */,
 				54E25D7D216CD8CE00B6FE58 /* ShapePinDot.swift */,
 				542C2D58219C688A006D62EB /* ShapeForm.swift */,
+				54A5ED9921B7E6AB00E2BC36 /* Triangle.swift */,
 			);
 			path = Shape;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				542D78F92154CD7F000B1D1A /* ShapeVector.swift in Sources */,
 				542D78FE2154CD7F000B1D1A /* ShapePolygon.swift in Sources */,
 				542D78FC2154CD7F000B1D1A /* ShapeLine.swift in Sources */,
+				54A5ED9A21B7E6AB00E2BC36 /* Triangle.swift in Sources */,
 				54EDFC2321B0687B00647B6C /* CombineTest.swift in Sources */,
 				542D79042154CD7F000B1D1A /* CoordinateSystemScene.swift in Sources */,
 				542D79002154CD7F000B1D1A /* CGPoint+Extension.swift in Sources */,

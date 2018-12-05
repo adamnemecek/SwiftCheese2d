@@ -50,7 +50,18 @@ class BreakTest: CoordinateSystemScene {
     
     private func addShapes() {
         let index = Breaker.triangulate(points: points)
-        print(index)
+        var count = 0
+        var triangle = [CGPoint.zero, CGPoint.zero, CGPoint.zero]
+
+        let font = NSFont.systemFont(ofSize: 32)
+        while count < index.count {
+            triangle[0] = points[index[count]]
+            triangle[1] = points[index[count + 1]]
+            triangle[2] = points[index[count + 2]]
+            count += 3
+            self.addSublayer(Triangle(points: triangle, lineWidth: 0.1, color: Colors.gray, number: count / 3, font: font))
+        }
+
         self.addSublayer(ShapePolygon(points: points, tip: 1.0, lineWidth: 0.4, color: Colors.master, showIndeces: true, scaleIndeces: 4, dash: nil))
     }
     

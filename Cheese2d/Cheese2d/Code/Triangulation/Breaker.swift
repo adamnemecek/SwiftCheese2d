@@ -33,6 +33,15 @@ public struct Breaker {
         var count = 0
         var i = 0
         repeat {
+            
+            if n == 3 {
+                index.append(path[0].index)
+                index.append(path[1].index)
+                index.append(path[2].index)
+                break
+            }
+            
+            
             let start = path[i].point
             let prev = path[(i - 1 + n) % n].point
             var nextIx = (i + 1) % n
@@ -42,20 +51,26 @@ public struct Breaker {
                 nextIx = (nextIx + 1) % n
                 let next1 = path[nextIx].point
                 let isCCW0 = Triangle.isCCW(a: start, b: next0, c: next1)
-                let isCCW1 = Triangle.isCCW(a: prev, b: start, c: next1)
-                isCCW = isCCW0 && isCCW1
+                //let isCCW1 = Triangle.isCCW(a: prev, b: start, c: next1)
+                isCCW = isCCW0 //&& isCCW1
                 next0 = next1
             } while isCCW && nextIx != i
             
-            var endIx = (nextIx - 1 + n) % n
+            var endIx = (nextIx - 2 + n) % n
             
             let first = path[i]
             while map.isIntersected(a: first, b: path[endIx]) && i != endIx {
                 endIx = (endIx - 1 + n) % n
             }
             
-            let firstIx = path[i].index
             nextIx = (i + 1) % n
+            if nextIx == endIx {
+                i = (i + 1) % n
+                continue
+            }
+            
+            let firstIx = path[i].index
+            
             var index0 = path[nextIx].index
             while nextIx != endIx {
                 nextIx = (nextIx + 1) % n
@@ -67,23 +82,18 @@ public struct Breaker {
                 index0 = index1
             }
             
-            i = (endIx + 1) % n
+            let a = (i + 1) % n
+            let b = (endIx - 1 + n) % n
             
-            if i < endIx {
-                let length = endIx - i
-                let range = endIx...n - 1
-                var slice = path[range]
-                slice.replaceSubrange(i...i + length, with: slice)
-            } else if i > endIx {
-                let length = i - endIx
-                let range = endIx...n - 1
-                var slice = path[range]
-                slice.replaceSubrange(0...length, with: slice)
+            if a <= b {
+                path.removeSubrange(a...b)
+            } else {
+                path.removeSubrange(a...n - 1)
+                path.removeSubrange(0...b)
             }
-            
-            
-            
-            path = 
+            n = path.count
+
+            i = (i + 1) % n
 
         } while count < totalCount
         

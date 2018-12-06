@@ -42,23 +42,45 @@ public struct Breaker {
             }
             
             
-            let start = path[i].point
-            //let prev = path[(i - 1 + n) % n].point
-            var nextIx = (i + 1) % n
-            var next0 = path[nextIx].point
-            var isCCW = true
-            var triangles = -2
-            repeat {
-                nextIx = (nextIx + 1) % n
-                let next1 = path[nextIx].point
-                let isCCW0 = Triangle.isCCW(a: start, b: next0, c: next1)
-                //let isCCW1 = Triangle.isCCW(a: prev, b: start, c: next1)
-                isCCW = isCCW0 //&& isCCW1
-                next0 = next1
+            var j = i
+            let pA = path[j].point
+            j = (j + 1) % n
+            var pB = path[j].point
+            j = (j + 1) % n
+            var pC = path[j].point
+
+            var triangles = 0
+            while Triangle.isCCW(a: pA, b: pB, c: pC) && i != j {
+                pB = pC
+                j = (j + 1) % n
+                pC = path[j].point
                 triangles += 1
-            } while isCCW && nextIx != i
+            }
             
-            var endIx = (nextIx - 2 + n) % n
+            if triangles == 0 {
+                i = (i + 1) % n
+                continue
+            }
+            
+            if i == j {
+                // bingo!
+                let iA = path[j].index
+                j = (j + 1) % n
+                var iB = path[j].index
+                j = (j + 1) % n
+                var iC = path[j].index
+                while i != j {
+                    index.append(iA)
+                    index.append(iB)
+                    index.append(iC)
+                    iB = iC
+                    j = (j + 1) % n
+                    iC = path[j].index
+                }
+                break
+            }
+            
+            var endIx = (j - 1 + n) % n
             
             let first = path[i]
             var last = path[endIx]
@@ -69,7 +91,7 @@ public struct Breaker {
             }
 
             if triangles <= 0 {
-                if triangles == 0 && last {
+                if triangles == 0 {
                     index.append(path[i].index)
                     index.append(path[(i + 1) % n].index)
                     index.append(path[(i + 2) % n].index)
@@ -82,7 +104,7 @@ public struct Breaker {
             }
             
             let firstIx = path[i].index
-            nextIx = (i + 1) % n
+            var nextIx = (i + 1) % n
             var index0 = path[nextIx].index
             while triangles > 0 {
                 nextIx = (nextIx + 1) % n

@@ -29,6 +29,7 @@ struct PolygonMap {
     
     init(vertex: [IndexPoint]) {
         self.vertex = vertex
+        self.pointsCount = vertex.count
     }
     
     

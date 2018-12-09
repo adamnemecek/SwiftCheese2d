@@ -49,6 +49,7 @@ class BreakTest: CoordinateSystemScene {
     }
     
     private func addShapes() {
+        
         let index = Breaker.triangulate(points: points)
         var count = 0
         var triangle = [CGPoint.zero, CGPoint.zero, CGPoint.zero]
@@ -62,7 +63,7 @@ class BreakTest: CoordinateSystemScene {
             self.addSublayer(Triangle(points: triangle, lineWidth: 0.1, color: Colors.gray, number: count / 3, font: font))
         }
 
-        self.addSublayer(ShapePolygon(points: points, tip: 1.0, lineWidth: 0.4, color: Colors.master, showIndeces: true, scaleIndeces: 4, dash: nil))
+        self.addSublayer(ShapePolygon(points: points, tip: 1.0, lineWidth: 0.4, color: Colors.master, showIndeces: .point, scaleIndeces: 4, dash: nil))
     }
     
     func showPpage(index: Int) {

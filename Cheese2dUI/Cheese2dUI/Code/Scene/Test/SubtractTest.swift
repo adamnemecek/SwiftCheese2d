@@ -65,13 +65,13 @@ class SubtractTest: CoordinateSystemScene {
             }
         }
         
-        self.addSublayer(ShapePolygon(points: master, tip: 1.0, lineWidth: 0.4, color: Colors.master, showIndeces: true, scaleIndeces: 4, dash: nil))
-        self.addSublayer(ShapePolygon(points: slave, tip: 1.0, lineWidth: 0.4, color: Colors.slave, showIndeces: true, scaleIndeces: -2.5, dash: [2,3]))
+        self.addSublayer(ShapePolygon(points: master, tip: 1.0, lineWidth: 0.4, color: Colors.master, showIndeces: .index, scaleIndeces: 4, dash: nil))
+        self.addSublayer(ShapePolygon(points: slave, tip: 1.0, lineWidth: 0.4, color: Colors.slave, showIndeces: .index, scaleIndeces: -2.5, dash: [2,3]))
       
         let paths = result.path
         for edgePath in paths {
             let colors = edgePath.colors
-            let shape = ShapePath(points: edgePath.path, tip: 1.5, lineWidth: 0.4, color: colors[0], showIndeces: false, showLast: false, scaleIndeces: 1, dash: nil, arrowColor: colors[1])
+            let shape = ShapePath(points: edgePath.path, tip: 1.5, lineWidth: 0.4, color: colors[0], showIndeces: .none, showLast: false, scaleIndeces: 1, dash: nil, arrowColor: colors[1])
             self.addSublayer(shape)
         }
 

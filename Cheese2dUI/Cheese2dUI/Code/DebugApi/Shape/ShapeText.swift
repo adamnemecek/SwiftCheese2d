@@ -14,8 +14,12 @@ class ShapeText: CALayer {
         super.init()
         
         let a = font.pointSize
-        let rect = CGRect(x: position.x - 0.5 * a, y: position.y - 0.5 * a, width: a, height: a)
+        
 
+        let size = text.boundingRect(with: CGSize(width: 10 * a, height: 2 * a), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font]).size
+        
+        let rect = CGRect(x: position.x - 0.5 * size.width, y: position.y - 0.5 * size.height, width: size.width, height: size.height)
+        
         let textLayer = CATextLayer()
         textLayer.font = font
         textLayer.fontSize = a

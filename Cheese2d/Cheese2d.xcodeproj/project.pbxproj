@@ -40,6 +40,7 @@
 		54B285C22198B570009027DD /* FloatSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C12198B570009027DD /* FloatSolution.swift */; };
 		54B285C42198B995009027DD /* Disposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B285C32198B995009027DD /* Disposition.swift */; };
 		54BB545D2171D13500B61F3C /* PinSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB545C2171D13500B61F3C /* PinSequence.swift */; };
+		54C6B1AF21BAFC9A0003A29A /* PolygonNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C6B1AE21BAFC9A0003A29A /* PolygonNavigator.swift */; };
 		54DB8C8121B67F2B00A3E4A0 /* CombineTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EDFC2621B068E700647B6C /* CombineTestData.swift */; };
 		54DB8C8221B67F5B00A3E4A0 /* SubtractTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB025821A466BC00AD7F2F /* SubtractTestData.swift */; };
 		54DB8C8821B6803500A3E4A0 /* BreakTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DB8C8721B6803500A3E4A0 /* BreakTestData.swift */; };
@@ -106,6 +107,7 @@
 		54B460DE21AE983D0008110F /* PinPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinPath+Extension.swift"; sourceTree = "<group>"; };
 		54BB025821A466BC00AD7F2F /* SubtractTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractTestData.swift; sourceTree = "<group>"; };
 		54BB545C2171D13500B61F3C /* PinSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSequence.swift; sourceTree = "<group>"; };
+		54C6B1AE21BAFC9A0003A29A /* PolygonNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonNavigator.swift; sourceTree = "<group>"; };
 		54DB8C8721B6803500A3E4A0 /* BreakTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakTestData.swift; sourceTree = "<group>"; };
 		54DB8C9321B6891500A3E4A0 /* PolygonMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonMap.swift; sourceTree = "<group>"; };
 		54DB8C9821B6C06000A3E4A0 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				54DB8C9321B6891500A3E4A0 /* PolygonMap.swift */,
+				54C6B1AE21BAFC9A0003A29A /* PolygonNavigator.swift */,
 			);
 			path = Polygon;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				545A2D3E21550F8200047C8D /* AdjacencyMatrix.swift in Sources */,
 				54BB545D2171D13500B61F3C /* PinSequence.swift in Sources */,
 				54DB8C8E21B6836800A3E4A0 /* BreakTestData.swift in Sources */,
+				54C6B1AF21BAFC9A0003A29A /* PolygonNavigator.swift in Sources */,
 				54DB8C8F21B6836B00A3E4A0 /* CombineTestData.swift in Sources */,
 				54EDFC2921B0728D00647B6C /* Combiner.swift in Sources */,
 				5412993F2170C1F0001F0F0A /* PathMileStone.swift in Sources */,
@@ -530,6 +534,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -583,6 +588,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

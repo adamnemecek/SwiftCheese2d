@@ -12,7 +12,13 @@ import Cheese2d
 
 class ShapePath: CALayer {
     
-    init(points: [CGPoint], tip: CGFloat, lineWidth: CGFloat, color: CGColor, showIndeces: Bool, showLast: Bool, scaleIndeces: CGFloat, dash: [NSNumber]?, arrowColor: CGColor) {
+    enum IndexDetail {
+        case none
+        case index
+        case point
+    }
+    
+    init(points: [CGPoint], tip: CGFloat, lineWidth: CGFloat, color: CGColor, showIndeces: IndexDetail, showLast: Bool, scaleIndeces: CGFloat, dash: [NSNumber]?, arrowColor: CGColor) {
         super.init()
         var lastIndex = points.count - 1
         guard lastIndex > 0 else {
@@ -25,7 +31,7 @@ class ShapePath: CALayer {
             start = end
         }
         
-        if showIndeces {
+        if showIndeces != .none {
             let font = NSFont.systemFont(ofSize: 32)
             if !showLast {
                 lastIndex -= 1
@@ -42,7 +48,14 @@ class ShapePath: CALayer {
                 let dir = (b - m).normalize
                 let p = b + r * dir
                 
-                let shapeText = ShapeText(text: String(i), font: font, position: p, pin: b, lineWidth: 0.1, color: color, strokeColor: Colors.lightGray)
+                let text: String
+                if showIndeces == .index {
+                    text = String(i)
+                } else {
+                    text = "\(i): (\(b.x), \(b.y))"
+                }
+                
+                let shapeText = ShapeText(text: text, font: font, position: p, pin: b, lineWidth: 0.1, color: color, strokeColor: Colors.lightGray)
                 
                 self.addSublayer(shapeText)
             }
